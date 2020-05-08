@@ -8,3 +8,5 @@ bokeh
 pytest
 
 flask
+WTFForms
+flask-wtf

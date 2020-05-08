@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="formwrapper">
+    <h2>my Form</h2>
+    <form method="POST" action="/login">
+        <div class="form-field">
+            {{ form.funct.label }}:
+            {{ form.funct }}
+        </div>
+        <div class="form-field">
+            {{ form.objective.label }}:
+            {{ form.objective }}
+        </div>
+        <div class="form-field">
+            {{ form.interval_down.label }}:
+            {{ form.interval_down }}
+        </div>
+        <div class="form-field">
+            {{ form.interval_up.label }}:
+            {{ form.interval_up }}
+        </div>
+        <div class="form-field">
+            {{ form.seed_parents.label }}:
+            {{ form.seed_parents }}
+        </div>
+        <div class="form-field">
+            {{ form.kill_rate.label }}:
+            {{ form.kill_rate }}
+        </div>
+        <div class="form-field">
+            {{ form.average_child_numb.label }}:
+            {{ form.average_child_numb }}
+        </div>
+
+        {{ form.submit }}
+
+    </form>
+
+</div>
+{% endblock content %}
