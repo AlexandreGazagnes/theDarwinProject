@@ -6,35 +6,85 @@
 
 <div class="formwrapper">
     <h2>my Form</h2>
-    <form method="POST" action="/login">
-        <div class="form-field">
-            {{ form.funct.label }}:
-            {{ form.funct }}
+    <form method="POST">
+
+        <!-- funct -->
+        <div class="form-field">{{ form.funct.label }} {{ form.funct }}
+            {% if form.funct.errors %}
+            <ul class="errors">
+                {% for error in form.funct.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.objective.label }}:
-            {{ form.objective }}
+
+        <!-- objective -->
+        <div class="form-field">{{ form.objective.label }} {{ form.objective }}
+            {% if form.objective.errors %}
+            <ul class="errors">
+                {% for error in form.objective.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.interval_down.label }}:
-            {{ form.interval_down }}
+
+        <!-- interval_down -->
+        <div class="form-field">{{ form.interval_down.label }} {{ form.interval_down }}
+            {% if form.interval_down.errors %}
+            <ul class="errors">
+                {% for error in form.interval_down.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.interval_up.label }}:
-            {{ form.interval_up }}
+
+        <!-- interval_up -->
+        <div class="form-field">{{ form.interval_up.label }} {{ form.interval_up }}
+            {% if form.interval_up.errors %}
+            <ul class="errors">
+                {% for error in form.interval_up.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.seed_parents.label }}:
-            {{ form.seed_parents }}
+
+        <!-- seed_parents -->
+        <div class="form-field">{{ form.seed_parents.label }} {{ form.seed_parents }}
+            {% if form.seed_parents.errors %}
+            <ul class="errors">
+                {% for error in form.seed_parents.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.kill_rate.label }}:
-            {{ form.kill_rate }}
+
+        <!-- kill_rate -->
+        <div class="form-field">{{ form.kill_rate.label }} {{ form.kill_rate }}
+            {% if form.kill_rate.errors %}
+            <ul class="errors">
+                {% for error in form.kill_rate.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
-        <div class="form-field">
-            {{ form.average_child_numb.label }}:
-            {{ form.average_child_numb }}
+
+        <!-- average_child_numb -->
+        <div class="form-field">{{ form.average_child_numb.label }} {{ form.average_child_numb }}
+            {% if form.average_child_numb.errors %}
+            <ul class="errors">
+                {% for error in form.average_child_numb.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </div>
+
 
         {{ form.submit }}
 

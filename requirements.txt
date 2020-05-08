@@ -6,7 +6,9 @@ seaborn
 bokeh
 
 pytest
+black
+
 
 flask
-WTFForms
+WTForms
 flask-wtf

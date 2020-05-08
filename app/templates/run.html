@@ -3,4 +3,35 @@
 {% block content %}
 
 
+<div class="formwrapper">
+    <h2>my Form</h2>
+    <form method="POST">
+
+        <!-- n -->
+        <div class="form-field">{{ form.n.label }} {{ form.n }}
+            {% if form.n.errors %}
+            <ul class="errors">
+                {% for error in form.n.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        {{ form.submit }}
+
+    </form>
+
+</div>
+
+
+<h2>{{ algo | string }}</h2>
+<h2>{{ pop | string }}</h2>
+
+<p>{{learning_image }}</p>
+<img src="{{ learning_image }}" alt="Ucdcser Image">
+
+<p>{{population_image }}</p>
+<img src="{{ population_image }}" alt="User Image">
+
 {% endblock content %}
