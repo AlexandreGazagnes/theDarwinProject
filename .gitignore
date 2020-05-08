@@ -85,6 +85,7 @@ celerybeat-schedule
 .env
 .venv
 env/
+env/*/
 venv/
 ENV/
 env.bak/
@@ -132,6 +133,11 @@ logs/*.out
 
 params/*.json
 params/private/*.json
+
+app/static/img/*.jpg
+app/static/img/*.jpeg
+app/static/img/*.bmp
+app/static/img/*.png
 
 ___*
 /*/___*

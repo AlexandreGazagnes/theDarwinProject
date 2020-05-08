@@ -1,0 +1,14 @@
+numpy
+pandas
+
+matplotlib
+seaborn
+bokeh
+
+pytest
+black
+
+
+flask
+WTForms
+flask-wtf
