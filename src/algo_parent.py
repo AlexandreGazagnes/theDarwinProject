@@ -1,3 +1,5 @@
+import secrets
+
 import numpy as np
 
 import matplotlib.pylab as plt
@@ -11,6 +13,9 @@ from src import logger
 
 class EvolutionAlgo1D() :
 
+
+    NAME = "EvolutionAlgo1D"
+
     def __init__(self, 
                 funct = None,
                 objective = "min",
@@ -18,12 +23,15 @@ class EvolutionAlgo1D() :
                 interval = [-100, 100],
                 seed_parents = 20,
                 kill_rate = 0.33,
-                birth_rate = 1 ,
+                birth_rate = 1,
                 average_child_numb = 0.75, 
                 _round=5 ) : 
 
         logger.debug("called")
 
+
+        self.id = secrets.token_hex(4)
+        self.name = self.NAME
         self.funct = funct if funct else Functs.d1.sinFucker
         self.objective = objective
         self.winning_threshold = winning_threshold
@@ -169,6 +177,12 @@ class EvolutionAlgo1D() :
         for _ in range(n) : 
             self._run()
 
+    def __repr__(self) : 
+        return f"{self.name} id : {self.id}, interval:  {self.interval}"
+
+
+    def __str__(self) : 
+        return self.__repr__()
     
 
 
