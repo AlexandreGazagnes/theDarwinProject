@@ -9,77 +9,88 @@
     <form method="POST">
 
         <!-- funct -->
-        <div class="form-field">{{ form.funct.label }} {{ form.funct }}
+        <div class="form-group">{{ form.funct.label }} {{ form.funct }}
             {% if form.funct.errors %}
             <ul class="errors">
                 {% for error in form.funct.errors %}
-                <li>{{ error }}</li>
+                <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
         </div>
 
         <!-- objective -->
-        <div class="form-field">{{ form.objective.label }} {{ form.objective }}
+        <div class="form-group">{{ form.objective.label }} {{ form.objective }}
             {% if form.objective.errors %}
             <ul class="errors">
                 {% for error in form.objective.errors %}
-                <li>{{ error }}</li>
+                <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
         </div>
 
-        <!-- interval_down -->
-        <div class="form-field">{{ form.interval_down.label }} {{ form.interval_down }}
-            {% if form.interval_down.errors %}
-            <ul class="errors">
-                {% for error in form.interval_down.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+        <!--    INTERVAL-->
+
+        <div class="form-row">
+
+            <!-- interval_down -->
+            <div class="col">
+                <div class="form-group">{{ form.interval_down.label }} {{ form.interval_down }}
+                    {% if form.interval_down.errors %}
+                    <ul class="errors">
+                        {% for error in form.interval_down.errors %}
+                        <li class="invalid-feedback">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- interval_up -->
+            <div class="col">
+
+                <div class="form-group">{{ form.interval_up.label }} {{ form.interval_up }}
+                    {% if form.interval_up.errors %}
+                    <ul class="errors">
+                        {% for error in form.interval_up.errors %}
+                        <li class="invalid-feedback">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
         </div>
 
-        <!-- interval_up -->
-        <div class="form-field">{{ form.interval_up.label }} {{ form.interval_up }}
-            {% if form.interval_up.errors %}
-            <ul class="errors">
-                {% for error in form.interval_up.errors %}
-                <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
 
         <!-- seed_parents -->
-        <div class="form-field">{{ form.seed_parents.label }} {{ form.seed_parents }}
+        <div class="form-group">{{ form.seed_parents.label }} {{ form.seed_parents }}
             {% if form.seed_parents.errors %}
             <ul class="errors">
                 {% for error in form.seed_parents.errors %}
-                <li>{{ error }}</li>
+                <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
         </div>
 
         <!-- kill_rate -->
-        <div class="form-field">{{ form.kill_rate.label }} {{ form.kill_rate }}
+        <div class="form-group">{{ form.kill_rate.label }} {{ form.kill_rate }}
             {% if form.kill_rate.errors %}
             <ul class="errors">
                 {% for error in form.kill_rate.errors %}
-                <li>{{ error }}</li>
+                <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
         </div>
 
         <!-- average_child_numb -->
-        <div class="form-field">{{ form.average_child_numb.label }} {{ form.average_child_numb }}
+        <div class="form-group">{{ form.average_child_numb.label }} {{ form.average_child_numb }}
             {% if form.average_child_numb.errors %}
             <ul class="errors">
                 {% for error in form.average_child_numb.errors %}
-                <li>{{ error }}</li>
+                <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
