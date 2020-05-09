@@ -28,12 +28,6 @@ from src import EvolutionAlgo1D
 home = Blueprint("home", __name__)
 
 
-# @home.route("/")
-# def welcome():
-
-#     return render_template("home.html", object=ALGO)
-
-
 @home.route("/", methods=["GET", "POST"])
 def init():
 
