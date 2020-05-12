@@ -29,7 +29,15 @@ from src import EvolutionAlgo1D
 home = Blueprint("home", __name__)
 
 
-@home.route("/", methods=["GET", "POST"])
+@home.route("/", methods=["GET"])
+def just_static():
+
+    initForm = InitForm(request.form)
+    runForm = RunForm(request.form)
+    return render_template("home.html", initForm=initForm, runForm=runForm)
+
+
+@home.route("/init", methods=["GET", "POST"])
 def init():
 
     form = InitForm(request.form)
@@ -59,41 +67,35 @@ def init():
             kill_rate=form.kill_rate.data,
             average_child_numb=form.average_child_numb.data,
         )
-        print(ALGO)
-        # if form.validate():
-        #     redirect(url_for("home.run"))
-        # else:
-        #     print("Error")
-        return redirect(url_for("home.run"))
-
-    return render_template("init.html", form=form)
+        return str(ALGO)
+    return "error"
 
 
-@home.route("/run", methods=["GET", "POST"])
-def run():
+# @home.route("/run", methods=["GET", "POST"])
+# def run():
 
-    form = RunForm(request.form)
-    global ALGO
-    print(ALGO)
+#     form = RunForm(request.form)
+#     global ALGO
+#     print(ALGO)
 
-    if request.method == "POST":
-        ALGO.run(1)
-        ALGO.plot_population()
-        ALGO.plot_learning()
-        return redirect(url_for("home.run"))
+#     if request.method == "POST":
+#         ALGO.run(1)
+#         ALGO.plot_population()
+#         ALGO.plot_learning()
+#         return redirect(url_for("home.run"))
 
-    algo = str(ALGO)
-    pop = str(ALGO.current_population[:10])
-    learning_image = ALGO.learning_images[-1].replace("app/", "")
-    population_image = ALGO.population_images[-1].replace("app/", "")
-    return render_template(
-        "run.html",
-        algo=algo,
-        pop=pop,
-        form=form,
-        learning_image=learning_image,
-        population_image=population_image,
-    )
+#     algo = str(ALGO)
+#     pop = str(ALGO.current_population[:10])
+#     learning_image = ALGO.learning_images[-1].replace("app/", "")
+#     population_image = ALGO.population_images[-1].replace("app/", "")
+#     return render_template(
+#         "run.html",
+#         algo=algo,
+#         pop=pop,
+#         form=form,
+#         learning_image=learning_image,
+#         population_image=population_image,
+#     )
 
 
 # @home.route("/hello", methods=["GET"])

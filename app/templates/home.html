@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- home css and js -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
+<script src="{{ url_for('static', filename='js/home.js')}}"></script>
+
+
+<!-- code  -->
+<section id="firstSection">
+    <h2>About</h2>
+    <div id="firstQuestion" class="questionItem">
+        <h3>What is that a Genetic algorithm ?</h3>
+        <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
+            process of
+            natural selection that belongs to the larger class of evolutionary algorithms (EA).
+        </p>
+        <p>
+            Genetic algorithms are
+            commonly used
+            to generate high-quality solutions to optimization and search problems by relying on biologically inspired
+            operators
+            such as mutation, crossover and selection.[1] John Holland introduced genetic algorithms in 1960 based on
+            the concept of
+            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.[2]
+        </p>
+    </div>
+    <div id="secondQuestion" class="questionItem">
+        <h3>What this SPA do ? </h3>
+        <p>EvolutionAlgo helps you to define test and modelize various gentic algorythm to unerstand how init
+            parameaters can infulence an evolution scenario</p>
+    </div>
+    <div class="row questionButton">
+        <div class=col>
+            <button class="btn btn-primary form-control" onclick="toggleView()">
+                define your's
+            </button>
+        </div>
+        <div class=col>
+            <button class="btn btn-primary form-control" onclick="toggleView()">
+                use a template
+            </button>
+        </div>
+    </div>
+</section>
+
+<section id=secondSection>
+    <h2>Init</h2>
+    <form id="initForm" class="formwrapper">
+        <!-- method="POST" action="/init"-->
+        <!-- funct -->
+        <div class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
+            {% if initForm.funct.errors %}
+            <ul class="errors">
+                {% for error in initForm.funct.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!-- objective -->
+        <div class="form-group">{{ initForm.objective.label }} {{ initForm.objective }}
+            {% if initForm.objective.errors %}
+            <ul class="errors">
+                {% for error in initForm.objective.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!--    INTERVAL-->
+        <div class="form-row">
+            <!-- interval_down -->
+            <div class="col">
+                <div class="form-group">{{ initForm.interval_down.label }} {{ initForm.interval_down }}
+                    {% if initForm.interval_down.errors %}
+                    <ul class="errors">
+                        {% for error in initForm.interval_down.errors %}
+                        <li class="invalid-feedback">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- interval_up -->
+            <div class="col">
+                <div class="form-group">{{ initForm.interval_up.label }} {{ initForm.interval_up }}
+                    {% if initForm.interval_up.errors %}
+                    <ul class="errors">
+                        {% for error in initForm.interval_up.errors %}
+                        <li class="invalid-feedback">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- seed_parents -->
+        <div class="form-group">{{ initForm.seed_parents.label }} {{ initForm.seed_parents }}
+            {% if initForm.seed_parents.errors %}
+            <ul class="errors">
+                {% for error in initForm.seed_parents.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!-- kill_rate -->
+        <div class="form-group">{{ initForm.kill_rate.label }} {{ initForm.kill_rate }}
+            {% if initForm.kill_rate.errors %}
+            <ul class="errors">
+                {% for error in initForm.kill_rate.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!-- average_child_numb -->
+        <div class="form-group">{{ initForm.average_child_numb.label }} {{ initForm.average_child_numb }}
+            {% if initForm.average_child_numb.errors %}
+            <ul class="errors">
+                {% for error in initForm.average_child_numb.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {{ initForm.submit }}
+    </form>
+</section>
+
+
+
+
+<section id="thirdSection">
+    <h2>Action</h2>
+    <form id="runForm" class="formwrapper">
+
+        <!-- years -->
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">{{ runForm.years.label }} {{ runForm.years }}
+                    {% if runForm.years.errors %}
+                    <ul class="errors">
+                        {% for error in runForm.years.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col">
+                <!-- speed -->
+                <div class="form-group">{{ runForm.speed.label }} {{ runForm.speed }}
+                    {% if runForm.speed.errors %}
+                    <ul class="errors">
+                        {% for error in runForm.speed.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {{ runForm.submit }}
+    </form>
+
+</section>
+
+
+<section id="fourthSection">
+    <h2>State</h2>
+    <div>
+        <table>
+            <tr id="rowName">
+                <th>name </th>
+                <td></td>
+            </tr>
+            <tr id="rowYear">
+                <th>year </th>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+
+<section id="fithSection">
+    <h2>Visualize</h2>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="dummySection">
+    <div>
+        <p id="ajaxResponse">
+            None
+        </p>
+    </div>
+</section>
+
+
+{% endblock content %}
