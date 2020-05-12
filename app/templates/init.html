@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 
-<!--init css -->
+<!-- init css and js -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/init.css')}}">
-<!-- init js -->
 <script src="{{ url_for('static', filename='js/init.js')}}"></script>
 
 
+<!-- code  -->
 <section id="firstSection">
-    <div>
+    <div id="firstQuestion" class="questionItem">
         <h3>What is that a Genetic algorithm ?</h3>
         <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
             process of
@@ -26,42 +25,28 @@
             Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.[2]
         </p>
     </div>
-
-    <div>
+    <div id="secondQuestion" class="questionItem">
         <h3>What this SPA do ? </h3>
         <p>EvolutionAlgo helps you to define test and modelize various gentic algorythm to unerstand how init
             parameaters can infulence an evolution scenario</p>
     </div>
-
-
-
-
-    <div class="row">
+    <div class="row questionButton">
         <div class=col>
-            <button class="btn btn-primary form-control fakeButton" onclick="toggleView()">
+            <button class="btn btn-primary form-control" onclick="toggleView()">
                 define your's
             </button>
-
         </div>
         <div class=col>
-            <button class="btn btn-primary form-control fakeButton" onclick="toggleView()">
+            <button class="btn btn-primary form-control" onclick="toggleView()">
                 use a template
             </button>
-
         </div>
-
     </div>
-
-
-
 </section>
 
-
 <section id=secondSection>
-
     <div class="formwrapper">
         <form method="POST">
-
             <!-- funct -->
             <div class="form-group">{{ form.funct.label }} {{ form.funct }}
                 {% if form.funct.errors %}
@@ -72,7 +57,6 @@
                 </ul>
                 {% endif %}
             </div>
-
             <!-- objective -->
             <div class="form-group">{{ form.objective.label }} {{ form.objective }}
                 {% if form.objective.errors %}
@@ -83,11 +67,8 @@
                 </ul>
                 {% endif %}
             </div>
-
             <!--    INTERVAL-->
-
             <div class="form-row">
-
                 <!-- interval_down -->
                 <div class="col">
                     <div class="form-group">{{ form.interval_down.label }} {{ form.interval_down }}
@@ -100,10 +81,8 @@
                         {% endif %}
                     </div>
                 </div>
-
                 <!-- interval_up -->
                 <div class="col">
-
                     <div class="form-group">{{ form.interval_up.label }} {{ form.interval_up }}
                         {% if form.interval_up.errors %}
                         <ul class="errors">
@@ -115,8 +94,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- seed_parents -->
             <div class="form-group">{{ form.seed_parents.label }} {{ form.seed_parents }}
                 {% if form.seed_parents.errors %}
@@ -127,7 +104,6 @@
                 </ul>
                 {% endif %}
             </div>
-
             <!-- kill_rate -->
             <div class="form-group">{{ form.kill_rate.label }} {{ form.kill_rate }}
                 {% if form.kill_rate.errors %}
@@ -138,7 +114,6 @@
                 </ul>
                 {% endif %}
             </div>
-
             <!-- average_child_numb -->
             <div class="form-group">{{ form.average_child_numb.label }} {{ form.average_child_numb }}
                 {% if form.average_child_numb.errors %}
@@ -149,14 +124,22 @@
                 </ul>
                 {% endif %}
             </div>
-
-
             {{ form.submit }}
-
         </form>
-
     </div>
-
 </section>
+
+
+<section id="thirdSection">
+    <button id="ajaxBTN" class="btn btn-secondary">
+        ajax test
+    </button>
+    <div>
+        <p id="ajaxResponse">
+            None
+        </p>
+    </div>
+</section>
+
 
 {% endblock content %}

@@ -5,6 +5,7 @@ from flask import (
     flash,
     url_for,
     render_template,
+    Response,
     abort,
     redirect,
 )
@@ -93,3 +94,8 @@ def run():
         learning_image=learning_image,
         population_image=population_image,
     )
+
+
+@home.route("/hello", methods=["GET"])
+def ajax_hello():
+    return "hello world"

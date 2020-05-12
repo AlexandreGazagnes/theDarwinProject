@@ -12,4 +12,19 @@ function toggleView() {
 
 $(function () {
     // auto loaded js and jquery
+
+
+    $("#ajaxBTN").click(function () {
+        console.log("ajaxBTN called");
+        $.ajax({
+            url: "/hello",
+            success: function (result) {
+                $("#ajaxResponse").html(result);
+            }
+        });
+
+    });
+
+
+
 }); 
