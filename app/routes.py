@@ -96,6 +96,6 @@ def run():
     )
 
 
-@home.route("/hello", methods=["GET"])
-def ajax_hello():
-    return "hello world"
+# @home.route("/hello", methods=["GET"])
+# def ajax_hello():
+#     return "hello world"
