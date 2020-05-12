@@ -5,6 +5,7 @@ from flask import (
     flash,
     url_for,
     render_template,
+    Response,
     abort,
     redirect,
 )
@@ -28,13 +29,7 @@ from src import EvolutionAlgo1D
 home = Blueprint("home", __name__)
 
 
-@home.route("/")
-def welcome():
-
-    return render_template("home.html", object=ALGO)
-
-
-@home.route("/init", methods=["GET", "POST"])
+@home.route("/", methods=["GET", "POST"])
 def init():
 
     form = InitForm(request.form)
@@ -99,3 +94,8 @@ def run():
         learning_image=learning_image,
         population_image=population_image,
     )
+
+
+# @home.route("/hello", methods=["GET"])
+# def ajax_hello():
+#     return "hello world"

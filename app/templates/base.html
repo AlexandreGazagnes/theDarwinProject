@@ -1,21 +1,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY PROJECT</title>
+    <!-- charset-->
+    <meta charset="utf-8">
+    <!-- viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- others-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--base css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css')}}">
+    <!-- base js -->
+    <script src="{{ url_for('static', filename='js/base.js')}}"></script>
+    <!-- title -->
+    <title>evolutionalGo</title>
 </head>
 
-<body>
-    <header>
-        <h1>MY PROJECT</h1>
-        <nav>
-            <ul>
-                <li>lien 1</li>
-                <li>lien 2</li>
-                <li>lien 3</li>
+<body class="container">
+    <header class="border-bottom">
+        <h1>evolutionalGo</h1>
+        <h2>test various evolutionary algorythm</p>
+            <!-- <nav class="row">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
             </ul>
-        </nav>
+        </nav> -->
     </header>
 
     <section class="content">
