@@ -6,14 +6,6 @@
     font-family: sweet_purple;
     src: url('/static/fonts/sweet_purple/sweet purple.otf');}
 
-/* 
-@font-face {
-    font-family: b612;
-    src: url('/static/fonts/B612/B612-Regular.ttf');}
-
-@font-face {
-font-family: b612;
-src: url('/static/fonts/B612/B612-Regular.ttf');} */
 
 html{
 }
@@ -23,7 +15,7 @@ body {
     /* font-family: B612, Verdana, Geneva, Tahoma, sans-serif; */
     font-family: b612, Verdana, Tahoma, sans-serif;
     font-size: medium ; 
-    background-color:  #f6e58d;      /*  #f5f6fa; #ecf0f1; */
+    background-color: #f5f6fa ;     /*  #f6e58d;  #f5f6fa; #ecf0f1; */
     padding: 10px;
     margin: 10px;
 }
