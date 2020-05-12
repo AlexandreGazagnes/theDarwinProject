@@ -12,13 +12,13 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired, Length, NumberRange
 
-
 from src.functs import Functs
 
+
 choicesFuncts = [
-    ("x2", "x2 (1D)"),
-    ("sinFucker", "sinFucker (1D)"),
-    ("nathanCos", "nathanCos (1D)"),
+    ("x2", "y = x **2 (1D)"),
+    ("sinFucker", "y = (math.sin(x) * (x * 2) - (10 * x)) ** 2 (1D)"),
+    ("nathanCos", "y = 10 + x ** 2 - (10 * math.cos(2 * math.pi * x)) (1D)"),
 ]
 
 choicesObjectives = [("min", "Min"), ("max", "Max")]
