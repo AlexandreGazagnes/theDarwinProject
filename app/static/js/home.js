@@ -16,28 +16,6 @@ function toggleView_0() {
     $("#secondSection").slideDown();
 }
 
-// dont didplay initForm and load basic model
-// function toggleView_1() {
-//     console.log("toggleView called");
-//     $("#firstSection").slideUp();
-//     $.ajax({
-//         type: "POST",
-//         url: "/initfrommodel",
-//         success: function (data) {
-//             $("#thirdSection").slideDown();
-//             $("#fourthSection").slideDown();
-//             console.log("before " + typeof (data) + " -- > " + data); // BEFORE
-//             var data = JSON.parse(data);
-//             console.log("after " + typeof (data) + " -- > " + data); // AFTER
-//             console.log("keys acces " + data.name + " " + data.id);
-//             $("#ajaxResponse").html(data);
-//             $("#rowName").html(data["id"]);
-//             $("#rowYear").html(data["year"]);
-//         }
-//     });
-// }
-
-
 
 function makeInitFromModel() {
     console.log("makeInitFromModel")
