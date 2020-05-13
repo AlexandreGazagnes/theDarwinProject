@@ -33,12 +33,12 @@
     </div>
     <div class="row questionButton">
         <div class=col>
-            <button class="btn btn-primary form-control" onclick="toggleView()">
+            <button class="btn btn-primary form-control" onclick="toggleView_0()">
                 define your's
             </button>
         </div>
         <div class=col>
-            <button class="btn btn-primary form-control" onclick="toggleView()">
+            <button class="btn btn-primary form-control" onclick="toggleView_1()">
                 use a template
             </button>
         </div>
@@ -47,7 +47,7 @@
 
 <section id=secondSection>
     <h2>Init</h2>
-    <form id="initForm" class="formwrapper">
+    <form id="initFormUser" class="formwrapper">
         <!-- method="POST" action="/init"-->
         <!-- funct -->
         <div class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
@@ -126,7 +126,15 @@
             </ul>
             {% endif %}
         </div>
-        {{ initForm.submit }}
+        <div class="form-row">
+            <div class="col">
+                {{ initForm.submit }}
+            </div>
+            <div class="col">
+                <button class="btn btn-danger form-control">Back</button>
+            </div>
+        </div>
+
     </form>
 </section>
 
@@ -163,7 +171,14 @@
                 </div>
             </div>
         </div>
-        {{ runForm.submit }}
+        <div class="form-row">
+            <div class="col">
+                {{ runForm.submit }}
+            </div>
+            <div class="col">
+                <button class="btn btn-danger form-control">Reset</button>
+            </div>
+        </div>
     </form>
 
 </section>
@@ -173,13 +188,13 @@
     <h2>State</h2>
     <div>
         <table>
-            <tr id="rowName">
+            <tr>
                 <th>name </th>
-                <td></td>
+                <td id="rowName"> </td>
             </tr>
-            <tr id="rowYear">
+            <tr>
                 <th>year </th>
-                <td></td>
+                <td id="rowYear"></td>
             </tr>
         </table>
     </div>

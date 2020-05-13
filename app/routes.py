@@ -1,3 +1,6 @@
+import json
+
+
 from flask import (
     Flask,
     escape,
@@ -8,6 +11,7 @@ from flask import (
     Response,
     abort,
     redirect,
+    jsonify,
 )
 
 # from flask import session, Session
@@ -23,39 +27,60 @@ from app.forms import InitForm, RunForm
 from app import ALGO
 
 from src.functs import Functs
-from src import EvolutionAlgo1D
-
+from src import EvolutionAlgo1D, NathanAlgo
+from src import logger
 
 home = Blueprint("home", __name__)
 
 
 @home.route("/", methods=["GET"])
 def just_static():
+    """just return html and css"""
 
+    logger.info("called")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
     return render_template("home.html", initForm=initForm, runForm=runForm)
 
 
-@home.route("/init", methods=["GET", "POST"])
-def init():
+@home.route("/initfrommodel", methods=["POST"])
+def initFromModel():
+    """load nathan Model"""
 
+    logger.info("called")
+    global ALGO
+    ALGO = NathanAlgo()
+
+    print(ALGO.as_dict)
+    print(type(ALGO.as_dict))
+    # data = {"data": ALGO.as_dict}
+    # resp = jsonify(data)
+    # resp.status_code = 200
+    # return resp
+    return str(ALGO.as_dict)
+
+
+@home.route("/initfromuser", methods=["POST"])
+def initFromUser():
+    """just create the Algo Object"""
+
+    logger.info("called")
     form = InitForm(request.form)
 
-    feats = [
-        "funct",
-        "objective",
-        "interval_up",
-        "interval_down",
-        "seed_parents",
-        "kill_rate",
-        "average_child_numb",
-    ]
-    for f in feats:
-        _val = getattr(form, f).data
-        print(f"{f} : {type(_val)} is {_val} ")
+    # feats = [
+    #     "funct",
+    #     "objective",
+    #     "interval_up",
+    #     "interval_down",
+    #     "seed_parents",
+    #     "kill_rate",
+    #     "average_child_numb",
+    # ]
+    # for f in feats:
+    #     _val = getattr(form, f).data
+    #     print(f"{f} : {type(_val)} is {_val} ")
 
-    print(request.method)
+    # print(request.method)
 
     if request.method == "POST":
         global ALGO
@@ -67,8 +92,24 @@ def init():
             kill_rate=form.kill_rate.data,
             average_child_numb=form.average_child_numb.data,
         )
-        return str(ALGO)
+
+        print(ALGO.as_dict)
+        print(type(ALGO.as_dict))
+        # data = {"data": ALGO.as_dict}
+        # resp = jsonify(data)
+        # resp.status_code = 200
+        # return resp
+        return str(ALGO.as_dict)
+
     return "error"
+
+
+# @home.route("/state", methods=["GET"])
+# def return_state():
+#     """ """
+
+#     global ALGO
+#     return ALGO.as_dict
 
 
 # @home.route("/run", methods=["GET", "POST"])

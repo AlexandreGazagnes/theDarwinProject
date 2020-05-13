@@ -1,5 +1,7 @@
 import secrets
 
+import json
+
 import numpy as np
 
 import matplotlib.pylab as plt
@@ -209,7 +211,11 @@ class EvolutionAlgo1D:
 
     @property
     def as_dict(self):
-        return {"a": 12}
+        d = {k: v for k, v in self.__dict__.items() if "population" not in k}
+        logger.warning(f" d is {d} {type(d)}  ")
+        # d = json.dumps(str(d))
+        # logger.warning(f" d is {d} {type(d)}  ")
+        return d
 
     def run(self, n=10):
 
