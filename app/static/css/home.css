@@ -21,3 +21,13 @@
 #secondSection{
     display: none;
 } */
+
+
+.myBorder {
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;    
+    padding: 10px 5px 10px 5px ;
+    margin: 10px 5px 10px 5px ;
+}

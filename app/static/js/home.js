@@ -15,6 +15,7 @@ function toggleView_0() {
     $("#secondSection").slideDown();
 }
 
+
 // What about this funct
 function getStaticState() {
     console.log("getStaticState")
@@ -35,6 +36,8 @@ function getStaticState() {
     });
 }
 
+
+// getDynamicState
 function getDynamicState() {
     console.log("getDynamicState")
     $.ajax({
@@ -50,6 +53,8 @@ function getDynamicState() {
     });
 }
 
+
+// handleInitMethod
 function handleInitMethod() {
     console.log("handleInitMethod")
     $("#firstSection").slideUp();
@@ -60,6 +65,8 @@ function handleInitMethod() {
     getDynamicState();
 }
 
+
+// makeInitFromModel
 function makeInitFromModel() {
     console.log("makeInitFromModel")
     $("#firstSection").slideUp();
@@ -74,6 +81,7 @@ function makeInitFromModel() {
 }
 
 
+// makeInitFromUser
 function makeInitFromUser() {
     $("#initFormUser").submit(function (e) {
         console.log("makeInitFromUser")
@@ -91,6 +99,7 @@ function makeInitFromUser() {
 }
 
 
+// range
 function range(start, end) {
     var array = new Array();
     for (var i = start; i < end; i++) {
@@ -99,43 +108,37 @@ function range(start, end) {
     return array;
 }
 
+
+// run
 function run() {
     $("#runForm").submit(function (e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
         console.log("run");
         var form = $(this);
-        // console.log("raw form " + typeof (form) + " --> " + form)
-        // var formS = form.serialize();
-        // console.log("ser form " + typeof (formS) + " --> " + formS)
         var years = form.find("#years").val();
         var speed = form.find("#speed").val();
-        // console.log("years : " + typeof (years) + " --> " + years.toString());
         var speed = 1000 * (1 / speed)
-        // console.log("speed : " + typeof (speed) + " --> " + speed.toString());
+        if (speed > 1000) {
+            var speed = 1000
+        }
         var arrRange = range(0, years);
-        // console.log("arrRange : " + typeof (arrRange) + " --> " + arrRange.toString());
         arrRange.forEach(function (item, index) {
-            console.log("BEFORE API CALL item " + item.toString() + " index " + index.toString());
-            $.ajax({
-                type: "POST",
-                url: "/run",
-                async: false, // Mode synchrone
-                success: function (data) {
-                    // console.log("AFTER  API CALL - BEFORE GETDYNAMIC item " + item.toString() + " index " + index.toString());
-                    getDynamicState();
-                    console.log("AFTER  API CALL - AFTER GETDYNAMIC item " + item.toString() + " index " + index.toString());
-
-
-                }
-            });
-            // console.log("before sleep " + index.toString());
-            // setTimeout(function () { console.log("sleep " + speed.toString()); }, speed);
-            // console.log("after sleep " + index.toString())
+            setTimeout(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/run",
+                    // async: false, // Mode synchrone
+                    success: function (data) {
+                        getDynamicState();
+                    }
+                });
+            }, index * speed);
         });
     });
 }
 
 
+// on ready
 $(function () {
     makeInitFromUser();
     run();

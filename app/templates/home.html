@@ -7,10 +7,9 @@
 <script src="{{ url_for('static', filename='js/home.js')}}"></script>
 
 
-<!-- code  -->
+<!-- SECTION INFORMATION -->
 <section id="firstSection">
-    <h2>About</h2>
-    <div id="firstQuestion" class="questionItem">
+    <div id="firstQuestion" class="myBorder questionItem">
         <h3>What is that a Genetic algorithm ?</h3>
         <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
             process of
@@ -26,26 +25,31 @@
             Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.[2]
         </p>
     </div>
-    <div id="secondQuestion" class="questionItem">
+    <div id="secondQuestion" class=" myBorder questionItem">
         <h3>What this SPA do ? </h3>
         <p>EvolutionAlgo helps you to define test and modelize various gentic algorythm to unerstand how init
             parameaters can infulence an evolution scenario</p>
     </div>
-    <div class="row questionButton">
-        <div class=col>
-            <button class="btn btn-primary form-control" onclick="toggleView_0()">
-                define your's
-            </button>
-        </div>
-        <div class=col>
-            <button class="btn btn-primary form-control" onclick="makeInitFromModel()">
-                use a template
-            </button>
+    <div id="letsGo" class="myBorder">
+        <h3>let's Go?</h3>
+        <div class="row questionButton">
+            <div class=col>
+                <button class="btn btn-primary form-control" onclick="toggleView_0()">
+                    define your's
+                </button>
+            </div>
+            <div class=col>
+                <button class="btn btn-primary form-control" onclick="makeInitFromModel()">
+                    use a template
+                </button>
+            </div>
         </div>
     </div>
 </section>
 
-<section id=secondSection>
+
+<!-- SECTION INIT FORM -->
+<section id=secondSection class="myBorder">
     <h2>Init</h2>
     <form id="initFormUser" class="formwrapper">
         <!-- method="POST" action="/init"-->
@@ -139,9 +143,10 @@
 </section>
 
 
+<!-- SECTION STATE -->
 <section id="fourthSection">
-    <h2>Static State</h2>
-    <div>
+    <div class="myBorder">
+        <h2>Static State</h2>
         <table>
             <tr>
                 <th>id </th>
@@ -177,28 +182,29 @@
             </tr>
 
         </table>
-
+    </div>
+    <div class="myBorder">
         <h2>Dynamic State</h2>
-        <div>
-            <table>
-                <tr>
-                    <th>year </th>
-                    <td id="rowYear"></td>
-                </tr>
-                <tr>
-                    <th>pop size </th>
-                    <td id="rowLen"></td>
-                </tr>
-                <tr>
-                    <th>best elems</th>
-                    <td id="rowBest"></td>
-                </tr>
-            </table>
-        </div>
+        <table>
+            <tr>
+                <th>year </th>
+                <td id="rowYear"></td>
+            </tr>
+            <tr>
+                <th>pop size </th>
+                <td id="rowLen"></td>
+            </tr>
+            <tr>
+                <th>best elems</th>
+                <td id="rowBest"></td>
+            </tr>
+        </table>
     </div>
 </section>
 
-<section id="thirdSection">
+
+<!-- SECTION ACTION -->
+<section id="thirdSection" class="myBorder">
     <h2>Action</h2>
     <form id="runForm" class="formwrapper">
 
@@ -237,36 +243,22 @@
             </div>
         </div>
     </form>
-
 </section>
 
 
-
-
-
+<!-- SECTION VISUALISATION -->
 <section id="fithSection">
     <h2>Visualize</h2>
 </section>
 
 
-
-
-
-
-
-
-
-
-
-
-
+<!-- SECTION DUMMY -->
 <section id="dummySection">
-    <div>
+    <div class="myBorder">
         <p id="ajaxResponse">
             None
         </p>
     </div>
 </section>
-
 
 {% endblock content %}
