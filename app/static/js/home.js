@@ -113,19 +113,19 @@ function run() {
         // console.log("ser form " + typeof (formS) + " --> " + formS)
         var years = form.find("#years").val();
         console.log("years : " + years.toString());
-        var arrRange = range(years);
-        // arrRange.forEach(function (item, index) {
-        //     console.log("item " + item.toString() + " index " + index.toString());
-        $.ajax({
-            type: "POST",
-            url: "/run",
-            // async: false, // Mode synchrone
-            success: function (data) {
-                getStaticState();
-                getDynamicState();
+        var arrRange = range(0, years);
+        arrRange.forEach(function (item, index) {
+            console.log("BEFORE item " + item.toString() + " index " + index.toString());
+            $.ajax({
+                type: "POST",
+                url: "/run",
+                // async: false, // Mode synchrone
+                success: function (data) {
+                    console.log("AFTER item " + item.toString() + " index " + index.toString());
+                    getDynamicState();
 
-            }
-            // });
+                }
+            });
         });
     });
 }
