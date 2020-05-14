@@ -6,6 +6,9 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
 <script src="{{ url_for('static', filename='js/home.js')}}"></script>
 
+<!-- google charts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 
 <!-- SECTION INFORMATION -->
 <section id="firstSection">
@@ -248,7 +251,10 @@
 
 <!-- SECTION VISUALISATION -->
 <section id="fithSection">
-    <h2>Visualize</h2>
+    <div class="myBorder">
+        <h2>Visualize</h2>
+        <div id="chart_div" style="width: 300px; height: 250px;"></div>
+    </div>
 </section>
 
 
@@ -260,5 +266,11 @@
         </p>
     </div>
 </section>
+
+
+
+
+
+
 
 {% endblock content %}

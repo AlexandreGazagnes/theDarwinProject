@@ -140,23 +140,48 @@ def run():
     return "OK", 200
 
 
-@home.route("/plotpopulation", methods=["POST"])
-def plotpopulation():
+@home.route("/getxlim", methods=["GET"])
+def get_x_lim():
+
     logger.info("called")
-    # form = RunForm(request.form)
     global ALGO
-    ALGO.plot_population()
-    population_image = ALGO.population_images[-1].replace("app/", "")
-    return population_image, 200
+    xlim = ALGO.x_lim
+    logger.info(xlim)
+    return jsonify(xlim), 200
 
 
-@home.route("/plotlearning", methods=["POST"])
-def plotlearning():
+@home.route("/getylim", methods=["GET"])
+def get_y_lim():
+
     logger.info("called")
-    # form = RunForm(request.form)
     global ALGO
-    ALGO.plot_learning()
-    learning_image = ALGO.learning_images[-1].replace("app/", "")
+    ylim = ALGO.y_lim
+    logger.info(ylim)
+    return jsonify(ylim), 200
+
+
+@home.route("/getpopulation", methods=["GET"])
+def get_population():
+
+    logger.info("called")
+    global ALGO
+    pop = ALGO.pop
+    return jsonify(pop), 200
+    # @home.route("/plotpopulation", methods=["POST"])
+    # def plotpopulation():
+    #     logger.info("called")
+    #     # form = RunForm(request.form)
+    #     global ALGO
+    #     ALGO.plot_population()
+    #     population_image = ALGO.population_images[-1].replace("app/", "")
+    #     return population_image, 200
+    # @home.route("/plotlearning", methods=["POST"])
+    # def plotlearning():
+    #     logger.info("called")
+    #     # form = RunForm(request.form)
+    #     global ALGO
+    #     ALGO.plot_learning()
+    #     learning_image = ALGO.learning_images[-1].replace("app/", "")
     return learning_image, 200
 
 

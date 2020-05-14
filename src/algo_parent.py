@@ -83,6 +83,15 @@ class EvolutionAlgo1D:
         return len(self.current_population)
 
     @property
+    def pop(self):
+        L = [
+            ["x", "y"],
+        ]
+        LL = [[i, j] for i, j, k, l in self.current_population]
+        L.extend(LL)
+        return L
+
+    @property
     def best_current_population(self):
         self._sort_current_population()
         return self.current_population[:10]
@@ -92,6 +101,16 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
         return [i[0] for i in self.current_population]
+
+    @property
+    def x_lim(self):
+        xs = sorted(self.current_population_x)
+        return {"min": xs[0], "max": xs[-1]}
+
+    @property
+    def y_lim(self):
+        ys = sorted(self.current_population_y)
+        return {"min": ys[0], "max": ys[-1]}
 
     @property
     def current_population_y(self):

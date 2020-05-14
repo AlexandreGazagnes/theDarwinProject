@@ -6,6 +6,8 @@
 //import log
 console.log("js init loaded")
 
+var algo_initilalized = false;
+
 
 // display the form
 function toggleView_0() {
@@ -61,8 +63,11 @@ function handleInitMethod() {
     $("#secondSection").slideUp();
     $("#thirdSection").slideDown();
     $("#fourthSection").slideDown();
+    $("#fithSection").slideDown();
     getStaticState();
     getDynamicState();
+    algo_initilalized = true;
+    updateCharts();
 }
 
 
@@ -109,6 +114,95 @@ function range(start, end) {
 }
 
 
+function getXLim() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getxlim",
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = [data.min, data.max];
+            // console.log("data " + typeof (data) + " --> " + data.toString());
+            // console.log("data " + typeof (data.min) + " --> " + data.min.toString());
+            console.log("arrData " + typeof (arrData) + " --> " + arrData.toString());
+            // console.log("arrData " + typeof (arrData[0]) + " --> " + arrData[0].toString());
+
+        }
+    });
+    return arrData;
+}
+
+
+function getYLim() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getylim",
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = [data.min, data.max];
+        }
+    });
+    return arrData;
+}
+
+
+function getPopulation() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getpopulation",
+        async: false, // Mode synchrone
+        success: function (data) {
+            console.log(data);
+            arrData = data;
+        }
+    });
+    return arrData;
+}
+
+function drawChart() {
+    if (algo_initilalized) {
+        var xLim = getXLim();
+        console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
+        var yLim = getYLim();
+        console.log("yLim " + typeof (yLim) + " --> " + yLim.toString());
+        var xMin = xLim[0];
+        var xMax = xLim[1];
+        var yMin = yLim[0];
+        var yMax = yLim[1];
+        var population = getPopulation();
+        console.log("population " + typeof (population) + " --> " + population.toString());
+        console.log("population " + typeof (population[0]) + " --> " + population[0].toString());
+        console.log("population " + typeof (population[1]) + " --> " + population[1].toString());
+
+    } else {
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var population = [['x', 'y'], [1, 1], [2, 2]]
+    }
+    var data = google.visualization.arrayToDataTable(population);
+    var options = {
+        title: 'current population',
+        hAxis: { title: 'x', minValue: xMin, maxValue: xMax },
+        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        legend: 'none'
+    };
+
+    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+}
+
+
+
+function updateCharts() {
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+}
+
+
 // run
 function run() {
     $("#runForm").submit(function (e) {
@@ -130,6 +224,7 @@ function run() {
                     // async: false, // Mode synchrone
                     success: function (data) {
                         getDynamicState();
+                        updateCharts();
                     }
                 });
             }, index * speed);
