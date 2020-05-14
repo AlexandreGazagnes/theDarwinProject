@@ -35,7 +35,6 @@ function getStaticState() {
     });
 }
 
-
 function getDynamicState() {
     console.log("getDynamicState")
     $.ajax({
@@ -47,11 +46,9 @@ function getDynamicState() {
             $("#rowLen").html(data["len_current_population"]);
             $("#rowYear").html(data["year"]);
             $("#rowBest").html(data["best_current_population"]);
-
         }
     });
 }
-
 
 function handleInitMethod() {
     console.log("handleInitMethod")
@@ -62,7 +59,6 @@ function handleInitMethod() {
     getStaticState();
     getDynamicState();
 }
-
 
 function makeInitFromModel() {
     console.log("makeInitFromModel")
@@ -112,20 +108,29 @@ function run() {
         // var formS = form.serialize();
         // console.log("ser form " + typeof (formS) + " --> " + formS)
         var years = form.find("#years").val();
-        console.log("years : " + years.toString());
+        var speed = form.find("#speed").val();
+        // console.log("years : " + typeof (years) + " --> " + years.toString());
+        var speed = 1000 * (1 / speed)
+        // console.log("speed : " + typeof (speed) + " --> " + speed.toString());
         var arrRange = range(0, years);
+        // console.log("arrRange : " + typeof (arrRange) + " --> " + arrRange.toString());
         arrRange.forEach(function (item, index) {
-            console.log("BEFORE item " + item.toString() + " index " + index.toString());
+            console.log("BEFORE API CALL item " + item.toString() + " index " + index.toString());
             $.ajax({
                 type: "POST",
                 url: "/run",
-                // async: false, // Mode synchrone
+                async: false, // Mode synchrone
                 success: function (data) {
-                    console.log("AFTER item " + item.toString() + " index " + index.toString());
+                    // console.log("AFTER  API CALL - BEFORE GETDYNAMIC item " + item.toString() + " index " + index.toString());
                     getDynamicState();
+                    console.log("AFTER  API CALL - AFTER GETDYNAMIC item " + item.toString() + " index " + index.toString());
+
 
                 }
             });
+            // console.log("before sleep " + index.toString());
+            // setTimeout(function () { console.log("sleep " + speed.toString()); }, speed);
+            // console.log("after sleep " + index.toString())
         });
     });
 }
