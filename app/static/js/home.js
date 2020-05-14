@@ -6,10 +6,12 @@
 //import log
 console.log("js init loaded")
 
+
+// global var
 var algo_initilalized = false;
 
 
-// display the form
+// display the form on first click
 function toggleView_0() {
     // funct log
     console.log("toggleView_0 called");
@@ -18,7 +20,8 @@ function toggleView_0() {
 }
 
 
-// What about this funct
+// Once Algo initilialied gather static info of the lago 
+// idependant from run method
 function getStaticState() {
     console.log("getStaticState")
     $.ajax({
@@ -26,7 +29,7 @@ function getStaticState() {
         url: "/staticstate",
         // async: false, // Mode synchrone
         success: function (data) {
-            $("#ajaxResponse").html(data);
+            // $("#ajaxResponse").html(data);
             $("#rowId").html(data["id"]);
             $("#rowName").html(data["name"]);
             $("#rowObjective").html(data["objective"]);
@@ -39,7 +42,8 @@ function getStaticState() {
 }
 
 
-// getDynamicState
+// Once Algo initilialied gather dynamic info of the lago 
+// OVER dependant from run method
 function getDynamicState() {
     console.log("getDynamicState")
     $.ajax({
@@ -47,7 +51,6 @@ function getDynamicState() {
         url: "/dynamicstate",
         // async: false, // Mode synchrone
         success: function (data) {
-            $("#ajaxResponse").html(data);
             $("#rowLen").html(data["len_current_population"]);
             $("#rowYear").html(data["year"]);
             $("#rowBest").html(data["best_current_population"]);
@@ -56,7 +59,8 @@ function getDynamicState() {
 }
 
 
-// handleInitMethod
+// Init an object fill static and dynamic state
+// init graph and change global val
 function handleInitMethod() {
     console.log("handleInitMethod")
     $("#firstSection").slideUp();
@@ -71,6 +75,7 @@ function handleInitMethod() {
 }
 
 
+//Manage init algo method from the button model
 // makeInitFromModel
 function makeInitFromModel() {
     console.log("makeInitFromModel")
@@ -86,6 +91,7 @@ function makeInitFromModel() {
 }
 
 
+//Manage init algo method from the button user custom algo
 // makeInitFromUser
 function makeInitFromUser() {
     $("#initFormUser").submit(function (e) {
@@ -104,7 +110,7 @@ function makeInitFromUser() {
 }
 
 
-// range
+// a range function
 function range(start, end) {
     var array = new Array();
     for (var i = start; i < end; i++) {
@@ -114,6 +120,7 @@ function range(start, end) {
 }
 
 
+// once algo init call x min and max
 function getXLim() {
     var arrData = [-42, -42];
     $.ajax({
@@ -122,17 +129,13 @@ function getXLim() {
         async: false, // Mode synchrone
         success: function (data) {
             arrData = [data.min, data.max];
-            // console.log("data " + typeof (data) + " --> " + data.toString());
-            // console.log("data " + typeof (data.min) + " --> " + data.min.toString());
-            console.log("arrData " + typeof (arrData) + " --> " + arrData.toString());
-            // console.log("arrData " + typeof (arrData[0]) + " --> " + arrData[0].toString());
-
         }
     });
     return arrData;
 }
 
 
+// once algo init call y min and max
 function getYLim() {
     var arrData = [-42, -42];
     $.ajax({
@@ -147,6 +150,7 @@ function getYLim() {
 }
 
 
+// once algo init call all x,y pairs for the population
 function getPopulation() {
     var arrData = [-42, -42];
     $.ajax({
@@ -154,28 +158,30 @@ function getPopulation() {
         url: "/getpopulation",
         async: false, // Mode synchrone
         success: function (data) {
-            console.log(data);
             arrData = data;
         }
     });
     return arrData;
 }
 
+
+// make a chart 
 function drawChart() {
+
+    // gather x lims, y lims and population
     if (algo_initilalized) {
         var xLim = getXLim();
-        console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
+        // console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
         var yLim = getYLim();
-        console.log("yLim " + typeof (yLim) + " --> " + yLim.toString());
+        // console.log("yLim " + typeof (yLim) + " --> " + yLim.toString());
         var xMin = xLim[0];
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
         var population = getPopulation();
-        console.log("population " + typeof (population) + " --> " + population.toString());
-        console.log("population " + typeof (population[0]) + " --> " + population[0].toString());
-        console.log("population " + typeof (population[1]) + " --> " + population[1].toString());
-
+        // console.log("population " + typeof (population) + " --> " + population.toString());
+        // console.log("population " + typeof (population[0]) + " --> " + population[0].toString());
+        // console.log("population " + typeof (population[1]) + " --> " + population[1].toString());
     } else {
         var xMin = 0;
         var xMax = 15;
@@ -183,7 +189,11 @@ function drawChart() {
         var yMax = 15;
         var population = [['x', 'y'], [1, 1], [2, 2]]
     }
+
+    // scatter
     var data = google.visualization.arrayToDataTable(population);
+
+    // options
     var options = {
         title: 'current population',
         hAxis: { title: 'x', minValue: xMin, maxValue: xMax },
@@ -191,12 +201,13 @@ function drawChart() {
         legend: 'none'
     };
 
+    // init chart on DOM element and push
     var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
     chart.draw(data, options);
 }
 
 
-
+// manage chart creation
 function updateCharts() {
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
