@@ -9,7 +9,22 @@ console.log("js init loaded")
 
 // global var
 var algoInitilalized = false;
-var algoID = "";
+var algoId = "";
+
+
+
+
+// function dummyCall() {
+//     $.ajax({
+//         type: "GET",
+//         url: "/dummycall?id=" + "azerty",
+//         // async: false, // Mode synchrone
+//         success: function (data) {
+//             console.log('OK')
+//         }
+//     });
+// }
+
 
 
 // display the form on first click
@@ -27,12 +42,11 @@ function getStaticState() {
     console.log("getStaticState")
     $.ajax({
         type: "GET",
-        url: "/staticstate",
+        url: "/staticstate?algoId=" + algoId,
         // async: false, // Mode synchrone
         success: function (data) {
             // $("#ajaxResponse").html(data);
             $("#rowId").html(data["id"]);
-            algoID = data["id"];
             $("#rowName").html(data["name"]);
             $("#rowObjective").html(data["objective"]);
             $("#rowInterval").html(data["interval"]);
@@ -50,7 +64,7 @@ function getDynamicState() {
     console.log("getDynamicState")
     $.ajax({
         type: "GET",
-        url: "/dynamicstate",
+        url: "/dynamicstate?algoId=" + algoId,
         // async: false, // Mode synchrone
         success: function (data) {
             $("#rowLen").html(data["len_current_population"]);
@@ -72,7 +86,6 @@ function handleInitMethod() {
     $("#fithSection").slideDown();
     getStaticState();
     getDynamicState();
-    algoInitilalized = true;
     updateCharts();
 }
 
@@ -87,6 +100,9 @@ function makeInitFromModel() {
         url: "/initfrommodel",
         // async: false, // Mode synchrone
         success: function (data) {
+            algoInitilalized = true;
+            console.log("algoId = " + data);
+            algoId = data;
             handleInitMethod();
         }
     });
@@ -102,9 +118,13 @@ function makeInitFromUser() {
         $.ajax({
             type: "POST",
             url: "/initfromuser",
+            data: algoID,
             // async: false, // Mode synchrone
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
+                algoInitilalized = true;
+                console.log("algoId = " + data);
+                algoId = data;
                 handleInitMethod();
             }
         });
@@ -127,7 +147,7 @@ function getXLim() {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getxlim",
+        url: "/getxlim?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = [data.min, data.max];
@@ -142,7 +162,7 @@ function getYLim() {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getylim",
+        url: "/getylim?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = [data.min, data.max];
@@ -157,7 +177,7 @@ function getPopulation() {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getpopulation",
+        url: "/getpopulation?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = data;
@@ -228,7 +248,7 @@ function run() {
             setTimeout(function () {
                 $.ajax({
                     type: "POST",
-                    url: "/run",
+                    url: "/run?algoId=" + algoId,
                     // async: false, // Mode synchrone
                     success: function (data) {
                         getDynamicState();

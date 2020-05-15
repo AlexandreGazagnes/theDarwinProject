@@ -24,7 +24,6 @@ from flask import (
 
 from flask import Blueprint
 
-
 from app.forms import InitForm, RunForm
 from app import ALGO
 from src.functs import Functs
@@ -52,10 +51,10 @@ def initFromModel():
     """load nathan Model"""
 
     logger.info("called")
+    algo = NathanAlgo()
     global ALGO
-    ALGO = NathanAlgo()
-    logger.info("OK")
-    return "OK", 200
+    ALGO.update({algo.id: algo})
+    return algo.id, 200
 
 
 # init from user
@@ -82,8 +81,7 @@ def initFromUser():
     # print(request.method)
 
     if request.method == "POST":
-        global ALGO
-        ALGO = EvolutionAlgo1D(
+        algo = EvolutionAlgo1D(
             funct=Functs.as_dict[form.funct.data],
             objective=form.objective.data,
             interval=[form.interval_down.data, form.interval_up.data],
@@ -91,9 +89,9 @@ def initFromUser():
             kill_rate=form.kill_rate.data,
             average_child_numb=form.average_child_numb.data,
         )
-
-        logger.info("OK")
-        return "OK", 200
+        global ALGO
+        ALGO.update({algo.id: algo})
+        return algo.id, 200
 
     logger.info("Error")
     return "Error", 500
@@ -105,11 +103,12 @@ def static_state():
     """ """
 
     logger.info("called")
-
     global ALGO
-    # print(ALGO.as_dict)
-    # print(type(ALGO.as_dict))
-    resp = jsonify(ALGO.static_state)
+    algoId = request.args.get("algoId")
+    logger.critical(f"algoId --> {algoId} ")
+    algo = ALGO[algoId]
+    resp = jsonify(algo.static_state)
+    # logger.critical(resp)
     resp.status_code = 200
     return resp
 
@@ -121,9 +120,9 @@ def dynamic_state():
 
     logger.info("called")
     global ALGO
-    # print(ALGO.as_dict)
-    # print(type(ALGO.as_dict))
-    resp = jsonify(ALGO.dynamic_state)
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    resp = jsonify(algo.dynamic_state)
     resp.status_code = 200
     return resp
 
@@ -135,8 +134,9 @@ def run():
     logger.info("called")
     # form = RunForm(request.form)
     global ALGO
-    # print(ALGO)
-    ALGO.run(1)
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    algo.run(1)
     return "OK", 200
 
 
@@ -145,7 +145,9 @@ def get_x_lim():
 
     logger.info("called")
     global ALGO
-    xlim = ALGO.x_lim_original_population
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    xlim = algo.x_lim_original_population
     logger.info(xlim)
     return jsonify(xlim), 200
 
@@ -155,7 +157,9 @@ def get_y_lim():
 
     logger.info("called")
     global ALGO
-    ylim = ALGO.y_lim_current_population
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    ylim = algo.y_lim_current_population
     logger.info(ylim)
     return jsonify(ylim), 200
 
@@ -165,7 +169,10 @@ def get_population():
 
     logger.info("called")
     global ALGO
-    pop = ALGO.pop
+    global ALGO
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    pop = algo.pop
     return jsonify(pop), 200
     # @home.route("/plotpopulation", methods=["POST"])
     # def plotpopulation():
@@ -203,3 +210,15 @@ def get_population():
 #         learning_image=learning_image,
 #         population_image=population_image,
 #     )
+
+
+# @home.route("/dummycall/", methods=["GET"])
+# def dummy_call():
+
+#     global ALGO
+#     logger.info("called")
+#     data = request.args.get("id", "ERROR")
+#     logger.warning(data)
+#     logger.warning(ALGO)
+
+#     return "OK", 200

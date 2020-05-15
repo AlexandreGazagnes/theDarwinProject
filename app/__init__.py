@@ -5,7 +5,7 @@ from params import Params
 from src.algo_child import NathanAlgo
 
 
-ALGO = "hello"
+ALGO = dict()
 
 
 def make_app():
