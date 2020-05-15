@@ -40,7 +40,7 @@ front = Blueprint("front", __name__)
 def just_static():
     """just return html and css"""
 
-    logger.info("called")
+    logger.debug("called")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
     return render_template("home.html", initForm=initForm, runForm=runForm)
