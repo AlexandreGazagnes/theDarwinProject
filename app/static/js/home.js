@@ -6,6 +6,7 @@
 // global var
 var algoInitilalized = false;
 var algoId = "";
+var year = 0;
 
 
 
@@ -249,6 +250,7 @@ function drawPopChart() {
     }
 
     // scatter
+    console.log(population);
     var data = google.visualization.arrayToDataTable(population);
 
     // options
@@ -269,30 +271,35 @@ function drawPopChart() {
 function drawXsChart() {
 
     // gather x lims, y lims and population
-    if (algoInitilalized) {
-        var xLim = getLim("x");
-        var yLim = getLim("y");
-        var xMin = xLim[0];
-        var xMax = xLim[1];
-        var yMin = yLim[0];
-        var yMax = yLim[1];
-        var population = getPopulation();
+    if (year > 0) {
+        // var xLim = getLim("x");
+        // var yLim = getLim("y");
+        // var xMin = xLim[0];
+        // var xMax = xLim[1];
+        // var yMin = yLim[0];
+        // var yMax = yLim[1];
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var xs = getXs();
     } else {
         var xMin = 0;
         var xMax = 15;
         var yMin = 0;
         var yMax = 15;
-        var population = [['x', 'y'], [1, 1], [2, 2]]
+        var xs = [["years", "x"], [1, 1], [2, 2]];
     }
 
     // scatter
-    var data = google.visualization.arrayToDataTable(population);
+    console.log(xs);
+    var data = google.visualization.arrayToDataTable(xs);
 
     // options
     var options = {
-        title: 'current population',
-        hAxis: { title: 'x', minValue: xMin, maxValue: xMax },
-        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        title: 'xs evolution in year',
+        hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
+        vAxis: { title: 'x', minValue: yMin, maxValue: yMax },
         legend: 'none'
     };
 
@@ -306,7 +313,7 @@ function drawXsChart() {
 function updateCharts() {
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawPopChart);
-    // google.charts.setOnLoadCallback(drawXsChart);
+    google.charts.setOnLoadCallback(drawXsChart);
 }
 
 
@@ -334,6 +341,7 @@ function run() {
                     url: "/run?algoId=" + algoId,
                     // async: false, // Mode synchrone
                     success: function (data) {
+                        year++;
                         getDynamicState();
                         updateCharts();
                     }
