@@ -12,3 +12,5 @@ black
 flask
 WTForms
 flask-wtf
+
+selenium
