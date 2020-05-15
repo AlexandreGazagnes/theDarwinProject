@@ -34,6 +34,13 @@ from src import logger
 back = Blueprint("back", __name__)
 
 
+def get_algo(request):
+    """ get algo"""
+    algoId = request.args.get("algoId")
+    algo = ALGO[algoId]
+    return algo
+
+
 # init from model
 @back.route("/initfrommodel", methods=["POST"])
 def initFromModel():
@@ -155,59 +162,18 @@ def get_y_lim():
 
 @back.route("/getpopulation", methods=["GET"])
 def get_population():
+    """get current population coordonate"""
 
-    logger.info("called")
-    # global ALGO
-    # global ALGO
-    algoId = request.args.get("algoId")
-    algo = ALGO[algoId]
+    logger.debug("called")
+    algo = get_algo(request)
     pop = algo.pop
     return jsonify(pop), 200
-    # @back.route("/plotpopulation", methods=["POST"])
-    # def plotpopulation():
-    #     logger.info("called")
-    #     # form = RunForm(request.form)
-    #     global ALGO
-    #     ALGO.plot_population()
-    #     population_image = ALGO.population_images[-1].replace("app/", "")
-    #     return population_image, 200
-    # @back.route("/plotlearning", methods=["POST"])
-    # def plotlearning():
-    #     logger.info("called")
-    #     # form = RunForm(request.form)
-    #     global ALGO
-    #     ALGO.plot_learning()
-    #     learning_image = ALGO.learning_images[-1].replace("app/", "")
-    return learning_image, 200
-
-
-#     if request.method == "POST":
-#         ALGO.run(1)
-#         ALGO.plot_population()
-#         ALGO.plot_learning()
-#         return redirect(url_for("home.run"))
-
-#     algo = str(ALGO)
-#     pop = str(ALGO.current_population[:10])
-#     learning_image = ALGO.learning_images[-1].replace("app/", "")
-#     population_image = ALGO.population_images[-1].replace("app/", "")
-#     return render_template(
-#         "run.html",
-#         algo=algo,
-#         pop=pop,
-#         form=form,
-#         learning_image=learning_image,
-#         population_image=population_image,
-#     )
 
 
 @back.route("/dummycall", methods=["GET"])
 def dummy_call():
+    """Use this to get various info from braowser to logs"""
 
-    # global ALGO
-    logger.info("called")
-    # data = request.args.get("id", "ERROR")
-    # logger.warning(data)
+    logger.debug("called")
     logger.warning(ALGO)
-
     return "OK", 200
