@@ -199,6 +199,39 @@ function getPopulation() {
 }
 
 
+
+
+function getXs() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getxs?algoId=" + algoId,
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = data;
+        }
+    });
+    return arrData;
+}
+
+
+function getys() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getys?algoId=" + algoId,
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = data;
+        }
+    });
+    return arrData;
+}
+
+
+
+
+
 // make a chart 
 function drawChart() {
 
