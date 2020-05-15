@@ -154,7 +154,7 @@ def get_population():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.pop), 200
+    return jsonify(algo.graph_pop), 200
 
 
 @back.route("/getxs", methods=["GET"])
@@ -163,7 +163,7 @@ def get_xs():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.xs), 200
+    return jsonify(algo.graph_xs), 200
 
 
 @back.route("/getys", methods=["GET"])
@@ -172,7 +172,16 @@ def get_ys():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.ys), 200
+    return jsonify(algo.graph_ys), 200
+
+
+@back.route("/getyears", methods=["GET"])
+def get_years():
+    """get current years coordonate"""
+
+    logger.debug("called")
+    algo = get_algo()
+    return jsonify(algo.graphgraph_years), 200
 
 
 @back.route("/dummycall", methods=["GET"])
@@ -180,5 +189,7 @@ def dummy_call():
     """Use this to get various info from braowser to logs"""
 
     logger.debug("called")
-    logger.warning(ALGO)
+    # logger.warning(ALGO)
+    algo = get_algo()
+    logger.warning()
     return "OK", 200
