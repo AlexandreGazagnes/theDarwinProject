@@ -1,0 +1,33 @@
+#secondSection{
+    display: none;
+}
+
+
+#thirdSection{
+    display: none;
+}
+
+
+#fourthSection{
+    display: none;
+}
+
+
+#fithSection{
+    display: none;
+}
+
+/* 
+#secondSection{
+    display: none;
+} */
+
+
+.myBorder {
+    border-radius: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;    
+    padding: 10px 5px 10px 5px ;
+    margin: 10px 5px 10px 5px ;
+}

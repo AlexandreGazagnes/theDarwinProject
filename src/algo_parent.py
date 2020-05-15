@@ -1,5 +1,7 @@
 import secrets
 
+import json
+
 import numpy as np
 
 import matplotlib.pylab as plt
@@ -11,10 +13,16 @@ sns.set()
 from src.functs import Functs
 from src import logger
 
+from collections import Iterable
+
 
 class EvolutionAlgo1D:
 
     NAME = "EvolutionAlgo1D"
+
+    ####################################################
+    # INIT
+    ####################################################
 
     def __init__(
         self,
@@ -65,9 +73,28 @@ class EvolutionAlgo1D:
         ]
         self._sort_current_population()
 
+    ####################################################
+    # PROPERTIES
+    ####################################################
+
     @property
     def len_current_population(self):
+
         return len(self.current_population)
+
+    @property
+    def pop(self):
+        L = [
+            ["x", "y"],
+        ]
+        LL = [[i, j] for i, j, k, l in self.current_population]
+        L.extend(LL)
+        return L
+
+    @property
+    def best_current_population(self):
+        self._sort_current_population()
+        return self.current_population[:10]
 
     @property
     def current_population_x(self):
@@ -81,39 +108,66 @@ class EvolutionAlgo1D:
         logger.debug("called")
         return [i[1] for i in self.current_population]
 
-    # def plot(self) :
-
-    #     logger.debug("called")
-    #     self.ax.plot(self.current_population_x, self.current_population_y)
-
-    def plot_population(self):
+    @property
+    def original_population_x(self):
 
         logger.debug("called")
-        fig, axs = plt.subplots(1, 1)
-        axs.scatter(self.current_population_x, self.current_population_y)
+        return [i[0] for i in self.original_population]
 
-        name = f"app/static/img/{self.id}-population-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.population_images.append(name)
-
-    def plot_learning(self):
+    @property
+    def original_population_y(self):
 
         logger.debug("called")
-        fig, axs = plt.subplots(1, 3)
-        xs = [i[0] for i in self.learning_curve]
-        ys = [i[1] for i in self.learning_curve]
-        years = [i[3] for i in self.learning_curve]
-        x = [i for i, _ in enumerate(xs)]
-        ax0 = axs[0].plot(x, xs)
-        # ax0.set_title("Xs")
-        ax1 = axs[1].plot(x, ys)
-        # ax1.set_title("Ys")
-        ax2 = axs[2].plot(x, years)
-        # ax1.set_title("Ys")
+        return [i[1] for i in self.original_population]
 
-        name = f"app/static/img/{self.id}-learning-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.learning_images.append(name)
+    @property
+    def x_lim_current_population(self):
+        xs = sorted(self.current_population_x)
+        return {"min": xs[0], "max": xs[-1]}
+
+    @property
+    def y_lim_current_population(self):
+        ys = sorted(self.current_population_y)
+        return {"min": ys[0], "max": ys[-1]}
+
+    @property
+    def x_lim_original_population(self):
+        xs = sorted(self.original_population_x)
+        return {"min": xs[0], "max": xs[-1]}
+
+    @property
+    def y_lim_original_population(self):
+        ys = sorted(self.original_population_y)
+        return {"min": ys[0], "max": ys[-1]}
+
+    @property
+    def static_state(self):
+        logger.info("called")
+        d = {
+            "id": self.id,
+            "name": self.name,
+            "funct": "jdizeoi",
+            "objective": self.objective,
+            "interval": self.interval,
+            "seed_parents": self.seed_parents,
+            "kill_rate": self.kill_rate,
+            "average_child_numb": self.average_child_numb,
+        }
+        return d
+
+    @property
+    def dynamic_state(self):
+        logger.info("called")
+        d = {
+            "year": self.year,
+            "len_current_population": self.len_current_population,
+            "best_current_population": self.best_current_population,
+        }
+        return d
+
+    ####################################################
+    # PRIVATE METHODS
+    ####################################################
 
     def _sort_current_population(self):
 
@@ -184,8 +238,6 @@ class EvolutionAlgo1D:
         self.current_population.extend(random_childs)
         self.current_population.extend(normal_childs)
 
-        # compute random childs, normal childs
-
     def _incr(self):
 
         logger.debug("called")
@@ -207,9 +259,9 @@ class EvolutionAlgo1D:
         self._incr()
         return best
 
-    @property
-    def as_dict(self):
-        return {"a": 12}
+    ####################################################
+    # PUBLIC METHODS
+    ####################################################
 
     def run(self, n=10):
 
@@ -217,8 +269,50 @@ class EvolutionAlgo1D:
         for _ in range(n):
             self._run()
 
+    ####################################################
+    # DUNDER
+    ####################################################
+
     def __repr__(self):
         return f"{self.name}\nid : {self.id}\nfunct : {self.funct}\ninterval:  {self.interval}\n year : {self.year} "
 
     def __str__(self):
         return self.__repr__()
+
+    ####################################################
+    # PLOTS
+    ####################################################
+
+    # def plot(self) :
+
+    #     logger.debug("called")
+    #     self.ax.plot(self.current_population_x, self.current_population_y)
+
+    def plot_population(self):
+
+        logger.debug("called")
+        fig, axs = plt.subplots(1, 1)
+        axs.scatter(self.current_population_x, self.current_population_y)
+
+        name = f"app/static/img/{self.id}-population-{self.year}.png"
+        plt.savefig(name, dpi=150)
+        self.population_images.append(name)
+
+    def plot_learning(self):
+
+        logger.debug("called")
+        fig, axs = plt.subplots(1, 3)
+        xs = [i[0] for i in self.learning_curve]
+        ys = [i[1] for i in self.learning_curve]
+        years = [i[3] for i in self.learning_curve]
+        x = [i for i, _ in enumerate(xs)]
+        ax0 = axs[0].plot(x, xs)
+        # ax0.set_title("Xs")
+        ax1 = axs[1].plot(x, ys)
+        # ax1.set_title("Ys")
+        ax2 = axs[2].plot(x, years)
+        # ax1.set_title("Ys")
+
+        name = f"app/static/img/{self.id}-learning-{self.year}.png"
+        plt.savefig(name, dpi=150)
+        self.learning_images.append(name)
