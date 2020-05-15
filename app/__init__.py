@@ -13,7 +13,9 @@ def make_app():
 
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config["SECRET_KEY"] = "azerty"
-    from app.routes import home
+    from app.front import front
+    from app.back import back
 
-    app.register_blueprint(home)
+    app.register_blueprint(front)
+    app.register_blueprint(back)
     return app

@@ -31,22 +31,11 @@ from src import EvolutionAlgo1D, NathanAlgo
 from src import logger
 
 # Blue prints
-home = Blueprint("home", __name__)
-
-
-# static files
-@home.route("/", methods=["GET"])
-def just_static():
-    """just return html and css"""
-
-    logger.info("called")
-    initForm = InitForm(request.form)
-    runForm = RunForm(request.form)
-    return render_template("home.html", initForm=initForm, runForm=runForm)
+back = Blueprint("back", __name__)
 
 
 # init from model
-@home.route("/initfrommodel", methods=["POST"])
+@back.route("/initfrommodel", methods=["POST"])
 def initFromModel():
     """load nathan Model"""
 
@@ -58,7 +47,7 @@ def initFromModel():
 
 
 # init from user
-@home.route("/initfromuser", methods=["POST"])
+@back.route("/initfromuser", methods=["POST"])
 def initFromUser():
     """just create the Algo Object"""
 
@@ -98,7 +87,7 @@ def initFromUser():
 
 
 # get static state
-@home.route("/staticstate", methods=["GET"])
+@back.route("/staticstate", methods=["GET"])
 def static_state():
     """ """
 
@@ -114,7 +103,7 @@ def static_state():
 
 
 # get dynamic state
-@home.route("/dynamicstate", methods=["GET"])
+@back.route("/dynamicstate", methods=["GET"])
 def dynamic_state():
     """ """
 
@@ -128,7 +117,7 @@ def dynamic_state():
 
 
 # run
-@home.route("/run", methods=["POST"])
+@back.route("/run", methods=["POST"])
 def run():
 
     logger.info("called")
@@ -140,7 +129,7 @@ def run():
     return "OK", 200
 
 
-@home.route("/getxlim", methods=["GET"])
+@back.route("/getxlim", methods=["GET"])
 def get_x_lim():
 
     logger.info("called")
@@ -152,7 +141,7 @@ def get_x_lim():
     return jsonify(xlim), 200
 
 
-@home.route("/getylim", methods=["GET"])
+@back.route("/getylim", methods=["GET"])
 def get_y_lim():
 
     logger.info("called")
@@ -164,7 +153,7 @@ def get_y_lim():
     return jsonify(ylim), 200
 
 
-@home.route("/getpopulation", methods=["GET"])
+@back.route("/getpopulation", methods=["GET"])
 def get_population():
 
     logger.info("called")
@@ -174,7 +163,7 @@ def get_population():
     algo = ALGO[algoId]
     pop = algo.pop
     return jsonify(pop), 200
-    # @home.route("/plotpopulation", methods=["POST"])
+    # @back.route("/plotpopulation", methods=["POST"])
     # def plotpopulation():
     #     logger.info("called")
     #     # form = RunForm(request.form)
@@ -182,7 +171,7 @@ def get_population():
     #     ALGO.plot_population()
     #     population_image = ALGO.population_images[-1].replace("app/", "")
     #     return population_image, 200
-    # @home.route("/plotlearning", methods=["POST"])
+    # @back.route("/plotlearning", methods=["POST"])
     # def plotlearning():
     #     logger.info("called")
     #     # form = RunForm(request.form)
@@ -212,7 +201,7 @@ def get_population():
 #     )
 
 
-# @home.route("/dummycall/", methods=["GET"])
+# @back.route("/dummycall/", methods=["GET"])
 # def dummy_call():
 
 #     global ALGO
