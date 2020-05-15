@@ -46,7 +46,7 @@ def get_algo(request):
 def initFromModel():
     """load nathan Model"""
 
-    logger.info("called")
+    logger.debug("called")
     algo = NathanAlgo()
     global ALGO
     ALGO.update({algo.id: algo})
@@ -58,7 +58,7 @@ def initFromModel():
 def initFromUser():
     """just create the Algo Object"""
 
-    logger.info("called")
+    logger.debug("called")
     form = InitForm(request.form)
 
     # feats = [
@@ -98,7 +98,7 @@ def initFromUser():
 def get_static_state():
     """ """
 
-    logger.info("called")
+    logger.debug("called")
     algo = get_algo(request)
     resp = jsonify(algo.static_state)
     # logger.critical(resp)
@@ -111,7 +111,7 @@ def get_static_state():
 def get_dynamic_state():
     """ """
 
-    logger.info("called")
+    logger.debug("called")
     algo = get_algo(request)
     resp = jsonify(algo.dynamic_state)
     resp.status_code = 200
@@ -122,7 +122,7 @@ def get_dynamic_state():
 @back.route("/run", methods=["POST"])
 def run():
 
-    logger.info("called")
+    logger.debug("called")
     global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
@@ -133,7 +133,7 @@ def run():
 @back.route("/getxlim", methods=["GET"])
 def get_x_lim():
 
-    logger.info("called")
+    logger.debug("called")
     algo = get_algo(request)
     xlim = algo.x_lim_original_population
     logger.info(xlim)
@@ -143,7 +143,7 @@ def get_x_lim():
 @back.route("/getylim", methods=["GET"])
 def get_y_lim():
 
-    logger.info("called")
+    logger.debug("called")
     algo = get_algo(request)
     ylim = algo.y_lim_current_population
     logger.info(ylim)
