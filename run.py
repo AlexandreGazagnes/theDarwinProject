@@ -1,6 +1,6 @@
+#! /home/alex/Env/bin/python3
+
 from app import make_app
-
-
 
 
 if __name__ == "__main__":
@@ -22,15 +22,15 @@ if __name__ == "__main__":
 # from src import Functs
 # %matplotlib
 
-# def define_n(): 
-#     try : 
+# def define_n():
+#     try :
 #         n = int(sys.argv[1])
 #     except Exception as e :
 #         n = 10
 #     return n
 
 
-# def main() : 
+# def main() :
 #     """main """
 
 #     app = EvolutionAlgo1D(
@@ -39,16 +39,13 @@ if __name__ == "__main__":
 #                 seed_parents = 200,
 #                 kill_rate = 0.5,
 #                 birth_rate = 1 ,
-#                 average_child_numb = 0.75, 
+#                 average_child_numb = 0.75,
 #                 _round=5 )
 #     app.run(1000)
 #     app.plot_learning()
 
-
-
-# # print(app.current_population[:12])   
+# # print(app.current_population[:12])
 # # AXS.append(ax.scatter(app.current_population_x, app.current_population_y))
-    
 
 
 # # %matplotlib
@@ -62,7 +59,7 @@ if __name__ == "__main__":
 # # AXS.append(ax.scatter(app.current_population_x, app.current_population_y))
 
 
-# # for _ in range(10) : 
+# # for _ in range(10) :
 # #     AXS[-1].set_visible(False)
 # #     time.sleep(0.5)
 # #     app.run()

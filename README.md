@@ -1,1 +1,2 @@
-version 0.2.0 in master
+
+version 0.3.0 in master
