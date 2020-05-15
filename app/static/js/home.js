@@ -78,9 +78,7 @@ function handleInitMethod(data) {
     $("#thirdSection").slideDown();
     $("#fourthSection").slideDown();
     $("#fithSection").slideDown();
-    algoInitilalized = true;
-    algoId = data;
-    console.log("algoId = " + data);
+
     getStaticState();
     getDynamicState();
     updateCharts();
@@ -97,6 +95,9 @@ function makeInitFromModel() {
         url: "/initfrommodel",
         // async: false, // Mode synchrone
         success: function (data) {
+            algoInitilalized = true;
+            algoId = data;
+            console.log("algoId = " + data);
             handleInitMethod();
         }
     });
@@ -116,6 +117,9 @@ function makeInitFromUser() {
             // async: false, // Mode synchrone
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
+                algoInitilalized = true;
+                algoId = data;
+                console.log("algoId = " + data);
                 handleInitMethod(data);
             }
         });
