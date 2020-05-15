@@ -99,10 +99,7 @@ def get_static_state():
     """ """
 
     logger.info("called")
-    # global ALGO
-    algoId = request.args.get("algoId")
-    logger.critical(f"algoId --> {algoId} ")
-    algo = ALGO[algoId]
+    algo = get_algo(request)
     resp = jsonify(algo.static_state)
     # logger.critical(resp)
     resp.status_code = 200
@@ -115,9 +112,7 @@ def get_dynamic_state():
     """ """
 
     logger.info("called")
-    # global ALGO
-    algoId = request.args.get("algoId")
-    algo = ALGO[algoId]
+    algo = get_algo(request)
     resp = jsonify(algo.dynamic_state)
     resp.status_code = 200
     return resp
@@ -128,7 +123,6 @@ def get_dynamic_state():
 def run():
 
     logger.info("called")
-    # form = RunForm(request.form)
     global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
@@ -140,9 +134,7 @@ def run():
 def get_x_lim():
 
     logger.info("called")
-    # global ALGO
-    algoId = request.args.get("algoId")
-    algo = ALGO[algoId]
+    algo = get_algo(request)
     xlim = algo.x_lim_original_population
     logger.info(xlim)
     return jsonify(xlim), 200
@@ -152,9 +144,7 @@ def get_x_lim():
 def get_y_lim():
 
     logger.info("called")
-    # global ALGO
-    algoId = request.args.get("algoId")
-    algo = ALGO[algoId]
+    algo = get_algo(request)
     ylim = algo.y_lim_current_population
     logger.info(ylim)
     return jsonify(ylim), 200
