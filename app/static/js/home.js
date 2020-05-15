@@ -14,16 +14,16 @@ var algoId = "";
 
 
 
-// function dummyCall() {
-//     $.ajax({
-//         type: "GET",
-//         url: "/dummycall?id=" + "azerty",
-//         // async: false, // Mode synchrone
-//         success: function (data) {
-//             console.log('OK')
-//         }
-//     });
-// }
+function dummyCall() {
+    $.ajax({
+        type: "GET",
+        url: "/dummycall?id=" + "azerty",
+        // async: false, // Mode synchrone
+        success: function (data) {
+            console.log('OK')
+        }
+    });
+}
 
 
 

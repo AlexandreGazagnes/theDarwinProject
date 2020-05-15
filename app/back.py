@@ -201,13 +201,13 @@ def get_population():
 #     )
 
 
-# @back.route("/dummycall/", methods=["GET"])
-# def dummy_call():
+@back.route("/dummycall", methods=["GET"])
+def dummy_call():
 
-#     global ALGO
-#     logger.info("called")
-#     data = request.args.get("id", "ERROR")
-#     logger.warning(data)
-#     logger.warning(ALGO)
+    # global ALGO
+    logger.info("called")
+    # data = request.args.get("id", "ERROR")
+    # logger.warning(data)
+    logger.warning(ALGO)
 
-#     return "OK", 200
+    return "OK", 200
