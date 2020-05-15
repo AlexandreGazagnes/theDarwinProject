@@ -88,11 +88,11 @@ def initFromUser():
 
 # get static state
 @back.route("/staticstate", methods=["GET"])
-def static_state():
+def get_static_state():
     """ """
 
     logger.info("called")
-    global ALGO
+    # global ALGO
     algoId = request.args.get("algoId")
     logger.critical(f"algoId --> {algoId} ")
     algo = ALGO[algoId]
@@ -104,11 +104,11 @@ def static_state():
 
 # get dynamic state
 @back.route("/dynamicstate", methods=["GET"])
-def dynamic_state():
+def get_dynamic_state():
     """ """
 
     logger.info("called")
-    global ALGO
+    # global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     resp = jsonify(algo.dynamic_state)
@@ -133,7 +133,7 @@ def run():
 def get_x_lim():
 
     logger.info("called")
-    global ALGO
+    # global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     xlim = algo.x_lim_original_population
@@ -145,7 +145,7 @@ def get_x_lim():
 def get_y_lim():
 
     logger.info("called")
-    global ALGO
+    # global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     ylim = algo.y_lim_current_population
@@ -157,8 +157,8 @@ def get_y_lim():
 def get_population():
 
     logger.info("called")
-    global ALGO
-    global ALGO
+    # global ALGO
+    # global ALGO
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     pop = algo.pop
