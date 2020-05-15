@@ -89,13 +89,23 @@ class InitForm(FlaskForm):
 
 class RunForm(FlaskForm):
 
-    n = IntegerField(
-        "n",
-        description="nb of run",
+    years = IntegerField(
+        "years",
+        description="nb of years",
         default=1,
         validators=[
             DataRequired(message="data required"),
-            NumberRange(1, 100, message="please 10 --> 1000"),
+            NumberRange(1, 100, message="please 1 --> 100"),
         ],
     )
-    submit = SubmitField("run")
+
+    speed = IntegerField(
+        "speed",
+        description="year per sec",
+        default=1,
+        validators=[
+            DataRequired(message="data required"),
+            NumberRange(1, 100, message="please 1 --> 100"),
+        ],
+    )
+    submit = SubmitField("Run", render_kw={"class": "btn btn-primary form-control"},)
