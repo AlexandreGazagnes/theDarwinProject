@@ -3,19 +3,28 @@
 // ------------------------------------------
 
 
-//import log
-console.log("js init loaded")
-
-
 // global var
 var algoInitilalized = false;
-var algoID = "";
+var algoId = "";
+
+
+
+function dummyCall() {
+    $.ajax({
+        type: "GET",
+        url: "/dummycall",
+        // async: false, // Mode synchrone
+        success: function (data) {
+            console.debug('OK')
+        }
+    });
+}
+
 
 
 // display the form on first click
 function toggleView_0() {
-    // funct log
-    console.log("toggleView_0 called");
+    console.debug("toggleView_0 called");
     $("#firstSection").slideUp();
     $("#secondSection").slideDown();
 }
@@ -24,15 +33,14 @@ function toggleView_0() {
 // Once Algo initilialied gather static info of the lago 
 // idependant from run method
 function getStaticState() {
-    console.log("getStaticState")
+    console.debug("getStaticState")
     $.ajax({
         type: "GET",
-        url: "/staticstate",
+        url: "/staticstate?algoId=" + algoId,
         // async: false, // Mode synchrone
         success: function (data) {
             // $("#ajaxResponse").html(data);
             $("#rowId").html(data["id"]);
-            algoID = data["id"];
             $("#rowName").html(data["name"]);
             $("#rowObjective").html(data["objective"]);
             $("#rowInterval").html(data["interval"]);
@@ -47,10 +55,10 @@ function getStaticState() {
 // Once Algo initilialied gather dynamic info of the lago 
 // OVER dependant from run method
 function getDynamicState() {
-    console.log("getDynamicState")
+    console.debug("getDynamicState")
     $.ajax({
         type: "GET",
-        url: "/dynamicstate",
+        url: "/dynamicstate?algoId=" + algoId,
         // async: false, // Mode synchrone
         success: function (data) {
             $("#rowLen").html(data["len_current_population"]);
@@ -63,16 +71,16 @@ function getDynamicState() {
 
 // Init an object fill static and dynamic state
 // init graph and change global val
-function handleInitMethod() {
-    console.log("handleInitMethod")
+function handleInitMethod(data) {
+    console.debug("handleInitMethod")
     $("#firstSection").slideUp();
     $("#secondSection").slideUp();
     $("#thirdSection").slideDown();
     $("#fourthSection").slideDown();
     $("#fithSection").slideDown();
+
     getStaticState();
     getDynamicState();
-    algoInitilalized = true;
     updateCharts();
 }
 
@@ -80,13 +88,16 @@ function handleInitMethod() {
 //Manage init algo method from the button model
 // makeInitFromModel
 function makeInitFromModel() {
-    console.log("makeInitFromModel")
+    console.debug("makeInitFromModel")
     $("#firstSection").slideUp();
     $.ajax({
         type: "POST",
         url: "/initfrommodel",
         // async: false, // Mode synchrone
         success: function (data) {
+            algoInitilalized = true;
+            algoId = data;
+            console.log("algoId = " + data);
             handleInitMethod();
         }
     });
@@ -102,10 +113,14 @@ function makeInitFromUser() {
         $.ajax({
             type: "POST",
             url: "/initfromuser",
+            data: algoID,
             // async: false, // Mode synchrone
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
-                handleInitMethod();
+                algoInitilalized = true;
+                algoId = data;
+                console.log("algoId = " + data);
+                handleInitMethod(data);
             }
         });
     });
@@ -122,12 +137,13 @@ function range(start, end) {
 }
 
 
+
 // once algo init call x min and max
-function getXLim() {
+function getLim(c) {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getxlim",
+        url: "/get" + c + "lim?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = [data.min, data.max];
@@ -137,19 +153,35 @@ function getXLim() {
 }
 
 
-// once algo init call y min and max
-function getYLim() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getylim",
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = [data.min, data.max];
-        }
-    });
-    return arrData;
-}
+
+// once algo init call x min and max
+// function getXLim() {
+//     var arrData = [-42, -42];
+//     $.ajax({
+//         type: "GET",
+//         url: "/getxlim?algoId=" + algoId,
+//         async: false, // Mode synchrone
+//         success: function (data) {
+//             arrData = [data.min, data.max];
+//         }
+//     });
+//     return arrData;
+// }
+
+
+// // once algo init call y min and max
+// function getYLim() {
+//     var arrData = [-42, -42];
+//     $.ajax({
+//         type: "GET",
+//         url: "/getylim?algoId=" + algoId,
+//         async: false, // Mode synchrone
+//         success: function (data) {
+//             arrData = [data.min, data.max];
+//         }
+//     });
+//     return arrData;
+// }
 
 
 // once algo init call all x,y pairs for the population
@@ -157,7 +189,7 @@ function getPopulation() {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getpopulation",
+        url: "/getpopulation?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = data;
@@ -172,18 +204,13 @@ function drawChart() {
 
     // gather x lims, y lims and population
     if (algoInitilalized) {
-        var xLim = getXLim();
-        // console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
-        var yLim = getYLim();
-        // console.log("yLim " + typeof (yLim) + " --> " + yLim.toString());
+        var xLim = getLim("x");
+        var yLim = getLim("y");
         var xMin = xLim[0];
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
         var population = getPopulation();
-        // console.log("population " + typeof (population) + " --> " + population.toString());
-        // console.log("population " + typeof (population[0]) + " --> " + population[0].toString());
-        // console.log("population " + typeof (population[1]) + " --> " + population[1].toString());
     } else {
         var xMin = 0;
         var xMax = 15;
@@ -220,20 +247,24 @@ function updateCharts() {
 function run() {
     $("#runForm").submit(function (e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
-        console.log("run");
+        console.debug("run");
         var form = $(this);
         var years = form.find("#years").val();
         var speed = form.find("#speed").val();
+
+        // prevent for speed < 1 (ie 0.1 --> sleep 10 sec)
         var speed = 1000 * (1 / speed)
         if (speed > 1000) {
             var speed = 1000
         }
+
+        // years --> for i in range :) 
         var arrRange = range(0, years);
         arrRange.forEach(function (item, index) {
-            setTimeout(function () {
+            setTimeout(function () { // be carrefull with setTimeoit != sleep() --> it is an async fuct
                 $.ajax({
                     type: "POST",
-                    url: "/run",
+                    url: "/run?algoId=" + algoId,
                     // async: false, // Mode synchrone
                     success: function (data) {
                         getDynamicState();

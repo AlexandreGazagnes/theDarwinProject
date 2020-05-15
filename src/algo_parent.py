@@ -39,7 +39,7 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
 
-        self.id = secrets.token_hex(8)
+        self.id = secrets.token_hex(12)
         self.name = self.NAME
         self.funct = funct if funct else Functs.d1.sinFucker
         self.objective = objective
