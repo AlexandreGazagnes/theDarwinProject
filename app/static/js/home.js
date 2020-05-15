@@ -214,7 +214,7 @@ function getXs() {
 }
 
 
-function getys() {
+function getYs() {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
@@ -250,7 +250,7 @@ function drawPopChart() {
     }
 
     // scatter
-    console.log(population);
+    console.log("population = " + population);
     var data = google.visualization.arrayToDataTable(population);
 
     // options
@@ -292,7 +292,7 @@ function drawXsChart() {
     }
 
     // scatter
-    console.log(xs);
+    console.log("xs = " + xs);
     var data = google.visualization.arrayToDataTable(xs);
 
     // options
@@ -309,11 +309,56 @@ function drawXsChart() {
 }
 
 
+
+
+// make a chart 
+function drawYsChart() {
+
+    // gather x lims, y lims and population
+    if (year > 0) {
+        // var xLim = getLim("x");
+        // var yLim = getLim("y");
+        // var xMin = xLim[0];
+        // var xMax = xLim[1];
+        // var yMin = yLim[0];
+        // var yMax = yLim[1];
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var ys = getYs();
+    } else {
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var ys = [["years", "x"], [1, 1], [2, 2]];
+    }
+
+    // scatter
+    console.log("ys = " + ys);
+    var data = google.visualization.arrayToDataTable(ys);
+
+    // options
+    var options = {
+        title: 'ys evolution in year',
+        hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
+        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        legend: 'none'
+    };
+
+    // init chart on DOM element and push
+    var chart = new google.visualization.ScatterChart(document.getElementById('ysChart'));
+    chart.draw(data, options);
+}
+
+
 // manage chart creation
 function updateCharts() {
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawPopChart);
     google.charts.setOnLoadCallback(drawXsChart);
+    google.charts.setOnLoadCallback(drawYsChart);
 }
 
 
