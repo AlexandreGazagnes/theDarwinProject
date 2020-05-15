@@ -34,11 +34,9 @@ from src import logger
 back = Blueprint("back", __name__)
 
 
-def get_algo(request):
+def get_algo():
     """ get algo"""
-    algoId = request.args.get("algoId")
-    algo = ALGO[algoId]
-    return algo
+    return ALGO[request.args.get("algoId")]
 
 
 # init from model
@@ -99,7 +97,7 @@ def get_static_state():
     """ """
 
     logger.debug("called")
-    algo = get_algo(request)
+    algo = get_algo()
     resp = jsonify(algo.static_state)
     # logger.critical(resp)
     resp.status_code = 200
@@ -112,7 +110,7 @@ def get_dynamic_state():
     """ """
 
     logger.debug("called")
-    algo = get_algo(request)
+    algo = get_algo()
     resp = jsonify(algo.dynamic_state)
     resp.status_code = 200
     return resp
@@ -134,7 +132,7 @@ def run():
 def get_x_lim():
 
     logger.debug("called")
-    algo = get_algo(request)
+    algo = get_algo()
     xlim = algo.x_lim_original_population
     logger.info(xlim)
     return jsonify(xlim), 200
@@ -144,7 +142,7 @@ def get_x_lim():
 def get_y_lim():
 
     logger.debug("called")
-    algo = get_algo(request)
+    algo = get_algo()
     ylim = algo.y_lim_current_population
     logger.info(ylim)
     return jsonify(ylim), 200
@@ -155,7 +153,7 @@ def get_population():
     """get current population coordonate"""
 
     logger.debug("called")
-    algo = get_algo(request)
+    algo = get_algo()
     pop = algo.pop
     return jsonify(pop), 200
 
