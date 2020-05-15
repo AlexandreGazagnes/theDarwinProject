@@ -173,17 +173,12 @@ function drawChart() {
     // gather x lims, y lims and population
     if (algoInitilalized) {
         var xLim = getXLim();
-        // console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
         var yLim = getYLim();
-        // console.log("yLim " + typeof (yLim) + " --> " + yLim.toString());
         var xMin = xLim[0];
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
         var population = getPopulation();
-        // console.log("population " + typeof (population) + " --> " + population.toString());
-        // console.log("population " + typeof (population[0]) + " --> " + population[0].toString());
-        // console.log("population " + typeof (population[1]) + " --> " + population[1].toString());
     } else {
         var xMin = 0;
         var xMax = 15;
