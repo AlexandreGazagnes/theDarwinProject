@@ -8,7 +8,8 @@ console.log("js init loaded")
 
 
 // global var
-var algo_initilalized = false;
+var algoInitilalized = false;
+var algoID = "";
 
 
 // display the form on first click
@@ -31,6 +32,7 @@ function getStaticState() {
         success: function (data) {
             // $("#ajaxResponse").html(data);
             $("#rowId").html(data["id"]);
+            algoID = data["id"];
             $("#rowName").html(data["name"]);
             $("#rowObjective").html(data["objective"]);
             $("#rowInterval").html(data["interval"]);
@@ -70,7 +72,7 @@ function handleInitMethod() {
     $("#fithSection").slideDown();
     getStaticState();
     getDynamicState();
-    algo_initilalized = true;
+    algoInitilalized = true;
     updateCharts();
 }
 
@@ -169,7 +171,7 @@ function getPopulation() {
 function drawChart() {
 
     // gather x lims, y lims and population
-    if (algo_initilalized) {
+    if (algoInitilalized) {
         var xLim = getXLim();
         // console.log("xLim " + typeof (xLim) + " --> " + xLim.toString());
         var yLim = getYLim();
@@ -202,7 +204,7 @@ function drawChart() {
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.ScatterChart(document.getElementById('current_pouplation'));
     chart.draw(data, options);
 }
 

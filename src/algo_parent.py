@@ -103,20 +103,42 @@ class EvolutionAlgo1D:
         return [i[0] for i in self.current_population]
 
     @property
-    def x_lim(self):
-        xs = sorted(self.current_population_x)
-        return {"min": xs[0], "max": xs[-1]}
-
-    @property
-    def y_lim(self):
-        ys = sorted(self.current_population_y)
-        return {"min": ys[0], "max": ys[-1]}
-
-    @property
     def current_population_y(self):
 
         logger.debug("called")
         return [i[1] for i in self.current_population]
+
+    @property
+    def original_population_x(self):
+
+        logger.debug("called")
+        return [i[0] for i in self.original_population]
+
+    @property
+    def original_population_y(self):
+
+        logger.debug("called")
+        return [i[1] for i in self.original_population]
+
+    @property
+    def x_lim_current_population(self):
+        xs = sorted(self.current_population_x)
+        return {"min": xs[0], "max": xs[-1]}
+
+    @property
+    def y_lim_current_population(self):
+        ys = sorted(self.current_population_y)
+        return {"min": ys[0], "max": ys[-1]}
+
+    @property
+    def x_lim_original_population(self):
+        xs = sorted(self.original_population_x)
+        return {"min": xs[0], "max": xs[-1]}
+
+    @property
+    def y_lim_original_population(self):
+        ys = sorted(self.original_population_y)
+        return {"min": ys[0], "max": ys[-1]}
 
     @property
     def static_state(self):

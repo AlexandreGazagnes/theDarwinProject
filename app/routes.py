@@ -145,7 +145,7 @@ def get_x_lim():
 
     logger.info("called")
     global ALGO
-    xlim = ALGO.x_lim
+    xlim = ALGO.x_lim_original_population
     logger.info(xlim)
     return jsonify(xlim), 200
 
@@ -155,7 +155,7 @@ def get_y_lim():
 
     logger.info("called")
     global ALGO
-    ylim = ALGO.y_lim
+    ylim = ALGO.y_lim_current_population
     logger.info(ylim)
     return jsonify(ylim), 200
 

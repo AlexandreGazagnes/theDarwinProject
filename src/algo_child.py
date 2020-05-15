@@ -10,7 +10,7 @@ class NathanAlgo(EvolutionAlgo1D):
             funct=Functs.d1.nathanCos,
             objective="min",
             winning_threshold=0.001,
-            interval=[-5, 5],
+            interval=[-50, 50],
             seed_parents=12,
             kill_rate=0.25,
             birth_rate=1,
