@@ -168,58 +168,23 @@ function getGraphData(d) {
 
 // once algo init call all x,y pairs for the population
 function getPopulation() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getpopulation?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
+    return getGraphData('population');
 }
 
 
 function getXs() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getxs?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
+    return getGraphData('xs');
+
 }
 
 
 function getYs() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getys?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
+    return getGraphData('ys');
 }
 
 
 function getYears() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getyears?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
+    return getGraphData('years');
 }
 
 
@@ -235,7 +200,7 @@ function drawPopChart() {
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
-        var population = getPopulation();
+        var population = getGraphData('population');
     } else {
         var xMin = 0;
         var xMax = 15;
@@ -277,7 +242,7 @@ function drawXsChart() {
         var xMax = 15;
         var yMin = 0;
         var yMax = 15;
-        var xs = getXs();
+        var xs = getGraphData('xs');
     } else {
         var xMin = 0;
         var xMax = 15;
@@ -321,7 +286,7 @@ function drawYsChart() {
         var xMax = 15;
         var yMin = 0;
         var yMax = 15;
-        var ys = getYs();
+        var ys = getGraphData('ys');
     } else {
         var xMin = 0;
         var xMax = 15;
@@ -362,7 +327,7 @@ function drawYearsChart() {
         var xMax = 15;
         var yMin = 0;
         var yMax = 15;
-        var years = getYears();
+        var years = getGraphData('years');
     } else {
         var xMin = 0;
         var xMax = 15;
