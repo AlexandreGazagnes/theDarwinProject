@@ -9,6 +9,12 @@ var algoId = "";
 var year = 0;
 
 
+var xMin = 0;
+var xMax = 15;
+var yMin = 0;
+var yMax = 15;
+
+
 // function dummyCall() {
 //     $.ajax({
 //         type: "GET",
@@ -196,10 +202,6 @@ function drawPopChart() {
         var yMax = yLim[1];
         var population = getGraphData('population');
     } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
         var population = [['x', 'y'], [1, 1], [2, 2]]
     }
 
@@ -238,10 +240,6 @@ function drawXsChart() {
         var yMax = 15;
         var xs = getGraphData('xs');
     } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
         var xs = [["years", "x"], [1, 1], [2, 2]];
     }
 
@@ -251,7 +249,7 @@ function drawXsChart() {
 
     // options
     var options = {
-        title: 'xs evolution in year',
+        title: "best 'x' value evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'x', minValue: yMin, maxValue: yMax },
         legend: 'none'
@@ -282,11 +280,7 @@ function drawYsChart() {
         var yMax = 15;
         var ys = getGraphData('ys');
     } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var ys = [["years", "x"], [1, 1], [2, 2]];
+        var ys = [["years", "y"], [1, 1], [2, 2]];
     }
 
     // scatter
@@ -295,7 +289,7 @@ function drawYsChart() {
 
     // options
     var options = {
-        title: 'ys evolution in year',
+        title: "best 'y' value evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
         legend: 'none'
@@ -317,16 +311,12 @@ function drawYearsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
         var years = getGraphData('years');
     } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
         var years = [["years", "x"], [1, 1], [2, 2]];
     }
 
@@ -336,9 +326,9 @@ function drawYearsChart() {
 
     // options
     var options = {
-        title: 'ys evolution in year',
+        title: "year of best found solution evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
-        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        vAxis: { title: 'year of best solution', minValue: yMin, maxValue: yMax },
         legend: 'none'
     };
 
@@ -346,7 +336,6 @@ function drawYearsChart() {
     var chart = new google.visualization.ScatterChart(document.getElementById('yearsChart'));
     chart.draw(data, options);
 }
-
 
 
 // manage chart creation
