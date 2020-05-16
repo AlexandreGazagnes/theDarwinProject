@@ -165,27 +165,22 @@ function getGraphData(d) {
 }
 
 
-// once algo init call all x,y pairs for the population
-function getPopulation() {
-    return getGraphData('population');
-}
+// // once algo init call all x,y pairs for the population
+// function getPopulation() {
+//     return getGraphData('population');
+// }
 
+// function getXs() {
+//     return getGraphData('xs');
+// }
 
-function getXs() {
-    return getGraphData('xs');
+// function getYs() {
+//     return getGraphData('ys');
+// }
 
-}
-
-
-function getYs() {
-    return getGraphData('ys');
-}
-
-
-function getYears() {
-    return getGraphData('years');
-}
-
+// function getYears() {
+//     return getGraphData('years');
+// }
 
 
 // make a chart 
