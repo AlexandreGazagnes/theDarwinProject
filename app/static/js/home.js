@@ -2,7 +2,6 @@
 //  home.js
 // ------------------------------------------
 
-
 // global var
 var algoInitilalized = false;
 var algoId = "";
