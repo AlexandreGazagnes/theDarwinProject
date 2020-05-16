@@ -1,33 +1,31 @@
-#secondSection{
+
+#infoSection {
+    display: block;
+}
+
+#initSection{
     display: none;
 }
 
-
-#thirdSection{
+#stateSection{
     display: none;
 }
 
-
-#fourthSection{
+#actionSection{
     display: none;
 }
 
-
-#fithSection{
+#graphSection{
     display: none;
 }
-
-/* 
-#secondSection{
-    display: none;
-} */
-
 
 .myBorder {
     border-radius: 15px;
     border-width: 1px;
     border-style: solid;
     border-color: grey;    
-    padding: 10px 5px 10px 5px ;
-    margin: 10px 5px 10px 5px ;
+    padding: 20px 10px 20px 10px ;
+    margin: 20px 10px 20px 10px ;
+    word-wrap: normal;
+    text-overflow: ellipsis;
 }

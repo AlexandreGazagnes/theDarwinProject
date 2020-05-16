@@ -2,16 +2,13 @@
 {% block content %}
 
 
-<!-- home css and js -->
+<!-- home css -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
-<script src="{{ url_for('static', filename='js/home.js')}}"></script>
-
-<!-- google charts-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 <!-- SECTION INFORMATION -->
-<section id="firstSection">
+<section id="infoSection">
+    <h2>About</h2>
     <div id="firstQuestion" class="myBorder questionItem">
         <h3>What is that a Genetic algorithm ?</h3>
         <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
@@ -52,9 +49,9 @@
 
 
 <!-- SECTION INIT FORM -->
-<section id=secondSection class="myBorder">
+<section id=initSection>
     <h2>Init</h2>
-    <form id="initFormUser" class="formwrapper">
+    <form id="initFormUser" class="myBorder formwrapper">
         <!-- method="POST" action="/init"-->
         <!-- funct -->
         <div class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
@@ -147,9 +144,9 @@
 
 
 <!-- SECTION STATE -->
-<section id="fourthSection">
+<section id="stateSection">
+    <h2>Static State</h2>
     <div class="myBorder">
-        <h2>Static State</h2>
         <table>
             <tr>
                 <th>id </th>
@@ -186,8 +183,9 @@
 
         </table>
     </div>
+    <h2>Dynamic State</h2>
     <div class="myBorder">
-        <h2>Dynamic State</h2>
+
         <table>
             <tr>
                 <th>year </th>
@@ -207,9 +205,9 @@
 
 
 <!-- SECTION ACTION -->
-<section id="thirdSection" class="myBorder">
+<section id="actionSection">
     <h2>Action</h2>
-    <form id="runForm" class="formwrapper">
+    <form id="runForm" class="myBorder formwrapper">
 
         <!-- years -->
         <div class="form-row">
@@ -250,9 +248,9 @@
 
 
 <!-- SECTION VISUALISATION -->
-<section id="fithSection">
+<section id="graphSection">
+    <h2>Visualize</h2>
     <div class="myBorder">
-        <h2>Visualize</h2>
         <div>
             <h3>current population</h3>
             <div id="populationChart"></div>
@@ -273,8 +271,11 @@
 </section>
 
 
+<!-- home js-->
+<script src="{{ url_for('static', filename='js/home.js')}}"></script>
 
-
+<!-- google charts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 
