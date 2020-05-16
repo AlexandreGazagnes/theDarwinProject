@@ -83,7 +83,7 @@ class EvolutionAlgo1D:
         return len(self.current_population)
 
     @property
-    def pop(self):
+    def graph_pop(self):
         L = [
             ["x", "y"],
         ]
@@ -316,3 +316,39 @@ class EvolutionAlgo1D:
         name = f"app/static/img/{self.id}-learning-{self.year}.png"
         plt.savefig(name, dpi=150)
         self.learning_images.append(name)
+
+    @property
+    def graph_xs(self):
+        L = [
+            ["years", "x"],
+        ]
+        xs = [i[0] for i in self.learning_curve]
+        x = [i for i, _ in enumerate(xs)]
+
+        LL = [[i, j] for i, j in zip(x, xs)]
+        L.extend(LL)
+        return L
+
+    @property
+    def graph_ys(self):
+        L = [
+            ["years", "y"],
+        ]
+        ys = [i[1] for i in self.learning_curve]
+        x = [i for i, _ in enumerate(ys)]
+
+        LL = [[i, j] for i, j in zip(x, ys)]
+        L.extend(LL)
+        return L
+
+    @property
+    def graph_years(self):
+        L = [
+            ["years", "year"],
+        ]
+        years = [i[3] for i in self.learning_curve]
+        x = [i for i, _ in enumerate(years)]
+
+        LL = [[i, j] for i, j in zip(x, years)]
+        L.extend(LL)
+        return L

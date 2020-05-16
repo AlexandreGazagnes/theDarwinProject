@@ -134,7 +134,7 @@ def get_x_lim():
     logger.debug("called")
     algo = get_algo()
     xlim = algo.x_lim_original_population
-    logger.info(xlim)
+    # logger.info(xlim)
     return jsonify(xlim), 200
 
 
@@ -144,7 +144,7 @@ def get_y_lim():
     logger.debug("called")
     algo = get_algo()
     ylim = algo.y_lim_current_population
-    logger.info(ylim)
+    # logger.info(ylim)
     return jsonify(ylim), 200
 
 
@@ -154,8 +154,34 @@ def get_population():
 
     logger.debug("called")
     algo = get_algo()
-    pop = algo.pop
-    return jsonify(pop), 200
+    return jsonify(algo.graph_pop), 200
+
+
+@back.route("/getxs", methods=["GET"])
+def get_xs():
+    """"""
+
+    logger.debug("called")
+    algo = get_algo()
+    return jsonify(algo.graph_xs), 200
+
+
+@back.route("/getys", methods=["GET"])
+def get_ys():
+    """get current ys coordonate"""
+
+    logger.debug("called")
+    algo = get_algo()
+    return jsonify(algo.graph_ys), 200
+
+
+@back.route("/getyears", methods=["GET"])
+def get_years():
+    """get current years coordonate"""
+
+    logger.debug("called")
+    algo = get_algo()
+    return jsonify(algo.graph_years), 200
 
 
 @back.route("/dummycall", methods=["GET"])
@@ -163,5 +189,7 @@ def dummy_call():
     """Use this to get various info from braowser to logs"""
 
     logger.debug("called")
-    logger.warning(ALGO)
+    # logger.warning(ALGO)
+    algo = get_algo()
+    logger.warning()
     return "OK", 200
