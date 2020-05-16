@@ -2,24 +2,23 @@
 //  home.js
 // ------------------------------------------
 
+
 // global var
 var algoInitilalized = false;
 var algoId = "";
 var year = 0;
 
 
-
-function dummyCall() {
-    $.ajax({
-        type: "GET",
-        url: "/dummycall?algoId=" + algoId,
-        // async: false, // Mode synchrone
-        success: function (data) {
-            console.debug('OK')
-        }
-    });
-}
-
+// function dummyCall() {
+//     $.ajax({
+//         type: "GET",
+//         url: "/dummycall?algoId=" + algoId,
+//         // async: false, // Mode synchrone
+//         success: function (data) {
+//             console.debug('OK')
+//         }
+//     });
+// }
 
 
 // display the form on first click
@@ -137,7 +136,6 @@ function range(start, end) {
 }
 
 
-
 // once algo init call x min and max
 function getLim(c) {
     var arrData = [-42, -42];
@@ -153,35 +151,19 @@ function getLim(c) {
 }
 
 
-
-// once algo init call x min and max
-// function getXLim() {
-//     var arrData = [-42, -42];
-//     $.ajax({
-//         type: "GET",
-//         url: "/getxlim?algoId=" + algoId,
-//         async: false, // Mode synchrone
-//         success: function (data) {
-//             arrData = [data.min, data.max];
-//         }
-//     });
-//     return arrData;
-// }
-
-
-// // once algo init call y min and max
-// function getYLim() {
-//     var arrData = [-42, -42];
-//     $.ajax({
-//         type: "GET",
-//         url: "/getylim?algoId=" + algoId,
-//         async: false, // Mode synchrone
-//         success: function (data) {
-//             arrData = [data.min, data.max];
-//         }
-//     });
-//     return arrData;
-// }
+// once algo init call all x,y pairs for the population
+function getGraphData(d) {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/get" + d + "?algoId=" + algoId,
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = data;
+        }
+    });
+    return arrData;
+}
 
 
 // once algo init call all x,y pairs for the population
