@@ -24,8 +24,8 @@ var year = 0;
 // display the form on first click
 function toggleView_0() {
     console.debug("toggleView_0 called");
-    $("#firstSection").slideUp();
-    $("#secondSection").slideDown();
+    $("#infoSection").slideUp();
+    $("#initSection").slideDown();
 }
 
 
@@ -72,12 +72,11 @@ function getDynamicState() {
 // init graph and change global val
 function handleInitMethod(data) {
     console.debug("handleInitMethod")
-    $("#firstSection").slideUp();
-    $("#secondSection").slideUp();
-    $("#thirdSection").slideDown();
-    $("#fourthSection").slideDown();
-    $("#fithSection").slideDown();
-
+    $("#infoSection").slideUp();
+    $("#initSection").slideUp();
+    $("#stateSection").slideDown();
+    $("#actionSection").slideDown();
+    $("#graphSection").slideDown();
     getStaticState();
     getDynamicState();
     updateCharts();
@@ -88,7 +87,7 @@ function handleInitMethod(data) {
 // makeInitFromModel
 function makeInitFromModel() {
     console.debug("makeInitFromModel")
-    $("#firstSection").slideUp();
+    $("#infoSection").slideUp();
     $.ajax({
         type: "POST",
         url: "/initfrommodel",
