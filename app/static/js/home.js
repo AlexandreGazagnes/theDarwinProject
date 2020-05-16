@@ -228,6 +228,20 @@ function getYs() {
 }
 
 
+function getYears() {
+    var arrData = [-42, -42];
+    $.ajax({
+        type: "GET",
+        url: "/getyears?algoId=" + algoId,
+        async: false, // Mode synchrone
+        success: function (data) {
+            arrData = data;
+        }
+    });
+    return arrData;
+}
+
+
 
 // make a chart 
 function drawPopChart() {
@@ -352,6 +366,48 @@ function drawYsChart() {
     chart.draw(data, options);
 }
 
+// make a chart 
+function drawYearsChart() {
+
+    // gather x lims, y lims and population
+    if (year > 0) {
+        // var xLim = getLim("x");
+        // var yLim = getLim("y");
+        // var xMin = xLim[0];
+        // var xMax = xLim[1];
+        // var yMin = yLim[0];
+        // var yMax = yLim[1];
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var years = getYears();
+    } else {
+        var xMin = 0;
+        var xMax = 15;
+        var yMin = 0;
+        var yMax = 15;
+        var years = [["years", "x"], [1, 1], [2, 2]];
+    }
+
+    // scatter
+    console.log("years = " + years);
+    var data = google.visualization.arrayToDataTable(years);
+
+    // options
+    var options = {
+        title: 'ys evolution in year',
+        hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
+        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        legend: 'none'
+    };
+
+    // init chart on DOM element and push
+    var chart = new google.visualization.ScatterChart(document.getElementById('yearsChart'));
+    chart.draw(data, options);
+}
+
+
 
 // manage chart creation
 function updateCharts() {
@@ -359,6 +415,7 @@ function updateCharts() {
     google.charts.setOnLoadCallback(drawPopChart);
     google.charts.setOnLoadCallback(drawXsChart);
     google.charts.setOnLoadCallback(drawYsChart);
+    google.charts.setOnLoadCallback(drawYearsChart);
 }
 
 

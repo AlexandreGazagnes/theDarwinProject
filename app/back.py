@@ -181,7 +181,7 @@ def get_years():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graphgraph_years), 200
+    return jsonify(algo.graph_years), 200
 
 
 @back.route("/dummycall", methods=["GET"])
