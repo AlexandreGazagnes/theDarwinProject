@@ -30,3 +30,8 @@
     text-overflow: ellipsis;
     background-color: white;
 }
+
+.Italic {
+    font-size: small;
+    font-style: italic;
+}

@@ -25,7 +25,6 @@ var ys_last = [["years", "y"], [0.0, 10.0]];
 var years_last = [["years", "last_new_year"], [0.0, 0.0]];
 
 
-
 // function dummyCall() {
 //     $.ajax({
 //         type: "GET",
@@ -128,7 +127,6 @@ function makeInitFromUser() {
         $.ajax({
             type: "POST",
             url: "/initfromuser",
-            data: algoID,
             // async: false, // Mode synchrone
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
@@ -232,8 +230,6 @@ function drawXsChart() {
         // var yMax = 15;
         xs_last.push(getGraphData('xs'));
         // console.log("xs_last = " + typeof (xs_last) + " --> " + xs_last);
-    } else {
-        // var xs = [["years", "x"], [1, 1], [2, 2]];
     }
 
     // scatter
@@ -254,9 +250,6 @@ function drawXsChart() {
     var chart = new google.visualization.LineChart(document.getElementById('xsChart'));
     chart.draw(data, options);
 }
-
-
-
 
 // make a chart 
 function drawYsChart() {
