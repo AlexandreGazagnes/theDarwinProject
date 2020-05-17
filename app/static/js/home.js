@@ -9,10 +9,17 @@ var algoId = "";
 var year = 0;
 
 
+//graph var
 var xMin = 0;
 var xMax = 15;
 var yMin = 0;
 var yMax = 15;
+
+var pointSize = 6;
+var pointShape = "circle";
+
+var xs_last = [["years", "x"],]
+
 
 
 // function dummyCall() {
@@ -68,7 +75,7 @@ function getDynamicState() {
         success: function (data) {
             $("#rowLen").html(data["len_current_population"]);
             $("#rowYear").html(data["year"]);
-            $("#rowBest").html(data["best_current_population"]);
+            $("#rowBest").html(data["best_current_population"].slice(0, 1));
         }
     });
 }
@@ -171,24 +178,6 @@ function getGraphData(d) {
 }
 
 
-// // once algo init call all x,y pairs for the population
-// function getPopulation() {
-//     return getGraphData('population');
-// }
-
-// function getXs() {
-//     return getGraphData('xs');
-// }
-
-// function getYs() {
-//     return getGraphData('ys');
-// }
-
-// function getYears() {
-//     return getGraphData('years');
-// }
-
-
 // make a chart 
 function drawPopChart() {
 
@@ -202,19 +191,21 @@ function drawPopChart() {
         var yMax = yLim[1];
         var population = getGraphData('population');
     } else {
-        var population = [['x', 'y'], [1, 1], [2, 2]]
+        var population = [[1, 1], [2, 2]]
     }
 
     // scatter
-    console.log("population = " + population);
+    // console.log("population = " + population);
     var data = google.visualization.arrayToDataTable(population);
 
     // options
     var options = {
-        title: 'current population',
+        // title: 'current population',
         hAxis: { title: 'x', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
-        legend: 'none'
+        legend: 'none',
+        pointSize: pointSize,
+        pointShape: pointShape
     };
 
     // init chart on DOM element and push
@@ -239,12 +230,14 @@ function drawXsChart() {
         var yMin = 0;
         var yMax = 15;
         var xs = getGraphData('xs');
+        xs_last.push(xs.slice(-1));
+        console.log("xs_last = " + typeof (xs_last) + " --> " + xs_last);
     } else {
         var xs = [["years", "x"], [1, 1], [2, 2]];
     }
 
     // scatter
-    console.log("xs = " + xs);
+    // console.log("xs = " + xs);
     var data = google.visualization.arrayToDataTable(xs);
 
     // options
@@ -253,10 +246,12 @@ function drawXsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'x', minValue: yMin, maxValue: yMax },
         legend: 'none'
+        // pointSize: pointSize,
+        // pointShape: pointShape
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('xsChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('xsChart'));
     chart.draw(data, options);
 }
 
@@ -284,7 +279,7 @@ function drawYsChart() {
     }
 
     // scatter
-    console.log("ys = " + ys);
+    // console.log("ys = " + ys);
     var data = google.visualization.arrayToDataTable(ys);
 
     // options
@@ -293,10 +288,12 @@ function drawYsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
         legend: 'none'
+        // pointSize: pointSize,
+        // pointShape: pointShape
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('ysChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('ysChart'));
     chart.draw(data, options);
 }
 
@@ -321,7 +318,7 @@ function drawYearsChart() {
     }
 
     // scatter
-    console.log("years = " + years);
+    // console.log("years = " + years);
     var data = google.visualization.arrayToDataTable(years);
 
     // options
@@ -330,10 +327,12 @@ function drawYearsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'year of best solution', minValue: yMin, maxValue: yMax },
         legend: 'none'
+        // pointSize: pointSize,
+        // pointShape: pointShape
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('yearsChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('yearsChart'));
     chart.draw(data, options);
 }
 

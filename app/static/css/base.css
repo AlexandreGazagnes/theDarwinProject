@@ -1,5 +1,4 @@
 /* Rooooooxan ! */
-
 @font-face {
     font-family: b612;
     src: url('/static/fonts/B612/B612-Regular.ttf');}
@@ -10,10 +9,6 @@
 
 
 /* css */
-
-html {
-}
-
 body {
     font-family: b612, Verdana, Tahoma, sans-serif;
     font-size: medium ; 
@@ -24,9 +19,6 @@ body {
 
 header {
     margin-bottom: 50px;
-}
-
-main{
 }
 
 footer {
@@ -40,7 +32,7 @@ h1 {
 }
 
 h2 {
-    margin-top: 10px;
+    margin-top: 50px;
     font-size: 1.4rem;
     margin-left: 10px;
 }

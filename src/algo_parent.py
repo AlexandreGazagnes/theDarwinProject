@@ -288,34 +288,34 @@ class EvolutionAlgo1D:
     #     logger.debug("called")
     #     self.ax.plot(self.current_population_x, self.current_population_y)
 
-    def plot_population(self):
+    # def plot_population(self):
 
-        logger.debug("called")
-        fig, axs = plt.subplots(1, 1)
-        axs.scatter(self.current_population_x, self.current_population_y)
+    #     logger.debug("called")
+    #     fig, axs = plt.subplots(1, 1)
+    #     axs.scatter(self.current_population_x, self.current_population_y)
 
-        name = f"app/static/img/{self.id}-population-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.population_images.append(name)
+    #     name = f"app/static/img/{self.id}-population-{self.year}.png"
+    #     plt.savefig(name, dpi=150)
+    #     self.population_images.append(name)
 
-    def plot_learning(self):
+    # def plot_learning(self):
 
-        logger.debug("called")
-        fig, axs = plt.subplots(1, 3)
-        xs = [i[0] for i in self.learning_curve]
-        ys = [i[1] for i in self.learning_curve]
-        years = [i[3] for i in self.learning_curve]
-        x = [i for i, _ in enumerate(xs)]
-        ax0 = axs[0].plot(x, xs)
-        # ax0.set_title("Xs")
-        ax1 = axs[1].plot(x, ys)
-        # ax1.set_title("Ys")
-        ax2 = axs[2].plot(x, years)
-        # ax1.set_title("Ys")
+    #     logger.debug("called")
+    #     fig, axs = plt.subplots(1, 3)
+    #     xs = [i[0] for i in self.learning_curve]
+    #     ys = [i[1] for i in self.learning_curve]
+    #     years = [i[3] for i in self.learning_curve]
+    #     x = [i for i, _ in enumerate(xs)]
+    #     ax0 = axs[0].plot(x, xs)
+    #     # ax0.set_title("Xs")
+    #     ax1 = axs[1].plot(x, ys)
+    #     # ax1.set_title("Ys")
+    #     ax2 = axs[2].plot(x, years)
+    #     # ax1.set_title("Ys")
 
-        name = f"app/static/img/{self.id}-learning-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.learning_images.append(name)
+    #     name = f"app/static/img/{self.id}-learning-{self.year}.png"
+    #     plt.savefig(name, dpi=150)
+    #     self.learning_images.append(name)
 
     @property
     def graph_xs(self):
@@ -330,6 +330,10 @@ class EvolutionAlgo1D:
         return L
 
     @property
+    def graph_xs_last(self):
+        return self.graph_xs[-1]
+
+    @property
     def graph_ys(self):
         L = [
             ["years", "y"],
@@ -340,6 +344,10 @@ class EvolutionAlgo1D:
         LL = [[i, j] for i, j in zip(x, ys)]
         L.extend(LL)
         return L
+
+    @property
+    def graph_ys_last(self):
+        return self.graph_ys[-1]
 
     @property
     def graph_years(self):
