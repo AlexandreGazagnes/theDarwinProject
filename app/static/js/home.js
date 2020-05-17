@@ -18,7 +18,11 @@ var yMax = 15;
 var pointSize = 6;
 var pointShape = "circle";
 
-var xs_last = [["years", "x"],]
+// coorodnates
+var population = [["x", "y"], [1, 1], [2, 2]];
+var xs_last = [["years", "x"], [0.0, 10.0]];
+var ys_last = [["years", "y"], [0.0, 10.0]];
+var years_last = [["years", "last_new_year"], [0.0, 0.0]];
 
 
 
@@ -189,11 +193,8 @@ function drawPopChart() {
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
-        var population = getGraphData('population');
-    } else {
-        var population = [[1, 1], [2, 2]]
+        population = getGraphData('population');
     }
-
     // scatter
     // console.log("population = " + population);
     var data = google.visualization.arrayToDataTable(population);
@@ -225,20 +226,19 @@ function drawXsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var xs = getGraphData('xs');
-        xs_last.push(xs.slice(-1));
-        console.log("xs_last = " + typeof (xs_last) + " --> " + xs_last);
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
+        xs_last.push(getGraphData('xs'));
+        // console.log("xs_last = " + typeof (xs_last) + " --> " + xs_last);
     } else {
-        var xs = [["years", "x"], [1, 1], [2, 2]];
+        // var xs = [["years", "x"], [1, 1], [2, 2]];
     }
 
     // scatter
     // console.log("xs = " + xs);
-    var data = google.visualization.arrayToDataTable(xs);
+    var data = google.visualization.arrayToDataTable(xs_last);
 
     // options
     var options = {
@@ -269,18 +269,16 @@ function drawYsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var ys = getGraphData('ys');
-    } else {
-        var ys = [["years", "y"], [1, 1], [2, 2]];
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
+        ys_last.push(getGraphData('ys'));
     }
 
     // scatter
     // console.log("ys = " + ys);
-    var data = google.visualization.arrayToDataTable(ys);
+    var data = google.visualization.arrayToDataTable(ys_last);
 
     // options
     var options = {
@@ -312,14 +310,12 @@ function drawYearsChart() {
         // var xMax = 15;
         // var yMin = 0;
         // var yMax = 15;
-        var years = getGraphData('years');
-    } else {
-        var years = [["years", "x"], [1, 1], [2, 2]];
+        years_last.push(getGraphData('years'));
     }
 
     // scatter
     // console.log("years = " + years);
-    var data = google.visualization.arrayToDataTable(years);
+    var data = google.visualization.arrayToDataTable(years_last);
 
     // options
     var options = {

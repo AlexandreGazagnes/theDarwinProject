@@ -163,7 +163,7 @@ def get_xs():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_xs), 200
+    return jsonify(algo.graph_xs_last), 200
 
 
 @back.route("/getys", methods=["GET"])
@@ -172,7 +172,7 @@ def get_ys():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_ys), 200
+    return jsonify(algo.graph_ys_last), 200
 
 
 @back.route("/getyears", methods=["GET"])
@@ -181,7 +181,7 @@ def get_years():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_years), 200
+    return jsonify(algo.graph_years_last), 200
 
 
 @back.route("/dummycall", methods=["GET"])

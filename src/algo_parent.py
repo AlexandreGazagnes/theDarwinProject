@@ -360,3 +360,7 @@ class EvolutionAlgo1D:
         LL = [[i, j] for i, j in zip(x, years)]
         L.extend(LL)
         return L
+
+    @property
+    def graph_years_last(self):
+        return self.graph_years[-1]
