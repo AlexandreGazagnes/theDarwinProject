@@ -4,8 +4,12 @@ from src import logger
 
 
 class NathanAlgo(EvolutionAlgo1D):
-    def __init__(self):
+    """ """
 
+    def __init__(self):
+        """ """
+
+        logger.debug("called")
         super().__init__(
             funct=Functs.d1.nathanCos,
             objective="min",

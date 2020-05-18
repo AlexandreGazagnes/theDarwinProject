@@ -1,22 +1,16 @@
 import secrets
-
 import json
-
-import numpy as np
-
-import matplotlib.pylab as plt
-import seaborn as sns
-from bokeh.plotting import figure, output_file, show
-
-sns.set()
+from collections import Iterable
 
 from src.functs import Functs
 from src import logger
 
-from collections import Iterable
+import numpy as np
 
 
+# THIS ONE SHOULD BE AN ABS CLASS
 class EvolutionAlgo1D:
+    """ """
 
     NAME = "EvolutionAlgo1D"
 
@@ -28,7 +22,6 @@ class EvolutionAlgo1D:
         self,
         funct=None,
         objective="min",
-        # winning_threshold=0.001,
         interval=[-100, 100],
         seed_parents=20,
         kill_rate=0.33,
@@ -38,12 +31,10 @@ class EvolutionAlgo1D:
     ):
 
         logger.debug("called")
-
         self.id = secrets.token_hex(12)
         self.name = self.NAME
         self.funct = funct if funct else Functs.d1.sinFucker
         self.objective = objective
-        # self.winning_threshold = winning_threshold
         self.interval = interval
         self.seed_parents = seed_parents
         self.kill_rate = kill_rate
@@ -52,10 +43,8 @@ class EvolutionAlgo1D:
         self.year = 0
         self._round = _round
         self.learning_curve = list()
-        # self.learning_images = [""]
-        # self.population_images = [""]
-        # self.fig, self.ax = plt.subplots(1,1)
 
+        # find parents
         parents = [
             np.random.rand() + np.random.randint(*interval) for _ in range(seed_parents)
         ]
@@ -79,21 +68,30 @@ class EvolutionAlgo1D:
 
     @property
     def len_current_population(self):
+        """ """
 
+        logger.debug("called")
         return len(self.current_population)
 
     @property
     def repartition_current_population(self):
+        """ """
+
+        logger.debug("called")
         l = [i[2] for i in self.current_population]
         return {k: l.count(k) for k in set(l)}
 
     @property
     def best_current_population(self):
+        """ """
+
+        logger.debug("called")
         self._sort_current_population()
         return self.current_population[:5]
 
     @property
     def current_population_x(self):
+        """ """
 
         logger.debug("called")
         return [i[0] for i in self.current_population]
@@ -106,39 +104,55 @@ class EvolutionAlgo1D:
 
     @property
     def original_population_x(self):
+        """ """
 
         logger.debug("called")
         return [i[0] for i in self.original_population]
 
     @property
     def original_population_y(self):
+        """ """
 
         logger.debug("called")
         return [i[1] for i in self.original_population]
 
     @property
     def x_lim_current_population(self):
+        """ """
+
+        logger.debug("called")
         xs = sorted(self.current_population_x)
         return {"min": xs[0], "max": xs[-1]}
 
     @property
     def y_lim_current_population(self):
+        """ """
+
+        logger.debug("called")
         ys = sorted(self.current_population_y)
         return {"min": ys[0], "max": ys[-1]}
 
     @property
     def x_lim_original_population(self):
+        """ """
+
+        logger.debug("called")
         xs = sorted(self.original_population_x)
         return {"min": xs[0], "max": xs[-1]}
 
     @property
     def y_lim_original_population(self):
+        """" """
+
+        logger.debug("called")
         ys = sorted(self.original_population_y)
         return {"min": ys[0], "max": ys[-1]}
 
     @property
     def static_state(self):
-        logger.info("called")
+        """ """
+
+        logger.debug("called")
         d = {
             "id": self.id,
             "name": self.name,
@@ -154,7 +168,9 @@ class EvolutionAlgo1D:
 
     @property
     def dynamic_state(self):
-        logger.info("called")
+        """ """
+
+        logger.debug("called")
         d = {
             "year": self.year,
             "len_current_population": self.len_current_population,
@@ -168,6 +184,7 @@ class EvolutionAlgo1D:
     ####################################################
 
     def _sort_current_population(self):
+        """ """
 
         logger.debug("called")
         # first # sort regarding the funct
@@ -177,6 +194,7 @@ class EvolutionAlgo1D:
         )
 
     def _kill_looser(self):
+        """ """
 
         logger.debug("called")
         n_save = len(self.current_population) * (1 - self.kill_rate)
@@ -184,15 +202,16 @@ class EvolutionAlgo1D:
         self.current_population = self.current_population[: n_save + 1]
 
     def _procreate(self):
+        """ """
 
         logger.debug("called")
         # numbers
         N_childs = len(self.original_population) - len(self.current_population)
         N_normal_child = int(self.average_child_numb * N_childs)
         N_random_childs = N_childs - N_normal_child
-        logger.info((f"N_childs {N_childs} "))
-        logger.info((f"N_normal_child {N_normal_child} "))
-        logger.info((f"N_random_childs {N_random_childs} "))
+        logger.debug((f"N_childs {N_childs} "))
+        logger.debug((f"N_normal_child {N_normal_child} "))
+        logger.debug((f"N_random_childs {N_random_childs} "))
 
         # rand childs
         random_childs_x = [
@@ -208,7 +227,7 @@ class EvolutionAlgo1D:
             )
             for x in random_childs_x
         ]
-        logger.info((f"random_childs {random_childs} "))
+        logger.debug((f"random_childs {random_childs} "))
 
         # normal childs
         normal_childs_x = []
@@ -231,17 +250,19 @@ class EvolutionAlgo1D:
             for x in normal_childs_x
         ]
 
-        logger.info((f"normal_childs {normal_childs} "))
+        logger.debug((f"normal_childs {normal_childs} "))
 
         self.current_population.extend(random_childs)
         self.current_population.extend(normal_childs)
 
     def _incr(self):
+        """ """
 
         logger.debug("called")
         self.year += 1
 
     def _eval(self):
+        """ """
 
         logger.debug("called")
         self._sort_current_population()
@@ -249,6 +270,7 @@ class EvolutionAlgo1D:
         self.learning_curve.append(best)
 
     def _run(self):
+        """ """
 
         logger.debug("called")
         self._kill_looser()
@@ -262,6 +284,7 @@ class EvolutionAlgo1D:
     ####################################################
 
     def run(self, n=10):
+        """ """
 
         logger.debug("called")
         for _ in range(n):
@@ -272,51 +295,21 @@ class EvolutionAlgo1D:
     ####################################################
 
     def __repr__(self):
+
         return f"{self.name}\nid : {self.id}\nfunct : {self.funct}\ninterval:  {self.interval}\n year : {self.year} "
 
     def __str__(self):
+
         return self.__repr__()
 
     ####################################################
     # PLOTS
     ####################################################
 
-    # def plot(self) :
-
-    #     logger.debug("called")
-    #     self.ax.plot(self.current_population_x, self.current_population_y)
-
-    # def plot_population(self):
-
-    #     logger.debug("called")
-    #     fig, axs = plt.subplots(1, 1)
-    #     axs.scatter(self.current_population_x, self.current_population_y)
-
-    #     name = f"app/static/img/{self.id}-population-{self.year}.png"
-    #     plt.savefig(name, dpi=150)
-    #     self.population_images.append(name)
-
-    # def plot_learning(self):
-
-    #     logger.debug("called")
-    #     fig, axs = plt.subplots(1, 3)
-    #     xs = [i[0] for i in self.learning_curve]
-    #     ys = [i[1] for i in self.learning_curve]
-    #     years = [i[3] for i in self.learning_curve]
-    #     x = [i for i, _ in enumerate(xs)]
-    #     ax0 = axs[0].plot(x, xs)
-    #     # ax0.set_title("Xs")
-    #     ax1 = axs[1].plot(x, ys)
-    #     # ax1.set_title("Ys")
-    #     ax2 = axs[2].plot(x, years)
-    #     # ax1.set_title("Ys")
-
-    #     name = f"app/static/img/{self.id}-learning-{self.year}.png"
-    #     plt.savefig(name, dpi=150)
-    #     self.learning_images.append(name)
-
     @property
     def graph_pop(self):
+
+        logger.debug("called")
         L = [
             ["x", "y"],
         ]
@@ -326,6 +319,8 @@ class EvolutionAlgo1D:
 
     @property
     def graph_xs(self):
+
+        logger.debug("called")
         L = [
             ["years", "x"],
         ]
@@ -338,10 +333,14 @@ class EvolutionAlgo1D:
 
     @property
     def graph_xs_last(self):
+
+        logger.debug("called")
         return self.graph_xs[-1]
 
     @property
     def graph_ys(self):
+
+        logger.debug("called")
         L = [
             ["years", "y"],
         ]
@@ -354,10 +353,14 @@ class EvolutionAlgo1D:
 
     @property
     def graph_ys_last(self):
+
+        logger.debug("called")
         return self.graph_ys[-1]
 
     @property
     def graph_years(self):
+
+        logger.debug("called")
         L = [
             ["years", "year"],
         ]
@@ -370,4 +373,6 @@ class EvolutionAlgo1D:
 
     @property
     def graph_years_last(self):
+
+        logger.debug("called")
         return self.graph_years[-1]

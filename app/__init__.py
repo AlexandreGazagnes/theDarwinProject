@@ -3,8 +3,11 @@ from flask import Flask
 from flask import render_template, redirect, escape, request, session
 
 from params import Params
-from src.algo_child import NathanAlgo
+from src import *
 
+# from src.algo_child import NathanAlgo
+
+# replace by redis in next feature
 ALGO = dict()
 
 
