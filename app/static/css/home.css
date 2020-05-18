@@ -1,33 +1,64 @@
-#secondSection{
+
+#infoSection {
+    display: block;
+}
+
+#initSection{
     display: none;
 }
 
-
-#thirdSection{
+#stateSection{
     display: none;
 }
 
-
-#fourthSection{
+#actionSection{
     display: none;
 }
 
-
-#fithSection{
+#graphSection{
     display: none;
 }
-
-/* 
-#secondSection{
-    display: none;
-} */
-
 
 .myBorder {
     border-radius: 15px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: grey;    
-    padding: 10px 5px 10px 5px ;
-    margin: 10px 5px 10px 5px ;
+    /* border: 1px grey solid; */
+    padding: 20px 40px 20px 40px ;
+    margin: 20px 0px 20px 0px ;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    background-color: white;
+}
+
+.Italic {
+    font-size: small;
+    font-style: italic;
+}
+
+td.Italic {
+    padding-left: 30px;
+}
+
+div.extraPadding {
+    margin-top: 20px;
+}
+
+/* .questionButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+
+.btnGo {
+    border : 1px rgb(185, 185, 185) solid;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    padding-left: 5px;
+    padding-right:5px;
+}
+
+.btnGo p {
+    text-align: center;
 }

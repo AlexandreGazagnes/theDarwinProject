@@ -91,6 +91,29 @@ def initFromUser():
     return "Error", 500
 
 
+# get functs data
+@back.route("/functsdata", methods=["GET"])
+def get_functs_data():
+    """ """
+
+    logger.debug("called")
+    functs = Functs.as_dict
+    logger.warning("\n\n\n\n")
+    logger.warning(type(functs))
+    logger.warning(functs)
+    functs = {
+        k: {kk: vv for kk, vv in v.items() if "funct" not in kk}
+        for k, v in functs.items()
+    }
+    logger.warning("\n\n\n\n")
+    logger.warning(functs)
+    logger.warning(type(functs))
+    resp = jsonify(functs)
+    # logger.critical(resp)
+    resp.status_code = 200
+    return resp
+
+
 # get static state
 @back.route("/staticstate", methods=["GET"])
 def get_static_state():
@@ -163,7 +186,7 @@ def get_xs():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_xs), 200
+    return jsonify(algo.graph_xs_last), 200
 
 
 @back.route("/getys", methods=["GET"])
@@ -172,7 +195,7 @@ def get_ys():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_ys), 200
+    return jsonify(algo.graph_ys_last), 200
 
 
 @back.route("/getyears", methods=["GET"])
@@ -181,7 +204,7 @@ def get_years():
 
     logger.debug("called")
     algo = get_algo()
-    return jsonify(algo.graph_years), 200
+    return jsonify(algo.graph_years_last), 200
 
 
 @back.route("/dummycall", methods=["GET"])

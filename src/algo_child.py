@@ -9,11 +9,10 @@ class NathanAlgo(EvolutionAlgo1D):
         super().__init__(
             funct=Functs.d1.nathanCos,
             objective="min",
-            winning_threshold=0.001,
             interval=[-50, 50],
             seed_parents=12,
             kill_rate=0.25,
-            birth_rate=1,
+            demography=1,
             average_child_numb=0.66,
             _round=5,
         )

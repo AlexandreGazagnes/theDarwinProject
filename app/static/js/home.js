@@ -7,28 +7,59 @@
 var algoInitilalized = false;
 var algoId = "";
 var year = 0;
+var functsData;
 
 
+//graph var
+var xMin = 0;
+var xMax = 15;
+var yMin = 0;
+var yMax = 15;
 
-function dummyCall() {
-    $.ajax({
-        type: "GET",
-        url: "/dummycall?algoId=" + algoId,
-        // async: false, // Mode synchrone
-        success: function (data) {
-            console.debug('OK')
-        }
-    });
-}
+// scatter
+var pointSize = 6;
+var pointShape = "circle";
 
+// coorodnates
+var population = [["x", "y"], [1, 1], [2, 2]];
+var xs_last = [["years", "x"], [0.0, 10.0]];
+var ys_last = [["years", "y"], [0.0, 10.0]];
+var years_last = [["years", "last_new_year"], [0.0, 0.0]];
+
+
+// function dummyCall() {
+//     $.ajax({
+//         type: "GET",
+//         url: "/dummycall?algoId=" + algoId,
+//         // async: false, // Mode synchrone
+//         success: function (data) {
+//             console.debug('OK')
+//         }
+//     });
+// }
 
 
 // display the form on first click
 function toggleView_0() {
     console.debug("toggleView_0 called");
-    $("#firstSection").slideUp();
-    $("#secondSection").slideDown();
+    $("#infoSection").slideUp();
+    $("#initSection").slideDown();
 }
+
+
+
+function getFunctsData() {
+    console.debug("getFunctData")
+    $.ajax({
+        type: "GET",
+        url: "/functsdata",
+        async: false, // Mode synchrone
+        success: function (data) {
+            functsData = data;
+        }
+    });
+}
+
 
 
 // Once Algo initilialied gather static info of the lago 
@@ -41,13 +72,18 @@ function getStaticState() {
         // async: false, // Mode synchrone
         success: function (data) {
             // $("#ajaxResponse").html(data);
-            $("#rowId").html(data["id"]);
-            $("#rowName").html(data["name"]);
-            $("#rowObjective").html(data["objective"]);
-            $("#rowInterval").html(data["interval"]);
-            $("#rowSeedParents").html(data["seed_parents"]);
-            $("#rowKillRate").html(data["kill_rate"]);
-            $("#rowAverageChildNumb").html(data["average_child_numb"]);
+            $("#staticId").html(data["id"]);
+            $("#staticName").html(data["name"]);
+            let strFunct = $("#funct option:selected").val();
+            $("#staticFunct").html(functsData[strFunct]["name"]);
+            $("#staticLevel").html(functsData[strFunct]["level"]);
+            $("#staticExpression").html(functsData[strFunct]["expression"]);
+            $("#staticDimension").html(functsData[strFunct]["dim"]);
+            $("#staticObjective").html(data["objective"]);
+            $("#staticInterval").html(data["interval"]);
+            $("#staticSeedParents").html(data["seed_parents"]);
+            $("#staticKillRate").html(data["kill_rate"]);
+            $("#staticAverageChildNumb").html(data["average_child_numb"]);
         }
     });
 }
@@ -64,7 +100,11 @@ function getDynamicState() {
         success: function (data) {
             $("#rowLen").html(data["len_current_population"]);
             $("#rowYear").html(data["year"]);
-            $("#rowBest").html(data["best_current_population"]);
+            console.debug(data["repartition_current_population"])
+            $("#rowOriginal").html(data["repartition_current_population"]["first"]);
+            $("#rowNormal").html(data["repartition_current_population"]["normal"]);
+            $("#rowMutant").html(data["repartition_current_population"]["random"]);
+            $("#rowBest").html(data["best_current_population"].slice(0, 3)).toString();
         }
     });
 }
@@ -74,12 +114,11 @@ function getDynamicState() {
 // init graph and change global val
 function handleInitMethod(data) {
     console.debug("handleInitMethod")
-    $("#firstSection").slideUp();
-    $("#secondSection").slideUp();
-    $("#thirdSection").slideDown();
-    $("#fourthSection").slideDown();
-    $("#fithSection").slideDown();
-
+    $("#infoSection").slideUp();
+    $("#initSection").slideUp();
+    $("#stateSection").slideDown();
+    $("#actionSection").slideDown();
+    $("#graphSection").slideDown();
     getStaticState();
     getDynamicState();
     updateCharts();
@@ -90,7 +129,7 @@ function handleInitMethod(data) {
 // makeInitFromModel
 function makeInitFromModel() {
     console.debug("makeInitFromModel")
-    $("#firstSection").slideUp();
+    $("#infoSection").slideUp();
     $.ajax({
         type: "POST",
         url: "/initfrommodel",
@@ -114,7 +153,6 @@ function makeInitFromUser() {
         $.ajax({
             type: "POST",
             url: "/initfromuser",
-            data: algoID,
             // async: false, // Mode synchrone
             data: $(this).serialize(), // serializes the form's elements.
             success: function (data) {
@@ -138,7 +176,6 @@ function range(start, end) {
 }
 
 
-
 // once algo init call x min and max
 function getLim(c) {
     var arrData = [-42, -42];
@@ -154,85 +191,12 @@ function getLim(c) {
 }
 
 
-
-// once algo init call x min and max
-// function getXLim() {
-//     var arrData = [-42, -42];
-//     $.ajax({
-//         type: "GET",
-//         url: "/getxlim?algoId=" + algoId,
-//         async: false, // Mode synchrone
-//         success: function (data) {
-//             arrData = [data.min, data.max];
-//         }
-//     });
-//     return arrData;
-// }
-
-
-// // once algo init call y min and max
-// function getYLim() {
-//     var arrData = [-42, -42];
-//     $.ajax({
-//         type: "GET",
-//         url: "/getylim?algoId=" + algoId,
-//         async: false, // Mode synchrone
-//         success: function (data) {
-//             arrData = [data.min, data.max];
-//         }
-//     });
-//     return arrData;
-// }
-
-
 // once algo init call all x,y pairs for the population
-function getPopulation() {
+function getGraphData(d) {
     var arrData = [-42, -42];
     $.ajax({
         type: "GET",
-        url: "/getpopulation?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
-}
-
-
-function getXs() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getxs?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
-}
-
-
-function getYs() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getys?algoId=" + algoId,
-        async: false, // Mode synchrone
-        success: function (data) {
-            arrData = data;
-        }
-    });
-    return arrData;
-}
-
-
-function getYears() {
-    var arrData = [-42, -42];
-    $.ajax({
-        type: "GET",
-        url: "/getyears?algoId=" + algoId,
+        url: "/get" + d + "?algoId=" + algoId,
         async: false, // Mode synchrone
         success: function (data) {
             arrData = data;
@@ -254,25 +218,20 @@ function drawPopChart() {
         var xMax = xLim[1];
         var yMin = yLim[0];
         var yMax = yLim[1];
-        var population = getPopulation();
-    } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var population = [['x', 'y'], [1, 1], [2, 2]]
+        population = getGraphData('population');
     }
-
     // scatter
-    console.log("population = " + population);
+    // console.log("population = " + population);
     var data = google.visualization.arrayToDataTable(population);
 
     // options
     var options = {
-        title: 'current population',
+        // title: 'current population',
         hAxis: { title: 'x', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
-        legend: 'none'
+        legend: 'none',
+        pointSize: pointSize,
+        pointShape: pointShape
     };
 
     // init chart on DOM element and push
@@ -292,38 +251,31 @@ function drawXsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var xs = getXs();
-    } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var xs = [["years", "x"], [1, 1], [2, 2]];
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
+        xs_last.push(getGraphData('xs'));
+        // console.log("xs_last = " + typeof (xs_last) + " --> " + xs_last);
     }
 
     // scatter
-    console.log("xs = " + xs);
-    var data = google.visualization.arrayToDataTable(xs);
+    // console.log("xs = " + xs);
+    var data = google.visualization.arrayToDataTable(xs_last);
 
     // options
     var options = {
-        title: 'xs evolution in year',
+        title: "best 'x' value evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'x', minValue: yMin, maxValue: yMax },
         legend: 'none'
+
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('xsChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('xsChart'));
     chart.draw(data, options);
 }
-
-
-
 
 // make a chart 
 function drawYsChart() {
@@ -336,33 +288,27 @@ function drawYsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var ys = getYs();
-    } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var ys = [["years", "x"], [1, 1], [2, 2]];
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
+        ys_last.push(getGraphData('ys'));
     }
 
     // scatter
-    console.log("ys = " + ys);
-    var data = google.visualization.arrayToDataTable(ys);
+    // console.log("ys = " + ys);
+    var data = google.visualization.arrayToDataTable(ys_last);
 
     // options
     var options = {
-        title: 'ys evolution in year',
+        title: "best 'y' value evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
         legend: 'none'
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('ysChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('ysChart'));
     chart.draw(data, options);
 }
 
@@ -377,36 +323,30 @@ function drawYearsChart() {
         // var xMax = xLim[1];
         // var yMin = yLim[0];
         // var yMax = yLim[1];
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var years = getYears();
-    } else {
-        var xMin = 0;
-        var xMax = 15;
-        var yMin = 0;
-        var yMax = 15;
-        var years = [["years", "x"], [1, 1], [2, 2]];
+        // var xMin = 0;
+        // var xMax = 15;
+        // var yMin = 0;
+        // var yMax = 15;
+        years_last.push(getGraphData('years'));
     }
 
     // scatter
-    console.log("years = " + years);
-    var data = google.visualization.arrayToDataTable(years);
+    // console.log("years = " + years);
+    var data = google.visualization.arrayToDataTable(years_last);
 
     // options
     var options = {
-        title: 'ys evolution in year',
+        title: "year of best found solution evolution during years",
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
-        vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
+        vAxis: { title: 'year of best solution', minValue: yMin, maxValue: yMax },
         legend: 'none'
+
     };
 
     // init chart on DOM element and push
-    var chart = new google.visualization.ScatterChart(document.getElementById('yearsChart'));
+    var chart = new google.visualization.LineChart(document.getElementById('yearsChart'));
     chart.draw(data, options);
 }
-
 
 
 // manage chart creation
@@ -454,8 +394,40 @@ function run() {
 }
 
 
+
+
+function initFunctDescr() {
+    var strFunct = $("#funct option:selected").val();
+    let functObject = functsData[strFunct];
+    $("#functLevel").html(functObject['level']);
+    $("#functExpression").html(functObject['expression']);
+    $("#functDimension").html(functObject['dim']);
+}
+
+
+
+// load Image funct 
+function initFunctImage() {
+    var strFunct = $("#funct option:selected").val();
+    let urlImg = "/static/img/functs/" + strFunct + ".png";
+    $("#functSrcImg").attr("src", urlImg);
+}
+
+
+// reload image function on change of funct elector
+function onFunctChange() {
+    $("#funct").change(function () {
+        initFunctImage();
+        initFunctDescr();
+    });
+}
+
 // on ready
 $(function () {
+    getFunctsData();
+    initFunctDescr();
+    initFunctImage();
+    onFunctChange();
     makeInitFromUser();
     run();
 }); 
