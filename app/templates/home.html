@@ -20,15 +20,19 @@
             commonly used
             to generate high-quality solutions to optimization and search problems by relying on biologically inspired
             operators
-            such as mutation, crossover and selection.[1] John Holland introduced genetic algorithms in 1960 based on
+            such as mutation, crossover and selection. John Holland introduced genetic algorithms in 1960 based on
             the concept of
-            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.[2]
+            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.
         </p>
     </div>
     <div id="secondQuestion" class=" myBorder questionItem">
-        <h3>What this SPA do ? </h3>
-        <p>EvolutionAlgo helps you to define test and modelize various gentic algorythm to unerstand how init
-            parameaters can infulence an evolution scenario</p>
+        <h3>What this app about ? </h3>
+        <p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a very basic
+            but powerfull concept. You can just make a random try, or define a very rich collection of feature to test,
+            improve and upgrade your own darwin vision of the world.</p>
+        <p>
+            Play to learn, learn to play, please have some fun but usefull time with Darwin !
+        </p>
     </div>
     <div id="letsGo" class="myBorder">
         <h3>let's Go?</h3>
@@ -56,8 +60,8 @@
         <!-- funct -->
         <div class="row">
             <div class="col-sm-8">
-                <div style="padding-top: 50px;" class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
-                    <small>{{ initForm.funct.description }}</small>
+                <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
+                    <small>{{ initForm.funct.description }} </small>
                     {% if initForm.funct.errors %}
                     <ul class="errors">
                         {% for error in initForm.funct.errors %}
@@ -65,10 +69,27 @@
                         {% endfor %}
                     </ul>
                     {% endif %}
+                    <div class="extraPadding">
+                        <table>
+                            <tr>
+                                <th class="Italic">level </th>
+                                <td class="Italic" id="functLevel"></td>
+                            </tr>
+                            <tr>
+                                <th class="Italic">expression </th>
+                                <td class="Italic" id="functExpression"></td>
+                            </tr>
+                            <tr>
+                                <th class="Italic">dimension </th>
+                                <td class="Italic" id="functDimension"></td>
+                            </tr>
+
+                        </table>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4">
-                <img id="imgSrc" src="/static/img/functs/x2.png" width="100%" height="200" alt="funct visula">
+                <img id="functSrcImg" src="" width="100%" height="200" alt="short visual of the function">
             </div>
         </div>
         <!-- objective -->
@@ -128,6 +149,17 @@
             {% if initForm.kill_rate.errors %}
             <ul class="errors">
                 {% for error in initForm.kill_rate.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <!-- demography -->
+        <div class="form-group">{{ initForm.demography.label }}
+            {{ initForm.demography }}<small>{{ initForm.demography.description }}</small>
+            {% if initForm.demography.errors %}
+            <ul class="errors">
+                {% for error in initForm.demography.errors %}
                 <li class="invalid-feedback">{{ error }}</li>
                 {% endfor %}
             </ul>

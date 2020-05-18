@@ -91,6 +91,29 @@ def initFromUser():
     return "Error", 500
 
 
+# get functs data
+@back.route("/functsdata", methods=["GET"])
+def get_functs_data():
+    """ """
+
+    logger.debug("called")
+    functs = Functs.as_dict
+    logger.warning("\n\n\n\n")
+    logger.warning(type(functs))
+    logger.warning(functs)
+    functs = {
+        k: {kk: vv for kk, vv in v.items() if "funct" not in kk}
+        for k, v in functs.items()
+    }
+    logger.warning("\n\n\n\n")
+    logger.warning(functs)
+    logger.warning(type(functs))
+    resp = jsonify(functs)
+    # logger.critical(resp)
+    resp.status_code = 200
+    return resp
+
+
 # get static state
 @back.route("/staticstate", methods=["GET"])
 def get_static_state():

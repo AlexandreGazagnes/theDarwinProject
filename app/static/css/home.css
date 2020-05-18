@@ -35,3 +35,12 @@
     font-size: small;
     font-style: italic;
 }
+
+td.Italic {
+    padding-left: 30px;
+}
+
+
+div.extraPadding {
+    margin-top: 20px;
+}

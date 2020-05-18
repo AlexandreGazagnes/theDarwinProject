@@ -7,6 +7,7 @@
 var algoInitilalized = false;
 var algoId = "";
 var year = 0;
+var functsData;
 
 
 //graph var
@@ -43,6 +44,21 @@ function toggleView_0() {
     $("#infoSection").slideUp();
     $("#initSection").slideDown();
 }
+
+
+
+function getFunctsData() {
+    console.debug("getFunctData")
+    $.ajax({
+        type: "GET",
+        url: "/functsdata",
+        async: false, // Mode synchrone
+        success: function (data) {
+            functsData = data;
+        }
+    });
+}
+
 
 
 // Once Algo initilialied gather static info of the lago 
@@ -82,7 +98,6 @@ function getDynamicState() {
             $("#rowOriginal").html(data["repartition_current_population"]["first"]);
             $("#rowNormal").html(data["repartition_current_population"]["normal"]);
             $("#rowMutant").html(data["repartition_current_population"]["random"]);
-
             $("#rowBest").html(data["best_current_population"].slice(0, 3)).toString();
         }
     });
@@ -376,23 +391,40 @@ function run() {
 }
 
 
-function loadFunctImage() {
-    $("#funct").change(function () {
-        var strFunct = $("#funct option:selected").val();
-        let urlImg = "/static/img/functs/" + strFunct + ".png"
-        // console.warn(strFunct);
-        // console.warn(urlImg)
-        $("#imgSrc").attr("src", urlImg)
 
-        // DEPRECATED
-        // var selectedCountry = $(this).children("option:selected").text();
-        // console.warn(urlImg)("You have selected the country - " + selectedCountry);
+
+function initFunctDescr() {
+    var strFunct = $("#funct option:selected").val();
+    let functObject = functsData[strFunct];
+    $("#functLevel").html(functObject['level']);
+    $("#functExpression").html(functObject['expression']);
+    $("#functDimension").html(functObject['dim']);
+}
+
+
+
+// load Image funct 
+function initFunctImage() {
+    var strFunct = $("#funct option:selected").val();
+    let urlImg = "/static/img/functs/" + strFunct + ".png";
+    $("#functSrcImg").attr("src", urlImg);
+}
+
+
+// reload image function on change of funct elector
+function onFunctChange() {
+    $("#funct").change(function () {
+        initFunctImage();
+        initFunctDescr();
     });
 }
 
 // on ready
 $(function () {
-    loadFunctImage();
+    getFunctsData();
+    initFunctDescr();
+    initFunctImage();
+    onFunctChange();
     makeInitFromUser();
     run();
 }); 

@@ -15,7 +15,7 @@ from wtforms.validators import DataRequired, Length, NumberRange
 from src.functs import Functs
 
 
-choicesFuncts = [(k, v["expression"]) for k, v in Functs.as_dict.items()]
+choicesFuncts = [(k, v["name"]) for k, v in Functs.as_dict.items()]
 choicesObjectives = [("min", "Min"), ("max", "Max")]
 
 
@@ -24,33 +24,33 @@ class InitForm(FlaskForm):
     funct = SelectField(
         "Function",
         choices=choicesFuncts,
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
+        description="choose a function",
         render_kw={"class": "form-control"},
         validators=[DataRequired(message="data required"),],
     )
     objective = SelectField(
         "Objective",
         choices=choicesObjectives,
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
+        description="select the objective",
         render_kw={"class": "form-control"},
         validators=[DataRequired(message="data required"),],
     )
     interval_up = IntegerField(
         "Interval Up",
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
+        description="high limit for objective search (in -1000 / 1000)",
         render_kw={"class": "form-control", "placeholder": "ex : 100"},
         validators=[
             DataRequired(message="data required"),
-            NumberRange(-100, 100, message="please -100 --> 100"),
+            NumberRange(-1000, 1000, message="please -1000 --> 1000"),
         ],
     )
     interval_down = IntegerField(
         "Interval Down",
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
+        description="low limit for objective search (in -1000 / 1000)",
         render_kw={"class": "form-control", "placeholder": "ex : -100"},
         validators=[
             DataRequired(message="data required"),
-            NumberRange(-100, 100, message="please -100 --> 100"),
+            NumberRange(-1000, 1000, message="please -1000 --> 1000"),
         ],
     )
 
@@ -65,15 +65,26 @@ class InitForm(FlaskForm):
     )
     kill_rate = FloatField(
         "Kill Rate",
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
+        description="the % of the worst candidate who die in the population",
         render_kw={"class": "form-control", "placeholder": "ex : 0.75"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(0.01, 0.99, message="please 0.01 --> 0.99"),
         ],
     )
+
+    demography = FloatField(
+        "Demography",
+        description="rate of evolution of the population each year (between 0.75 and 1.25",
+        render_kw={"class": "form-control", "placeholder": "ex : 1.0"},
+        validators=[
+            DataRequired(message="data required"),
+            NumberRange(0.75, 1.25, message="please 0.75 --> 1.25"),
+        ],
+    )
+
     average_child_numb = FloatField(
-        "% average childs vs mutant child",
+        "Normal  vs mutant child",
         description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control", "placeholder": "ex : 0.25"},
         validators=[
