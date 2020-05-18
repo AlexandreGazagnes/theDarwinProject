@@ -16,6 +16,7 @@ var xMax = 15;
 var yMin = 0;
 var yMax = 15;
 
+// scatter
 var pointSize = 6;
 var pointShape = "circle";
 
@@ -205,6 +206,7 @@ function getGraphData(d) {
 }
 
 
+
 // make a chart 
 function drawPopChart() {
 
@@ -267,8 +269,7 @@ function drawXsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'x', minValue: yMin, maxValue: yMax },
         legend: 'none'
-        // pointSize: pointSize,
-        // pointShape: pointShape
+
     };
 
     // init chart on DOM element and push
@@ -304,8 +305,6 @@ function drawYsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'y', minValue: yMin, maxValue: yMax },
         legend: 'none'
-        // pointSize: pointSize,
-        // pointShape: pointShape
     };
 
     // init chart on DOM element and push
@@ -341,8 +340,7 @@ function drawYearsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'year of best solution', minValue: yMin, maxValue: yMax },
         legend: 'none'
-        // pointSize: pointSize,
-        // pointShape: pointShape
+
     };
 
     // init chart on DOM element and push

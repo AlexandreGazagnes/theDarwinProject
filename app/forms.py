@@ -15,8 +15,8 @@ from wtforms.validators import DataRequired, Length, NumberRange
 from src.functs import Functs
 
 
-choicesFuncts = [(k, v["name"]) for k, v in Functs.as_dict.items()]
-choicesObjectives = [("min", "Min"), ("max", "Max")]
+choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.as_dict.items()]
+choicesObjectives = [("min", "min"), ("max", "max")]
 
 
 class InitForm(FlaskForm):
@@ -128,4 +128,16 @@ class RunForm(FlaskForm):
             NumberRange(1, 100, message="please 1 --> 100"),
         ],
     )
+
+    display = BooleanField(
+        "Display original funct graph",
+        # description="year per sec (min 1, max 100)",
+        default=False,
+        # render_kw={"class": "form-control"},
+        validators=[
+            DataRequired(message="data required"),
+            # NumberRange(1, 100, message="please 1 --> 100"),
+        ],
+    )
+
     submit = SubmitField("Run", render_kw={"class": "btn btn-primary form-control"},)

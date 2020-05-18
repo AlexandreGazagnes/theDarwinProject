@@ -212,102 +212,112 @@
 
 <!-- SECTION STATE -->
 <section id="stateSection">
-    <h2>Static State</h2>
-    <div class="myBorder">
-        <table>
-            <tr>
-                <th>id </th>
-                <td id="staticId"></td>
-            </tr>
-            <tr>
-                <th>name </th>
-                <td id="staticName"></td>
-            </tr>
-            <tr>
-                <th>funct </th>
-                <td id="staticFunct"></td>
-            </tr>
+    <!-- <div class="row">
+        <div class="col-sm-6"> -->
+    <div id="staticState">
+        <h2>Static State</h2>
+        <div class="myBorder">
+            <table>
+                <tr>
+                    <th>id </th>
+                    <td id="staticId"></td>
+                </tr>
+                <tr>
+                    <th>name </th>
+                    <td id="staticName"></td>
+                </tr>
+                <tr>
+                    <th>funct </th>
+                    <td id="staticFunct"></td>
+                </tr>
 
-            <tr>
-                <th>shape </th>
-                <td id="staticShape">
-                    <img src="" alt="an image">
-                </td>
-            </tr>
-            <tr>
-                <th class="Italic">- level </th>
-                <td id="staticLevel" class="Italic"></td>
-            </tr>
-            <tr>
-                <th class="Italic">- expression </th>
-                <td id="staticExpression" class="Italic"></td>
-            </tr>
-            <tr>
-                <th class="Italic">- dimension </th>
-                <td id="staticDimension" class="Italic"></td>
-            </tr>
-            <tr>
-                <th>objective </th>
-                <td id="staticObjective"></td>
-            </tr>
-            <tr>
-                <th>interval </th>
-                <td id="staticInterval"></td>
-            </tr>
-            <tr>
-                <th>seed parents </th>
-                <td id="staticSeedParents"></td>
-            </tr>
-            <tr>
-                <th>kill rate </th>
-                <td id="staticKillRate"></td>
-            </tr>
-            <tr>
-                <th>demography </th>
-                <td id="staticDemography"></td>
-            </tr>
-            <tr>
-                <th>average_child_numb </th>
-                <td id="staticAverageChildNumb"></td>
-            </tr>
-
-        </table>
+                <tr>
+                    <th>shape </th>
+                    <td id="staticShape">
+                        <img src="" alt="an image">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="Italic">- level </th>
+                    <td id="staticLevel" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- expression </th>
+                    <td id="staticExpression" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- dimension </th>
+                    <td id="staticDimension" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th>objective </th>
+                    <td id="staticObjective"></td>
+                </tr>
+                <tr>
+                    <th>interval </th>
+                    <td id="staticInterval"></td>
+                </tr>
+                <tr>
+                    <th>seed parents </th>
+                    <td id="staticSeedParents"></td>
+                </tr>
+                <tr>
+                    <th>kill rate </th>
+                    <td id="staticKillRate"></td>
+                </tr>
+                <tr>
+                    <th>demography </th>
+                    <td id="staticDemography"></td>
+                </tr>
+                <tr>
+                    <th>average_child_numb </th>
+                    <td id="staticAverageChildNumb"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <h2>Dynamic State</h2>
-    <div class="myBorder">
+    <!-- </div> -->
+    <!-- <div class="col-sm-6"> -->
+    <div id="dynamicState">
+        <h2>Dynamic State</h2>
+        <div class="myBorder">
 
-        <table>
-            <tr>
-                <th>year </th>
-                <td id="rowYear"></td>
-            </tr>
-            <tr>
-                <th>pop size </th>
-                <td id="rowLen"></td>
-            </tr>
-            <tr>
-                <th class="Italic">- original </th>
-                <td id="rowOriginal" class="Italic"></td>
-            </tr>
-            <tr>
-                <th class="Italic">- normal </th>
-                <td id="rowNormal" class="Italic"></td>
-            </tr>
-            <tr>
-                <th class="Italic">- mutant </th>
-                <td id="rowMutant" class="Italic"></td>
-            </tr>
-            <tr>
-                <th>best elems</th>
-                <td id="rowBest"></td>
-            </tr>
-        </table>
+            <table>
+                <tr>
+                    <th>year </th>
+                    <td id="rowYear"></td>
+                </tr>
+                <tr>
+                    <th>pop size </th>
+                    <td id="rowLen"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- original </th>
+                    <td id="rowOriginal" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- normal </th>
+                    <td id="rowNormal" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- mutant </th>
+                    <td id="rowMutant" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th>best elems</th>
+                    <td id="rowBest"></td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <!-- </div>
+    </div> -->
 </section>
 
 
 <!-- SECTION ACTION -->
 <section id="actionSection">
+
     <h2>Action</h2>
     <form id="runForm" class="myBorder formwrapper">
         <div class="row">
@@ -341,6 +351,23 @@
                     {% endif %}
                 </div>
             </div>
+        </div>
+        <div class row>
+            <div class="col">
+                <div class="form-group">
+                    {{ runForm.display.label }}
+                    {{ runForm.display }}
+                    {% if runForm.display.errors %}
+                    <ul class="errors">
+                        {% for error in runForm.display.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
         </div>
         <div class="form-row">
             <div class="col">
