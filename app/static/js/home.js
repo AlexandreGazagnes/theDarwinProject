@@ -1,8 +1,3 @@
-// ------------------------------------------
-//  home.js
-// ------------------------------------------
-
-
 // global var
 var algoInitilalized = false;
 var algoId = "";
@@ -16,27 +11,17 @@ var xMax = 15;
 var yMin = 0;
 var yMax = 15;
 
+
 // scatter
 var pointSize = 6;
 var pointShape = "circle";
+
 
 // coorodnates
 var population = [["x", "y"], [1, 1], [2, 2]];
 var xs_last = [["years", "x"], [0.0, 10.0]];
 var ys_last = [["years", "y"], [0.0, 10.0]];
 var years_last = [["years", "last_new_year"], [0.0, 0.0]];
-
-
-// function dummyCall() {
-//     $.ajax({
-//         type: "GET",
-//         url: "/dummycall?algoId=" + algoId,
-//         // async: false, // Mode synchrone
-//         success: function (data) {
-//             console.debug('OK')
-//         }
-//     });
-// }
 
 
 // display the form on first click
@@ -47,7 +32,7 @@ function toggleView_0() {
 }
 
 
-
+// get all functs data dicts
 function getFunctsData() {
     console.debug("getFunctData")
     $.ajax({
@@ -60,6 +45,61 @@ function getFunctsData() {
     });
 }
 
+
+//Manage init algo method from the button model
+// makeInitFromModel
+function makeInitFromModel() {
+    console.debug("makeInitFromModel")
+    $("#infoSection").slideUp();
+    $.ajax({
+        type: "POST",
+        url: "/initfrommodel",
+        // async: false, // Mode synchrone
+        success: function (data) {
+            algoInitilalized = true;
+            algoId = data;
+            console.log("algoId = " + data);
+            handleInitMethod();
+        }
+    });
+}
+
+
+//Manage init algo method from the button user custom algo
+// makeInitFromUser
+function makeInitFromUser() {
+    $("#initFormUser").submit(function (e) {
+        console.log("makeInitFromUser")
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+        $.ajax({
+            type: "POST",
+            url: "/initfromuser",
+            // async: false, // Mode synchrone
+            data: $(this).serialize(), // serializes the form's elements.
+            success: function (data) {
+                algoInitilalized = true;
+                algoId = data;
+                console.log("algoId = " + data);
+                handleInitMethod(data);
+            }
+        });
+    });
+}
+
+
+// Init an object fill static and dynamic state
+// init graph and change global val
+function handleInitMethod(data) {
+    console.debug("handleInitMethod")
+    $("#infoSection").slideUp();
+    $("#initSection").slideUp();
+    $("#stateSection").slideDown();
+    $("#actionSection").slideDown();
+    $("#graphSection").slideDown();
+    getStaticState();
+    getDynamicState();
+    updateCharts();
+}
 
 
 // Once Algo initilialied gather static info of the lago 
@@ -110,62 +150,6 @@ function getDynamicState() {
 }
 
 
-// Init an object fill static and dynamic state
-// init graph and change global val
-function handleInitMethod(data) {
-    console.debug("handleInitMethod")
-    $("#infoSection").slideUp();
-    $("#initSection").slideUp();
-    $("#stateSection").slideDown();
-    $("#actionSection").slideDown();
-    $("#graphSection").slideDown();
-    getStaticState();
-    getDynamicState();
-    updateCharts();
-}
-
-
-//Manage init algo method from the button model
-// makeInitFromModel
-function makeInitFromModel() {
-    console.debug("makeInitFromModel")
-    $("#infoSection").slideUp();
-    $.ajax({
-        type: "POST",
-        url: "/initfrommodel",
-        // async: false, // Mode synchrone
-        success: function (data) {
-            algoInitilalized = true;
-            algoId = data;
-            console.log("algoId = " + data);
-            handleInitMethod();
-        }
-    });
-}
-
-
-//Manage init algo method from the button user custom algo
-// makeInitFromUser
-function makeInitFromUser() {
-    $("#initFormUser").submit(function (e) {
-        console.log("makeInitFromUser")
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-        $.ajax({
-            type: "POST",
-            url: "/initfromuser",
-            // async: false, // Mode synchrone
-            data: $(this).serialize(), // serializes the form's elements.
-            success: function (data) {
-                algoInitilalized = true;
-                algoId = data;
-                console.log("algoId = " + data);
-                handleInitMethod(data);
-            }
-        });
-    });
-}
-
-
 // a range function
 function range(start, end) {
     var array = new Array();
@@ -204,7 +188,6 @@ function getGraphData(d) {
     });
     return arrData;
 }
-
 
 
 // make a chart 
@@ -340,7 +323,6 @@ function drawYearsChart() {
         hAxis: { title: 'years', minValue: xMin, maxValue: xMax },
         vAxis: { title: 'year of best solution', minValue: yMin, maxValue: yMax },
         legend: 'none'
-
     };
 
     // init chart on DOM element and push
@@ -360,7 +342,7 @@ function updateCharts() {
 
 
 // run
-function run() {
+function onRunSubmit() {
     $("#runForm").submit(function (e) {
         e.preventDefault(); // avoid to execute the actual submit of the form.
         console.debug("run");
@@ -394,8 +376,7 @@ function run() {
 }
 
 
-
-
+// once fnct is seected update specific info
 function initFunctDescr() {
     var strFunct = $("#funct option:selected").val();
     let functObject = functsData[strFunct];
@@ -405,8 +386,7 @@ function initFunctDescr() {
 }
 
 
-
-// load Image funct 
+// once fnct is seected update specific image
 function initFunctImage() {
     var strFunct = $("#funct option:selected").val();
     let urlImg = "/static/img/functs/" + strFunct + ".png";
@@ -422,6 +402,7 @@ function onFunctChange() {
     });
 }
 
+
 // on ready
 $(function () {
     getFunctsData();
@@ -429,5 +410,17 @@ $(function () {
     initFunctImage();
     onFunctChange();
     makeInitFromUser();
-    run();
-}); 
+    onRunSubmit();
+});
+
+
+// function dummyCall() {
+//     $.ajax({
+//         type: "GET",
+//         url: "/dummycall?algoId=" + algoId,
+//         // async: false, // Mode synchrone
+//         success: function (data) {
+//             console.debug('OK')
+//         }
+//     });
+// }
