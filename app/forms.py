@@ -37,8 +37,9 @@ class InitForm(FlaskForm):
     )
     interval_up = IntegerField(
         "Interval Up",
+        default=100,
         description="high limit for objective search (in -1000 / 1000)",
-        render_kw={"class": "form-control", "placeholder": "ex : 100"},
+        render_kw={"class": "form-control", "placeholder": "default : 100"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(-1000, 1000, message="please -1000 --> 1000"),
@@ -46,8 +47,9 @@ class InitForm(FlaskForm):
     )
     interval_down = IntegerField(
         "Interval Down",
+        default=-100,
         description="low limit for objective search (in -1000 / 1000)",
-        render_kw={"class": "form-control", "placeholder": "ex : -100"},
+        render_kw={"class": "form-control", "placeholder": "default : -100"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(-1000, 1000, message="please -1000 --> 1000"),
@@ -56,8 +58,9 @@ class InitForm(FlaskForm):
 
     seed_parents = IntegerField(
         "Seed Parents",
-        render_kw={"class": "form-control", "placeholder": "ex : 100"},
+        render_kw={"class": "form-control", "placeholder": "default : 100"},
         description="nb of initial parents (between 10 and 1000)",
+        default=100,
         validators=[
             DataRequired(message="data required"),
             NumberRange(10, 1000, message="please 10 --> 1000"),
@@ -65,8 +68,9 @@ class InitForm(FlaskForm):
     )
     kill_rate = FloatField(
         "Kill Rate",
+        default=0.75,
         description="the % of the worst candidate who die in the population",
-        render_kw={"class": "form-control", "placeholder": "ex : 0.75"},
+        render_kw={"class": "form-control", "placeholder": "default : 0.75"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(0.01, 0.99, message="please 0.01 --> 0.99"),
@@ -75,8 +79,9 @@ class InitForm(FlaskForm):
 
     demography = FloatField(
         "Demography",
-        description="rate of evolution of the population each year (between 0.75 and 1.25",
-        render_kw={"class": "form-control", "placeholder": "ex : 1.0"},
+        default=1,
+        description="rate of evolution of the population each year (between 0.75 and 1.25)",
+        render_kw={"class": "form-control", "placeholder": "default : 1.0"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(0.75, 1.25, message="please 0.75 --> 1.25"),
@@ -85,8 +90,9 @@ class InitForm(FlaskForm):
 
     average_child_numb = FloatField(
         "Normal  vs mutant child",
-        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
-        render_kw={"class": "form-control", "placeholder": "ex : 0.25"},
+        description="% of child from",
+        default=0.25,
+        render_kw={"class": "form-control", "placeholder": "default : 0.25"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(0.01, 0.99, message="please 0.01 --> 0.99"),
