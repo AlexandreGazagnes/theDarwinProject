@@ -2,15 +2,15 @@ version: '3.3'
 
 services:
 
-    evolutionalGo:
+    evolutional-go:
         build:
             context: .
             dockerfile: Dockerfile
             # args:
             #     dummy: "dummy"
         # restart: always
-        image: evolutionalGo:v1.0.0
-        container_name: evolutionalGo_cont
+        image: evolutional-go:v1.0.0
+        container_name: evolutional-go_cont
         volumes:
             - .:/app
         # environment:
