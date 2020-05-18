@@ -71,13 +71,18 @@ function getStaticState() {
         // async: false, // Mode synchrone
         success: function (data) {
             // $("#ajaxResponse").html(data);
-            $("#rowId").html(data["id"]);
-            $("#rowName").html(data["name"]);
-            $("#rowObjective").html(data["objective"]);
-            $("#rowInterval").html(data["interval"]);
-            $("#rowSeedParents").html(data["seed_parents"]);
-            $("#rowKillRate").html(data["kill_rate"]);
-            $("#rowAverageChildNumb").html(data["average_child_numb"]);
+            $("#staticId").html(data["id"]);
+            $("#staticName").html(data["name"]);
+            let strFunct = $("#funct option:selected").val();
+            $("#staticFunct").html(functsData[strFunct]["name"]);
+            $("#staticLevel").html(functsData[strFunct]["level"]);
+            $("#staticExpression").html(functsData[strFunct]["expression"]);
+            $("#staticDimension").html(functsData[strFunct]["dim"]);
+            $("#staticObjective").html(data["objective"]);
+            $("#staticInterval").html(data["interval"]);
+            $("#staticSeedParents").html(data["seed_parents"]);
+            $("#staticKillRate").html(data["kill_rate"]);
+            $("#staticAverageChildNumb").html(data["average_child_numb"]);
         }
     });
 }

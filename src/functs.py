@@ -25,6 +25,28 @@ class _D1:
         "interval": [-10, 10],
     }
 
+    alexCos = {
+        "level": "intermediate",
+        "name": "alexCos",
+        "expression": "y = cos(x**0.5) + x**0.333",
+        "funct": lambda x: cos(x ** 0.5) + x ** 0.333,
+        "dim": "1D",
+        "objective": "min",
+        "target": 1.0,
+        "interval": [1, 200],
+    }
+
+    manuCos = {
+        "level": "intermediate",
+        "name": "manuCos",
+        "expression": "y = (cos(x**2) + abs(1.5* x) )**2",
+        "funct": lambda x: (cos(x ** 2) + abs(1.5 * x)) ** 2,
+        "dim": "1D",
+        "objective": "min",
+        "target": 1.0,
+        "interval": [-5, 5],
+    }
+
     nathanCos = {
         "level": "intermediate",
         "name": "nathanCos",
@@ -49,7 +71,7 @@ class _D1:
 
     eggholder = {
         "level": "expert",
-        "name": "Eggholder",
+        "name": "eggholder",
         "expression": "y = -(47 * sin(sqrt(abs((0.5 * x) + 47)))) - (x * sin(sqrt(abs(x - 47))))",
         "funct": lambda x: -(47 * sin(sqrt(abs((0.5 * x) + 47))))
         - (x * sin(sqrt(abs(x - 47)))),
@@ -86,4 +108,6 @@ class Functs:
         "easom": _D1.easom,
         "eggholder": _D1.eggholder,
         "holder": _D1.holder,
+        "alexCos": _D1.alexCos,
+        "manuCos": _D1.manuCos,
     }

@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+
+    evolutionalGo:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            # args:
+            #     dummy: "dummy"
+        # restart: always
+        image: evolutionalGo:v1.0.0
+        container_name: evolutionalGo_cont
+        volumes:
+            - .:/app
+        # environment:
+        #     TEST_MODE: 0
+        #     LOG_IN_FILE: 0
+        #     LOG_LEVEL : "INFO"
+        ports: 
+            - 65000:65000
