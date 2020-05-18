@@ -15,12 +15,7 @@ from wtforms.validators import DataRequired, Length, NumberRange
 from src.functs import Functs
 
 
-choicesFuncts = [
-    ("x2", "y = x **2 (1D)"),
-    ("sinFucker", "y = (math.sin(x) * (x * 2) - (10 * x)) ** 2 (1D)"),
-    ("nathanCos", "y = 10 + x ** 2 - (10 * math.cos(2 * math.pi * x)) (1D)"),
-]
-
+choicesFuncts = [(k, v["expression"]) for k, v in Functs.as_dict.items()]
 choicesObjectives = [("min", "Min"), ("max", "Max")]
 
 
@@ -29,17 +24,20 @@ class InitForm(FlaskForm):
     funct = SelectField(
         "Function",
         choices=choicesFuncts,
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control"},
         validators=[DataRequired(message="data required"),],
     )
     objective = SelectField(
         "Objective",
         choices=choicesObjectives,
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control"},
         validators=[DataRequired(message="data required"),],
     )
     interval_up = IntegerField(
         "Interval Up",
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control", "placeholder": "ex : 100"},
         validators=[
             DataRequired(message="data required"),
@@ -48,6 +46,7 @@ class InitForm(FlaskForm):
     )
     interval_down = IntegerField(
         "Interval Down",
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control", "placeholder": "ex : -100"},
         validators=[
             DataRequired(message="data required"),
@@ -66,6 +65,7 @@ class InitForm(FlaskForm):
     )
     kill_rate = FloatField(
         "Kill Rate",
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control", "placeholder": "ex : 0.75"},
         validators=[
             DataRequired(message="data required"),
@@ -73,7 +73,8 @@ class InitForm(FlaskForm):
         ],
     )
     average_child_numb = FloatField(
-        "% average childs",
+        "% average childs vs mutant child",
+        description="jndkzdnejkjdkzndkdzdnzkdnkzdjzd",
         render_kw={"class": "form-control", "placeholder": "ex : 0.25"},
         validators=[
             DataRequired(message="data required"),
@@ -90,9 +91,10 @@ class InitForm(FlaskForm):
 class RunForm(FlaskForm):
 
     years = IntegerField(
-        "years",
-        description="nb of years",
+        "Years",
+        description="nb of years, each year is a cycle of killing, mutating etc.",
         default=1,
+        render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(1, 100, message="please 1 --> 100"),
@@ -100,9 +102,10 @@ class RunForm(FlaskForm):
     )
 
     speed = IntegerField(
-        "speed",
-        description="year per sec",
+        "Speed",
+        description="year per sec (min 1, max 100)",
         default=1,
+        render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(1, 100, message="please 1 --> 100"),

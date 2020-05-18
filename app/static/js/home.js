@@ -78,7 +78,12 @@ function getDynamicState() {
         success: function (data) {
             $("#rowLen").html(data["len_current_population"]);
             $("#rowYear").html(data["year"]);
-            $("#rowBest").html(data["best_current_population"].slice(0, 1));
+            console.debug(data["repartition_current_population"])
+            $("#rowOriginal").html(data["repartition_current_population"]["first"]);
+            $("#rowNormal").html(data["repartition_current_population"]["normal"]);
+            $("#rowMutant").html(data["repartition_current_population"]["random"]);
+
+            $("#rowBest").html(data["best_current_population"].slice(0, 3)).toString();
         }
     });
 }
@@ -371,8 +376,23 @@ function run() {
 }
 
 
+function loadFunctImage() {
+    $("#funct").change(function () {
+        var strFunct = $("#funct option:selected").val();
+        let urlImg = "/static/img/functs/" + strFunct + ".png"
+        // console.warn(strFunct);
+        // console.warn(urlImg)
+        $("#imgSrc").attr("src", urlImg)
+
+        // DEPRECATED
+        // var selectedCountry = $(this).children("option:selected").text();
+        // console.warn(urlImg)("You have selected the country - " + selectedCountry);
+    });
+}
+
 // on ready
 $(function () {
+    loadFunctImage();
     makeInitFromUser();
     run();
 }); 
