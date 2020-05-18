@@ -28,11 +28,11 @@ class EvolutionAlgo1D:
         self,
         funct=None,
         objective="min",
-        winning_threshold=0.001,
+        # winning_threshold=0.001,
         interval=[-100, 100],
         seed_parents=20,
         kill_rate=0.33,
-        birth_rate=1,
+        demography=1.0,
         average_child_numb=0.75,
         _round=5,
     ):
@@ -43,17 +43,17 @@ class EvolutionAlgo1D:
         self.name = self.NAME
         self.funct = funct if funct else Functs.d1.sinFucker
         self.objective = objective
-        self.winning_threshold = winning_threshold
+        # self.winning_threshold = winning_threshold
         self.interval = interval
         self.seed_parents = seed_parents
         self.kill_rate = kill_rate
-        self.birth_rate = birth_rate
+        self.demography = demography
         self.average_child_numb = average_child_numb
         self.year = 0
         self._round = _round
         self.learning_curve = list()
-        self.learning_images = [""]
-        self.population_images = [""]
+        # self.learning_images = [""]
+        # self.population_images = [""]
         # self.fig, self.ax = plt.subplots(1,1)
 
         parents = [
@@ -62,7 +62,7 @@ class EvolutionAlgo1D:
         self.current_population = [
             (
                 round(x, self._round),
-                round(self.funct(x), self._round),
+                round(self.funct["funct"](x), self._round),
                 "first",
                 self.year,
             )
@@ -83,18 +83,14 @@ class EvolutionAlgo1D:
         return len(self.current_population)
 
     @property
-    def graph_pop(self):
-        L = [
-            ["x", "y"],
-        ]
-        LL = [[i, j] for i, j, k, l in self.current_population]
-        L.extend(LL)
-        return L
+    def repartition_current_population(self):
+        l = [i[2] for i in self.current_population]
+        return {k: l.count(k) for k in set(l)}
 
     @property
     def best_current_population(self):
         self._sort_current_population()
-        return self.current_population[:10]
+        return self.current_population[:5]
 
     @property
     def current_population_x(self):
@@ -146,7 +142,8 @@ class EvolutionAlgo1D:
         d = {
             "id": self.id,
             "name": self.name,
-            "funct": "jdizeoi",
+            "funct": self.funct["expression"],
+            "demography": self.demography,
             "objective": self.objective,
             "interval": self.interval,
             "seed_parents": self.seed_parents,
@@ -161,6 +158,7 @@ class EvolutionAlgo1D:
         d = {
             "year": self.year,
             "len_current_population": self.len_current_population,
+            "repartition_current_population": self.repartition_current_population,
             "best_current_population": self.best_current_population,
         }
         return d
@@ -204,7 +202,7 @@ class EvolutionAlgo1D:
         random_childs = [
             (
                 round(x, self._round),
-                round(self.funct(x), self._round),
+                round(self.funct["funct"](x), self._round),
                 "random",
                 self.year,
             )
@@ -226,7 +224,7 @@ class EvolutionAlgo1D:
         normal_childs = [
             (
                 round(x, self._round),
-                round(self.funct(x), self._round),
+                round(self.funct["funct"](x), self._round),
                 "normal",
                 self.year,
             )
@@ -288,34 +286,43 @@ class EvolutionAlgo1D:
     #     logger.debug("called")
     #     self.ax.plot(self.current_population_x, self.current_population_y)
 
-    def plot_population(self):
+    # def plot_population(self):
 
-        logger.debug("called")
-        fig, axs = plt.subplots(1, 1)
-        axs.scatter(self.current_population_x, self.current_population_y)
+    #     logger.debug("called")
+    #     fig, axs = plt.subplots(1, 1)
+    #     axs.scatter(self.current_population_x, self.current_population_y)
 
-        name = f"app/static/img/{self.id}-population-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.population_images.append(name)
+    #     name = f"app/static/img/{self.id}-population-{self.year}.png"
+    #     plt.savefig(name, dpi=150)
+    #     self.population_images.append(name)
 
-    def plot_learning(self):
+    # def plot_learning(self):
 
-        logger.debug("called")
-        fig, axs = plt.subplots(1, 3)
-        xs = [i[0] for i in self.learning_curve]
-        ys = [i[1] for i in self.learning_curve]
-        years = [i[3] for i in self.learning_curve]
-        x = [i for i, _ in enumerate(xs)]
-        ax0 = axs[0].plot(x, xs)
-        # ax0.set_title("Xs")
-        ax1 = axs[1].plot(x, ys)
-        # ax1.set_title("Ys")
-        ax2 = axs[2].plot(x, years)
-        # ax1.set_title("Ys")
+    #     logger.debug("called")
+    #     fig, axs = plt.subplots(1, 3)
+    #     xs = [i[0] for i in self.learning_curve]
+    #     ys = [i[1] for i in self.learning_curve]
+    #     years = [i[3] for i in self.learning_curve]
+    #     x = [i for i, _ in enumerate(xs)]
+    #     ax0 = axs[0].plot(x, xs)
+    #     # ax0.set_title("Xs")
+    #     ax1 = axs[1].plot(x, ys)
+    #     # ax1.set_title("Ys")
+    #     ax2 = axs[2].plot(x, years)
+    #     # ax1.set_title("Ys")
 
-        name = f"app/static/img/{self.id}-learning-{self.year}.png"
-        plt.savefig(name, dpi=150)
-        self.learning_images.append(name)
+    #     name = f"app/static/img/{self.id}-learning-{self.year}.png"
+    #     plt.savefig(name, dpi=150)
+    #     self.learning_images.append(name)
+
+    @property
+    def graph_pop(self):
+        L = [
+            ["x", "y"],
+        ]
+        LL = [[i, j] for i, j, k, l in self.current_population]
+        L.extend(LL)
+        return L
 
     @property
     def graph_xs(self):
@@ -330,6 +337,10 @@ class EvolutionAlgo1D:
         return L
 
     @property
+    def graph_xs_last(self):
+        return self.graph_xs[-1]
+
+    @property
     def graph_ys(self):
         L = [
             ["years", "y"],
@@ -342,6 +353,10 @@ class EvolutionAlgo1D:
         return L
 
     @property
+    def graph_ys_last(self):
+        return self.graph_ys[-1]
+
+    @property
     def graph_years(self):
         L = [
             ["years", "year"],
@@ -352,3 +367,7 @@ class EvolutionAlgo1D:
         LL = [[i, j] for i, j in zip(x, years)]
         L.extend(LL)
         return L
+
+    @property
+    def graph_years_last(self):
+        return self.graph_years[-1]

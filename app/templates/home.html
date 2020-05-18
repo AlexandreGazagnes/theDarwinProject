@@ -2,18 +2,26 @@
 {% block content %}
 
 
-<!-- home css and js -->
+<!-- home css -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
-<script src="{{ url_for('static', filename='js/home.js')}}"></script>
-
-<!-- google charts-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 <!-- SECTION INFORMATION -->
-<section id="firstSection">
+<section id="infoSection">
+    <!-- <h2>About</h2> -->
+    <div id="secondQuestion" class=" myBorder questionItem">
+        <h3 class="border-bottom">What this App about ? </h3>
+        <p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a very basic
+            but powerfull concept.
+        </p>
+        <p> You can just make a random try, or define a very rich collection of feature to test,
+            improve and upgrade your own darwin vision of the world.</p>
+        <p>
+            Play to learn, or learn to play? As you want but please, have some fun and usefull time with Darwin !
+        </p>
+    </div>
     <div id="firstQuestion" class="myBorder questionItem">
-        <h3>What is that a Genetic algorithm ?</h3>
+        <h3 class="border-bottom">What is that a Genetic algorithm ?</h3>
         <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
             process of
             natural selection that belongs to the larger class of evolutionary algorithms (EA).
@@ -23,28 +31,42 @@
             commonly used
             to generate high-quality solutions to optimization and search problems by relying on biologically inspired
             operators
-            such as mutation, crossover and selection.[1] John Holland introduced genetic algorithms in 1960 based on
+            such as mutation, crossover and selection. John Holland introduced genetic algorithms in 1960 based on
             the concept of
-            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.[2]
+            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.
         </p>
     </div>
-    <div id="secondQuestion" class=" myBorder questionItem">
-        <h3>What this SPA do ? </h3>
-        <p>EvolutionAlgo helps you to define test and modelize various gentic algorythm to unerstand how init
-            parameaters can infulence an evolution scenario</p>
-    </div>
+
+
     <div id="letsGo" class="myBorder">
-        <h3>let's Go?</h3>
+        <h3 class="border-bottom">Let's Go</h3>
         <div class="row questionButton">
-            <div class=col>
-                <button class="btn btn-primary form-control" onclick="toggleView_0()">
-                    define your's
-                </button>
+            <div class="col-sm-4">
+                <div class="btnGo">
+                    <h4>Baby God</h4>
+                    <p>let us help you to find the way, all is cofigured for you </p>
+                    <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
+                        <h4>Rookie</h4>
+                    </button>
+                </div>
             </div>
-            <div class=col>
-                <button class="btn btn-primary form-control" onclick="makeInitFromModel()">
-                    use a template
-                </button>
+            <div class="col-sm-4">
+                <div class="btnGo">
+                    <h4>God Trainee</h4>
+                    <p>just pick up a model, find out what make's it unique</p>
+                    <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
+                        <h4>Intermediate</h4>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="btnGo">
+                    <h4>God Master</h4>
+                    <p>make your own model, define all yours parametres </p>
+                    <button class="btn btn-primary form-control " onclick="toggleView_0()">
+                        <h4>Expert</h4>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -52,22 +74,48 @@
 
 
 <!-- SECTION INIT FORM -->
-<section id=secondSection class="myBorder">
-    <h2>Init</h2>
-    <form id="initFormUser" class="formwrapper">
+<section id=initSection>
+    <!-- <h2>Init</h2> -->
+    <form id="initFormUser" class="myBorder formwrapper">
         <!-- method="POST" action="/init"-->
         <!-- funct -->
-        <div class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
-            {% if initForm.funct.errors %}
-            <ul class="errors">
-                {% for error in initForm.funct.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+        <div class="row">
+            <div class="col-sm-8">
+                <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
+                    <small>{{ initForm.funct.description }} </small>
+                    {% if initForm.funct.errors %}
+                    <ul class="errors">
+                        {% for error in initForm.funct.errors %}
+                        <li class="invalid-feedback">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="extraPadding">
+                        <table>
+                            <tr>
+                                <th class="Italic">level </th>
+                                <td class="Italic" id="functLevel"></td>
+                            </tr>
+                            <tr>
+                                <th class="Italic">expression </th>
+                                <td class="Italic" id="functExpression"></td>
+                            </tr>
+                            <tr>
+                                <th class="Italic">dimension </th>
+                                <td class="Italic" id="functDimension"></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <img id="functSrcImg" src="" width="100%" height="200" alt="short visual of the function">
+            </div>
         </div>
         <!-- objective -->
-        <div class="form-group">{{ initForm.objective.label }} {{ initForm.objective }}
+        <div class="form-group">{{ initForm.objective.label }}
+            {{ initForm.objective }}<small>{{ initForm.objective.description }}</small>
             {% if initForm.objective.errors %}
             <ul class="errors">
                 {% for error in initForm.objective.errors %}
@@ -80,7 +128,8 @@
         <div class="form-row">
             <!-- interval_down -->
             <div class="col">
-                <div class="form-group">{{ initForm.interval_down.label }} {{ initForm.interval_down }}
+                <div class="form-group">{{ initForm.interval_down.label }}
+                    {{ initForm.interval_down }}<small>{{ initForm.interval_down.description }}</small>
                     {% if initForm.interval_down.errors %}
                     <ul class="errors">
                         {% for error in initForm.interval_down.errors %}
@@ -92,7 +141,8 @@
             </div>
             <!-- interval_up -->
             <div class="col">
-                <div class="form-group">{{ initForm.interval_up.label }} {{ initForm.interval_up }}
+                <div class="form-group">{{ initForm.interval_up.label }}
+                    {{ initForm.interval_up }}<small>{{ initForm.interval_up.description }}</small>
                     {% if initForm.interval_up.errors %}
                     <ul class="errors">
                         {% for error in initForm.interval_up.errors %}
@@ -104,7 +154,8 @@
             </div>
         </div>
         <!-- seed_parents -->
-        <div class="form-group">{{ initForm.seed_parents.label }} {{ initForm.seed_parents }}
+        <div class="form-group">{{ initForm.seed_parents.label }}
+            {{ initForm.seed_parents }}<small>{{ initForm.seed_parents.description }}</small>
             {% if initForm.seed_parents.errors %}
             <ul class="errors">
                 {% for error in initForm.seed_parents.errors %}
@@ -114,7 +165,8 @@
             {% endif %}
         </div>
         <!-- kill_rate -->
-        <div class="form-group">{{ initForm.kill_rate.label }} {{ initForm.kill_rate }}
+        <div class="form-group">{{ initForm.kill_rate.label }}
+            {{ initForm.kill_rate }}<small>{{ initForm.kill_rate.description }}</small>
             {% if initForm.kill_rate.errors %}
             <ul class="errors">
                 {% for error in initForm.kill_rate.errors %}
@@ -123,8 +175,20 @@
             </ul>
             {% endif %}
         </div>
+        <!-- demography -->
+        <div class="form-group">{{ initForm.demography.label }}
+            {{ initForm.demography }}<small>{{ initForm.demography.description }}</small>
+            {% if initForm.demography.errors %}
+            <ul class="errors">
+                {% for error in initForm.demography.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
         <!-- average_child_numb -->
-        <div class="form-group">{{ initForm.average_child_numb.label }} {{ initForm.average_child_numb }}
+        <div class="form-group">{{ initForm.average_child_numb.label }}
+            {{ initForm.average_child_numb }}<small>{{ initForm.average_child_numb.description }}</small>
             {% if initForm.average_child_numb.errors %}
             <ul class="errors">
                 {% for error in initForm.average_child_numb.errors %}
@@ -147,76 +211,124 @@
 
 
 <!-- SECTION STATE -->
-<section id="fourthSection">
-    <div class="myBorder">
+<section id="stateSection">
+    <!-- <div class="row">
+        <div class="col-sm-6"> -->
+    <div id="staticState">
         <h2>Static State</h2>
-        <table>
-            <tr>
-                <th>id </th>
-                <td id="rowId"></td>
-            </tr>
-            <tr>
-                <th>name </th>
-                <td id="rowName"></td>
-            </tr>
-            <tr>
-                <th>funct </th>
-                <td id="rowFunct"></td>
-            </tr>
-            <tr>
-                <th>objective </th>
-                <td id="rowObjective"></td>
-            </tr>
-            <tr>
-                <th>interval </th>
-                <td id="rowInterval"></td>
-            </tr>
-            <tr>
-                <th>seed parents </th>
-                <td id="rowSeedParents"></td>
-            </tr>
-            <tr>
-                <th>kill rate </th>
-                <td id="rowKillRate"></td>
-            </tr>
-            <tr>
-                <th>average_child_numb </th>
-                <td id="rowAverageChildNumb"></td>
-            </tr>
+        <div class="myBorder">
+            <table>
+                <tr>
+                    <th>id </th>
+                    <td id="staticId"></td>
+                </tr>
+                <tr>
+                    <th>name </th>
+                    <td id="staticName"></td>
+                </tr>
+                <tr>
+                    <th>funct </th>
+                    <td id="staticFunct"></td>
+                </tr>
 
-        </table>
+                <tr>
+                    <th>shape </th>
+                    <td id="staticShape">
+                        <img src="" alt="an image">
+                    </td>
+                </tr>
+                <tr>
+                    <th class="Italic">- level </th>
+                    <td id="staticLevel" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- expression </th>
+                    <td id="staticExpression" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- dimension </th>
+                    <td id="staticDimension" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th>objective </th>
+                    <td id="staticObjective"></td>
+                </tr>
+                <tr>
+                    <th>interval </th>
+                    <td id="staticInterval"></td>
+                </tr>
+                <tr>
+                    <th>seed parents </th>
+                    <td id="staticSeedParents"></td>
+                </tr>
+                <tr>
+                    <th>kill rate </th>
+                    <td id="staticKillRate"></td>
+                </tr>
+                <tr>
+                    <th>demography </th>
+                    <td id="staticDemography"></td>
+                </tr>
+                <tr>
+                    <th>average_child_numb </th>
+                    <td id="staticAverageChildNumb"></td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="myBorder">
+    <!-- </div> -->
+    <!-- <div class="col-sm-6"> -->
+    <div id="dynamicState">
         <h2>Dynamic State</h2>
-        <table>
-            <tr>
-                <th>year </th>
-                <td id="rowYear"></td>
-            </tr>
-            <tr>
-                <th>pop size </th>
-                <td id="rowLen"></td>
-            </tr>
-            <tr>
-                <th>best elems</th>
-                <td id="rowBest"></td>
-            </tr>
-        </table>
+        <div class="myBorder">
+
+            <table>
+                <tr>
+                    <th>year </th>
+                    <td id="rowYear"></td>
+                </tr>
+                <tr>
+                    <th>pop size </th>
+                    <td id="rowLen"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- original </th>
+                    <td id="rowOriginal" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- normal </th>
+                    <td id="rowNormal" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th class="Italic">- mutant </th>
+                    <td id="rowMutant" class="Italic"></td>
+                </tr>
+                <tr>
+                    <th>best elems</th>
+                    <td id="rowBest"></td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <!-- </div>
+    </div> -->
 </section>
 
 
 <!-- SECTION ACTION -->
-<section id="thirdSection" class="myBorder">
-    <h2>Action</h2>
-    <form id="runForm" class="formwrapper">
+<section id="actionSection">
 
-        <!-- years -->
-        <div class="form-row">
+    <h2>Action</h2>
+    <form id="runForm" class="myBorder formwrapper">
+        <div class="row">
+            <!-- years -->
             <div class="col">
-                <div class="form-group">{{ runForm.years.label }} {{ runForm.years }}
+                <div class="form-group">
+                    {{ runForm.years.label }}
+                    {{ runForm.years }}
+                    <small>{{ runForm.years.description }}</small>
                     {% if runForm.years.errors %}
-                    <ul class="errors">
+                    <ul class=" errors">
                         {% for error in runForm.years.errors %}
                         <li>{{ error }}</li>
                         {% endfor %}
@@ -224,9 +336,12 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- speed -->
             <div class="col">
-                <!-- speed -->
-                <div class="form-group">{{ runForm.speed.label }} {{ runForm.speed }}
+                <div class="form-group">
+                    {{ runForm.speed.label }}
+                    {{ runForm.speed }}
+                    <small>{{ runForm.speed.description }}</small>
                     {% if runForm.speed.errors %}
                     <ul class="errors">
                         {% for error in runForm.speed.errors %}
@@ -237,9 +352,29 @@
                 </div>
             </div>
         </div>
+        <div class row>
+            <div class="col">
+                <div class="form-group">
+                    {{ runForm.display.label }}
+                    {{ runForm.display }}
+                    {% if runForm.display.errors %}
+                    <ul class="errors">
+                        {% for error in runForm.display.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        </div>
         <div class="form-row">
             <div class="col">
                 {{ runForm.submit }}
+            </div>
+            <div class="col">
+                <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
             </div>
             <div class="col">
                 <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
@@ -250,9 +385,9 @@
 
 
 <!-- SECTION VISUALISATION -->
-<section id="fithSection">
+<section id="graphSection">
+    <h2>Visualize</h2>
     <div class="myBorder">
-        <h2>Visualize</h2>
         <div>
             <h3>current population</h3>
             <div id="populationChart"></div>
@@ -273,8 +408,17 @@
 </section>
 
 
+<!-- home js-->
+<script src="{{ url_for('static', filename='js/home.js')}}"></script>
+
+<!-- google charts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
+<!-- maths in html 
+for future version -->
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
 
 
