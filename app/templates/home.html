@@ -320,7 +320,7 @@
 
     <h2>Action</h2>
     <form id="runForm" class="myBorder formwrapper">
-        <div class="row">
+        <d iv class="row">
             <!-- years -->
             <div class="col">
                 <div class="form-group">
@@ -351,35 +351,35 @@
                     {% endif %}
                 </div>
             </div>
-        </div>
-        <div class row>
-            <div class="col">
-                <div class="form-group">
-                    {{ runForm.display.label }}
-                    {{ runForm.display }}
-                    {% if runForm.display.errors %}
-                    <ul class="errors">
-                        {% for error in runForm.display.errors %}
-                        <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+            </div>
+            <div class row>
+                <div class="col">
+                    <div class="form-group">
+                        {{ runForm.display.label }}
+                        {{ runForm.display }}
+                        {% if runForm.display.errors %}
+                        <ul class="errors">
+                            {% for error in runForm.display.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    {{ runForm.submit }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
                 </div>
             </div>
-
-        </div>
-        </div>
-        <div class="form-row">
-            <div class="col">
-                {{ runForm.submit }}
-            </div>
-            <div class="col">
-                <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
-            </div>
-            <div class="col">
-                <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
-            </div>
-        </div>
     </form>
 </section>
 
