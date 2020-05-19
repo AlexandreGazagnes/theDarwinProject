@@ -135,7 +135,7 @@ class RunForm(FlaskForm):
         default=False,
         # render_kw={"class": "form-control"},
         validators=[
-            DataRequired(message="data required"),
+            # DataRequired(message="data required"),
             # NumberRange(1, 100, message="please 1 --> 100"),
         ],
     )
