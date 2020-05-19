@@ -12,5 +12,7 @@ black
 flask
 WTForms
 flask-wtf
+Flask-Scss
+libsass
 
 selenium

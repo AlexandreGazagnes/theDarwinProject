@@ -27,8 +27,8 @@ var years_last = [["years", "last_new_year"], [0.0, 0.0]];
 // display the form on first click
 function toggleView_0() {
     console.debug("toggleView_0 called");
-    $("#infoSection").slideUp();
-    $("#initSection").slideDown();
+    $("#info").slideUp();
+    $("#init").slideDown();
 }
 
 
@@ -50,7 +50,7 @@ function getFunctsData() {
 // makeInitFromModel
 function makeInitFromModel() {
     console.debug("makeInitFromModel")
-    $("#infoSection").slideUp();
+    $("#info").slideUp();
     $.ajax({
         type: "POST",
         url: "/initfrommodel",
@@ -91,11 +91,11 @@ function makeInitFromUser() {
 // init graph and change global val
 function handleInitMethod(data) {
     console.debug("handleInitMethod")
-    $("#infoSection").slideUp();
-    $("#initSection").slideUp();
-    $("#stateSection").slideDown();
-    $("#actionSection").slideDown();
-    $("#graphSection").slideDown();
+    $("#info").slideUp();
+    $("#init").slideUp();
+    $("#state").slideDown();
+    $("#action").slideDown();
+    $("#graph").slideDown();
     getStaticState();
     getDynamicState();
     updateCharts();
