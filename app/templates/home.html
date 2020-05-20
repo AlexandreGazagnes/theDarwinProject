@@ -6,212 +6,115 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
 
 
-<!-- SECTION INFORMATION -->
-<section id="info">
-    <!-- <h2>About</h2> -->
-    <div id="secondQuestion" class="myCard questionItem">
-        <h3 class="border-bottom">What this App about ? </h3>
-        <p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a very basic
-            but powerfull concept.
-        </p>
-        <p> You can just make a random try, or define a very rich collection of feature to test,
-            improve and upgrade your own darwin vision of the world.</p>
-        <p>
-            Play to learn, or learn to play? As you want but please, have some fun and usefull time with Darwin !
-        </p>
-    </div>
-    <div id="firstQuestion" class="myCard questionItem">
-        <h3 class="border-bottom">What is that a Genetic algorithm ?</h3>
-        <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired by the
-            process of
-            natural selection that belongs to the larger class of evolutionary algorithms (EA).
-        </p>
-        <p>
-            Genetic algorithms are
-            commonly used
-            to generate high-quality solutions to optimization and search problems by relying on biologically inspired
-            operators
-            such as mutation, crossover and selection. John Holland introduced genetic algorithms in 1960 based on
-            the concept of
-            Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.
-        </p>
-    </div>
 
-
-    <div id="letsGo" class="myCard">
-        <h3 class="border-bottom">Let's Go</h3>
-        <div class="row questionButton">
-            <div class="col-sm-4">
-                <div class="btnGo">
-                    <h4>Baby God</h4>
-                    <p>let us help you to find the way, all is cofigured for you </p>
-                    <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
-                        <h4>Rookie</h4>
-                    </button>
-                </div>
+<!-- SECTION JUMBO -->
+<section class="jumbotron jumbotron-fluid" id="myJumbo"
+    style="background-image: {{ url_for('static', filename='Charles4.jpg')}}">
+    <div class="container">
+        <div class="row" style="background-image: {{ url_for('static', filename='Charles4.jpg')}}">
+            <div class="col-sm-8">
+                <h1 class="">Fluid jumbotron</h1>
+                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
+                </p>
             </div>
             <div class="col-sm-4">
-                <div class="btnGo">
-                    <h4>God Trainee</h4>
-                    <p>just pick up a model, find out what <br> make's it unique</p>
-                    <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
-                        <h4>Intermediate</h4>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="btnGo">
-                    <h4>God Master</h4>
-                    <p>make your own model, define all yours parametres </p>
-                    <button class="btn btn-primary form-control " onclick="toggleView_0()">
-                        <h4>Expert</h4>
-                    </button>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- SECTION INIT FORM -->
-<section id="init">
-    <!-- <h2>Init</h2> -->
-    <form id="initFormUser" class="myCard formwrapper">
-        <!-- method="POST" action="/init"-->
-        <!-- funct -->
-        <div class="row">
-            <div class="col-sm-8">
-                <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
-                    <small>{{ initForm.funct.description }} </small>
-                    {% if initForm.funct.errors %}
-                    <ul class="errors">
-                        {% for error in initForm.funct.errors %}
-                        <li class="invalid-feedback">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                    <div class="extraPadding">
-                        <table class="italic-table">
-                            <tr>
-                                <th>level </th>
-                                <td id="functLevel"></td>
-                            </tr>
-                            <tr>
-                                <th>expression </th>
-                                <td id="functExpression"></td>
-                            </tr>
-                            <tr>
-                                <th>dimension </th>
-                                <td id="functDimension"></td>
-                            </tr>
-
-                        </table>
+<!-- SECTION INFORMATION -->
+<section id="info" class="container">
+    <!-- 1st row -->
+    <div id="letsGo" class="row">
+        <div class="myCard">
+            <h3 class="border-bottom">Let's Go</h3>
+            <div class="row questionButton">
+                <div class="col-sm-4">
+                    <div class="btnGo">
+                        <h4>Baby God</h4>
+                        <p>let us help you to find the way, all is cofigured for you </p>
+                        <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
+                            <h4>Rookie</h4>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="btnGo">
+                        <h4>God Trainee</h4>
+                        <p>just pick up a model, find out what <br> make's it unique</p>
+                        <button class="btn btn-primary form-control " onclick="makeInitFromModel()">
+                            <h4>Intermediate</h4>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="btnGo">
+                        <h4>God Master</h4>
+                        <p>make your own model, define all yours parametres </p>
+                        <button class="btn btn-primary form-control " onclick="toggleView_0()">
+                            <h4>Expert</h4>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <img id="functSrcImg" src="" width="100%" height="200" alt="short visual of the function">
-            </div>
         </div>
-        <!-- objective -->
-        <div class="form-group">{{ initForm.objective.label }}
-            {{ initForm.objective }}<small>{{ initForm.objective.description }}</small>
-            {% if initForm.objective.errors %}
-            <ul class="errors">
-                {% for error in initForm.objective.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <!--    INTERVAL-->
-        <div class="form-row">
-            <!-- interval_down -->
-            <div class="col">
-                <div class="form-group">{{ initForm.interval_down.label }}
-                    {{ initForm.interval_down }}<small>{{ initForm.interval_down.description }}</small>
-                    {% if initForm.interval_down.errors %}
-                    <ul class="errors">
-                        {% for error in initForm.interval_down.errors %}
-                        <li class="invalid-feedback">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
-            </div>
-            <!-- interval_up -->
-            <div class="col">
-                <div class="form-group">{{ initForm.interval_up.label }}
-                    {{ initForm.interval_up }}<small>{{ initForm.interval_up.description }}</small>
-                    {% if initForm.interval_up.errors %}
-                    <ul class="errors">
-                        {% for error in initForm.interval_up.errors %}
-                        <li class="invalid-feedback">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <!-- seed_parents -->
-        <div class="form-group">{{ initForm.seed_parents.label }}
-            {{ initForm.seed_parents }}<small>{{ initForm.seed_parents.description }}</small>
-            {% if initForm.seed_parents.errors %}
-            <ul class="errors">
-                {% for error in initForm.seed_parents.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <!-- kill_rate -->
-        <div class="form-group">{{ initForm.kill_rate.label }}
-            {{ initForm.kill_rate }}<small>{{ initForm.kill_rate.description }}</small>
-            {% if initForm.kill_rate.errors %}
-            <ul class="errors">
-                {% for error in initForm.kill_rate.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <!-- demography -->
-        <div class="form-group">{{ initForm.demography.label }}
-            {{ initForm.demography }}<small>{{ initForm.demography.description }}</small>
-            {% if initForm.demography.errors %}
-            <ul class="errors">
-                {% for error in initForm.demography.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <!-- average_child_numb -->
-        <div class="form-group">{{ initForm.average_child_numb.label }}
-            {{ initForm.average_child_numb }}<small>{{ initForm.average_child_numb.description }}</small>
-            {% if initForm.average_child_numb.errors %}
-            <ul class="errors">
-                {% for error in initForm.average_child_numb.errors %}
-                <li class="invalid-feedback">{{ error }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <div class="form-row">
-            <div class="col">
-                {{ initForm.submit }}
-            </div>
-            <div class="col">
-                <button onclick="location.reload()" class="btn btn-danger form-control">Back</button>
-            </div>
-        </div>
+    </div>
 
-    </form>
+    <!-- 2nd row -->
+    <div id="secondQuestion" class="row">
+        <div class="col-sm-6 myCard questionItem">
+            <h3 class="border-bottom">What this App about ? </h3>
+            <p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a
+                very
+                basic
+                but powerfull concept.
+            </p>
+            <p> You can just make a random try, or define a very rich collection of feature to test,
+                improve and upgrade your own darwin vision of the world.</p>
+            <p>
+                Play to learn, or learn to play? As you want but please, have some fun and usefull time with
+                Darwin
+                !
+            </p>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+    <!-- 3rd row -->
+    <div id="firstQuestion" class="row ">
+        <div class="col-sm-6"> </div>
+        <div class="col-sm-6 myCard questionItem">
+            <h3 class="border-bottom">What is that a Genetic algorithm ?</h3>
+            <p>In computer science and operations research, a genetic algorithm (GA) is a metaheuristic inspired
+                by the
+                process of
+                natural selection that belongs to the larger class of evolutionary algorithms (EA).
+            </p>
+            <p>
+                Genetic algorithms are
+                commonly used
+                to generate high-quality solutions to optimization and search problems by relying on
+                biologically
+                inspired
+                operators
+                such as mutation, crossover and selection. John Holland introduced genetic algorithms in 1960
+                based on
+                the concept of
+                Darwin’s theory of evolution; his student David E. Goldberg further extended GA in 1989.
+            </p>
+        </div>
+    </div>
+
 </section>
 
 
+
+
 <!-- SECTION STATE -->
-<section id="state">
+<section id="state" class="container">
     <!-- <div class="row">
         <div class="col-sm-6"> -->
     <div id="staticState">
@@ -316,7 +219,7 @@
 
 
 <!-- SECTION ACTION -->
-<section id="action">
+<section id="action" class="container">
 
     <h2>Action</h2>
     <form id="runForm" class="myCard formwrapper">
@@ -385,7 +288,7 @@
 
 
 <!-- SECTION VISUALISATION -->
-<section id="graph">
+<section id="graph" class="container">
     <h2>Visualize</h2>
     <div class="myCard">
         <div>

@@ -28,4 +28,15 @@ def just_static():
     logger.debug("called")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
+    return render_template("home2.html", initForm=initForm, runForm=runForm)
+
+
+# static files
+@front.route("/2", methods=["GET"])
+def just_static2():
+    """just return html and css"""
+
+    logger.debug("called")
+    initForm = InitForm(request.form)
+    runForm = RunForm(request.form)
     return render_template("home.html", initForm=initForm, runForm=runForm)

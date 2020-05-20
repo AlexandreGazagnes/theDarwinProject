@@ -1,3 +1,56 @@
+// //media query
+// // Extra small devices (portrait phones, less than 576px)
+// @media (max-width: 575.98px) {
+//     #citation-cont {
+//         display: none;
+//     }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) and (max-width: 767.98px) {
+//     #citation-cont {
+//         display: none;
+//     }
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) and (max-width: 991.98px) {
+//     #citation-cont {
+//         display: none;
+//     }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) and (max-width: 1199.98px) {
+//     #citation-cont {
+//         display: none;
+//     }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//     #citation-cont {
+//         display: none;
+//     }
+// }
+
+// color
+$bg-color : #F8F8F8;
+$jumbo-bg-color: #0b0b0b;
+$jumbo-text-color : white;
+
+
+
+h1 {
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.lead {
+    margin-bottom: 20px;
+}
+
 // h2
 h2 {
     margin-top: 50px;
@@ -5,85 +58,196 @@ h2 {
     margin-left: 10px;
 }
 
-// section
-section {
 
-    // display info
-    +#info {
-        display: block;
-    }
-
-    // hide all others
-    $sections: "#init",
-    "#state",
-    "#action",
-    "#graph";
-
-    @each $section in $sections {
-        +#{$section} {
-            display: none;
-        }
-    }
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
 }
 
-// a custom card cf bootstrap
-.myCard {
-    border-radius: 15px;
-    /* border: 1px grey solid; */
-    padding: 20px 40px 20px 40px;
-    margin: 20px 0px 20px 0px;
-    word-wrap: normal;
-    text-overflow: ellipsis;
-    background-color: white;
-
-    >h3 {
-        text-align: center;
-        font-size: 1.8rem;
-        margin-bottom: 20px;
-        /* border-bottom: 1px grey solid; */
-    }
-}
-
-// specific table italic
-.italic-table {
-    font-size: small;
-    font-style: italic;
-
-    >td {
-        padding-left: 30px;
-    }
+h4 {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
 }
 
 
-div.extraPadding {
-    margin-top: 20px;
+
+.jumbotron {
+    margin-bottom: 0px;
+    padding-bottom: 15px;
 }
 
-/* .questionButton {
-    margin-top: 10px;
-    margin-bottom: 10px;
-} */
+#jumbo-cont {
+    background-color: $bg-color !important;
+    // color: $jumbo-text-color;
+    // border: 1px $jumbo-bg-color solid;    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+    padding-top: 100px;
+}
+
+#citation-cont {
+    background-color: $bg-color;
+    // background-color: $jumbo-bg-color;
+    // border: 1px $jumbo-bg-color solid;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-radius: 0px;
+    padding-bottom: 20px;
 
 
-// in info Scetion this is a card for go  that contain go btn
-.btnGo {
-    border: 1px rgb(185, 185, 185) solid;
-    border-radius: 5px;
+    .card {
+        margin-top: 20px;
+    }
+
+    .blockquote {
+        background-color: white;
+    }
+
+    .blockquote-footer {
+        margin-top: 10px;
+    }
+}
+
+#btnGo0-cont,
+#btnGo1-cont {
+
     margin-top: 10px;
     padding-top: 10px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
 
-    padding-left: 5px;
-    padding-right: 5px;
+    .card {
+        border: 0px $jumbo-bg-color solid !important;
+        border-radius: 15px !important;
+        background-color: white !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 
-    >h4 {
-        text-align: center;
-        font-size: 1.2rem;
+    .card-text {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 20px;
         margin-bottom: 20px;
     }
 
-    >p {
-        text-align: center;
+    button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
+
+#feature-cont {
+
+    margin-top: 25px;
+    padding-top: 30px;
+    margin-bottom: 25px;
+    padding-bottom: 30px;
+
+    .card {
+        border: 0px $jumbo-bg-color solid !important;
+        border-radius: 15px !important;
+        background-color: white !important;
+        margin-top: 10px;
+        padding-top: 20px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .card-text {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+}
+
+// section
+
+// section {
+
+
+
+
+
+
+//     // hide all others
+//     $sections: "#init",
+//         "#state",
+//         "#action",
+//         "#graph";
+
+//     // @each $section in $sections {
+//     //     +#{$section} {
+//     //         display: none;
+//     //     }
+//     // }
+// }
+
+// // a custom card cf bootstrap
+// .myCard {
+//     border-radius: 15px;
+//     /* border: 1px grey solid; */
+//     padding: 20px 40px 20px 40px;
+//     margin: 20px 0px 20px 0px;
+//     word-wrap: normal;
+//     text-overflow: ellipsis;
+//     background-color: white;
+
+//     >h3 {
+//         text-align: center;
+//         font-size: 1.8rem;
+//         margin-bottom: 20px;
+//         /* border-bottom: 1px grey solid; */
+//     }
+// }
+
+// // specific table italic
+// .italic-table {
+//     font-size: small;
+//     font-style: italic;
+
+//     >td {
+//         padding-left: 30px;
+//     }
+// }
+
+
+// div.extraPadding {
+//     margin-top: 20px;
+// }
+
+// /* .questionButton {
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+// } */
+
+
+// // // in info Scetion this is a card for go  that contain go btn
+// // .btnGo {
+// //     border: 1px rgb(185, 185, 185) solid;
+// //     border-radius: 5px;
+// //     margin-top: 10px;
+// //     padding-top: 10px;
+// //     margin-bottom: 10px;
+// //     padding-bottom: 10px;
+
+// //     padding-left: 5px;
+// //     padding-right: 5px;
+
+// //     >h4 {
+// //         text-align: center;
+// //         font-size: 1.2rem;
+// //         margin-bottom: 20px;
+// //     }
+
+// //     >p {
+// //         text-align: center;
+// //     }
+// // }

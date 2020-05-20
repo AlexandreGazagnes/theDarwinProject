@@ -1,63 +1,92 @@
-section + #info {
-  display: block; }
+h1 {
+  font-size: 2.6rem;
+  font-weight: bold;
+  margin-bottom: 40px; }
 
-section + #init {
-  display: none; }
-
-section + #state {
-  display: none; }
-
-section + #action {
-  display: none; }
-
-section + #graph {
-  display: none; }
+.lead {
+  margin-bottom: 20px; }
 
 h2 {
   margin-top: 50px;
   font-size: 2rem;
   margin-left: 10px; }
 
-.myCard {
-  border-radius: 15px;
-  /* border: 1px grey solid; */
-  padding: 20px 40px 20px 40px;
-  margin: 20px 0px 20px 0px;
-  word-wrap: normal;
-  text-overflow: ellipsis;
-  background-color: white; }
-  .myCard > h3 {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    /* border-bottom: 1px grey solid; */ }
+h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 40px; }
 
 h4 {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   margin-bottom: 20px; }
 
-.italic-table {
-  font-size: small;
-  font-style: italic; }
-  .italic-table > td {
-    padding-left: 30px; }
+.jumbotron {
+  margin-bottom: 0px;
+  padding-bottom: 15px; }
 
-div.extraPadding {
-  margin-top: 20px; }
+#jumbo-cont {
+  background-color: #F8F8F8 !important;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  padding-top: 100px; }
 
-/* .questionButton {
-    margin-top: 10px;
-    margin-bottom: 10px;
-} */
-.btnGo {
-  border: 1px #b9b9b9 solid;
-  border-radius: 5px;
+#citation-cont {
+  background-color: #F8F8F8;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 0px;
+  padding-bottom: 20px; }
+  #citation-cont .card {
+    margin-top: 20px; }
+  #citation-cont .blockquote {
+    background-color: white; }
+  #citation-cont .blockquote-footer {
+    margin-top: 10px; }
+
+#btnGo0-cont,
+#btnGo1-cont {
   margin-top: 10px;
   padding-top: 10px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-right: 5px; }
-  .btnGo > p {
-    text-align: center; }
+  margin-bottom: 25px;
+  padding-bottom: 30px; }
+  #btnGo0-cont .card,
+  #btnGo1-cont .card {
+    border: 0px #0b0b0b solid !important;
+    border-radius: 15px !important;
+    background-color: white !important;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  #btnGo0-cont .card-text,
+  #btnGo1-cont .card-text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  #btnGo0-cont button,
+  #btnGo1-cont button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px; }
+
+#feature-cont {
+  margin-top: 25px;
+  padding-top: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 30px; }
+  #feature-cont .card {
+    border: 0px #0b0b0b solid !important;
+    border-radius: 15px !important;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px; }
+  #feature-cont .card-text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 20px; }
