@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- home css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
+
+
+
+<!-- info section  -->
+<section id="info">
+
+    <!-- jumbo -->
+    <div class="jumbotron" id="jumbo-cont">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-1 align-self-center"></div>
+                <div class="col-sm-5 align-self-center">
+                    <h1 class="">Simple and fun genetic algorythms</h1>
+                    <p class="lead">Define, test and modelize various gentic algorythm. Try to catch a very basic but
+                        powerfull concept.
+                    </p>
+                    <!-- <p> You can just make a random try, or define a very rich collection of feature to test,
+                        improve and upgrade your own darwin vision of the world.</p> -->
+
+                    <p>play to learn, learn to play!
+                    </p>
+                    <!-- <hr class="my-4">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi veritatis repudiandae
+                    </p>
+                    <button class="btn btn-secondary">let's Go! </button> -->
+                </div>
+                <div class="col-sm-5 align-self-center">
+                    <div class="text-center">
+                        <img class="rounded-circle" src="{{ url_for('static', filename='img/icons/CharlesSquare.jpg')}}"
+                            alt="old
+                                        man image">
+                    </div>
+                </div>
+                <div class="col-sm-1 align-self-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- butGo 0 -->
+    <div class="container" id="btnGo0-cont">
+        <div class="row">
+            <div class="col">
+                <h2 class="border-bottom text-center"> Let's Go</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for id, title, descr, text in [
+                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Rookie"),
+                    ("1", "God Aprentice", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
+                    ("2", "Master God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
+            <div class="col-sm-4">
+                <div class="card rounded">
+                    <div class="card-body ">
+                        <h4 class="card-title text-center" id="btnGo0Title-{{ id }}">{{ title }}</h4>
+                        <p class="card-text" id="btnGo0Descr-{{ id }}"> {{ descr }}</p>
+                        <button class="btn btn-primary form-control" id="btnGo0Text-{{ id }}">{{ text }}</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- feature grid -->
+    <div class="container" id="feature-cont">
+        <div class="row">
+            <div class="col">
+                <h2 class="border-bottom text-center"> Simple and easy</h2>
+            </div>
+        </div>
+        {% for r, c, title, text, icon_src, alt_img in [
+            (0, 1, "1. Choose a function", "hui", "function", "hui"),
+            (1, 1, "2. Define your parametres", "hui", "params", "hui"),
+            (2, 1, "3. Let Darwin make the job", "hui", "evolution", "hui"),
+            (3, 1, "4. Watch out life in action", "hui", "eat", "hui"),] %}
+        <div class="row">
+            <div class="col-sm-6 align-self-center ">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">{{ title }}</h3>
+                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iusto
+                            quasi
+                            repellendus veritatis repellat voluptas fugit, suscipit temporibus aliquid mollitia ea
+                            commodi, vel dolores delectus consequatur porro quo id dicta?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 align-self-center">
+                <div class="text-center">
+                    <img width="200px" height="200px"
+                        src="{{ url_for('static', filename='img/icons/'+icon_src+'.png') }}" alt="">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- butGo 1 -->
+    <div class="container" id="btnGo1-cont">
+        <div class="row">
+            <div class="col">
+                <h2 class="border-bottom text-center"> Let's Go</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for id, title, descr, text in [
+                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Rookie"),
+                    ("1", "God Aprentice", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
+                    ("2", "Master God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
+            <div class="col-sm-4">
+                <div class="card rounded">
+                    <div class="card-body ">
+                        <h4 class="card-title text-center" id="btnGo1Title-{{ id }}">{{ title }}</h4>
+                        <p class="card-text" id="btnGo1Descr-{{ id }}"> {{ descr }}</p>
+                        <button class="btn btn-primary form-control" id="btnGo1Text-{{ id }}">{{ text }}</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- citation  -->
+    <div class="container-fluid" id="citation-cont">
+        <div class="row">
+            <div class="col">
+                <h2 class="border-bottom text-center"> Testimonials</h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for id, text, author, date in [
+                ("0", "I love this website, really amazing.", "A. Turing","1678-12-01"),
+                ("1", "The most powerfull app in the world.", "I. Newton","1111-12-01"),
+                ("2","I'm sure that Earth has a cubic shape.", "Aristote","-115-02-31")   , 
+                ("3","This is fake news, this is fake news.", "D. Trump","2020-01-01"), 
+                ("4", "Whow, what a great UX and UI work...", "S. Job","2019-09-10"), 
+                ("5","I'm sitting here in the boring room.", "F. Garden", "1996-11-12"), ] %}
+            <div class="col-sm-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <blockquote class="blockquote mb-0 align-self-stretch">
+                            <p id="quoteText-{{ id }}">"{{ text }}"</p>
+                            <footer class="blockquote-footer"><span id="quoteAuthor-{{ id }}">by {{ author }}</span>
+                                <br>
+                                <span id="quoteDate-{{ id }}">on {{ date }} </span>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</section>
+
+
+<!-- init section  -->
+<section id="init" class="container">
+    <p>init</p>
+</section>
+
+<!-- state section -->
+<section id="state" class="container">
+    <p>state</p>
+</section>
+
+<!-- graph section  -->
+<section id="graph" class="container">
+    <p>graph</p>
+</section>
+
+
+
+<!-- home js-->
+<!-- <script src="{{ url_for('static', filename='js/home.js')}}"></script> -->
+
+<!-- google charts-->
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+
+<!-- maths in html 
+for future version -->
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+
+
+
+
+
+{% endblock content %}
