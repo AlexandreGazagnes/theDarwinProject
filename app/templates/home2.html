@@ -6,7 +6,7 @@
 
 
 <!-- info section  -->
-<section id="info">
+<section id="info-cont">
 
     <!-- jumbo -->
     <div class="jumbotron" id="jumbo-cont">
@@ -77,18 +77,18 @@
             (2, 1, "3. Let Darwin make the job", "hui", "evolution", "hui"),
             (3, 1, "4. Watch out life in action", "hui", "eat", "hui"),] %}
         <div class="row">
-            <div class="col-sm-6 align-self-center ">
-                <div class="card">
+            <div class="col-sm-6 align-self-center" id="featureColText-{{ r }}">
+                <div class=" card">
                     <div class="card-body">
                         <h3 class="card-title text-center">{{ title }}</h3>
-                        <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iusto
+                        <p class=" card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi iusto
                             quasi
                             repellendus veritatis repellat voluptas fugit, suscipit temporibus aliquid mollitia ea
                             commodi, vel dolores delectus consequatur porro quo id dicta?</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 align-self-center">
+            <div class="col-sm-6 align-self-center" id="featureColImg-{{ r }}">
                 <div class="text-center">
                     <img width="200px" height="200px"
                         src="{{ url_for('static', filename='img/icons/'+icon_src+'.png') }}" alt="">
@@ -158,7 +158,7 @@
 
 
 <!-- init section  -->
-<section id="init" class="container">
+<section class="container" id="init-cont">
     <p>init</p>
 </section>
 
@@ -289,6 +289,10 @@
 
 
 
+<!-- home js -->
+<script src="{{ url_for('static', filename='js/front.js')}}"></script>
+
+
 <!-- home js-->
 <!-- <script src="{{ url_for('static', filename='js/home.js')}}"></script> -->
 
@@ -301,7 +305,7 @@ for future version -->
 <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
-
+<!-- FOR FUTURE VERSION
 <section class="container-fluid" id="app">
     <div class="row">
 
@@ -334,7 +338,7 @@ for future version -->
         </div>
     </div>
 
-</section>
+</section> -->
 
 
 

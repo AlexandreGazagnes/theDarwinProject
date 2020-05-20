@@ -1,5 +1,6 @@
 <html lang="en">
 
+
 <head>
     <!-- charset-->
     <meta charset="utf-8">
@@ -17,14 +18,19 @@
     <!-- base js -->
     <script src="{{ url_for('static', filename='js/base.js')}}"></script>
     <!-- title -->
-    <title>evolutionalGo</title>
+    <title>theDarwinProject</title>
 </head>
 
+
 <body>
-    <!-- <header class="container ">
-        <p>evolutionalGo</p>
-        <p>test various eplutionary algorythm</p>
-        < ! -- <nav class="row">
+
+    <header class="container border-bottom">
+        <div class="row">
+            <div class="col">
+                <p>theDarwinProject</p>
+            </div>
+        </div>
+        <!-- < ! -- <nav class="row">
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -36,8 +42,8 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
             </ul>
-        </nav> - - >
-    </header> -->
+            </nav> - - > -->
+    </header>
 
     <main class="content">
         {% block content %}{% endblock %}
