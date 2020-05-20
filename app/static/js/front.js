@@ -4,7 +4,7 @@ var height;
 var isSmall;
 
 // init easy medium or difficult
-var optionChoice;
+var initMethod;
 
 // sections 
 var infoId = "info-cont";
@@ -24,8 +24,9 @@ function toogleInfoView() {
 }
 
 // init view
-function toogleInitView() {
+function toogleInitView(option) {
     console.debug("toogleInitView");
+    initMethod = option;
     $("#" + infoId).hide();
     $("#" + initId).show();
     $("#" + stateId).hide();

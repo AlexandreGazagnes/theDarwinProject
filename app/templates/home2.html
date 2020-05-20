@@ -56,7 +56,8 @@
                     <div class="card-body ">
                         <h4 class="card-title text-center" id="btnGo0Title-{{ id }}">{{ title }}</h4>
                         <p class="card-text" id="btnGo0Descr-{{ id }}"> {{ descr }}</p>
-                        <button class="btn btn-primary form-control" id="btnGo0Text-{{ id }}">{{ text }}</button>
+                        <button class="btn btn-primary form-control" onclick="toogleInitView('{{ text }}')"
+                            id="btnGo0Text-{{ id }}">{{ text }}</button>
                     </div>
                 </div>
             </div>
@@ -115,7 +116,8 @@
                     <div class="card-body ">
                         <h4 class="card-title text-center" id="btnGo1Title-{{ id }}">{{ title }}</h4>
                         <p class="card-text" id="btnGo1Descr-{{ id }}"> {{ descr }}</p>
-                        <button class="btn btn-primary form-control" id="btnGo1Text-{{ id }}">{{ text }}</button>
+                        <button class="btn btn-primary form-control" onclick="toogleInitView('{{ text }}')"
+                            id="btnGo1Text-{{ id }}">{{ text }}</button>
                     </div>
                 </div>
             </div>
