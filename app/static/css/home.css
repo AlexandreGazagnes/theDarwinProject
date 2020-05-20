@@ -8,17 +8,17 @@ h1 {
 
 h2 {
   margin-top: 50px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-left: 10px; }
 
 h3 {
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   margin-bottom: 40px; }
 
 h4 {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 20px; }
 
 .jumbotron {
@@ -26,20 +26,23 @@ h4 {
   padding-bottom: 15px; }
 
 #jumbo-cont {
-  background-color: #F8F8F8 !important;
+  background-color: #f0f0f0 !important;
   margin-left: 0px;
   margin-bottom: 0px;
   border-radius: 0px;
   padding-top: 100px; }
 
 #citation-cont {
-  background-color: #F8F8F8;
+  background-color: #f0f0f0;
   padding-bottom: 30px;
   margin-bottom: 20px;
   border-radius: 0px;
   padding-bottom: 20px; }
   #citation-cont .card {
-    margin-top: 20px; }
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   #citation-cont .blockquote {
     background-color: white; }
   #citation-cont .blockquote-footer {
@@ -53,11 +56,12 @@ h4 {
   padding-bottom: 30px; }
   #btnGo0-cont .card,
   #btnGo1-cont .card {
-    border: 0px #0b0b0b solid !important;
-    border-radius: 15px !important;
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
     background-color: white !important;
     margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   #btnGo0-cont .card-text,
   #btnGo1-cont .card-text {
     padding-top: 5px;
@@ -77,16 +81,65 @@ h4 {
   margin-bottom: 25px;
   padding-bottom: 30px; }
   #feature-cont .card {
-    border: 0px #0b0b0b solid !important;
-    border-radius: 15px !important;
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
     background-color: white !important;
     margin-top: 10px;
     padding-top: 20px;
     margin-bottom: 10px;
     padding-left: 20px;
-    padding-right: 20px; }
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
   #feature-cont .card-text {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 5px;
     margin-bottom: 20px; }
+
+#state-cont {
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  #state-cont .card {
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+#action-cont {
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  #action-cont .card {
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+#graph-cont {
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  #graph-cont .card {
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }

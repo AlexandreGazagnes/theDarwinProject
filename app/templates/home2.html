@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
 <!-- home css -->
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
-
 
 
 <!-- info section  -->
@@ -23,7 +21,7 @@
                     <!-- <p> You can just make a random try, or define a very rich collection of feature to test,
                         improve and upgrade your own darwin vision of the world.</p> -->
 
-                    <p>play to learn, learn to play!
+                    <p class="text-center">play to learn, learn to play!
                     </p>
                     <!-- <hr class="my-4">
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi veritatis repudiandae
@@ -33,8 +31,7 @@
                 <div class="col-sm-5 align-self-center">
                     <div class="text-center">
                         <img class="rounded-circle" src="{{ url_for('static', filename='img/icons/CharlesSquare.jpg')}}"
-                            alt="old
-                                        man image">
+                            alt="old man image">
                     </div>
                 </div>
                 <div class="col-sm-1 align-self-center"></div>
@@ -51,9 +48,9 @@
         </div>
         <div class="row">
             {% for id, title, descr, text in [
-                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Rookie"),
-                    ("1", "God Aprentice", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
-                    ("2", "Master God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
+                    ("0", "Start", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Beginner"),
+                    ("1", "Learn", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
+                    ("2", "Masterize", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
             <div class="col-sm-4">
                 <div class="card rounded">
                     <div class="card-body ">
@@ -110,7 +107,7 @@
         </div>
         <div class="row">
             {% for id, title, descr, text in [
-                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Rookie"),
+                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Beginner"),
                     ("1", "God Aprentice", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
                     ("2", "Master God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
             <div class="col-sm-4">
@@ -157,8 +154,6 @@
             {% endfor %}
         </div>
     </div>
-
-
 </section>
 
 
@@ -167,14 +162,129 @@
     <p>init</p>
 </section>
 
+
+
+
 <!-- state section -->
-<section id="state" class="container">
-    <p>state</p>
+<section class="container" id="state-cont">
+    <div class="row">
+        <div class="col">
+            <h2 class="border-bottom text-center"> State</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 " id="staticState">
+            <div class="card align-self-stretch">
+                <h3>Static State</h3>
+                <table>
+                    <!-- generic -->
+                    {% for key, val in [("id", "Id"),
+                                        ("name", "Name"),
+                                        ("funct", "funct"), ]%}
+                    <tr>
+                        <th>{{ key }} </th>
+                        <td id="static{{ val }}"></td>
+                    </tr>
+                    {% endfor %}
+                    <!-- image -->
+                    <tr>
+                        <th>shape </th>
+                        <td id="staticShape">
+                            <img src="" alt="an image">
+                        </td>
+                    </tr>
+                    <!-- italic  -->
+                    {% for key, val in [    ("level", "Level"),
+                                            ("expression", "Expression"),
+                                            ("dimension", "Dimension"), ]%}
+                    <tr class="italic-table">
+                        <th>- {{key }} </th>
+                        <td id="static{{ val }}"></td>
+                    </tr>
+                    {% endfor %}
+                    <!-- generic -->
+                    {% for key, val in [("objective", "Objective"),
+                                        ("interval", "Interval"),
+                                        ("seed parents", "SeedParents"),
+                                        ("kill rate", "KillRate"),
+                                        ("demography", "Demography"),
+                                        ("child_numb", "AverageChildNumb"),]%}
+                    <tr>
+                        <th>{{ key }} </th>
+                        <td id="static{{ val }}"></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6 " id="dynamicState">
+            <div class="card align-self-stretch">
+                <h3>Dynamic State</h3>
+                <table>
+                    <tr>
+                        <th>year </th>
+                        <td id="rowYear"></td>
+                    </tr>
+                    <tr>
+                        <th>pop size </th>
+                        <td id="rowLen"></td>
+                    </tr>
+                    <tr>
+                        <th>- original </th>
+                        <td id="rowOriginal"></td>
+                    </tr>
+                    <tr>
+                        <th>- normal </th>
+                        <td id="rowNormal"></td>
+                    </tr>
+                    <tr>
+                        <th>- mutant </th>
+                        <td id="rowMutant"></td>
+                    </tr>
+                    <tr>
+                        <th>best elems</th>
+                        <td id="rowBest"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </section>
 
+
+<!-- action  section  -->
+<section class="container" id="action-cont">
+    <div class="row">
+        <div class="col">
+            <h2 class="border-bottom text-center"> Action </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <div class="col">
+                kfirorioe
+            </div>
+        </div>
+</section>
+
+
 <!-- graph section  -->
-<section id="graph" class="container">
-    <p>graph</p>
+<section class="container" id="graph-cont">
+    <div class="row">
+        <div class="col">
+            <h2 class="border-bottom text-center"> Visualize </h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for k in [0, 1, 2, 3] %}
+        <div class="col-sm-6">
+            <div class="card">
+                <h3>graph {{ k }}</h3>
+                <div>grpah {{ k }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 
 
@@ -192,6 +302,39 @@ for future version -->
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
 
+<section class="container-fluid" id="app">
+    <div class="row">
+
+        <div class="col-sm-4">
+            <div>
+                static state
+            </div>
+            <div>
+                dynamic state
+            </div>
+            <div>
+                action
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                graph 1
+            </div>
+            <div>
+                graph 2
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div>
+                graph 3
+            </div>
+            <div>
+                graph 4
+            </div>
+        </div>
+    </div>
+
+</section>
 
 
 

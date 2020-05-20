@@ -6,7 +6,7 @@ body {
   overflow-x: hidden !important;
   font-family: b612, Verdana, Tahoma, sans-serif;
   font-size: medium;
-  background-color: #F8F8F8; }
+  background-color: #f0f0f0; }
 
 header {
   padding-top: 10px;
@@ -17,5 +17,5 @@ footer {
   font-style: italic; }
 
 p {
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: justify; }
