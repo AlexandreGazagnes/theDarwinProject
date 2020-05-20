@@ -168,6 +168,27 @@ h4 {
 }
 
 
+#init-cont {
+
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    .card {
+        border: 0px $jumbo-bg-color solid !important;
+        border-radius: $bd-radius;
+        background-color: white !important;
+        margin-top: 10px;
+        padding-top: 20px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+
 #state-cont {
 
     margin-top: 10px;

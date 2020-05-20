@@ -96,6 +96,22 @@ h4 {
     margin-top: 5px;
     margin-bottom: 20px; }
 
+#init-cont {
+  margin-top: 10px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  #init-cont .card {
+    border: 0px #e6d9d9 solid !important;
+    border-radius: 15px;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
 #state-cont {
   margin-top: 10px;
   padding-top: 10px;
