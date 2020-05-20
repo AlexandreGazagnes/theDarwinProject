@@ -8,23 +8,14 @@ var optionChoice;
 
 // sections 
 var infoId = "info-cont";
-var showInfoCont = true;
-
 var initId = "init-cont";
-var showInitCont = false;
-
 var stateId = "state-cont";
-var showStateCont = false;
-
 var actionId = "action-cont";
-var showActionCont = false;
-
 var graphID = "graph-cont";
-var showGraphCont = false;
 
 // info view
 function toogleInfoView() {
-    console.log("toogleInfoView");
+    console.debug("toogleInfoView");
     $("#" + infoId).show();
     $("#" + initId).hide();
     $("#" + stateId).hide();
@@ -34,7 +25,7 @@ function toogleInfoView() {
 
 // init view
 function toogleInitView() {
-    console.log("toogleInitView");
+    console.debug("toogleInitView");
     $("#" + infoId).hide();
     $("#" + initId).show();
     $("#" + stateId).hide();
@@ -44,7 +35,7 @@ function toogleInitView() {
 
 // app run view
 function toogleRunView() {
-    console.log("toogleRunView");
+    console.debug("toogleRunView");
     $("#" + infoId).hide();
     $("#" + initId).hide();
     $("#" + stateId).show();
@@ -52,35 +43,30 @@ function toogleRunView() {
     $("#" + graphID).show();
 }
 
-
-
-function updateWidth() {
-    console.log("updateWidth");
-    width = $(document).width()
-    console.log(width)
+// dims
+function updateDims() {
+    console.debug("updateDims");
+    width = $(document).width();
+    height = $(document).height();
+    console.debug(width, + " , " + height)
 }
 
-function updateHeight() {
-    console.log("updateHeight");
-    height = $(document).height()
-    console.log(height)
-}
-
+// sm or not 
 function evalIsSmall() {
-    console.log("evalIsSmall");
-    updateWidth();
+    console.debug("evalIsSmall");
+    updateDims();
     if (width < 576) {
         isSmall = true;
     } else {
         isSmall = false;
     }
-    console.log("document is " + width + "small ? " + isSmall);
-    return isSmall;
+    console.debug("document is " + width + "small ? " + isSmall);
 }
 
-
+// order messup in 4*2 grids
 function toogleFeatureGrid() {
-    console.log('toogleFeatureGrid')
+    console.debug('toogleFeatureGrid')
+    evalIsSmall();
     if (isSmall) {
         $("#featureColImg-1").removeClass("order-first");
         $("#featureColImg-3").removeClass("order-first");
@@ -90,24 +76,21 @@ function toogleFeatureGrid() {
     }
 }
 
-
+// load
 function onLoad() {
-    console.log("onLoad");
+    console.debug("onLoad");
     toogleInfoView();
-    evalIsSmall();
     toogleFeatureGrid();
 }
 
-
+// resize
 function onResize() {
-    console.log("onResize");
+    console.debug("onResize");
     $(window).resize(function () {
-        console.log("reized");
-        evalIsSmall();
+        console.debug("reized");
         toogleFeatureGrid();
     });
 }
-
 
 // on ready
 $(function () {
