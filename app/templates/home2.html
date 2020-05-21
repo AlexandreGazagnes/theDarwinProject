@@ -56,8 +56,7 @@
                     <div class="card-body ">
                         <h4 class="card-title text-center" id="btnGo0Title-{{ id }}">{{ title }}</h4>
                         <p class="card-text" id="btnGo0Descr-{{ id }}"> {{ descr }}</p>
-                        <button class="btn btn-primary form-control" onclick="fromLandingToInitView('{{ text }}')"
-                            id="btnGo0Text-{{ id }}">{{ text }}</button>
+                        <button class="btn btn-primary form-control" id="btnGo0Text-{{ id }}">{{ text }}</button>
                     </div>
                 </div>
             </div>
@@ -532,8 +531,8 @@
 
 <!-- home js -->
 <script src="{{ url_for('static', filename='js/utils.js')}}"></script>
-<script src="{{ url_for('static', filename='js/back.js')}}"></script>
 <script src="{{ url_for('static', filename='js/front.js')}}"></script>
+<script src="{{ url_for('static', filename='js/back.js')}}"></script>
 <script src="{{ url_for('static', filename='js/main.js')}}"></script>
 
 

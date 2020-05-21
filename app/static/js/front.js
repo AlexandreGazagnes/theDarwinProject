@@ -28,7 +28,6 @@ function loadLandingView() {
     $("#" + actionId).hide();
     $("#" + graphID).hide();
     $("#" + infoId).hide();
-
     $("#" + infoId).fadeIn(loadingSpeed);
     $("footer").fadeIn(loadingSpeed);
 }
@@ -53,6 +52,17 @@ function fromInitToRunView() {
     console.debug("fromInitToRunView");
     // $("#" + infoId)..fadeOut(1500)();
     $("#" + initId).fadeOut(transitionSpeed);
+    $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+    $("#" + actionId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+    $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+}
+
+
+// from init to run
+function fromLandingToRunView() {
+    console.debug("fromInitToRunView");
+    // $("#" + infoId)..fadeOut(1500)();
+    $("#" + infoId).fadeOut(transitionSpeed);
     $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     $("#" + actionId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
