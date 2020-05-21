@@ -67,6 +67,8 @@ def initFromUser():
     # print(request.method)
 
     if request.method == "POST":
+        logger.critical("form.funct.data " + str(form.funct.data))
+        logger.critical("form.objective.data " + str(form.objective.data))
         algo = EvolutionAlgo1D(
             funct=Functs.as_dict[form.funct.data],
             objective=form.objective.data,
@@ -75,6 +77,7 @@ def initFromUser():
             kill_rate=form.kill_rate.data,
             average_child_numb=form.average_child_numb.data,
         )
+
         global ALGO
         ALGO.update({algo.id: algo})
         return algo.id, 200

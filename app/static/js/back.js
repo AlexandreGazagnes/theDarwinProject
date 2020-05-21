@@ -11,7 +11,7 @@ var algoId = "";
 var year = 0;
 
 var functsData; // store all functs add spec
-var initFormData; // store init data wheb Algo created
+var initForm; // store init data wheb Algo created
 var staticState;
 var dynamicState;
 
@@ -50,13 +50,11 @@ function updateFunctInitData() {
     $("#functSrcImg").attr("src", urlImg);
 }
 
-
 function onBackLoad() {
     console.debug("onBackLoad");
     getFunctsData();
     updateFunctInitData();
 }
-
 
 function onFunctInitChange() {
     console.debug("onFunctInitChange");
@@ -67,52 +65,56 @@ function onFunctInitChange() {
 }
 
 
-
 ////////////////////////////////////////////////////////
 //      get Algo info static or dynamic
 ////////////////////////////////////////////////////////
 
-function getStaticState() {
-    console.debug('getStaticState');
-    // $.ajax({
-    //     type: "GET",
-    //     url: "/staticstate?algoId=" + algoId,
-    //     // async: false, // Mode synchrone
-    //     success: function (data) {
-    //         // $("#ajaxResponse").html(data);
-    //         $("#staticId").html(data["id"]);
-    //         $("#staticName").html(data["name"]);
-    //         let strFunct = $("#funct option:selected").val();
-    //         $("#staticFunct").html(functsData[strFunct]["name"]);
-    //         $("#staticLevel").html(functsData[strFunct]["level"]);
-    //         $("#staticExpression").html(functsData[strFunct]["expression"]);
-    //         $("#staticDimension").html(functsData[strFunct]["dim"]);
-    //         $("#staticObjective").html(data["objective"]);
-    //         $("#staticInterval").html(data["interval"]);
-    //         $("#staticSeedParents").html(data["seed_parents"]);
-    //         $("#staticKillRate").html(data["kill_rate"]);
-    //         $("#staticAverageChildNumb").html(data["average_child_numb"]);
-    //     }
-    // });
+function updateStaticState() {
+    console.debug("updateStaticState");
+    ["Id", "Name", "Objective", "Interval", "Seed_parents", "Kill_rate", "Average_child_numb"].forEach((elem) => {
+        $("#static" + elem).html(staticState[elem.toLowerCase()]);
+    });
+    let strFunct = $("#funct option:selected").val();
+    ["Name", "Level", "Expression", "Dimension"].forEach((elem) => {
+        $("#staticFunct" + elem).html(functsData[strFunct][elem.toLowerCase()]);
+    });
 }
 
+function getStaticState() {
+    console.debug("'getStaticState");
+    $.ajax({
+        type: "GET",
+        url: "/staticstate?algoId=" + algoId,
+        // async: false, // Mode synchrone
+        success: function (data) {
+            staticState = data;
+            updateStaticState();
+        }
+    });
+}
+
+function updateDynamicState() {
+    console.debug("updateDynamicState");
+    let firstList = ["Year", "Len_current_population", "Best_current_population"];
+    firstList.forEach((elem) => {
+        $("#dynamic" + elem).html(dynamicState[elem.toLowerCase()]);
+    });
+    ["First", "Normal", "Random"].forEach((elem) => {
+        $("#dynamic" + elem).html(dynamicState["repartition_current_population"][elem.toLowerCase()]);
+    });
+}
 
 function getDynamicState() {
-    console.debug('getDynamicState');
-    // $.ajax({
-    //     type: "GET",
-    //     url: "/dynamicstate?algoId=" + algoId,
-    //     // async: false, // Mode synchrone
-    //     success: function (data) {
-    //         $("#rowLen").html(data["len_current_population"]);
-    //         $("#rowYear").html(data["year"]);
-    //         console.debug(data["repartition_current_population"])
-    //         $("#rowOriginal").html(data["repartition_current_population"]["first"]);
-    //         $("#rowNormal").html(data["repartition_current_population"]["normal"]);
-    //         $("#rowMutant").html(data["repartition_current_population"]["random"]);
-    //         $("#rowBest").html(data["best_current_population"].slice(0, 3)).toString();
-    //     }
-    // });
+    console.debug("getDynamicState");
+    $.ajax({
+        type: "GET",
+        url: "/dynamicstate?algoId=" + algoId,
+        // async: false, // Mode synchrone
+        success: function (data) {
+            dynamicState = data;
+            updateDynamicState();
+        }
+    });
 }
 
 
@@ -149,7 +151,7 @@ function doExpertInit(e) {
         type: "POST",
         url: "/initfromuser",
         // async: false, // Mode synchrone
-        data: $(this).serialize(), // serializes the form's elements.
+        data: initForm, // serializes the form's elements.
         success: function (idAlgo) {
             algoInitilalized = true;
             algoId = idAlgo;
@@ -178,7 +180,8 @@ function onExpertInit() {
     console.debug('onExpertInit');
     // event handler
     $("#init-form").submit(function (e) {
-        console.debug(" onExpertInit --> form submited")
+        initForm = $(this).serialize();
+        console.debug(" onExpertInit --> form submited");
         doExpertInit(e);
     });
 }
@@ -188,40 +191,47 @@ function onExpertInit() {
 //      landing BTN landing --> init form
 ////////////////////////////////////////////////////////
 
-
 function onBeginnerBtn() {
     console.debug('onBeginnerInit');
-    // event handler
-    $("#btnGo0Text-0").click(function (e) {
-        console.debug('onBeginnerInit --> btnGo0Text 0 clicked')
-        doBeginnerInit();
-    });
-    $("#btnGo1Text-0").click(function (e) {
-        console.debug('onBeginnerInit --> btnGo1Text 0 clicked')
-        doBeginnerInit();
+    let idxs = ["0", "1"];
+    idxs.forEach((elem) => {
+        $("#btnGo" + elem + "Text-0").click(function (e) {
+            console.debug('onBeginnerInit --> btnGo' + elem + 'Text 0 clicked')
+            doBeginnerInit();
+        });
     });
 }
 
 function onIntermediateBtn() {
     console.debug('onIntermediateBtn');
-    $("#btnGo0Text-1").click(function (e) {
-        console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
-        fromLandingToInitView();
+    let idxs = ["0", "1"];
+    idxs.forEach((elem) => {
+        $("#btnGo" + elem + "Text-1").click(function (e) {
+            console.debug('onBeginnerInit --> btnGo' + elem + 'Text 1 clicked')
+            fromLandingToInitView();
+        });
     });
-    $("#btnGo1Text-1").click(function (e) {
-        console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
-        fromLandingToInitView();
-    });
+
 }
 
 function onExpertBtn() {
     console.debug('onExpertBtn');
-    $("#btnGo0Text-2").click(function (e) {
-        console.debug('onExpertBtn --> btnGo0Text 2 clicked')
-        fromLandingToInitView();
-    });
-    $("#btnGo1Text-2").click(function (e) {
-        console.debug('onExpertBtn --> btnGo1Text 2 clicked')
-        fromLandingToInitView();
+    let idxs = ["0", "1"];
+    idxs.forEach((elem) => {
+        $("#btnGo" + elem + "Text-2").click(function (e) {
+            console.debug('onBeginnerInit --> btnGo' + elem + 'Text 2 clicked')
+            fromLandingToInitView();
+        });
     });
 }
+
+
+
+    // $("#btnGo0Text-1").click(function (e) {
+    //     console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
+    //     fromLandingToInitView();
+    // });
+    // $("#btnGo1Text-1").click(function (e) {
+    //     console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
+    //     fromLandingToInitView();
+    // });

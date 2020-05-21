@@ -368,39 +368,35 @@
                 <h3>Static State</h3>
                 <table>
                     <!-- generic -->
-                    {% for key, val in [("id", "Id"),
-                                        ("name", "Name"),
-                                        ("funct", "funct"), ]%}
+                    {% for key in [ "Id","Name",]%}
                     <tr>
-                        <th>{{ key }} </th>
-                        <td id="static{{ val }}"></td>
+                        <td class="tdX">{{ key }} </td>
+                        <td id="static{{ key }}"></td>
                     </tr>
                     {% endfor %}
                     <!-- image -->
                     <tr>
-                        <th>shape </th>
+                        <td class="tdX">shape </td>
                         <td id="staticShape">
-                            <img height="200px" width="300px" src="" alt="an image">
+                            <img height="50px" width="80px" src="" alt="an image">
                         </td>
                     </tr>
                     <!-- italic  -->
-                    {% for key, val in [    ("level", "Level"),
-                                            ("expression", "Expression"),
-                                            ("dimension", "Dimension"), ]%}
+                    {% for key in ["Name","Level","Expression","Dimension"] %}
                     <tr class="italic-table">
-                        <th>- {{key }} </th>
-                        <td id="static{{ val }}"></td>
+                        <td class="tdX">- {{ key }} </td>
+                        <td id="staticFunct{{ key }}"></td>
                     </tr>
                     {% endfor %}
                     <!-- generic -->
-                    {% for key, val in [("objective", "Objective"),
-                                        ("interval", "Interval"),
-                                        ("seed parents", "SeedParents"),
-                                        ("kill rate", "KillRate"),
-                                        ("demography", "Demography"),
-                                        ("child_numb", "AverageChildNumb"),]%}
+                    {% for key, val in [("Objective", "Objective"),
+                                        ("Interval", "Interval"),
+                                        ("Seed parents", "Seed_parents"),
+                                        ("Kill rate", "Kill_rate"),
+                                        ("Demography", "Demography"),
+                                        ("Child numb", "Average_child_numb"),]%}
                     <tr>
-                        <th>{{ key }} </th>
+                        <td class="tdX">{{ key }} </td>
                         <td id="static{{ val }}"></td>
                     </tr>
                     {% endfor %}
@@ -412,29 +408,16 @@
                 <h3>Dynamic State</h3>
                 <table>
                     <tr>
-                        <th>year </th>
-                        <td id="rowYear"></td>
+                        {% for key, val in [("Year", "Year"),
+                                            ("Pop Size", "Len_current_population"), 
+                                            ("First", "First"), 
+                                            ("Normal", "Normal"),
+                                            ("Random", "Random"),
+                                            ("Best elements", "Best_current_population") ] %}
+                        <th> {{ key }} </th>
+                        <td id="dynamic{{ val }}"></td>
                     </tr>
-                    <tr>
-                        <th>pop size </th>
-                        <td id="rowLen"></td>
-                    </tr>
-                    <tr>
-                        <th>- original </th>
-                        <td id="rowOriginal"></td>
-                    </tr>
-                    <tr>
-                        <th>- normal </th>
-                        <td id="rowNormal"></td>
-                    </tr>
-                    <tr>
-                        <th>- mutant </th>
-                        <td id="rowMutant"></td>
-                    </tr>
-                    <tr>
-                        <th>best elems</th>
-                        <td id="rowBest"></td>
-                    </tr>
+                    {% endfor %}
                 </table>
             </div>
         </div>
