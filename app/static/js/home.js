@@ -69,20 +69,6 @@ function makeInitFromModel() {
 // makeInitFromUser
 function makeInitFromUser() {
     $("#initFormUser").submit(function (e) {
-        console.log("makeInitFromUser")
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-        $.ajax({
-            type: "POST",
-            url: "/initfromuser",
-            // async: false, // Mode synchrone
-            data: $(this).serialize(), // serializes the form's elements.
-            success: function (data) {
-                algoInitilalized = true;
-                algoId = data;
-                console.log("algoId = " + data);
-                handleInitMethod(data);
-            }
-        });
     });
 }
 

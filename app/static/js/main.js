@@ -12,8 +12,8 @@ $(function () {
 
     //landing btn
     onBeginnerBtn();
+    onIntermediateBtn();
     onExpertBtn();
-    onExpertInit();
 
 
     //Init submit

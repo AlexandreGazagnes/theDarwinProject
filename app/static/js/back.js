@@ -69,36 +69,62 @@ function onFunctInitChange() {
 
 
 ////////////////////////////////////////////////////////
-//      de,iozidzeio
+//      get Algo info static or dynamic
 ////////////////////////////////////////////////////////
-
-
 
 function getStaticState() {
     console.debug('getStaticState');
+    // $.ajax({
+    //     type: "GET",
+    //     url: "/staticstate?algoId=" + algoId,
+    //     // async: false, // Mode synchrone
+    //     success: function (data) {
+    //         // $("#ajaxResponse").html(data);
+    //         $("#staticId").html(data["id"]);
+    //         $("#staticName").html(data["name"]);
+    //         let strFunct = $("#funct option:selected").val();
+    //         $("#staticFunct").html(functsData[strFunct]["name"]);
+    //         $("#staticLevel").html(functsData[strFunct]["level"]);
+    //         $("#staticExpression").html(functsData[strFunct]["expression"]);
+    //         $("#staticDimension").html(functsData[strFunct]["dim"]);
+    //         $("#staticObjective").html(data["objective"]);
+    //         $("#staticInterval").html(data["interval"]);
+    //         $("#staticSeedParents").html(data["seed_parents"]);
+    //         $("#staticKillRate").html(data["kill_rate"]);
+    //         $("#staticAverageChildNumb").html(data["average_child_numb"]);
+    //     }
+    // });
 }
 
 
 function getDynamicState() {
     console.debug('getDynamicState');
-
+    // $.ajax({
+    //     type: "GET",
+    //     url: "/dynamicstate?algoId=" + algoId,
+    //     // async: false, // Mode synchrone
+    //     success: function (data) {
+    //         $("#rowLen").html(data["len_current_population"]);
+    //         $("#rowYear").html(data["year"]);
+    //         console.debug(data["repartition_current_population"])
+    //         $("#rowOriginal").html(data["repartition_current_population"]["first"]);
+    //         $("#rowNormal").html(data["repartition_current_population"]["normal"]);
+    //         $("#rowMutant").html(data["repartition_current_population"]["random"]);
+    //         $("#rowBest").html(data["best_current_population"].slice(0, 3)).toString();
+    //     }
+    // });
 }
+
+
 
 
 function handleInitMethod(data) {
     console.debug("handleInitMethod");
-    //
-    // change visual to app
-    // fromInitToRunView();
-
-    // getStaticState();
-    // getDynamicState();
-    // fromInitToRunView();
-    //
+    getStaticState();
+    getDynamicState();
     // updateCharts();
-    //
-}
 
+}
 
 function doBeginnerInit() {
     console.debug('doBeginnerInit')
@@ -116,10 +142,8 @@ function doBeginnerInit() {
     });
 }
 
-
-
-function doExpertInit() {
-    console.debug("onExpertInit --> initFormUser event")
+function doExpertInit(e) {
+    console.debug("doExpertInit")
     e.preventDefault(); // avoid to execute the actual submit of the form.
     $.ajax({
         type: "POST",
@@ -130,57 +154,38 @@ function doExpertInit() {
             algoInitilalized = true;
             algoId = idAlgo;
             fromInitToRunView();
-            handleInitMethod(data);
-            console.debug("onExpertInit -->request OK algoId = " + algoId);
+            handleInitMethod(idAlgo);
+            console.debug("onExpertInit -->request OK algoId = " + idAlgo);
         }
     });
 }
 
 
-
-
-
-
 ////////////////////////////////////////////////////////
-//      init submit BTN
+//      init submit form --> run
 ////////////////////////////////////////////////////////
 
 function onIntermediateInit() {
     console.debug('onIntermediateInit');
+    // event handler
+    // $("#init-form").submit(function (e) {
+    //     console.debug(" onIntermediateInit --> form submited")
+    //     doExpertInit(e);
+    // });
 }
 
 function onExpertInit() {
-    console.debug('onIntermediateInit');
+    console.debug('onExpertInit');
+    // event handler
+    $("#init-form").submit(function (e) {
+        console.debug(" onExpertInit --> form submited")
+        doExpertInit(e);
+    });
 }
 
 
-// function onIntermediateBtn() {
-//     console.debug('onIntermediateBtn');
-//     $("#btnGo0Text-2").click(function (e) {
-//         console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
-//         fromLandingToInitView();
-//     });
-//     $("#btnGo1Text-2").click(function (e) {
-//         console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
-//         fromLandingToInitView();
-//     });
-// }
-
-// function onExpertBtn() {
-//     console.debug('onExpertBtn');
-//     $("#btnGo0Text-2").click(function (e) {
-//         console.debug('onExpertBtn --> btnGo0Text 2 clicked')
-//         fromLandingToInitView();
-//     });
-//     $("#btnGo1Text-2").click(function (e) {
-//         console.debug('onExpertBtn --> btnGo1Text 2 clicked')
-//         fromLandingToInitView();
-//     });
-// }
-
-
 ////////////////////////////////////////////////////////
-//      landing BTN
+//      landing BTN landing --> init form
 ////////////////////////////////////////////////////////
 
 
@@ -197,14 +202,13 @@ function onBeginnerBtn() {
     });
 }
 
-
 function onIntermediateBtn() {
     console.debug('onIntermediateBtn');
-    $("#btnGo0Text-2").click(function (e) {
+    $("#btnGo0Text-1").click(function (e) {
         console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
         fromLandingToInitView();
     });
-    $("#btnGo1Text-2").click(function (e) {
+    $("#btnGo1Text-1").click(function (e) {
         console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
         fromLandingToInitView();
     });
