@@ -114,6 +114,18 @@ section {
     padding-left: 20px;
     padding-right: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+    #init-cont .card .form-group {
+      margin-bottom: 5px; }
+    #init-cont .card small {
+      color: #414141; }
+    #init-cont .card select,
+    #init-cont .card input {
+      padding-top: 2px;
+      padding-bottom: 2px; }
+    #init-cont .card .extraPadding {
+      margin-top: 10px; }
+    #init-cont .card .tdX {
+      padding-right: 100px; }
 
 #state-cont {
   margin-top: 10px;

@@ -95,7 +95,7 @@ class InitForm(FlaskForm):
     )
 
     average_child_numb = FloatField(
-        "Normal  vs mutant child",
+        "Normal vs mutant child",
         description="% of child normal vs % of child mutant each year",
         default=0.25,
         render_kw={"class": "form-control", "placeholder": "default : 0.25"},
@@ -106,7 +106,7 @@ class InitForm(FlaskForm):
     )
 
     kill_before_reproduce = SelectField(
-        "kill before reproduce",
+        "Kill before reproduce",
         choices=choicesBool,
         description="if True, first kill bad elements, then reporduce.",
         default="True",
@@ -114,7 +114,7 @@ class InitForm(FlaskForm):
         validators=[DataRequired(message="data required"),],
     )
     social_system = SelectField(
-        "social system",
+        "Social system",
         choices=choicesSocial,
         description="% of child normal vs % of child mutant each year",
         default="Neutral",

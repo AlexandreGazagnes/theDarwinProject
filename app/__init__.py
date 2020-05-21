@@ -18,6 +18,7 @@ def make_app():
 
     app = Flask(__name__, template_folder="templates", static_folder="static")
     app.config["SECRET_KEY"] = secrets.token_hex(16)
+    app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0
     from app.front import front
     from app.back import back
 
