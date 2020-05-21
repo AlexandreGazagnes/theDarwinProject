@@ -1,3 +1,5 @@
+console.debug("back.js loaded")
+
 // // funts and states algo
 var algoInitilalized = false;
 var algoId = "";
@@ -5,8 +7,8 @@ var year = 0;
 
 var functsData; // store all functs add spec
 var initFormData; // store init data wheb Algo created
-var staticState: null;
-var dynamicState: null;
+var staticState;
+var dynamicState;
 
 // coorodnates
 var popCoords = [["x", "y"], [1, 1], [2, 2]];
@@ -15,14 +17,7 @@ var ysCoords = [["years", "y"], [0.0, 10.0]];
 var yearsCoords = [["years", "last_new_year"], [0.0, 0.0]];
 
 
-// a range function
-function range(start, end) {
-    var array = new Array();
-    for (var i = start; i < end; i++) {
-        array.push(i);
-    }
-    return array;
-}
+
 
 // get all functs data dicts
 function getFunctsData() {
@@ -50,12 +45,12 @@ function updateFunctInitData() {
 }
 
 
-
-function onLoad() {
-    console.debug("onLoad")
+function onBackLoad() {
+    console.debug("onBackLoad")
     getFunctsData();
     updateFunctInitData();
 }
+
 
 function onFunctInitChange() {
     console.debug("onFunctInitChange")
@@ -65,15 +60,3 @@ function onFunctInitChange() {
     });
 }
 
-// on ready
-$(function () {
-    onLoad(); // getFunctData, init funct descr and funct Img
-    onFunctInitChange(); // init funct descr and funct Img
-    // makeInitFromUser();
-    // getFunctsData();
-    // initFunctDescr();
-    // initFunctImage();
-    // onFunctChange();
-    // makeInitFromUser();
-    // onRunSubmit();
-});

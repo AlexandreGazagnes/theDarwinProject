@@ -1,3 +1,5 @@
+console.debug("front.js loaded")
+
 // screen dim
 var width;
 var height;
@@ -101,23 +103,18 @@ function toogleFeatureGrid() {
 }
 
 // load
-function onLoad() {
-    console.debug("onLoad");
+function onFrontLoad() {
+    console.debug("onFrontLoad");
     loadLandingView();
     toogleFeatureGrid();
 }
 
 // resize
-function onResize() {
-    console.debug("onResize");
+function onFrontResize() {
+    console.debug("onFrontResize");
     $(window).resize(function () {
         console.debug("reized");
         toogleFeatureGrid();
     });
 }
 
-// on ready
-$(function () {
-    onLoad();
-    onResize();
-});
