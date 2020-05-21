@@ -15,11 +15,12 @@ $(function () {
     onIntermediateBtn();
     onExpertBtn();
 
-
-    //Init submit
+    // init form
     onIntermediateInit();
     onExpertInit();
 
+    // run form
+    onRunSubmit();
 });
 
 

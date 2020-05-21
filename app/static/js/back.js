@@ -66,7 +66,7 @@ function onFunctInitChange() {
 
 
 ////////////////////////////////////////////////////////
-//      get Algo info static or dynamic
+//      get update Algo info static or dynamic data  
 ////////////////////////////////////////////////////////
 
 function updateStaticState() {
@@ -118,7 +118,9 @@ function getDynamicState() {
 }
 
 
-
+////////////////////////////////////////////////////////
+//  DO CALL SERVER To INIT an ALGO INSTANCE
+////////////////////////////////////////////////////////
 
 function handleInitMethod(data) {
     console.debug("handleInitMethod");
@@ -211,7 +213,6 @@ function onIntermediateBtn() {
             fromLandingToInitView();
         });
     });
-
 }
 
 function onExpertBtn() {
@@ -226,12 +227,67 @@ function onExpertBtn() {
 }
 
 
+////////////////////////////////////////////////////////
+//      DO Run
+////////////////////////////////////////////////////////
 
-    // $("#btnGo0Text-1").click(function (e) {
-    //     console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
-    //     fromLandingToInitView();
-    // });
-    // $("#btnGo1Text-1").click(function (e) {
-    //     console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
-    //     fromLandingToInitView();
-    // });
+// run
+
+function postRun() {
+    console.debug("postRun");
+    $.ajax({
+        type: "POST",
+        url: "/run?algoId=" + algoId,
+        // async: false, // Mode synchrone
+        success: function (data) {
+            dynamicState = data;
+            updateDynamicState();
+            // updateCharts();
+        }
+    });
+}
+
+function manageRun(e) {
+    console.debug("manageRun");
+    // avoid to execute the actual submit of the form.
+    e.preventDefault();
+
+    // local vars
+    let form = $("#run-form");
+    let years = form.find("#years").val();
+    let speed = form.find("#speed").val();
+
+    // prevent for speed < 1 (ie 0.1 --> sleep 10 sec)
+    speed = 1000 * (1 / speed)
+    if (speed > 1000) {
+        speed = 1000
+    }
+
+    // years --> for i in range :) 
+    let arrRange = range(0, years);
+    arrRange.forEach(function (item, index) {
+        setTimeout(function () { // be carrefull with setTimeoit != sleep() --> it is an async fuct
+            postRun();
+        }, index * speed);
+    });
+}
+
+function onRunSubmit() {
+    console.debug("onRunSubmit")
+    $("#run-form").submit(function (e) {
+        console.debug("onRunSubmit --> run submitted")
+        manageRun(e);
+    });
+}
+
+
+
+
+// $("#btnGo0Text-1").click(function (e) {
+//     console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
+//     fromLandingToInitView();
+// });
+// $("#btnGo1Text-1").click(function (e) {
+//     console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
+//     fromLandingToInitView();
+// });

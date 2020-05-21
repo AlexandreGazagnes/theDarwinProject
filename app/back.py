@@ -136,7 +136,9 @@ def run():
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     algo.run(1)
-    return "OK", 200
+    resp = jsonify(algo.dynamic_state)
+    resp.status_code = 200
+    return resp
 
 
 @back.route("/getxlim", methods=["GET"])
