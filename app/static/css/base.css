@@ -13,7 +13,8 @@ header {
 
 footer {
   margin-top: 50px;
-  font-style: italic; }
+  font-style: italic;
+  display: none; }
 
 p {
   font-size: 0.9rem;

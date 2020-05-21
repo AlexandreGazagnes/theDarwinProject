@@ -17,6 +17,12 @@ from src.functs import Functs
 
 choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.as_dict.items()]
 choicesObjectives = [("min", "min"), ("max", "max")]
+choicesBool = [("True", "True"), ("False", "False")]
+choicesSocial = [
+    ("Communism", "Communism"),
+    ("Neutral", "Neutral"),
+    ("Capitalism", "Capitalism"),
+]
 
 
 class InitForm(FlaskForm):
@@ -97,6 +103,23 @@ class InitForm(FlaskForm):
             DataRequired(message="data required"),
             NumberRange(0.01, 0.99, message="please 0.01 --> 0.99"),
         ],
+    )
+
+    kill_before_reproduce = SelectField(
+        "kill before reproduce",
+        choices=choicesBool,
+        description="if True, first kill bad elements, then reporduce.",
+        default="True",
+        render_kw={"class": "form-control", "placeholder": "default : 0.25"},
+        validators=[DataRequired(message="data required"),],
+    )
+    social_system = SelectField(
+        "social system",
+        choices=choicesSocial,
+        description="% of child normal vs % of child mutant each year",
+        default="Neutral",
+        render_kw={"class": "form-control", "placeholder": "default : 0.25"},
+        validators=[DataRequired(message="data required"),],
     )
     submit = SubmitField("Go", render_kw={"class": "btn btn-primary form-control"},)
 

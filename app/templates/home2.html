@@ -56,7 +56,7 @@
                     <div class="card-body ">
                         <h4 class="card-title text-center" id="btnGo0Title-{{ id }}">{{ title }}</h4>
                         <p class="card-text" id="btnGo0Descr-{{ id }}"> {{ descr }}</p>
-                        <button class="btn btn-primary form-control" onclick="toogleInitView('{{ text }}')"
+                        <button class="btn btn-primary form-control" onclick="fromLandingToInitView('{{ text }}')"
                             id="btnGo0Text-{{ id }}">{{ text }}</button>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                     <div class="card-body ">
                         <h4 class="card-title text-center" id="btnGo1Title-{{ id }}">{{ title }}</h4>
                         <p class="card-text" id="btnGo1Descr-{{ id }}"> {{ descr }}</p>
-                        <button class="btn btn-primary form-control" onclick="toogleInitView('{{ text }}')"
+                        <button class="btn btn-primary form-control" onclick="fromLandingToInitView('{{ text }}')"
                             id="btnGo1Text-{{ id }}">{{ text }}</button>
                     </div>
                 </div>
@@ -139,7 +139,13 @@
                 ("2","I'm sure that Earth has a cubic shape.", "Aristote","-115-02-31")   , 
                 ("3","This is fake news, this is fake news.", "D. Trump","2020-01-01"), 
                 ("4", "Whow, what a great UX and UI work...", "S. Job","2019-09-10"), 
-                ("5","I'm sitting here in the boring room.", "F. Garden", "1996-11-12"), ] %}
+                ("5","I'm sitting here in the boring room.", "F. Garden", "1996-11-12"), 
+                ("6", "I love this website, really amazing.", "A. Turing","1678-12-01"),
+                ("7", "The most powerfull app in the world.", "I. Newton","1111-12-01"),
+                ("8","I'm sure that Earth has a cubic shape.", "Aristote","-115-02-31") ,
+                ("9","This is fake news, this is fake news.", "D. Trump","2020-01-01"),
+                ("10", "Whow, what a great UX and UI work...", "S. Job","2019-09-10"),
+                ("11","I will reach Mars before the end of the year", "E. Musk", "1996-11-12"), ] %}
             <div class="col-sm-2">
                 <div class="card">
                     <div class="card-body ">
@@ -161,42 +167,46 @@
 
 <!-- init section  -->
 <section class="container" id="init-cont">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col">
             <h2 class="border-bottom text-center"> Init </h2>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col">
             <div class="card">
                 <form>
                     <!-- funct -->
-                    <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }} {{ initForm.funct }}
-                        <small>{{ initForm.funct.description }} </small>
-                        {% if initForm.funct.errors %}
-                        <ul class="errors">
-                            {% for error in initForm.funct.errors %}
-                            <li class="invalid-feedback">{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                        <div class="extraPadding">
-                            <table>
-                                {% for key, val in [("level", "Level"),
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }}
+                                {{ initForm.funct }}
+                                <small>{{ initForm.funct.description }} </small>
+                                {% if initForm.funct.errors %}
+                                <ul class="errors">
+                                    {% for error in initForm.funct.errors %}
+                                    <li class="invalid-feedback">{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                <div class="extraPadding">
+                                    <table>
+                                        {% for key, val in [("level", "Level"),
                                 ("expression", "Expression"),
                                 ("dimension", "Dimension"), ] %}
-                                <tr class="Italic">
-                                    <th>{{ key }} </th>
-                                    <td id="funct{{ val }}"></td>
-                                </tr>
-                                {% endfor %}
-                            </table>
+                                        <tr class="Italic">
+                                            <th>{{ key }} </th>
+                                            <td id="funct{{ val }}"></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <img id="functSrcImg" src="" width="100%" height="200" alt="short visual of the function">
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <img id="functSrcImg" src="" width="100%" height="200" alt="short visual of the function">
-                    </div>
-
                     <!-- objective -->
                     <div class="form-group">{{ initForm.objective.label }}
                         {{ initForm.objective }}<small>{{ initForm.objective.description }}</small>
@@ -238,7 +248,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!-- SEED PARENTS AND KILL RATE  -->
                     <div class="form-row">
@@ -299,32 +308,61 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- kill_before_reproduce AND CHILD NUMB -->
+                    <div class="form-row">
+                        <div class="col">
+                            <!-- kill_before_reproduce -->
+                            <div class="form-group">{{ initForm.kill_before_reproduce.label }}
+                                {{ initForm.kill_before_reproduce }}<small>{{ initForm.kill_before_reproduce.description }}</small>
+                                {% if initForm.kill_before_reproduce.errors %}
+                                <ul class="errors">
+                                    {% for error in initForm.kill_before_reproduce.errors %}
+                                    <li class="invalid-feedback">{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- social_system -->
+                        <div class="col">
+                            <div class="form-group">{{ initForm.social_system.label }}
+                                {{ initForm.social_system }}<small>{{ initForm.social_system.description }}</small>
+                                {% if initForm.social_system.errors %}
+                                <ul class="errors">
+                                    {% for error in initForm.social_system.errors %}
+                                    <li class="invalid-feedback">{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                     <!-- buttons -->
                     <div class="form-row">
                         <div class="col">
                             {{ initForm.submit }}
                         </div>
                         <div class="col">
-                            <button onclick="location.reload()" class="btn btn-danger form-control">Back</button>
+                            <button onclick="fromInitToLandingView()" class="btn btn-danger form-control">Back</button>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>
     </div>
+    <button onclick="fromInitToRunView()">
+        Go</button>
 </section>
-
-
 
 
 <!-- state section -->
 <section class="container" id="state-cont">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col">
             <h2 class="border-bottom text-center"> State</h2>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-sm-6 " id="staticState">
             <div class="card align-self-stretch">
@@ -405,29 +443,13 @@
 </section>
 
 
-<!-- action  section  -->
-<section class="container" id="action-cont">
-    <div class="row">
-        <div class="col">
-            <h2 class="border-bottom text-center"> Action </h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card">
-            <div class="col">
-                kfirorioe
-            </div>
-        </div>
-</section>
-
-
 <!-- graph section  -->
 <section class="container" id="graph-cont">
-    <div class="row">
+    <!-- <div class="row">
         <div class="col">
             <h2 class="border-bottom text-center"> Visualize </h2>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         {% for k in [0, 1, 2, 3] %}
         <div class="col-sm-6">
@@ -438,6 +460,24 @@
         </div>
         {% endfor %}
     </div>
+</section>
+
+
+<!-- action  section  -->
+<section class="container" id="action-cont">
+    <!-- <div class="row">
+        <div class="col">
+            <h2 class="border-bottom text-center"> Action </h2>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="card">
+            <div class="col">
+                <button onclick="fromRunToInitView()">
+                    back
+                </button>
+            </div>
+        </div>
 </section>
 
 
@@ -458,10 +498,10 @@ for future version -->
 <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
 
+
 <!-- FOR FUTURE VERSION
 <section class="container-fluid" id="app">
     <div class="row">
-
         <div class="col-sm-4">
             <div>
                 static state
@@ -490,7 +530,6 @@ for future version -->
             </div>
         </div>
     </div>
-
 </section> -->
 
 

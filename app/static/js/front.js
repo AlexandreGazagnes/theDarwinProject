@@ -3,6 +3,10 @@ var width;
 var height;
 var isSmall;
 
+// animation
+var loadingSpeed = 2000;
+var transitionSpeed = 1000;
+
 // init easy medium or difficult
 var initMethod;
 
@@ -14,34 +18,53 @@ var actionId = "action-cont";
 var graphID = "graph-cont";
 
 // info view
-function toogleInfoView() {
-    console.debug("toogleInfoView");
-    $("#" + infoId).show();
+function loadLandingView() {
+    console.debug("toogleLandingView");
+    $("footer").hide();
     $("#" + initId).hide();
     $("#" + stateId).hide();
     $("#" + actionId).hide();
     $("#" + graphID).hide();
+    $("#" + infoId).hide();
+
+    $("#" + infoId).fadeIn(loadingSpeed);
+    $("footer").fadeIn(loadingSpeed);
 }
 
 // init view
-function toogleInitView(option) {
-    console.debug("toogleInitView");
+function fromLandingToInitView(option) {
+    console.debug("fromLandingToInitView");
     initMethod = option;
-    $("#" + infoId).hide();
-    $("#" + initId).show();
-    $("#" + stateId).hide();
-    $("#" + actionId).hide();
-    $("#" + graphID).hide();
+    $("#" + infoId).fadeOut(transitionSpeed);
+    $("#" + initId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
 }
 
-// app run view
-function toogleRunView() {
-    console.debug("toogleRunView");
-    $("#" + infoId).hide();
-    $("#" + initId).hide();
-    $("#" + stateId).show();
-    $("#" + actionId).show();
-    $("#" + graphID).show();
+// back 0
+function fromInitToLandingView() {
+    console.debug("fromInitToLandingView");
+    $("#" + initId).fadeOut(transitionSpeed);
+    $("#" + infoId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+}
+
+// from init to run
+function fromInitToRunView() {
+    console.debug("fromInitToRunView");
+    // $("#" + infoId)..fadeOut(1500)();
+    $("#" + initId).fadeOut(transitionSpeed);
+    $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+    $("#" + actionId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+    $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+}
+
+// back 1
+function fromRunToInitView() {
+    console.debug("fromRunToInitView");
+    // $("#" + infoId)..slideUp(1500)();
+    $("#" + stateId).fadeOut(transitionSpeed);
+    $("#" + actionId).fadeOut(transitionSpeed);
+    $("#" + graphID).fadeOut(transitionSpeed);
+    $("#" + initId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
+
 }
 
 // dims
@@ -80,7 +103,7 @@ function toogleFeatureGrid() {
 // load
 function onLoad() {
     console.debug("onLoad");
-    toogleInfoView();
+    loadLandingView();
     toogleFeatureGrid();
 }
 
