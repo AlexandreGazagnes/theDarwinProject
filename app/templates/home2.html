@@ -433,11 +433,11 @@
         </div>
     </div> -->
     <div class="row">
-        {% for k in [0, 1, 2, 3] %}
+        {% for k in ["pop", "xs", "ys", "years"] %}
         <div class="col-sm-6">
             <div class="card">
                 <h3>graph {{ k }}</h3>
-                <div>grpah {{ k }}</div>
+                <div id="{{ k }}Chart"> </div>
             </div>
         </div>
         {% endfor %}
@@ -513,17 +513,19 @@
 
 
 <!-- home js -->
-<script src="{{ url_for('static', filename='js/utils.js')}}"></script>
-<script src="{{ url_for('static', filename='js/front.js')}}"></script>
-<script src="{{ url_for('static', filename='js/back.js')}}"></script>
-<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o0_var.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o1_utils.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o2_front.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o3_graph.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o4_back.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o5_main.js')}}"></script>
 
 
 <!-- home js-->
 <!-- <script src="{{ url_for('static', filename='js/home.js')}}"></script> -->
 
 <!-- google charts-->
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 <!-- maths in html 

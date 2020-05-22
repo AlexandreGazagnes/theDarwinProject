@@ -1,5 +1,11 @@
-console.debug("utils.js loaded")
+console.debug("utils.js")
 
+////////////////////////////////////////////////////////
+//      Utils.js
+////////////////////////////////////////////////////////
+
+
+// dummy call to have various states on sever side
 function dummyCall() {
     $.ajax({
         type: "GET",

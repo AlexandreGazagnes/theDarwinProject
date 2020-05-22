@@ -1,23 +1,12 @@
-console.debug("front.js loaded")
+console.debug("front.js")
 
-// screen dim
-var width;
-var height;
-var isSmall;
+////////////////////////////////////////////////////////
+//      Front.js
+////////////////////////////////////////////////////////
 
-// animation
-var loadingSpeed = 2000;
-var transitionSpeed = 1000;
 
-// init easy medium or difficult
-var initMethod;
-
-// sections 
-var infoId = "info-cont";
-var initId = "init-cont";
-var stateId = "state-cont";
-var actionId = "action-cont";
-var graphID = "graph-cont";
+//      Toogle various views
+/////////////////////////////////////////////////////////
 
 // info view
 function loadLandingView() {
@@ -57,7 +46,6 @@ function fromInitToRunView() {
     $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
 }
 
-
 // from init to run
 function fromLandingToRunView() {
     console.debug("fromInitToRunView");
@@ -78,6 +66,10 @@ function fromRunToInitView() {
     $("#" + initId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
 
 }
+
+
+//      Dims, sm, grid management 
+////////////////////////////////////////////
 
 // dims
 function updateDims() {
@@ -112,6 +104,10 @@ function toogleFeatureGrid() {
     }
 }
 
+
+// on load and reize
+////////////////////////////////////////////
+
 // load
 function onFrontLoad() {
     console.debug("onFrontLoad");
@@ -127,4 +123,3 @@ function onFrontResize() {
         toogleFeatureGrid();
     });
 }
-

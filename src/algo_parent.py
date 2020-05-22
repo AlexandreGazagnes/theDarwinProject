@@ -176,6 +176,12 @@ class EvolutionAlgo1D:
             "len_current_population": self.len_current_population,
             "repartition_current_population": self.repartition_current_population,
             "best_current_population": self.best_current_population,
+            "graph": {
+                "current_population": self.graph_pop,
+                "xs_last": self.graph_xs_last,
+                "ys_last": self.graph_ys_last,
+                "years_last": self.graph_years_last,
+            },
         }
         return d
 

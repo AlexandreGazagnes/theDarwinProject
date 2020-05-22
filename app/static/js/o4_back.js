@@ -1,28 +1,10 @@
-console.debug("back.js loaded")
-
-
-////////////////////////////////////////////////////////
-//      VAR
-////////////////////////////////////////////////////////
-
-// // funts and states algo
-var algoInitilalized = false;
-var algoId = "";
-var year = 0;
-
-var functsData; // store all functs add spec
-var initForm; // store init data wheb Algo created
-var staticState;
-var dynamicState;
-
-// coordonates
-var popCoords = [["x", "y"], [1, 1], [2, 2]];
-var xsCoords = [["years", "x"], [0.0, 10.0]];
-var ysCoords = [["years", "y"], [0.0, 10.0]];
-var yearsCoords = [["years", "last_new_year"], [0.0, 0.0]];
-
+console.debug("back.js")
 
 ////////////////////////////////////////////////////////
+//      BACK.js
+////////////////////////////////////////////////////////
+
+
 //      Load and Init Funct Methods
 ////////////////////////////////////////////////////////
 
@@ -65,7 +47,6 @@ function onFunctInitChange() {
 }
 
 
-////////////////////////////////////////////////////////
 //      get update Algo info static or dynamic data  
 ////////////////////////////////////////////////////////
 
@@ -118,7 +99,6 @@ function getDynamicState() {
 }
 
 
-////////////////////////////////////////////////////////
 //  DO CALL SERVER To INIT an ALGO INSTANCE
 ////////////////////////////////////////////////////////
 
@@ -126,7 +106,7 @@ function handleInitMethod(data) {
     console.debug("handleInitMethod");
     getStaticState();
     getDynamicState();
-    // updateCharts();
+    updateCharts();
 
 }
 
@@ -165,7 +145,6 @@ function doExpertInit(e) {
 }
 
 
-////////////////////////////////////////////////////////
 //      init submit form --> run
 ////////////////////////////////////////////////////////
 
@@ -189,7 +168,6 @@ function onExpertInit() {
 }
 
 
-////////////////////////////////////////////////////////
 //      landing BTN landing --> init form
 ////////////////////////////////////////////////////////
 
@@ -227,7 +205,6 @@ function onExpertBtn() {
 }
 
 
-////////////////////////////////////////////////////////
 //      DO Run
 ////////////////////////////////////////////////////////
 
@@ -242,7 +219,7 @@ function postRun() {
         success: function (data) {
             dynamicState = data;
             updateDynamicState();
-            // updateCharts();
+            updateCharts();
         }
     });
 }
@@ -279,15 +256,3 @@ function onRunSubmit() {
         manageRun(e);
     });
 }
-
-
-
-
-// $("#btnGo0Text-1").click(function (e) {
-//     console.debug('onIntermediateBtn --> btnGo0Text 2 clicked')
-//     fromLandingToInitView();
-// });
-// $("#btnGo1Text-1").click(function (e) {
-//     console.debug('onIntermediateBtn --> btnGo1Text 2 clicked')
-//     fromLandingToInitView();
-// });
