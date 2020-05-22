@@ -1,0 +1,15 @@
+{% macro form_group(initForm, field) %}
+
+<div class="form-group">{{ initForm[field].label }}
+    {{ initForm[field] }}<small>{{ initForm[field].description }}</small>
+    {% if initForm[field].errors %}
+    <ul class="errors">
+        {% for error in initForm[field].errors %}
+        <li class="invalid-feedback">{{ error }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+
+{% endmacro %}

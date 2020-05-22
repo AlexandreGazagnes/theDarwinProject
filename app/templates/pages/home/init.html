@@ -1,5 +1,8 @@
 {% macro init_cont(initForm) %}
 
+
+{% from "pages/home/init/form_group.html" import form_group %}
+
 <!-- <div class="row">
             <div class="col">
                 <h2 class="border-bottom text-center"> Init </h2>
@@ -41,44 +44,17 @@
                     </div>
                 </div>
                 <!-- objective -->
-                <div class="form-group">{{ initForm.objective.label }}
-                    {{ initForm.objective }}<small>{{ initForm.objective.description }}</small>
-                    {% if initForm.objective.errors %}
-                    <ul class="errors">
-                        {% for error in initForm.objective.errors %}
-                        <li class="invalid-feedback">{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </div>
+                {{ form_group(initForm, "objective") }}
 
                 <!--    INTERVAL-->
                 <div class="form-row">
                     <!-- interval_down -->
                     <div class="col">
-                        <div class="form-group">{{ initForm.interval_down.label }}
-                            {{ initForm.interval_down }}<small>{{ initForm.interval_down.description }}</small>
-                            {% if initForm.interval_down.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.interval_down.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "interval_down") }}
                     </div>
                     <!-- interval_up -->
                     <div class="col">
-                        <div class="form-group">{{ initForm.interval_up.label }}
-                            {{ initForm.interval_up }}<small>{{ initForm.interval_up.description }}</small>
-                            {% if initForm.interval_up.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.interval_up.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "interval_up") }}
                     </div>
                 </div>
 
@@ -86,29 +62,12 @@
                 <div class="form-row">
                     <div class="col">
                         <!-- seed_parents -->
-                        <div class="form-group">{{ initForm.seed_parents.label }}
-                            {{ initForm.seed_parents }}<small>{{ initForm.seed_parents.description }}</small>
-                            {% if initForm.seed_parents.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.seed_parents.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "seed_parents") }}
+
                     </div>
                     <div class="col">
                         <!-- kill_rate -->
-                        <div class="form-group">{{ initForm.kill_rate.label }}
-                            {{ initForm.kill_rate }}<small>{{ initForm.kill_rate.description }}</small>
-                            {% if initForm.kill_rate.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.kill_rate.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "kill_rate") }}
                     </div>
                 </div>
 
@@ -116,59 +75,22 @@
                 <div class="form-row">
                     <div class="col">
                         <!-- demography -->
-                        <div class="form-group">{{ initForm.demography.label }}
-                            {{ initForm.demography }}<small>{{ initForm.demography.description }}</small>
-                            {% if initForm.demography.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.demography.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "demography") }}
                     </div>
                     <!-- child_numb -->
                     <div class="col">
-                        <div class="form-group">{{ initForm.average_child_numb.label }}
-                            {{ initForm.average_child_numb }}<small>{{ initForm.average_child_numb.description }}</small>
-                            {% if initForm.average_child_numb.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.average_child_numb.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "average_child_numb") }}
                     </div>
                 </div>
-
                 <!-- kill_before_reproduce AND CHILD NUMB -->
                 <div class="form-row">
                     <div class="col">
                         <!-- kill_before_reproduce -->
-                        <div class="form-group">{{ initForm.kill_before_reproduce.label }}
-                            {{ initForm.kill_before_reproduce }}<small>{{ initForm.kill_before_reproduce.description }}</small>
-                            {% if initForm.kill_before_reproduce.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.kill_before_reproduce.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "kill_before_reproduce") }}
                     </div>
                     <!-- social_system -->
                     <div class="col">
-                        <div class="form-group">{{ initForm.social_system.label }}
-                            {{ initForm.social_system }}<small>{{ initForm.social_system.description }}</small>
-                            {% if initForm.social_system.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.social_system.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                        </div>
+                        {{ form_group(initForm, "social_system") }}
                     </div>
                 </div>
                 <!-- buttons -->
