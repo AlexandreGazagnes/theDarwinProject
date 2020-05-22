@@ -2,12 +2,14 @@
 
 
 {% from "pages/home/init/form_group.html" import form_group %}
+{% from "pages/home/init/form_row.html" import form_row_double, form_row_simple %}
+{% from "pages/home/init/button.html" import button %}
 
 <!-- <div class="row">
             <div class="col">
                 <h2 class="border-bottom text-center"> Init </h2>
             </div>
-        </div> -->
+</div> -->
 <div class="row">
     <div class="col">
         <div class="card">
@@ -44,64 +46,21 @@
                     </div>
                 </div>
                 <!-- objective -->
-                {{ form_group(initForm, "objective") }}
+                {{ form_row_simple(initForm, "objective")}}
 
-                <!--    INTERVAL-->
-                <div class="form-row">
-                    <!-- interval_down -->
-                    <div class="col">
-                        {{ form_group(initForm, "interval_down") }}
-                    </div>
-                    <!-- interval_up -->
-                    <div class="col">
-                        {{ form_group(initForm, "interval_up") }}
-                    </div>
-                </div>
 
-                <!-- SEED PARENTS AND KILL RATE  -->
-                <div class="form-row">
-                    <div class="col">
-                        <!-- seed_parents -->
-                        {{ form_group(initForm, "seed_parents") }}
+                <!-- doubles  -->
+                {% for f0, f1 in [  ("interval_down", "interval_up"),
+                                    ("seed_parents", "kill_rate") , 
+                                    ("demography", "average_child_numb"), 
+                                    ("kill_before_reproduce", "social_system")] %}
+                {{ form_row_double(initForm, f0, f1) }}
 
-                    </div>
-                    <div class="col">
-                        <!-- kill_rate -->
-                        {{ form_group(initForm, "kill_rate") }}
-                    </div>
-                </div>
+                {% endfor %}
 
-                <!-- DEMOGRAPHY AND CHILD NUMB -->
-                <div class="form-row">
-                    <div class="col">
-                        <!-- demography -->
-                        {{ form_group(initForm, "demography") }}
-                    </div>
-                    <!-- child_numb -->
-                    <div class="col">
-                        {{ form_group(initForm, "average_child_numb") }}
-                    </div>
-                </div>
-                <!-- kill_before_reproduce AND CHILD NUMB -->
-                <div class="form-row">
-                    <div class="col">
-                        <!-- kill_before_reproduce -->
-                        {{ form_group(initForm, "kill_before_reproduce") }}
-                    </div>
-                    <!-- social_system -->
-                    <div class="col">
-                        {{ form_group(initForm, "social_system") }}
-                    </div>
-                </div>
                 <!-- buttons -->
-                <div class="form-row">
-                    <div class="col">
-                        {{ initForm.submit }}
-                    </div>
-                    <div class="col">
-                        <button onclick="fromInitToLandingView()" class="btn btn-danger form-control">Back</button>
-                    </div>
-                </div>
+                {{ button(initForm) }}
+
             </form>
         </div>
     </div>
