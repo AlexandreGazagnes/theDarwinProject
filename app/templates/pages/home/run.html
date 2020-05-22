@@ -1,0 +1,20 @@
+{% macro run_cont(runForm) %}
+
+
+{% from "pages/home/run/state.html" import state %}
+{% from "pages/home/run/graph.html" import graph %}
+{% from "pages/home/run/action.html" import action %}
+
+
+<!-- state section -->
+{{ state() }}
+
+<!-- graph section  -->
+{{ graph() }}
+
+
+<!-- action  section  -->
+{{ action(runForm) }}
+
+
+{% endmacro %}

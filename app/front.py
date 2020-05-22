@@ -28,7 +28,7 @@ def just_static():
     logger.debug("called")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
-    return render_template("home.html", initForm=initForm, runForm=runForm)
+    return render_template("pages/home.html", initForm=initForm, runForm=runForm)
 
 
 # test files

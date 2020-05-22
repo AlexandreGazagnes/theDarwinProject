@@ -1,0 +1,21 @@
+{% macro graph() %}
+
+<section class="container" id="graph-cont">
+    <!-- <div class="row">
+        <div class="col">
+            <h2 class="border-bottom text-center"> Visualize </h2>
+        </div>
+    </div> -->
+    <div class="row">
+        {% for k in ["pop", "xs", "ys", "years"] %}
+        <div class="col-sm-6">
+            <div class="card">
+                <h3>graph {{ k }}</h3>
+                <div id="{{ k }}Chart"> </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endmacro %}
