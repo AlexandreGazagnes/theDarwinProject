@@ -51,6 +51,6 @@ var ysCoords = [["years", "y"], [0.0, 0.0]];
 var yearsCoords = [["years", "last_new_year"], [0.0, 0.0]];
 
 // scatter
-var pointSize = 6;
+var pointSize = 5;
 var pointShape = "circle";
 

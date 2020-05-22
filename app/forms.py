@@ -86,7 +86,7 @@ class InitForm(FlaskForm):
     demography = FloatField(
         "Demography",
         default=1,
-        description="rate of evolution of the population each year (between 0.75 and 1.25)",
+        description="increase rate of the population (in 0.75 / 1.25)",
         render_kw={"class": "form-control", "placeholder": "default : 1.0"},
         validators=[
             DataRequired(message="data required"),
@@ -95,7 +95,7 @@ class InitForm(FlaskForm):
     )
 
     average_child_numb = FloatField(
-        "Normal vs mutant child",
+        "Normal vs Mutant",
         description="% of child normal vs % of child mutant each year",
         default=0.25,
         render_kw={"class": "form-control", "placeholder": "default : 0.25"},
