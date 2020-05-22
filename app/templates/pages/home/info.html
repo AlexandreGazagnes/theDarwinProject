@@ -6,18 +6,28 @@
 {% from "pages/home/info/citation.html" import citation %}
 
 <!-- jumbo -->
-{{ jumbo() }}
+<div class="jumbotron" id="jumbo-cont">
+    {{ jumbo() }}
+</div>
 
 <!-- cta 0 -->
-{{ btn("0") }}
+<div class="container" id="btnGo0-cont">
+    {{ btn("0") }}
+</div>
 
 <!-- feature grid -->
-{{ feature() }}
+<div class="container" id="feature-cont">
+    {{ feature() }}
+</div>
 
 <!-- cta 1 -->
-{{ btn("1") }}
+<div class="container" id="btnGo1-cont">
+    {{ btn("1") }}
+</div>
 
 <!-- citation -->
-{{ citation() }}
+<div class="container-fluid" id="citation-cont">
+    {{ citation() }}
+</div>
 
 {% endmacro %}

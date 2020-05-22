@@ -2,14 +2,14 @@
 
 
 <!-- citation  -->
-<div class="container-fluid" id="citation-cont">
-    <div class="row">
-        <div class="col">
-            <h2 class="border-bottom text-center"> Testimonials</h2>
-        </div>
+
+<div class="row">
+    <div class="col">
+        <h2 class="border-bottom text-center"> Testimonials</h2>
     </div>
-    <div class="row">
-        {% for id, text, author, date in [
+</div>
+<div class="row">
+    {% for id, text, author, date in [
                 ("0", "I love this website, really amazing.", "A. Turing","1678-12-01"),
                 ("1", "The most powerfull app in the world.", "I. Newton","1111-12-01"),
                 ("2","I'm sure that Earth has a cubic shape.", "Aristote","-115-02-31")   , 
@@ -22,22 +22,22 @@
                 ("9","This is fake news, this is fake news.", "D. Trump","2020-01-01"),
                 ("10", "Whow, what a great UX and UI work...", "S. Job","2019-09-10"),
                 ("11","I will reach Mars before the end of the year", "E. Musk", "1996-11-12"), ] %}
-        <div class="col-sm-2">
-            <div class="card">
-                <div class="card-body ">
-                    <blockquote class="blockquote mb-0 align-self-stretch">
-                        <p id="quoteText-{{ id }}">"{{ text }}"</p>
-                        <footer class="blockquote-footer"><span id="quoteAuthor-{{ id }}">by {{ author }}</span>
-                            <br>
-                            <span id="quoteDate-{{ id }}">on {{ date }} </span>
-                        </footer>
-                    </blockquote>
-                </div>
+    <div class="col-sm-2">
+        <div class="card">
+            <div class="card-body ">
+                <blockquote class="blockquote mb-0 align-self-stretch">
+                    <p id="quoteText-{{ id }}">"{{ text }}"</p>
+                    <footer class="blockquote-footer"><span id="quoteAuthor-{{ id }}">by {{ author }}</span>
+                        <br>
+                        <span id="quoteDate-{{ id }}">on {{ date }} </span>
+                    </footer>
+                </blockquote>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 </div>
+
 
 
 

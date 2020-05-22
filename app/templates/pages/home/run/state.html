@@ -1,72 +1,71 @@
 {% macro state() %}
 
-<section class="container" id="state-cont">
-    <!-- <div class="row">
+<!-- <div class="row">
         <div class="col">
             <h2 class="border-bottom text-center"> State</h2>
         </div>
     </div> -->
-    <div class="row">
-        <div class="col-sm-6 " id="staticState">
-            <div class="card align-self-stretch">
-                <h3>Static State</h3>
-                <table>
-                    <!-- generic -->
-                    {% for key in [ "Id","Name",]%}
-                    <tr>
-                        <td class="tdX">{{ key }} </td>
-                        <td id="static{{ key }}"></td>
-                    </tr>
-                    {% endfor %}
-                    <!-- image -->
-                    <tr>
-                        <td class="tdX">shape </td>
-                        <td id="staticShape">
-                            <img height="50px" width="80px" src="" alt="an image">
-                        </td>
-                    </tr>
-                    <!-- italic  -->
-                    {% for key in ["Name","Level","Expression","Dimension"] %}
-                    <tr class="italic-table">
-                        <td class="tdX">- {{ key }} </td>
-                        <td id="staticFunct{{ key }}"></td>
-                    </tr>
-                    {% endfor %}
-                    <!-- generic -->
-                    {% for key, val in [("Objective", "Objective"),
+<div class="row">
+    <div class="col-sm-6 " id="staticState">
+        <div class="card align-self-stretch">
+            <h3>Static State</h3>
+            <table>
+                <!-- generic -->
+                {% for key in [ "Id","Name",]%}
+                <tr>
+                    <td class="tdX">{{ key }} </td>
+                    <td id="static{{ key }}"></td>
+                </tr>
+                {% endfor %}
+                <!-- image -->
+                <tr>
+                    <td class="tdX">shape </td>
+                    <td id="staticShape">
+                        <img height="50px" width="80px" src="" alt="an image">
+                    </td>
+                </tr>
+                <!-- italic  -->
+                {% for key in ["Name","Level","Expression","Dimension"] %}
+                <tr class="italic-table">
+                    <td class="tdX">- {{ key }} </td>
+                    <td id="staticFunct{{ key }}"></td>
+                </tr>
+                {% endfor %}
+                <!-- generic -->
+                {% for key, val in [("Objective", "Objective"),
                                         ("Interval", "Interval"),
                                         ("Seed parents", "Seed_parents"),
                                         ("Kill rate", "Kill_rate"),
                                         ("Demography", "Demography"),
                                         ("Child numb", "Average_child_numb"),]%}
-                    <tr>
-                        <td class="tdX">{{ key }} </td>
-                        <td id="static{{ val }}"></td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                <tr>
+                    <td class="tdX">{{ key }} </td>
+                    <td id="static{{ val }}"></td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
-        <div class="col-sm-6 " id="dynamicState">
-            <div class="card align-self-stretch">
-                <h3>Dynamic State</h3>
-                <table>
-                    <tr>
-                        {% for key, val in [("Year", "Year"),
+    </div>
+    <div class="col-sm-6 " id="dynamicState">
+        <div class="card align-self-stretch">
+            <h3>Dynamic State</h3>
+            <table>
+                <tr>
+                    {% for key, val in [("Year", "Year"),
                                             ("Pop Size", "Len_current_population"), 
                                             ("First", "First"), 
                                             ("Normal", "Normal"),
                                             ("Random", "Random"),
                                             ("Best elements", "Best_current_population") ] %}
-                        <th> {{ key }} </th>
-                        <td id="dynamic{{ val }}"></td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+                    <th> {{ key }} </th>
+                    <td id="dynamic{{ val }}"></td>
+                </tr>
+                {% endfor %}
+            </table>
         </div>
     </div>
-</section>
+</div>
+
 
 
 {% endmacro %}
