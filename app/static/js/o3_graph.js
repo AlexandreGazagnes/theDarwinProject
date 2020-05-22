@@ -5,6 +5,7 @@ console.debug("graph.js")
 ////////////////////////////////////////////////////////
 
 
+// Make Charts
 ////////////////////////////////////////////////////////////
 
 // make a chart 
@@ -26,7 +27,6 @@ function drawPopChart() {
     let chart = new google.visualization.ScatterChart(document.getElementById('popChart'));
     chart.draw(data, options);
 }
-
 
 // make a chart 
 function drawXsChart() {
@@ -91,11 +91,14 @@ function drawYearsChart() {
     chart.draw(data, options);
 }
 
+
+
+//      update
 //////////////////////////////////////////////////////////////////
 
-function initCharts() {
-    console.debug("initCharts");
-}
+// function initCharts() {
+//     console.debug("initCharts");
+// }
 
 function updateCharts() {
     console.debug("updateCharts");
