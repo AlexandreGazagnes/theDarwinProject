@@ -5,20 +5,19 @@
 {% from "pages/home/run/graph.html" import graph %}
 {% from "pages/home/run/action.html" import action %}
 
-<section class="container" id="run-cont">
-    <!-- state div -->
-    <div id="state-cont">
-        {{ state() }}
-    </div>
 
-    <!-- graph div  -->
-    <div id="graph-cont">
-        {{ graph() }}
-    </div>
+<!-- state div -->
+<div id="state-cont">
+    {{ state() }}
+</div>
 
-    <!-- action  div  -->
-    <div id="action-cont">
-        {{ action(runForm) }}
-    </div>
-</section>
+<!-- graph div  -->
+<div id="graph-cont">
+    {{ graph() }}
+</div>
+
+<!-- action  div  -->
+<div id="action-cont">
+    {{ action(runForm) }}
+</div>
 {% endmacro %}
