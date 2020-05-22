@@ -1,7 +1,10 @@
 @media (max-width: 575.98px) {
   h1 {
     font-size: 2.3rem;
-    margin-bottom: 20px; } }
+    margin-bottom: 20px; }
+  #state-cont h4,
+  #graph-cont h4 {
+    padding-top: 20px; } }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
   h1 {
@@ -155,12 +158,17 @@ section {
   padding-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
+  #state-cont h2 {
+    margin-top: 5px; }
+  #state-cont h3 {
+    margin-bottom: 5px; }
   #state-cont .card {
     border: 0px #e6d9d9 solid !important;
     border-radius: 15px;
     background-color: white !important;
     margin-top: 10px;
     padding-top: 20px;
+    padding-bottom: 20px;
     margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -175,6 +183,8 @@ section {
   padding-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
+  #action-cont h3 {
+    margin-bottom: 5px; }
   #action-cont .card {
     border: 0px #e6d9d9 solid !important;
     border-radius: 15px;
@@ -194,6 +204,10 @@ section {
   padding-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
+  #graph-cont h3 {
+    margin-bottom: 5px; }
+  #graph-cont .extrah4top {
+    margin-top: 20px; }
   #graph-cont .card {
     border: 0px #e6d9d9 solid !important;
     border-radius: 15px;

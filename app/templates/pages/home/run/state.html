@@ -1,14 +1,17 @@
 {% macro state() %}
 
-<!-- <div class="row">
+
+<div class="card">
+    <div class="row">
         <div class="col">
-            <h2 class="border-bottom text-center"> State</h2>
+            <h3 class="border-bottom text-center"> State</h3>
         </div>
-    </div> -->
-<div class="row">
-    <div class="col-sm-6 " id="staticState">
-        <div class="card align-self-stretch">
-            <h3>Static State</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 border-right" id="staticState">
+            <!-- <div class="align-self-stretch"> -->
+            <h4>Static</h4>
             <table>
                 <!-- generic -->
                 {% for key in [ "Id","Name",]%}
@@ -44,11 +47,11 @@
                 </tr>
                 {% endfor %}
             </table>
+            <!-- </div> -->
         </div>
-    </div>
-    <div class="col-sm-6 " id="dynamicState">
-        <div class="card align-self-stretch">
-            <h3>Dynamic State</h3>
+        <div class="col-sm-6 border-left " id="dynamicState">
+            <!-- <div class="align-self-stretch"> -->
+            <h4>Dynamic </h4>
             <table>
                 <tr>
                     {% for key, val in [("Year", "Year"),
@@ -57,15 +60,14 @@
                                             ("Normal", "Normal"),
                                             ("Random", "Random"),
                                             ("Best elements", "Best_current_population") ] %}
-                    <th> {{ key }} </th>
+                    <td> {{ key }} </td>
                     <td id="dynamic{{ val }}"></td>
                 </tr>
                 {% endfor %}
             </table>
         </div>
+        <!-- </div> -->
     </div>
 </div>
-
-
 
 {% endmacro %}

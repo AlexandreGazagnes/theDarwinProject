@@ -5,6 +5,13 @@
         font-size: 2.3rem;
         margin-bottom: 20px;
     }
+
+    #state-cont,
+    #graph-cont {
+        h4 {
+            padding-top: 20px;
+        }
+    }
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -227,12 +234,21 @@ section {
     margin-bottom: 10px;
     padding-bottom: 10px;
 
+    h2 {
+        margin-top: 5px;
+    }
+
+    h3 {
+        margin-bottom: 5px;
+    }
+
     .card {
         border: 0px $jumbo-bg-color solid !important;
         border-radius: $bd-radius;
         background-color: white !important;
         margin-top: 10px;
         padding-top: 20px;
+        padding-bottom: 20px;
         margin-bottom: 10px;
         padding-left: 20px;
         padding-right: 20px;
@@ -259,6 +275,10 @@ section {
     margin-bottom: 10px;
     padding-bottom: 10px;
 
+    h3 {
+        margin-bottom: 5px;
+    }
+
     .card {
         border: 0px $jumbo-bg-color solid !important;
         border-radius: $bd-radius;
@@ -284,6 +304,14 @@ section {
     padding-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 10px;
+
+    h3 {
+        margin-bottom: 5px;
+    }
+
+    .extrah4top {
+        margin-top: 20px;
+    }
 
     .card {
         border: 0px $jumbo-bg-color solid !important;

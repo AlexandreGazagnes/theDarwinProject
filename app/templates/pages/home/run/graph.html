@@ -1,20 +1,29 @@
 {% macro graph() %}
 
 
-<!-- <div class="row">
+
+<div class="card">
+    <div class="row">
         <div class="col">
-            <h2 class="border-bottom text-center"> Visualize </h2>
-        </div>
-    </div> -->
-<div class="row">
-    {% for k in ["pop", "xs", "ys", "years"] %}
-    <div class="col-sm-6">
-        <div class="card">
-            <h3>graph {{ k }}</h3>
-            <div id="{{ k }}Chart"> </div>
+            <h3 class="border-bottom text-center"> Visualize </h3>
         </div>
     </div>
-    {% endfor %}
+    <div class="row">
+        {% for k, title, class in [
+            ("pop", "Current population", ""),
+            ("xs", "best 'x' value evolution during years", ""), 
+            ("ys", "best 'y' value evolution during years", "extrah4top"), 
+            ("years", "year of best found solution evolution during years", "extrah4top")] %}
+        <div class="col-sm-6">
+            <div class="text-center">
+                <h4 class="{{ title }}">graph {{ k }}</h4>
+                <div id="{{ k }}Chart"> </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
 </div>
 
 

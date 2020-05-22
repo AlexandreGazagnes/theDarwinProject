@@ -15,7 +15,7 @@ function drawPopChart() {
     let data = google.visualization.arrayToDataTable(dynamicState.graph.current_population);
     // options
     let options = {
-        title: 'current population',
+        // title: 'current population',
         hAxis: { title: 'x', }, //minValue: xMin, maxValue: xMax
         vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
         legend: 'none',
@@ -38,7 +38,7 @@ function drawXsChart() {
     let data = google.visualization.arrayToDataTable(xsCoords);
     // options
     let options = {
-        title: "best 'x' value evolution during years",
+        // title: "best 'x' value evolution during years",
         hAxis: { title: 'years', }, // minValue: xMin, maxValue: xMax
         vAxis: { title: 'x', }, // minValue: yMin, maxValue: yMax 
         legend: 'none'
@@ -58,7 +58,7 @@ function drawYsChart() {
     let data = google.visualization.arrayToDataTable(ysCoords);
     // options
     let options = {
-        title: "best 'y' value evolution during years",
+        // title: "best 'y' value evolution during years",
         hAxis: { title: 'years', }, //  minValue: xMin, maxValue: xMax 
         vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
         legend: 'none'
@@ -79,7 +79,7 @@ function drawYearsChart() {
     let data = google.visualization.arrayToDataTable(yearsCoords);
     // options
     let options = {
-        title: "year of best found solution evolution during years",
+        // title: "year of best found solution evolution during years",
         hAxis: { title: 'years', }, // minValue: xMin, maxValue: xMax
         vAxis: { title: 'year of best solution', }, // minValue: yMin, maxValue: yMax 
         legend: 'none'
