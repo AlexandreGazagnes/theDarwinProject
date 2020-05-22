@@ -22,7 +22,6 @@ function drawPopChart() {
         pointSize: pointSize,
         pointShape: pointShape
     };
-
     // init chart on DOM element and push
     let chart = new google.visualization.ScatterChart(document.getElementById('popChart'));
     chart.draw(data, options);
@@ -64,7 +63,6 @@ function drawYsChart() {
         vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
         legend: 'none'
     };
-
     // init chart on DOM element and push
     let chart = new google.visualization.LineChart(document.getElementById('ysChart'));
     chart.draw(data, options);
@@ -95,10 +93,6 @@ function drawYearsChart() {
 
 //      update
 //////////////////////////////////////////////////////////////////
-
-// function initCharts() {
-//     console.debug("initCharts");
-// }
 
 function updateCharts() {
     console.debug("updateCharts");

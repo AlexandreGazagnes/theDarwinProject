@@ -21,6 +21,7 @@ function getFunctsData() {
     });
 }
 
+// based on the hmtl selected funct update data and graph
 function updateFunctInitData() {
     console.debug("updateFunctInitData");
     var strFunct = $("#funct option:selected").val();
@@ -32,12 +33,7 @@ function updateFunctInitData() {
     $("#functSrcImg").attr("src", urlImg);
 }
 
-function onBackLoad() {
-    console.debug("onBackLoad");
-    getFunctsData();
-    updateFunctInitData();
-}
-
+// if use change the function on init form
 function onFunctInitChange() {
     console.debug("onFunctInitChange");
     $("#funct").change(function () {
@@ -46,10 +42,18 @@ function onFunctInitChange() {
     });
 }
 
+// on load init funct data for the init form
+function onBackLoad() {
+    console.debug("onBackLoad");
+    getFunctsData();
+    updateFunctInitData();
+}
+
 
 //      get update Algo info static or dynamic data  
 ////////////////////////////////////////////////////////
 
+// update static State data in html
 function updateStaticState() {
     console.debug("updateStaticState");
     ["Id", "Name", "Objective", "Interval", "Seed_parents", "Kill_rate", "Average_child_numb"].forEach((elem) => {
@@ -61,6 +65,7 @@ function updateStaticState() {
     });
 }
 
+// get static state --> make api call and save static state data
 function getStaticState() {
     console.debug("'getStaticState");
     $.ajax({
@@ -74,6 +79,7 @@ function getStaticState() {
     });
 }
 
+// update dynamic State data in html
 function updateDynamicState() {
     console.debug("updateDynamicState");
     let firstList = ["Year", "Len_current_population", "Best_current_population"];
@@ -85,6 +91,7 @@ function updateDynamicState() {
     });
 }
 
+// get dynamic state --> make api call and save dynmaic state data
 function getDynamicState() {
     console.debug("getDynamicState");
     $.ajax({
@@ -98,18 +105,18 @@ function getDynamicState() {
     });
 }
 
-
 //  DO CALL SERVER To INIT an ALGO INSTANCE
 ////////////////////////////////////////////////////////
 
+// whent init update various data and graphs
 function handleInitMethod(data) {
     console.debug("handleInitMethod");
     getStaticState();
     getDynamicState();
     updateCharts();
-
 }
 
+// init Algo on back end based on the easiest model
 function doBeginnerInit() {
     console.debug('doBeginnerInit')
     $.ajax({
@@ -126,6 +133,7 @@ function doBeginnerInit() {
     });
 }
 
+// init Algo on back end based on the form-ini vals
 function doExpertInit(e) {
     console.debug("doExpertInit")
     e.preventDefault(); // avoid to execute the actual submit of the form.
@@ -148,6 +156,7 @@ function doExpertInit(e) {
 //      init submit form --> run
 ////////////////////////////////////////////////////////
 
+// event handler
 function onIntermediateInit() {
     console.debug('onIntermediateInit');
     // event handler
@@ -157,6 +166,7 @@ function onIntermediateInit() {
     // });
 }
 
+// event handler
 function onExpertInit() {
     console.debug('onExpertInit');
     // event handler
@@ -171,6 +181,7 @@ function onExpertInit() {
 //      landing BTN landing --> init form
 ////////////////////////////////////////////////////////
 
+// beginner btn --> go to run and init an object
 function onBeginnerBtn() {
     console.debug('onBeginnerInit');
     let idxs = ["0", "1"];
@@ -182,6 +193,7 @@ function onBeginnerBtn() {
     });
 }
 
+// intermediate btn --> go to init view
 function onIntermediateBtn() {
     console.debug('onIntermediateBtn');
     let idxs = ["0", "1"];
@@ -193,6 +205,7 @@ function onIntermediateBtn() {
     });
 }
 
+// expert btn --> go to init view
 function onExpertBtn() {
     console.debug('onExpertBtn');
     let idxs = ["0", "1"];
@@ -208,8 +221,7 @@ function onExpertBtn() {
 //      DO Run
 ////////////////////////////////////////////////////////
 
-// run
-
+// post run for 1 year
 function postRun() {
     console.debug("postRun");
     $.ajax({
@@ -224,6 +236,7 @@ function postRun() {
     });
 }
 
+// loop regadring form data
 function manageRun(e) {
     console.debug("manageRun");
     // avoid to execute the actual submit of the form.
@@ -239,7 +252,6 @@ function manageRun(e) {
     if (speed > 1000) {
         speed = 1000
     }
-
     // years --> for i in range :) 
     let arrRange = range(0, years);
     arrRange.forEach(function (item, index) {
@@ -249,6 +261,7 @@ function manageRun(e) {
     });
 }
 
+// event handler
 function onRunSubmit() {
     console.debug("onRunSubmit")
     $("#run-form").submit(function (e) {
