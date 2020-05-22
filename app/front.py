@@ -31,12 +31,9 @@ def just_static():
     return render_template("home.html", initForm=initForm, runForm=runForm)
 
 
-# static files
-@front.route("/2", methods=["GET"])
-def just_static2():
+# test files
+@front.route("/test", methods=["GET"])
+def just_test():
     """just return html and css"""
 
-    logger.debug("called")
-    initForm = InitForm(request.form)
-    runForm = RunForm(request.form)
-    return render_template("home.html", initForm=initForm, runForm=runForm)
+    return render_template("test.html")
