@@ -23,9 +23,10 @@ var initMethod;
 // sections 
 var infoId = "info-cont";
 var initId = "init-cont";
-var stateId = "state-cont";
-var actionId = "action-cont";
-var graphID = "graph-cont";
+// var stateId = "state-cont";
+// var actionId = "action-cont";
+// var graphID = "graph-cont";
+var runId = "run-cont";
 
 
 //      BACK
