@@ -1,0 +1,36 @@
+{% macro jumbo() %}
+
+
+<!-- jumbo -->
+<div class="jumbotron" id="jumbo-cont">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1 align-self-center"></div>
+            <div class="col-sm-5 align-self-center">
+                <h1 class="">Simple and fun genetic algorythms</h1>
+                <p class="lead">Define, test and modelize various gentic algorythm. Try to catch a very basic but
+                    powerfull concept.
+                </p>
+                <!-- <p> You can just make a random try, or define a very rich collection of feature to test,
+                        improve and upgrade your own darwin vision of the world.</p> -->
+
+                <p class="text-center">play to learn, learn to play!
+                </p>
+                <!-- <hr class="my-4">
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi veritatis repudiandae
+                    </p>
+                    <button class="btn btn-secondary">let's Go! </button> -->
+            </div>
+            <div class="col-sm-5 align-self-center">
+                <div class="text-center">
+                    <img class="rounded-circle" src="{{ url_for('static', filename='img/icons/CharlesSquare.jpg')}}"
+                        alt="old man image">
+                </div>
+            </div>
+            <div class="col-sm-1 align-self-center"></div>
+        </div>
+    </div>
+</div>
+
+
+{% endmacro %}

@@ -1,0 +1,23 @@
+{% macro info_cont() %}
+
+{% from "home/info/jumbo.html" import jumbo %}
+{% from "home/info/feature.html" import feature %}
+{% from "home/info/btn.html" import btn %}
+{% from "home/info/citation.html" import citation %}
+
+<!-- jumbo -->
+{{ jumbo() }}
+
+<!-- cta 0 -->
+{{ btn("0") }}
+
+<!-- feature grid -->
+{{ feature() }}
+
+<!-- cta 1 -->
+{{ btn("1") }}
+
+<!-- citation -->
+{{ citation() }}
+
+{% endmacro %}
