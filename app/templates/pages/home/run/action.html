@@ -7,12 +7,13 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
             <form id="run-form">
                 <div class="form-row">
+                    <!-- year -->
                     <div class="col">
 
-                        <!-- year -->
                         <div class="form-group">
                             {{ runForm.years.label }}
                             {{ runForm.years }}
@@ -26,7 +27,6 @@
                             {% endif %}
                         </div>
                     </div>
-
                     <!-- speed  -->
                     <div class="col">
                         <div class="form-group">
@@ -45,20 +45,19 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-2 extra-padding">
+                    <div class="col extra-padding">
                         {{ runForm.submit }}
                     </div>
-                    <div class="col-sm-2 extra-padding">
+                    <div class="col extra-padding">
                         <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
                     </div>
-                    <div class="col-sm-2 extra-padding">
+                    <div class="col extra-padding">
                         <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
                     </div>
-                    <div class="col-sm-3"></div>
                 </div>
+            </form>
         </div>
-        </form>
+        <div class="col-sm-3"></div>
     </div>
 </div>
 
