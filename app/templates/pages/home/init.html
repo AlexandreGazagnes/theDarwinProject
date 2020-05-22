@@ -3,6 +3,7 @@
 
 {% from "pages/home/init/form_group.html" import form_group %}
 {% from "pages/home/init/form_row.html" import form_row_double, form_row_simple %}
+{% from "pages/home/init/funct.html" import formFunct %}
 {% from "pages/home/init/button.html" import button %}
 
 <!-- <div class="row">
@@ -15,36 +16,8 @@
         <div class="card">
             <form id="init-form">
                 <!-- funct -->
-                <div class="row">
-                    <div class="col-sm-8">
-                        <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }}
-                            {{ initForm.funct }}
-                            <small>{{ initForm.funct.description }} </small>
-                            {% if initForm.funct.errors %}
-                            <ul class="errors">
-                                {% for error in initForm.funct.errors %}
-                                <li class="invalid-feedback">{{ error }}</li>
-                                {% endfor %}
-                            </ul>
-                            {% endif %}
-                            <div class="extraPadding">
-                                <table>
-                                    {% for key, val in [("level", "Level"),
-                                    ("expression", "Expression"),
-                                    ("dimension", "Dimension"), ] %}
-                                    <tr class="Italic">
-                                        <td class="tdX"> <small>{{ key }}</small></td>
-                                        <td> <small id="funct{{ val }}">42</small></td>
-                                    </tr>
-                                    {% endfor %}
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <img id="functSrcImg" height="150px" width="100%" src="" alt="short visual of the function">
-                    </div>
-                </div>
+                {{ formFunct(initForm) }}
+
                 <!-- objective -->
                 {{ form_row_simple(initForm, "objective")}}
 

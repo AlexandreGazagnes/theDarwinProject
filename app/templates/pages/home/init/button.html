@@ -1,0 +1,12 @@
+{% macro button(initForm) %}
+
+<div class="form-row">
+    <div class="col">
+        {{ initForm.submit }}
+    </div>
+    <div class="col">
+        <button onclick="fromInitToLandingView()" class="btn btn-danger form-control">Back</button>
+    </div>
+</div>
+
+{% endmacro %}
