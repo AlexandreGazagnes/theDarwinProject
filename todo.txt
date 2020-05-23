@@ -1,0 +1,21 @@
+redis
+config.py
+Session
+.env
+wsgi.py
+procfile
+precompile js
+
+navbar
+footer
+
+noonproject buy icons
+press long run
+pause
+reload  
+
+all pading in rem
+reshape css
+text lorem
+kill before reproduce
+social system
