@@ -11,23 +11,50 @@ console.debug("graph.js")
 // make a chart 
 function drawPopChart() {
     console.debug("drawPopChart")
-    // update coords && data
-    let data = google.visualization.arrayToDataTable(dynamicState.graph.current_population);
-    // options
-    let options = {
-        // title: 'current population',
-        hAxis: { title: 'x', }, //minValue: xMin, maxValue: xMax
-        vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
-        legend: 'none',
-        width: graphWidth,
-        heigh: graphHeight,
-        pointSize: pointSize,
-        pointShape: pointShape
-    };
-    // init chart on DOM element and push
-    let chart = new google.visualization.ScatterChart(document.getElementById('popChart'));
-    chart.draw(data, options);
+    // // update coords && data
+    // let data = google.visualization.arrayToDataTable(dynamicState.graph.current_population);
+    // // options
+    // let options = {
+    //     // title: 'current population',
+    //     hAxis: { title: 'x', }, //minValue: xMin, maxValue: xMax
+    //     vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
+    //     legend: 'none',
+    //     width: graphWidth,
+    //     heigh: graphHeight,
+    //     pointSize: pointSize,
+    //     pointShape: pointShape
+    // };
+    // // init chart on DOM element and push
+    // let chart = new google.visualization.ScatterChart(document.getElementById('popChart'));
+    // chart.draw(data, options);
+
+    var ctx = document.getElementById('popChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45]
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+
+
+
+
 }
+
+
+
 
 // make a chart 
 function drawXsChart() {
