@@ -154,8 +154,8 @@ section {
       padding-right: 100px; }
 
 #state-cont {
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
   #state-cont h2 {
@@ -179,8 +179,8 @@ section {
       padding-right: 20px; }
 
 #action-cont {
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
   #action-cont h3 {
@@ -200,8 +200,8 @@ section {
     margin-bottom: 5px; }
 
 #graph-cont {
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 0px;
+  padding-top: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
   #graph-cont h3 {
