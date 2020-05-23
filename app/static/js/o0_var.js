@@ -43,6 +43,7 @@ var staticState;
 var dynamicState;
 
 
+
 //      GRAPH
 ////////////////////////////////////////////////////////
 
@@ -57,6 +58,9 @@ var pointShape = "circle";
 
 var graphHeight = 100;
 var graphWidth = 300;
+
+
+var showTemplate = true;
 
 
 

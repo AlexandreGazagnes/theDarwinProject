@@ -12,51 +12,63 @@ console.debug("graph.js")
 function drawPopChart() {
     console.debug("drawPopChart")
 
+    // disable animation for all / GLOBAL
+    Chart.defaults.global.animation = false;
+
     // context
     let ctx = document.getElementById('popChart').getContext('2d');
 
-    // datasets
-    let datasets = [
-        {
-            // label: 'Scatter Dataset',
-            data: dynamicState.graph.current_population,
-            pointRadius: 2,
-            backgroundColor: "#007bff",
-        },
-    ]
+    // population
+    let populationDataset = {
+        data: dynamicState.graph.current_population,
+        pointRadius: 3,
+        backgroundColor: "#007bff",
+    }
+
+    // template
+    let templateDataset = {}
+    if (showTemplate) {
+        templateDataset = {
+            data: staticState.funct_template,
+            pointRadius: 0.1,
+            backgroundColor: "rgba(220, 53, 69, 0.01)",
+        }
+    }
 
     // scales
-    let scales = {
+    let myScales = {
         xAxes: [{
             type: 'linear',
             position: 'bottom'
         }]
     }
 
+    // datasets
+    let myDatasets = [
+        populationDataset,
+        templateDataset,
+    ]
     // options
-    let options = {
-        maintainAspectRatio: false,
+    let myOptions = {
+        maintainAspectRatio: true,
         responsive: true,
-        animation: {
-            duration: 0 // general animation time
-        },
-        hover: {
-            animationDuration: 0 // duration of animations when hovering an item
-        },
-        // responsiveAnimationDuration: 0, // animation duration after a resiz
 
-        scales: scales
+        hover: {
+            animationDuration: 0, // duration of animations when hovering an item
+        },
+        showLines: false, // disable for all datasets
+        responsiveAnimationDuration: 0, // animation duration after a resiz
+        scales: myScales
     }
 
     // make the chart
     var scatterChart = new Chart(ctx, {
         type: 'scatter',
         data: {
-            datasets: datasets,
-            options: options
+            datasets: myDatasets,
+            options: myOptions,
         }
     });
-
     // scatterChart.canvas.parentNode.style.height = '200px';
     // scatterChart.canvas.parentNode.style.width = '333px';
 }

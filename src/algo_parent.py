@@ -163,6 +163,10 @@ class EvolutionAlgo1D:
             "seed_parents": self.seed_parents,
             "kill_rate": self.kill_rate,
             "average_child_numb": self.average_child_numb,
+            "funct_template": [
+                {"x": i, "y": self.funct["funct"](i)}
+                for i in np.linspace(*self.interval, 5000)
+            ],
         }
         return d
 

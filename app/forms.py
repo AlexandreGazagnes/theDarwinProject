@@ -25,7 +25,12 @@ choicesSocial = [
 ]
 
 
+choicesMode = [("easy", "easy"), ("medium", "medium"), ("hard", "hard")]
+
+
 class InitForm(FlaskForm):
+
+    mode = SelectField("Mode", choices=choicesMode,)
 
     funct = SelectField(
         "Function",
@@ -66,7 +71,7 @@ class InitForm(FlaskForm):
         "Seed Parents",
         render_kw={"class": "form-control", "placeholder": "default : 100"},
         description="nb of initial parents (between 10 and 1000)",
-        default=100,
+        default=10,
         validators=[
             DataRequired(message="data required"),
             NumberRange(10, 1000, message="please 10 --> 1000"),
@@ -97,7 +102,7 @@ class InitForm(FlaskForm):
     average_child_numb = FloatField(
         "Normal vs Mutant",
         description="% of child normal vs % of child mutant each year",
-        default=0.25,
+        default=0.50,
         render_kw={"class": "form-control", "placeholder": "default : 0.25"},
         validators=[
             DataRequired(message="data required"),
