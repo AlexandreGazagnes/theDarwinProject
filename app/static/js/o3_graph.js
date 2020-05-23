@@ -19,6 +19,8 @@ function drawPopChart() {
         hAxis: { title: 'x', }, //minValue: xMin, maxValue: xMax
         vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
         legend: 'none',
+        width: graphWidth,
+        heigh: graphHeight,
         pointSize: pointSize,
         pointShape: pointShape
     };
@@ -41,7 +43,9 @@ function drawXsChart() {
         // title: "best 'x' value evolution during years",
         hAxis: { title: 'years', }, // minValue: xMin, maxValue: xMax
         vAxis: { title: 'x', }, // minValue: yMin, maxValue: yMax 
-        legend: 'none'
+        legend: 'none',
+        width: graphWidth,
+        heigh: graphHeight
     };
     // init chart on DOM element and push
     let chart = new google.visualization.LineChart(document.getElementById('xsChart'));
@@ -61,7 +65,9 @@ function drawYsChart() {
         // title: "best 'y' value evolution during years",
         hAxis: { title: 'years', }, //  minValue: xMin, maxValue: xMax 
         vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
-        legend: 'none'
+        legend: 'none',
+        width: graphWidth,
+        heigh: graphHeight
     };
     // init chart on DOM element and push
     let chart = new google.visualization.LineChart(document.getElementById('ysChart'));
@@ -82,7 +88,9 @@ function drawYearsChart() {
         // title: "year of best found solution evolution during years",
         hAxis: { title: 'years', }, // minValue: xMin, maxValue: xMax
         vAxis: { title: 'year of best solution', }, // minValue: yMin, maxValue: yMax 
-        legend: 'none'
+        legend: 'none',
+        width: graphWidth,
+        heigh: graphHeight
     };
     // init chart on DOM element and push
     var chart = new google.visualization.LineChart(document.getElementById('yearsChart'));

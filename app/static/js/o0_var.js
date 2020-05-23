@@ -55,3 +55,8 @@ var yearsCoords = [["years", "last_new_year"], [0.0, 0.0]];
 var pointSize = 5;
 var pointShape = "circle";
 
+var graphHeight = 100;
+var graphWidth = 300;
+
+
+

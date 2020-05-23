@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+
+<section class="container">
+    <div class="row d-flex ">
+        <div class="col card">
+            <div class=" " style="background-color: white;">
+
+                {% for k in [1, 2, 3]%}
+                <h1>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni exercitationem facere
+                    molestias, omnis dolorem est soluta placeat sit eum enim neque assumenda? Ducimus veritatis ipsa
+                    sapiente? Illo, accusamus sunt!
+                </h1>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="col card align-self-strech ">
+            <div class=" " style=" background-color: white;">
+                <div>
+
+                    {% for k in [1]%}
+                    <small>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni exercitationem facere
+                        molestias, omnis dolorem est soluta placeat sit eum enim neque assumenda? Ducimus veritatis ipsa
+                        sapiente? Illo, accusamus sunt!
+                    </small>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

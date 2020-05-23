@@ -36,4 +36,4 @@ def just_static():
 def just_test():
     """just return html and css"""
 
-    return render_template("test.html")
+    return render_template("pages/test.html")
