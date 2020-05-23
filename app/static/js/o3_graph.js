@@ -11,47 +11,55 @@ console.debug("graph.js")
 // make a chart 
 function drawPopChart() {
     console.debug("drawPopChart")
-    // // update coords && data
-    // let data = google.visualization.arrayToDataTable(dynamicState.graph.current_population);
-    // // options
-    // let options = {
-    //     // title: 'current population',
-    //     hAxis: { title: 'x', }, //minValue: xMin, maxValue: xMax
-    //     vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
-    //     legend: 'none',
-    //     width: graphWidth,
-    //     heigh: graphHeight,
-    //     pointSize: pointSize,
-    //     pointShape: pointShape
-    // };
-    // // init chart on DOM element and push
-    // let chart = new google.visualization.ScatterChart(document.getElementById('popChart'));
-    // chart.draw(data, options);
 
-    var ctx = document.getElementById('popChart').getContext('2d');
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
-        type: 'line',
+    // context
+    let ctx = document.getElementById('popChart').getContext('2d');
 
-        // The data for our dataset
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 2, 20, 30, 45]
-            }]
+    // datasets
+    let datasets = [
+        {
+            // label: 'Scatter Dataset',
+            data: dynamicState.graph.current_population,
+            pointRadius: 2,
+            backgroundColor: "#007bff",
         },
+    ]
 
-        // Configuration options go here
-        options: {}
+    // scales
+    let scales = {
+        xAxes: [{
+            type: 'linear',
+            position: 'bottom'
+        }]
+    }
+
+    // options
+    let options = {
+        maintainAspectRatio: false,
+        animation: {
+            duration: 0 // general animation time
+        },
+        hover: {
+            animationDuration: 0 // duration of animations when hovering an item
+        },
+        // responsiveAnimationDuration: 0, // animation duration after a resiz
+
+        scales: scales
+    }
+
+    // make the chart
+    var scatterChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: datasets,
+            options: options
+        }
     });
 
-
-
-
+    scatterChart.canvas.parentNode.style.height = '200px';
+    scatterChart.canvas.parentNode.style.width = '333px';
 }
+
 
 
 
@@ -59,24 +67,37 @@ function drawPopChart() {
 // make a chart 
 function drawXsChart() {
     console.debug("drawXsChart")
-    // update coords
-    if (dynamicState.year != 0) {
-        xsCoords.push(dynamicState.graph.xs_last);
-    }
-    // data
-    let data = google.visualization.arrayToDataTable(xsCoords);
+
+    // context
+    var ctx = document.getElementById('xsChart').getContext('2d');
+
+    // labels 
+    let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+    // dataset
+    let datasets = [
+        {
+            label: 'My First dataset',
+            backgroundColor: "#007bff",
+            borderColor: "#007bff",
+            data: [0, 10, 5, 2, 20, 30, 45]
+        },
+    ];
+
     // options
-    let options = {
-        // title: "best 'x' value evolution during years",
-        hAxis: { title: 'years', }, // minValue: xMin, maxValue: xMax
-        vAxis: { title: 'x', }, // minValue: yMin, maxValue: yMax 
-        legend: 'none',
-        width: graphWidth,
-        heigh: graphHeight
-    };
-    // init chart on DOM element and push
-    let chart = new google.visualization.LineChart(document.getElementById('xsChart'));
-    chart.draw(data, options);
+    let options = {};
+
+    var chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: datasets
+        },
+        options: options
+    });
+
+    chart.canvas.parentNode.style.height = '200px';
+    chart.canvas.parentNode.style.width = '333px';
 }
 
 function drawYsChart() {

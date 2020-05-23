@@ -316,12 +316,10 @@ class EvolutionAlgo1D:
     def graph_pop(self):
 
         logger.debug("called")
-        L = [
-            ["x", "y"],
-        ]
-        LL = [[i, j] for i, j, k, l in self.current_population]
-        L.extend(LL)
-        return L
+
+        LL = [{"x": i, "y": j} for i, j, k, l in self.current_population]
+        # list(zip(*LL))
+        return LL
 
     @property
     def graph_xs(self):
