@@ -48,9 +48,10 @@ var dynamicState;
 ////////////////////////////////////////////////////////
 
 // coordonates
-var xsCoords = [["years", "x"], [0.0, 0.0]];
-var ysCoords = [["years", "y"], [0.0, 0.0]];
-var yearsCoords = [["years", "last_new_year"], [0.0, 0.0]];
+var xsCoords = [] //[["years", "x"], [0.0, 0.0]];
+var ysCoords = [] //[["years", "y"], [0.0, 0.0]];
+var yearsCoords = [] // [["years", "last_new_year"], [0.0, 0.0]];
+var xLabels = [] //
 
 // scatter
 var pointSize = 5;

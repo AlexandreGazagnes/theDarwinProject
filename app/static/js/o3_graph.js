@@ -11,21 +11,17 @@ console.debug("graph.js")
 // make a chart 
 function drawPopChart() {
     console.debug("drawPopChart")
-
     // disable animation for all / GLOBAL
     Chart.defaults.global.animation = false;
-
     // context
     let ctx = document.getElementById('popChart').getContext('2d');
-
-    // population
+    // population data
     let populationDataset = {
         data: dynamicState.graph.current_population,
         pointRadius: 3,
         backgroundColor: "#007bff",
     }
-
-    // template
+    // template data
     let templateDataset = {}
     if (showTemplate) {
         templateDataset = {
@@ -34,7 +30,6 @@ function drawPopChart() {
             backgroundColor: "rgba(220, 53, 69, 0.01)",
         }
     }
-
     // scales
     let myScales = {
         xAxes: [{
@@ -42,25 +37,22 @@ function drawPopChart() {
             position: 'bottom'
         }]
     }
-
-    // datasets
-    let myDatasets = [
-        populationDataset,
-        templateDataset,
-    ]
     // options
     let myOptions = {
         maintainAspectRatio: true,
         responsive: true,
-
         hover: {
-            animationDuration: 0, // duration of animations when hovering an item
+            animationDuration: 0, // duration of animations when hovering an 
         },
         showLines: false, // disable for all datasets
         responsiveAnimationDuration: 0, // animation duration after a resiz
         scales: myScales
     }
-
+    // datasets
+    let myDatasets = [
+        populationDataset,
+        templateDataset,
+    ]
     // make the chart
     var scatterChart = new Chart(ctx, {
         type: 'scatter',
@@ -74,33 +66,30 @@ function drawPopChart() {
 }
 
 
-
-
-
 // make a chart 
 function drawXsChart() {
     console.debug("drawXsChart")
-
     // context
-    var ctx = document.getElementById('xsChart').getContext('2d');
-
+    let ctx = document.getElementById('xsChart').getContext('2d');
+    //data
+    xLabels.push(dynamicState.graph.xs_last[0]);
+    xsCoords.push(dynamicState.graph.xs_last[1]);
     // labels 
-    let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
+    let labels = xLabels;
     // dataset
     let datasets = [
         {
-            label: 'My First dataset',
-            backgroundColor: "#007bff",
+            // label: 'My First dataset',
+            // backgroundColor: "rba(100, 100,100, 0.0)",
             borderColor: "#007bff",
-            data: [0, 10, 5, 2, 20, 30, 45]
+            pointRadius: 0.1,
+            fill: false,
+            data: xsCoords,
         },
     ];
-
     // options
     let options = {};
-
-    var chart = new Chart(ctx, {
+    var xsChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
@@ -108,52 +97,28 @@ function drawXsChart() {
         },
         options: options
     });
-
     //     chart.canvas.parentNode.style.height = '200px';
     //     chart.canvas.parentNode.style.width = '333px';
 }
 
 function drawYsChart() {
     console.debug("drawYsChart")
-    // // update coords
-    // if (dynamicState.year != 0) {
-    //     ysCoords.push(dynamicState.graph.ys_last);
-    // }
-    // // data
-    // let data = google.visualization.arrayToDataTable(ysCoords);
-    // // options
-    // let options = {
-    //     // title: "best 'y' value evolution during years",
-    //     hAxis: { title: 'years', }, //  minValue: xMin, maxValue: xMax 
-    //     vAxis: { title: 'y', }, // minValue: yMin, maxValue: yMax 
-    //     legend: 'none',
-    //     width: graphWidth,
-    //     heigh: graphHeight
-    // };
-    // // init chart on DOM element and push
-    // let chart = new google.visualization.LineChart(document.getElementById('ysChart'));
-    // chart.draw(data, options);
-
-    // context
-    var ctx = document.getElementById('ysChart').getContext('2d');
-
-    // labels 
-    let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-    // dataset
+    let ctx = document.getElementById('ysChart').getContext('2d');
+    ysCoords.push(dynamicState.graph.ys_last[1]);
+    let labels = xLabels;
     let datasets = [
         {
-            label: 'My First dataset',
-            backgroundColor: "#007bff",
+            // label: 'My First dataset',
+            // backgroundColor: "rba(100, 100,100, 0.0)",
             borderColor: "#007bff",
-            data: [0, 10, 5, 2, 20, 30, 45]
+            data: ysCoords,
+            fill: false,
+            pointRadius: 0.1,
         },
     ];
-
     // options
     let options = {};
-
-    var chart = new Chart(ctx, {
+    var xsChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
@@ -161,9 +126,8 @@ function drawYsChart() {
         },
         options: options
     });
-
-    // chart.canvas.parentNode.style.height = '200px';
-    // chart.canvas.parentNode.style.width = '333px';
+    //     chart.canvas.parentNode.style.height = '200px';
+    //     chart.canvas.parentNode.style.width = '333px';
 }
 
 // make a chart 
@@ -190,7 +154,7 @@ function drawYearsChart() {
 
 
     // // context
-    // var ctx = document.getElementById('yearsChart').getContext('2d');
+    // let   ctx = document.getElementById('yearsChart').getContext('2d');
 
     // // labels 
     // let labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];

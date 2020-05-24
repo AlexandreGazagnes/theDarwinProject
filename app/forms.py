@@ -138,7 +138,7 @@ class RunForm(FlaskForm):
     years = IntegerField(
         "Years",
         description="nb of years, each year is a cycle of killing, mutating etc.",
-        default=1,
+        default=10,
         render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
@@ -149,7 +149,7 @@ class RunForm(FlaskForm):
     speed = IntegerField(
         "Speed",
         description="year per sec (min 1, max 100)",
-        default=1,
+        default=3,
         render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
