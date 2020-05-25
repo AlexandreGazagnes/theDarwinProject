@@ -4,7 +4,6 @@
     src: url('/static/fonts/B612/B612-Regular.ttf');
 }
 
-
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
     p {
@@ -46,10 +45,7 @@ $bs-blue : #007bff;
 $bs-green : #17a2b8;
 $bs-red :#dc3545;
 
-
-
 // body
-
 body {
     overflow-x: hidden !important;
     font-family: b612, Verdana, Tahoma, sans-serif;
@@ -60,7 +56,7 @@ body {
 
 // header
 header {
-    // margin-bottom: 50px;
+    margin-bottom: 10px;
     padding-top: 10px;
 }
 
