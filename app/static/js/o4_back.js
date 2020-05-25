@@ -66,17 +66,20 @@ function updateStaticState() {
 }
 
 // get static state --> make api call and save static state data
-function getStaticState() {
+function getStaticState(forceSync = false) {
     console.debug("'getStaticState");
-    $.ajax({
+    let args_dict = {
         type: "GET",
         url: "/staticstate?algoId=" + algoId,
-        // async: false, // Mode synchrone
         success: function (data) {
             staticState = data;
             updateStaticState();
         }
-    });
+    }
+    if (forceSync) {
+        args_dict.async = false;
+    }
+    $.ajax(args_dict);
 }
 
 // update dynamic State data in html
@@ -96,7 +99,7 @@ function updateDynamicState() {
 }
 
 // get dynamic state --> make api call and save dynmaic state data
-function getDynamicState() {
+function getDynamicState(forceSync = false) {
     console.debug("getDynamicState");
     $.ajax({
         type: "GET",
@@ -121,7 +124,7 @@ function handleInitMethod(data) {
 }
 
 // init Algo on back end based on the easiest model
-function doBeginnerInit() {
+function doBeginnerInit(forceSync = false) {
     console.debug('doBeginnerInit')
     $.ajax({
         type: "POST",
@@ -226,7 +229,7 @@ function onExpertBtn() {
 ////////////////////////////////////////////////////////
 
 // post run for 1 year
-function postRun() {
+function postRun(forceSync = false) {
     console.debug("postRun");
     $.ajax({
         type: "POST",

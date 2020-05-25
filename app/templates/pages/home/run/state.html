@@ -16,8 +16,8 @@
     <!-- generic -->
     {% for key in [ "Id","Name",]%}
     <tr>
-        <td class="tdX">{{ key }} </td>
-        <td id="static{{ key }}"></td>
+        <th class="tdX">{{ key }} </th>
+        <td id="static{{ key }}" class="ellipsis"></td>
     </tr>
     {% endfor %}
     <!-- image -->

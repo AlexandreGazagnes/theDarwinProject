@@ -64,8 +64,15 @@ section {
   margin-top: 5px;
   margin-bottom: 10px; }
 
+th {
+  font-weight: normal;
+  font-size: 0.8rem; }
+
 td {
-  font-size: 0.9rem; }
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .tdX {
   padding-right: 20px; }

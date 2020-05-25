@@ -79,6 +79,7 @@ function fromLandingToRunView() {
     console.debug("fromInitToRunView");
     // $("#" + infoId)..fadeOut(1500)();
     $("#" + infoId).fadeOut(transitionSpeed);
+    $("#" + initId).hide();
     $("#" + runId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
 
     // $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
