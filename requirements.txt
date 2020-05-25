@@ -15,3 +15,8 @@ Flask-Scss
 libsass
 
 selenium
+
+flask-session
+flask-login 
+redis
+python-dotenv
