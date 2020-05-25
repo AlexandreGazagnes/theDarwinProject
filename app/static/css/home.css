@@ -1,40 +1,3 @@
-@media (max-width: 575.98px) {
-  h1 {
-    font-size: 2.3rem;
-    margin-bottom: 20px; }
-  #state-cont h4,
-  #graph-cont #action-cont h4 {
-    padding-top: 20px; } }
-
-@media (min-width: 576px) and (max-width: 767.98px) {
-  h1 {
-    font-size: 2.4rem;
-    margin-bottom: 25px; }
-  .extra-horizontal-padding {
-    padding-right: 0x;
-    padding-left: 0x; } }
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 30px; }
-  .extra-horizontal-padding {
-    padding-right: 10x;
-    padding-left: 10x; } }
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  h1 {
-    font-size: 2.6rem;
-    margin-bottom: 40px; }
-  .extra-horizontal-padding {
-    padding-right: 10x;
-    padding-left: 10x; } }
-
-@media (min-width: 1200px) {
-  h1 {
-    font-size: 2.6rem;
-    margin-bottom: 40px; } }
-
 h1 {
   font-weight: bold; }
 
@@ -59,13 +22,9 @@ h4 {
 section {
   display: none; }
 
-.jumbotron {
-  margin-bottom: 0px;
-  padding-bottom: 15px; }
-
 .card {
-  border: 0px #e6d9d9 solid !important;
-  border-radius: 15px;
+  border: 0px #f0f0f0 solid !important;
+  border-radius: 15px !important;
   background-color: white !important;
   margin-top: 10px;
   padding-top: 20px;
@@ -74,145 +33,98 @@ section {
   padding-right: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
-#jumbo-cont {
+.card-text {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+
+td {
+  font-size: 0.9rem; }
+
+.tdX {
+  padding-right: 20px; }
+
+#info-cont .jumbotron {
+  margin-bottom: 0px;
+  padding-bottom: 15px; }
+
+#info-cont #jumbo-cont {
   background-color: #f0f0f0 !important;
   margin-left: 0px;
   margin-bottom: 0px;
   border-radius: 0px;
   padding-top: 100px; }
 
-#citation-cont {
+#info-cont #citation-cont {
   background-color: #f0f0f0;
-  padding-bottom: 30px;
-  margin-bottom: 20px;
   border-radius: 0px;
   padding-bottom: 20px; }
-  #citation-cont .card {
+  #info-cont #citation-cont .align-self-strech {
     margin-top: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-  #citation-cont .blockquote {
+    margin-bottom: 20px; }
+  #info-cont #citation-cont .blockquote {
     background-color: white; }
-  #citation-cont .blockquote-footer {
+  #info-cont #citation-cont .blockquote-footer {
     margin-top: 10px; }
 
-#btnGo0-cont,
-#btnGo1-cont {
+#info-cont #btnGo0-cont,
+#info-cont #btnGo1-cont {
   margin-top: 10px;
   padding-top: 10px;
   margin-bottom: 25px;
   padding-bottom: 30px; }
-  #btnGo0-cont .card,
-  #btnGo1-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-  #btnGo0-cont .card-text,
-  #btnGo1-cont .card-text {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px; }
-  #btnGo0-cont button,
-  #btnGo1-cont button {
+  #info-cont #btnGo0-cont button,
+  #info-cont #btnGo1-cont button {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-top: 20px;
     margin-bottom: 20px; }
 
-#feature-cont {
+#info-cont #feature-cont {
   margin-top: 25px;
   padding-top: 30px;
   margin-bottom: 25px;
   padding-bottom: 30px; }
-  #feature-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    padding-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-  #feature-cont .card-text {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 5px;
-    margin-bottom: 20px; }
 
 #init-cont {
   margin-top: 10px;
   padding-top: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
-  #init-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    padding-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-    #init-cont .card .form-group {
-      margin-bottom: 5px; }
-    #init-cont .card small {
-      color: #414141; }
-    #init-cont .card select,
-    #init-cont .card input {
-      padding-top: 2px;
-      padding-bottom: 2px; }
-    #init-cont .card .extraPadding {
-      margin-top: 10px; }
-    #init-cont .card .tdX {
-      padding-right: 100px; }
+  #init-cont .form-group {
+    margin-bottom: 5px; }
+  #init-cont small {
+    color: #414141; }
+  #init-cont select,
+  #init-cont input {
+    padding-top: 2px;
+    padding-bottom: 2px; }
+  #init-cont .extraPadding {
+    margin-top: 10px; }
 
-#state-cont,
-#action-cont,
-#graph-cont {
+#run-cont #state-cont,
+#run-cont #action-cont,
+#run-cont #graph-cont {
   margin-top: 0px;
   padding-top: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
-  #state-cont h3,
-  #action-cont h3,
-  #graph-cont h3 {
+  #run-cont #state-cont h3,
+  #run-cont #action-cont h3,
+  #run-cont #graph-cont h3 {
     margin-bottom: 25px; }
-  #state-cont .card,
-  #action-cont .card,
-  #graph-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  #run-cont #state-cont .card,
+  #run-cont #action-cont .card,
+  #run-cont #graph-cont .card {
     height: 100%; }
-    #state-cont .card .extra-horizontal-padding,
-    #action-cont .card .extra-horizontal-padding,
-    #graph-cont .card .extra-horizontal-padding {
-      padding-right: 50px;
-      padding-left: 50px; }
-    #state-cont .card .extra-padding,
-    #action-cont .card .extra-padding,
-    #graph-cont .card .extra-padding {
-      margin-top: 5px;
-      margin-bottom: 5px; }
-    #state-cont .card td,
-    #action-cont .card td,
-    #graph-cont .card td {
-      font-size: 0.9rem; }
-    #state-cont .card .tdX,
-    #action-cont .card .tdX,
-    #graph-cont .card .tdX {
-      padding-right: 20px; }
+  #run-cont #state-cont .extra-horizontal-padding,
+  #run-cont #action-cont .extra-horizontal-padding,
+  #run-cont #graph-cont .extra-horizontal-padding {
+    padding-right: 50px;
+    padding-left: 50px; }
+  #run-cont #state-cont .extra-padding,
+  #run-cont #action-cont .extra-padding,
+  #run-cont #graph-cont .extra-padding {
+    margin-top: 5px;
+    margin-bottom: 5px; }

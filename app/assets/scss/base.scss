@@ -1,3 +1,11 @@
+// color
+$tx-color : #000000;
+$bg-color : #f0f0f0;
+$bs-blue : #007bff;
+$bs-green : #17a2b8;
+$bs-red :#dc3545;
+
+
 // font
 @font-face {
     font-family: b612;
@@ -30,7 +38,9 @@
     p {
         font-size: 0.9rem;
     }
+
 }
+
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
@@ -39,11 +49,11 @@
     }
 }
 
-// color
-$bg-color : #f0f0f0;
-$bs-blue : #007bff;
-$bs-green : #17a2b8;
-$bs-red :#dc3545;
+// // color
+// $bg-color : #f0f0f0;
+// $bs-blue : #007bff;
+// $bs-green : #17a2b8;
+// $bs-red :#dc3545;
 
 // body
 body {

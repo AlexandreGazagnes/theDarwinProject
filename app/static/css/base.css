@@ -29,11 +29,13 @@ body {
   background-color: #f0f0f0; }
 
 header {
+  margin-bottom: 10px;
   padding-top: 10px; }
 
 footer {
   margin-top: 50px;
-  font-style: italic; }
+  font-style: italic;
+  display: none; }
 
 p {
   text-align: justify;

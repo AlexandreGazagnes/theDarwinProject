@@ -1,73 +1,80 @@
-//media query
-// Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) {
-    h1 {
-        font-size: 2.3rem;
-        margin-bottom: 20px;
-    }
-
-    #state-cont,
-    #graph-cont #action-cont {
-        h4 {
-            padding-top: 20px;
-        }
-    }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767.98px) {
-    h1 {
-        font-size: 2.4rem;
-        margin-bottom: 25px;
-    }
-
-    .extra-horizontal-padding {
-        padding-right: 0x;
-        padding-left: 0x;
-    }
-
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991.98px) {
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 30px;
-    }
-
-    .extra-horizontal-padding {
-        padding-right: 10x;
-        padding-left: 10x;
-    }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.98px) {
-    h1 {
-        font-size: 2.6rem;
-        margin-bottom: 40px;
-    }
-
-    .extra-horizontal-padding {
-        padding-right: 10x;
-        padding-left: 10x;
-    }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    h1 {
-        font-size: 2.6rem;
-        margin-bottom: 40px;
-    }
-}
-
 // color
+$tx-color : #000000;
 $bg-color : #f0f0f0;
-$jumbo-bg-color: #e6d9d9;
-$jumbo-text-color : white;
+$bs-blue : #007bff;
+$bs-green : #17a2b8;
+$bs-red :#dc3545;
+$txt-grey : rgb(65, 65, 65);
 $bd-radius : 15px;
+$shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// //media query
+// // Extra small devices (portrait phones, less than 576px)
+// @media (max-width: 575.98px) {
+//     h1 {
+//         font-size: 2.3rem;
+//         margin-bottom: 20px;
+//     }
 
+//     #state-cont,
+//     #graph-cont #action-cont {
+//         h4 {
+//             padding-top: 20px;
+//         }
+//     }
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) and (max-width: 767.98px) {
+//     h1 {
+//         font-size: 2.4rem;
+//         margin-bottom: 25px;
+//     }
+
+//     .extra-horizontal-padding {
+//         padding-right: 0x;
+//         padding-left: 0x;
+//     }
+
+// }
+
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) and (max-width: 991.98px) {
+//     h1 {
+//         font-size: 2.5rem;
+//         margin-bottom: 30px;
+//     }
+
+//     .extra-horizontal-padding {
+//         padding-right: 10x;
+//         padding-left: 10x;
+//     }
+// }
+
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) and (max-width: 1199.98px) {
+//     h1 {
+//         font-size: 2.6rem;
+//         margin-bottom: 40px;
+//     }
+
+//     .extra-horizontal-padding {
+//         padding-right: 10x;
+//         padding-left: 10x;
+//     }
+// }
+
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//     h1 {
+//         font-size: 2.6rem;
+//         margin-bottom: 40px;
+//     }
+// }
+
+
+
+// GENERALS
 h1 {
     font-weight: bold;
 }
@@ -98,198 +105,144 @@ section {
     display: none;
 }
 
-.jumbotron {
-    margin-bottom: 0px;
-    padding-bottom: 15px;
-}
-
 .card {
     // margin-right: 10px;
     // margin-left: 10px;
-    border: 0px $jumbo-bg-color solid !important;
-    border-radius: $bd-radius;
+    border: 0px $bg-color solid !important;
+    border-radius: $bd-radius !important;
     background-color: white !important;
     margin-top: 10px;
     padding-top: 20px;
     margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    box-shadow: $shadow;
 }
 
-#jumbo-cont {
-    background-color: $bg-color !important;
-    // color: $jumbo-text-color;
-    // border: 1px $jumbo-bg-color solid;    margin-right: 0px;
-    margin-left: 0px;
-    margin-bottom: 0px;
-    border-radius: 0px;
-    padding-top: 100px;
-}
-
-#citation-cont {
-    background-color: $bg-color;
-    // background-color: $jumbo-bg-color;
-    // border: 1px $jumbo-bg-color solid;
-    padding-bottom: 30px;
-    margin-bottom: 20px;
-    border-radius: 0px;
-    padding-bottom: 20px;
-
-    .card {
-        // margin-right: 10px;
-        // margin-left: 10px;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        margin-top: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .blockquote {
-        background-color: white;
-    }
-
-    .blockquote-footer {
-        margin-top: 10px;
-    }
-}
-
-#btnGo0-cont,
-#btnGo1-cont {
-
-    margin-top: 10px;
-    padding-top: 10px;
-    margin-bottom: 25px;
-    padding-bottom: 30px;
-
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .card-text {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    button {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-}
-
-#feature-cont {
-
-    margin-top: 25px;
-    padding-top: 30px;
-    margin-bottom: 25px;
-    padding-bottom: 30px;
-
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
-        margin-top: 10px;
-        padding-top: 20px;
-        margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .card-text {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        margin-top: 5px;
-        margin-bottom: 20px;
-    }
-}
-
-
-#init-cont {
-
-    margin-top: 10px;
-    padding-top: 10px;
+.card-text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
     margin-bottom: 10px;
-    padding-bottom: 10px;
-
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
-        margin-top: 10px;
-        padding-top: 20px;
-        margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 
-        .form-group {
-            margin-bottom: 5px;
+td {
+    font-size: 0.9rem;
+}
+
+.tdX {
+    padding-right: 20px;
+}
+
+//INFO 
+#info-cont {
+
+    .jumbotron {
+        margin-bottom: 0px;
+        padding-bottom: 15px;
+    }
+
+    #jumbo-cont {
+        background-color: $bg-color !important;
+        // color: $jumbo-text-color;
+        // border: 1px $bg-color solid;    margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        padding-top: 100px;
+    }
+
+    #citation-cont {
+        background-color: $bg-color;
+        // background-color: $jumbo-bg-color;
+        // border: 1px $bg-color solid;
+        // padding-bottom: 30px;    margin-bottom: 20px;
+        border-radius: 0px;
+        padding-bottom: 20px;
+
+        .align-self-strech {
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        small {
-            color: rgb(65, 65, 65);
+        .blockquote {
+            background-color: white;
         }
 
-        select,
-        input {
-            padding-top: 2px;
-            padding-bottom: 2px;
-        }
-
-        .extraPadding {
+        .blockquote-footer {
             margin-top: 10px;
         }
+    }
 
-        .tdX {
-            padding-right: 100px;
+    #btnGo0-cont,
+    #btnGo1-cont {
+        margin-top: 10px;
+        padding-top: 10px;
+        margin-bottom: 25px;
+        padding-bottom: 30px;
+
+        button {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
+    }
 
+    #feature-cont {
+        margin-top: 25px;
+        padding-top: 30px;
+        margin-bottom: 25px;
+        padding-bottom: 30px;
     }
 }
 
-
-#state-cont,
-#action-cont,
-#graph-cont {
-
-    margin-top: 0px;
-    padding-top: 0px;
+// INIT
+#init-cont {
+    margin-top: 10px;
+    padding-top: 10px;
     margin-bottom: 10px;
     padding-bottom: 10px;
 
-    // h2 {
-    //     margin-top: 5px;
-    // }
-
-    h3 {
-        margin-bottom: 25px;
+    .form-group {
+        margin-bottom: 5px;
     }
 
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
+    small {
+        color: $txt-grey;
+    }
+
+    select,
+    input {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .extraPadding {
         margin-top: 10px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+    }
+}
+
+// RUN
+#run-cont {
+
+    #state-cont,
+    #action-cont,
+    #graph-cont {
+
+        margin-top: 0px;
+        padding-top: 0px;
         margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        height: 100%;
-        ;
+        padding-bottom: 10px;
+
+        h3 {
+            margin-bottom: 25px;
+        }
+
+        .card {
+            height: 100%;
+        }
 
         .extra-horizontal-padding {
             padding-right: 50px;
@@ -301,148 +254,5 @@ section {
             margin-bottom: 5px;
         }
 
-        td {
-            font-size: 0.9rem;
-        }
-
-        .tdX {
-            padding-right: 20px;
-        }
-
-
     }
 }
-
-// #action-cont {
-
-//     margin-top: 0px;
-//     padding-top: 0px;
-//     margin-bottom: 10px;
-//     padding-bottom: 10px;
-
-//     h3 {
-//         margin-bottom: 5px;
-//     }
-
-//     .card {
-//         border: 0px $jumbo-bg-color solid !important;
-//         border-radius: $bd-radius;
-//         background-color: white !important;
-//         margin-top: 10px;
-//         padding-top: 20px;
-//         margin-bottom: 10px;
-//         padding-left: 20px;
-//         padding-right: 20px;
-//         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//     }
-
-//     .extra-padding {
-//         margin-top: 5px;
-//         margin-bottom: 5px;
-//     }
-// }
-
-
-// #graph-cont {
-
-//     margin-top: 0px;
-//     padding-top: 0px;
-//     margin-bottom: 10px;
-//     padding-bottom: 10px;
-
-//     h3 {
-//         margin-bottom: 5px;
-//     }
-
-//     .extrah4top {
-//         margin-top: 20px;
-//     }
-
-//     .card {
-//         border: 0px $jumbo-bg-color solid !important;
-//         border-radius: $bd-radius;
-//         background-color: white !important;
-//         margin-top: 10px;
-//         padding-top: 20px;
-//         margin-bottom: 10px;
-//         padding-left: 20px;
-//         padding-right: 20px;
-//         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-//     }
-// }
-// section {
-
-//     // hide all others
-//     $sections: "#init",
-//         "#state",
-//         "#action",
-//         "#graph";
-
-//     // @each $section in $sections {
-//     //     +#{$section} {
-//     //         display: none;
-//     //     }
-//     // }
-// }
-
-// // a custom card cf bootstrap
-// .myCard {
-//     border-radius: 15px;
-//     /* border: 1px grey solid; */
-//     padding: 20px 40px 20px 40px;
-//     margin: 20px 0px 20px 0px;
-//     word-wrap: normal;
-//     text-overflow: ellipsis;
-//     background-color: white;
-
-//     >h3 {
-//         text-align: center;
-//         font-size: 1.8rem;
-//         margin-bottom: 20px;
-//         /* border-bottom: 1px grey solid; */
-//     }
-// }
-
-// // specific table italic
-// .italic-table {
-//     font-size: small;
-//     font-style: italic;
-
-//     >td {
-//         padding-left: 30px;
-//     }
-// }
-
-
-// div.extraPadding {
-//     margin-top: 20px;
-// }
-
-// /* .questionButton {
-//     margin-top: 10px;
-//     margin-bottom: 10px;
-// } */
-
-
-// // // in info Scetion this is a card for go  that contain go btn
-// // .btnGo {
-// //     border: 1px rgb(185, 185, 185) solid;
-// //     border-radius: 5px;
-// //     margin-top: 10px;
-// //     padding-top: 10px;
-// //     margin-bottom: 10px;
-// //     padding-bottom: 10px;
-
-// //     padding-left: 5px;
-// //     padding-right: 5px;
-
-// //     >h4 {
-// //         text-align: center;
-// //         font-size: 1.2rem;
-// //         margin-bottom: 20px;
-// //     }
-
-// //     >p {
-// //         text-align: center;
-// //     }
-// // }
