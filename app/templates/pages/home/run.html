@@ -7,26 +7,33 @@
 
 
 <div class="row">
-
     <!-- state div -->
-
     <div class="col-sm-4 align-self-strech" id="state-cont">
-        <!-- <div class="align-self-stretch "> -->
-        {{ state() }}
-        <!-- </div> -->
+        <div class="card">
+            <!-- <div class="align-self-stretch "> -->
+            {{ state() }}
+            <!-- </div> -->
+        </div>
     </div>
 
     <!-- graph div  -->
     <div class="col-sm-4 align-self-strech" id="graph-cont">
+
         <!-- <div class="align-self-stretch "> -->
-        {{ graph() }}
+        <div class="card">
+
+            {{ graph() }}
+        </div>
         <!-- </div> -->
     </div>
 
     <!-- action  div  -->
     <div class="col-sm-4 align-self-strech" id="action-cont">
         <!-- <div class="align-self-stretch "> -->
-        {{ action(runForm) }}
+        <div class="card">
+
+            {{ action(runForm) }}
+        </div>
         <!-- </div> -->
     </div>
 
