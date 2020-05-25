@@ -8,9 +8,15 @@ bokeh
 pytest
 black
 
-
 flask
 WTForms
 flask-wtf
+Flask-Scss
+libsass
 
 selenium
+
+flask-session
+flask-login 
+redis
+python-dotenv

@@ -1,9 +1,6 @@
 # base image python3.7 debian light
 FROM python:3.7-buster
 
-# expose 
-# EXPOSE 65000
-
 # switch to app and pip
 WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt

@@ -17,9 +17,20 @@ from src.functs import Functs
 
 choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.as_dict.items()]
 choicesObjectives = [("min", "min"), ("max", "max")]
+choicesBool = [("True", "True"), ("False", "False")]
+choicesSocial = [
+    ("Communism", "Communism"),
+    ("Neutral", "Neutral"),
+    ("Capitalism", "Capitalism"),
+]
+
+
+choicesMode = [("easy", "easy"), ("medium", "medium"), ("hard", "hard")]
 
 
 class InitForm(FlaskForm):
+
+    mode = SelectField("Mode", choices=choicesMode,)
 
     funct = SelectField(
         "Function",
@@ -60,7 +71,7 @@ class InitForm(FlaskForm):
         "Seed Parents",
         render_kw={"class": "form-control", "placeholder": "default : 100"},
         description="nb of initial parents (between 10 and 1000)",
-        default=100,
+        default=10,
         validators=[
             DataRequired(message="data required"),
             NumberRange(10, 1000, message="please 10 --> 1000"),
@@ -80,7 +91,7 @@ class InitForm(FlaskForm):
     demography = FloatField(
         "Demography",
         default=1,
-        description="rate of evolution of the population each year (between 0.75 and 1.25)",
+        description="increase rate of the population (in 0.75 / 1.25)",
         render_kw={"class": "form-control", "placeholder": "default : 1.0"},
         validators=[
             DataRequired(message="data required"),
@@ -89,14 +100,31 @@ class InitForm(FlaskForm):
     )
 
     average_child_numb = FloatField(
-        "Normal  vs mutant child",
+        "Normal vs Mutant",
         description="% of child normal vs % of child mutant each year",
-        default=0.25,
+        default=0.75,
         render_kw={"class": "form-control", "placeholder": "default : 0.25"},
         validators=[
             DataRequired(message="data required"),
             NumberRange(0.01, 0.99, message="please 0.01 --> 0.99"),
         ],
+    )
+
+    kill_before_reproduce = SelectField(
+        "Kill before reproduce",
+        choices=choicesBool,
+        description="if True, first kill bad elements, then reporduce.",
+        default="True",
+        render_kw={"class": "form-control", "placeholder": "default : 0.25"},
+        validators=[DataRequired(message="data required"),],
+    )
+    social_system = SelectField(
+        "Social system",
+        choices=choicesSocial,
+        description="% of child normal vs % of child mutant each year",
+        default="Neutral",
+        render_kw={"class": "form-control", "placeholder": "default : 0.25"},
+        validators=[DataRequired(message="data required"),],
     )
     submit = SubmitField("Go", render_kw={"class": "btn btn-primary form-control"},)
 
@@ -110,7 +138,7 @@ class RunForm(FlaskForm):
     years = IntegerField(
         "Years",
         description="nb of years, each year is a cycle of killing, mutating etc.",
-        default=1,
+        default=10,
         render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
@@ -121,7 +149,7 @@ class RunForm(FlaskForm):
     speed = IntegerField(
         "Speed",
         description="year per sec (min 1, max 100)",
-        default=1,
+        default=3,
         render_kw={"class": "form-control"},
         validators=[
             DataRequired(message="data required"),
@@ -135,7 +163,7 @@ class RunForm(FlaskForm):
         default=False,
         # render_kw={"class": "form-control"},
         validators=[
-            DataRequired(message="data required"),
+            # DataRequired(message="data required"),
             # NumberRange(1, 100, message="please 1 --> 100"),
         ],
     )

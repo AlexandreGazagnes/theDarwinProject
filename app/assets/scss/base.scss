@@ -1,0 +1,79 @@
+// color
+$tx-color : #000000;
+$bg-color : #f0f0f0;
+$bs-blue : #007bff;
+$bs-green : #17a2b8;
+$bs-red :#dc3545;
+
+
+// font
+@font-face {
+    font-family: b612;
+    src: url('/static/fonts/B612/B612-Regular.ttf');
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    p {
+        font-size: 0.8rem;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    p {
+        font-size: 0.8rem;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    p {
+        font-size: 0.9rem;
+    }
+
+}
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+
+// body
+body {
+    overflow-x: hidden !important;
+    font-family: b612, Verdana, Tahoma, sans-serif;
+    font-size: medium;
+    background-color: $bg-color;
+    // margin: 10px;
+}
+
+// header
+header {
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+// footer
+footer {
+    margin-top: 50px;
+    font-style: italic;
+    display: none;
+}
+
+// p
+p {
+    text-align: justify;
+    font-size: 0.8rem;
+}

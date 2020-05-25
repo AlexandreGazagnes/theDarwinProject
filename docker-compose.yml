@@ -9,7 +9,7 @@ services:
             # args:
             #     dummy: "dummy"
         # restart: always
-        image: evolutional-go:v1.0.0
+        image: evolutional-go:v0.5.0
         container_name: evolutional-go_cont
         volumes:
             - .:/app

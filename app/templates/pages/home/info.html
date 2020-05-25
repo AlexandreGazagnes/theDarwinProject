@@ -1,0 +1,33 @@
+{% macro info_cont() %}
+
+{% from "pages/home/info/jumbo.html" import jumbo %}
+{% from "pages/home/info/feature.html" import feature %}
+{% from "pages/home/info/btn.html" import btn %}
+{% from "pages/home/info/citation.html" import citation %}
+
+<!-- jumbo -->
+<div class="jumbotron" id="jumbo-cont">
+    {{ jumbo() }}
+</div>
+
+<!-- cta 0 -->
+<div class="container" id="btnGo0-cont">
+    {{ btn("0") }}
+</div>
+
+<!-- feature grid -->
+<div class="container" id="feature-cont">
+    {{ feature() }}
+</div>
+
+<!-- cta 1 -->
+<div class="container" id="btnGo1-cont">
+    {{ btn("1") }}
+</div>
+
+<!-- citation -->
+<div class="container-fluid" id="citation-cont">
+    {{ citation() }}
+</div>
+
+{% endmacro %}

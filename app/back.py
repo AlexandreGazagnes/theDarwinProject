@@ -14,14 +14,6 @@ from flask import (
     jsonify,
 )
 
-# from flask import session, Session
-#
-# from flask_sqlalchemy import SQLAlchemy
-# # from flask.ext.session import Session
-# from flask_bcrypt import Bcrypt
-# from flask_login import LoginManager, UserMixin
-# from flask_mail import Mail
-
 from flask import Blueprint
 
 from app.forms import InitForm, RunForm
@@ -75,6 +67,8 @@ def initFromUser():
     # print(request.method)
 
     if request.method == "POST":
+        logger.critical("form.funct.data " + str(form.funct.data))
+        logger.critical("form.objective.data " + str(form.objective.data))
         algo = EvolutionAlgo1D(
             funct=Functs.as_dict[form.funct.data],
             objective=form.objective.data,
@@ -83,6 +77,7 @@ def initFromUser():
             kill_rate=form.kill_rate.data,
             average_child_numb=form.average_child_numb.data,
         )
+
         global ALGO
         ALGO.update({algo.id: algo})
         return algo.id, 200
@@ -98,18 +93,11 @@ def get_functs_data():
 
     logger.debug("called")
     functs = Functs.as_dict
-    logger.warning("\n\n\n\n")
-    logger.warning(type(functs))
-    logger.warning(functs)
     functs = {
         k: {kk: vv for kk, vv in v.items() if "funct" not in kk}
         for k, v in functs.items()
     }
-    logger.warning("\n\n\n\n")
-    logger.warning(functs)
-    logger.warning(type(functs))
     resp = jsonify(functs)
-    # logger.critical(resp)
     resp.status_code = 200
     return resp
 
@@ -117,7 +105,7 @@ def get_functs_data():
 # get static state
 @back.route("/staticstate", methods=["GET"])
 def get_static_state():
-    """ """
+    """ where is the  doctstring ? """
 
     logger.debug("called")
     algo = get_algo()
@@ -130,7 +118,7 @@ def get_static_state():
 # get dynamic state
 @back.route("/dynamicstate", methods=["GET"])
 def get_dynamic_state():
-    """ """
+    """ where is the  doctstring ? """
 
     logger.debug("called")
     algo = get_algo()
@@ -148,7 +136,9 @@ def run():
     algoId = request.args.get("algoId")
     algo = ALGO[algoId]
     algo.run(1)
-    return "OK", 200
+    resp = jsonify(algo.dynamic_state)
+    resp.status_code = 200
+    return resp
 
 
 @back.route("/getxlim", methods=["GET"])
@@ -157,7 +147,6 @@ def get_x_lim():
     logger.debug("called")
     algo = get_algo()
     xlim = algo.x_lim_original_population
-    # logger.info(xlim)
     return jsonify(xlim), 200
 
 
@@ -167,7 +156,6 @@ def get_y_lim():
     logger.debug("called")
     algo = get_algo()
     ylim = algo.y_lim_current_population
-    # logger.info(ylim)
     return jsonify(ylim), 200
 
 
@@ -182,7 +170,7 @@ def get_population():
 
 @back.route("/getxs", methods=["GET"])
 def get_xs():
-    """"""
+    """WHERE IS THE DocString ?"""
 
     logger.debug("called")
     algo = get_algo()
@@ -207,12 +195,11 @@ def get_years():
     return jsonify(algo.graph_years_last), 200
 
 
-@back.route("/dummycall", methods=["GET"])
-def dummy_call():
-    """Use this to get various info from braowser to logs"""
+# @back.route("/dummycall", methods=["GET"])
+# def dummy_call():
+#     """Use this to get various info from braowser to logs"""
 
-    logger.debug("called")
-    # logger.warning(ALGO)
-    algo = get_algo()
-    logger.warning()
-    return "OK", 200
+#     logger.debug("called")
+#     algo = get_algo()
+#     logger.warning()
+#     return "OK", 200

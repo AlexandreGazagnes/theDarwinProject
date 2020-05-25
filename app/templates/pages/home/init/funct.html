@@ -1,0 +1,35 @@
+{% macro formFunct(initForm) %}
+
+<div class="row">
+    <div class="col-sm-8">
+        <div style="padding-top: 5px;" class="form-group">{{ initForm.funct.label }}
+            {{ initForm.funct }}
+            <small>{{ initForm.funct.description }} </small>
+            {% if initForm.funct.errors %}
+            <ul class="errors">
+                {% for error in initForm.funct.errors %}
+                <li class="invalid-feedback">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="extraPadding">
+                <table>
+                    {% for key, val in [("level", "Level"),
+                                    ("expression", "Expression"),
+                                    ("dimension", "Dimension"), ] %}
+                    <tr class="Italic">
+                        <td class="tdX"> <small>{{ key }}</small></td>
+                        <td> <small id="funct{{ val }}">42</small></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <img id="functSrcImg" height="150px" width="100%" src="" alt="short visual of the function">
+    </div>
+</div>
+
+
+{% endmacro %}

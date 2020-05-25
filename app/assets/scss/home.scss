@@ -1,0 +1,243 @@
+// color
+$tx-color : #000000;
+$bg-color : #f0f0f0;
+$bs-blue : #007bff;
+$bs-green : #17a2b8;
+$bs-red :#dc3545;
+$txt-grey : rgb(65, 65, 65);
+$bd-radius : 15px;
+$shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+//media query
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    .canvas-container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .canvas-container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .canvas-container {
+        padding-right: 0x;
+        padding-left: 0x;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .canvas-container {
+        padding-right: 0x;
+        padding-left: 0x;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .canvas-container {
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+}
+
+
+// GENERALS
+h1 {
+    font-weight: bold;
+}
+
+.lead {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 50px;
+    font-size: 1.8rem;
+    margin-left: 10px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+}
+
+section {
+    display: none;
+}
+
+.card {
+    // margin-right: 10px;
+    // margin-left: 10px;
+    border: 0px $bg-color solid !important;
+    border-radius: $bd-radius !important;
+    background-color: white !important;
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: $shadow;
+}
+
+.card-text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+th {
+    font-weight: normal;
+    font-size: 0.8rem;
+}
+
+td {
+    font-size: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tdX {
+    padding-right: 20px;
+}
+
+//INFO 
+#info-cont {
+
+    .jumbotron {
+        margin-bottom: 0px;
+        padding-bottom: 15px;
+    }
+
+    #jumbo-cont {
+        background-color: $bg-color !important;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        border-radius: 0px;
+        padding-top: 100px;
+    }
+
+    #citation-cont {
+        background-color: $bg-color;
+        border-radius: 0px;
+        padding-bottom: 20px;
+
+        .align-self-strech {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .blockquote {
+            background-color: white;
+        }
+
+        .blockquote-footer {
+            margin-top: 10px;
+        }
+    }
+
+    #btnGo0-cont,
+    #btnGo1-cont {
+        margin-top: 10px;
+        padding-top: 10px;
+        margin-bottom: 25px;
+        padding-bottom: 30px;
+
+        button {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    #feature-cont {
+        margin-top: 25px;
+        padding-top: 30px;
+        margin-bottom: 25px;
+        padding-bottom: 30px;
+    }
+}
+
+// INIT
+#init-cont {
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+
+    .form-group {
+        margin-bottom: 5px;
+    }
+
+    small {
+        color: $txt-grey;
+    }
+
+    select,
+    input {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    .extraPadding {
+        margin-top: 10px;
+    }
+}
+
+// RUN
+#run-cont {
+
+    #state-cont,
+    #action-cont,
+    #graph-cont {
+
+        margin-top: 0px;
+        padding-top: 0px;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+
+        h3 {
+            margin-bottom: 25px;
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .canvas-container {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+        canvas {
+            max-width: 400px !important;
+            max-height: 200px !important;
+        }
+
+        .extra-padding {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+    }
+}

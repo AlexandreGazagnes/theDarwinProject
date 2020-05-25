@@ -1,0 +1,44 @@
+{% macro init_cont(initForm) %}
+
+
+{% from "pages/home/init/form_group.html" import form_group %}
+{% from "pages/home/init/form_row.html" import form_row_double, form_row_simple %}
+{% from "pages/home/init/funct.html" import formFunct %}
+{% from "pages/home/init/button.html" import button %}
+
+<!-- <div class="row">
+            <div class="col">
+                <h2 class="border-bottom text-center"> Init </h2>
+            </div>
+</div> -->
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <form id="init-form">
+                <!-- funct -->
+                {{ formFunct(initForm) }}
+
+                <!-- objective -->
+                {{ form_row_simple(initForm, "objective")}}
+
+
+                <!-- doubles  -->
+                {% for f0, f1 in [  ("interval_down", "interval_up"),
+                                    ("seed_parents", "kill_rate") , 
+                                    ("demography", "average_child_numb"), 
+                                    ("kill_before_reproduce", "social_system")] %}
+                {{ form_row_double(initForm, f0, f1) }}
+
+                {% endfor %}
+
+                <!-- buttons -->
+                {{ button(initForm) }}
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endmacro %}

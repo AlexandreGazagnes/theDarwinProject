@@ -1,0 +1,29 @@
+{% macro btn(number) %}
+
+<!-- butGo  -->
+
+<div class="row">
+    <div class="col">
+        <h2 class="border-bottom text-center"> Let's Go</h2>
+    </div>
+</div>
+<div class="row">
+    {% for id, title, descr, text in [
+                    ("0", "Baby God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Beginner"),
+                    ("1", "God Aprentice", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Intermediate"),
+                    ("2", "Master God", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ex, perferendis ipsum omnis cum quidem ", "Expert"),] %}
+    <div class="col-sm-4 align-self-strech ">
+        <div class="card rounded" style="height: 100%;">
+            <div class="card-body ">
+                <h4 class="card-title text-center" id="btnGo{{ number }}Title-{{ id }}">{{ title }}</h4>
+                <p class="card-text" id="btnGo{{ number }}Descr-{{ id }}"> {{ descr }}</p>
+                <button class="btn btn-primary form-control" id="btnGo{{ number }}Text-{{ id }}">{{ text }}</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+{% endmacro %}
