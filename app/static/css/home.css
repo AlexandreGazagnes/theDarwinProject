@@ -164,16 +164,20 @@ section {
     #init-cont .card .tdX {
       padding-right: 100px; }
 
-#state-cont {
+#state-cont,
+#action-cont,
+#graph-cont {
   margin-top: 0px;
   padding-top: 0px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
-  #state-cont h2 {
-    margin-top: 5px; }
-  #state-cont h3 {
-    margin-bottom: 5px; }
-  #state-cont .card {
+  #state-cont h3,
+  #action-cont h3,
+  #graph-cont h3 {
+    margin-bottom: 25px; }
+  #state-cont .card,
+  #action-cont .card,
+  #graph-cont .card {
     border: 0px #e6d9d9 solid !important;
     border-radius: 15px;
     background-color: white !important;
@@ -184,48 +188,16 @@ section {
     padding-left: 20px;
     padding-right: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-    #state-cont .card td {
+    #state-cont .card .extra-padding,
+    #action-cont .card .extra-padding,
+    #graph-cont .card .extra-padding {
+      margin-top: 5px;
+      margin-bottom: 5px; }
+    #state-cont .card td,
+    #action-cont .card td,
+    #graph-cont .card td {
       font-size: 0.9rem; }
-    #state-cont .card .tdX {
+    #state-cont .card .tdX,
+    #action-cont .card .tdX,
+    #graph-cont .card .tdX {
       padding-right: 20px; }
-
-#action-cont {
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-bottom: 10px;
-  padding-bottom: 10px; }
-  #action-cont h3 {
-    margin-bottom: 5px; }
-  #action-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    padding-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-  #action-cont .extra-padding {
-    margin-top: 5px;
-    margin-bottom: 5px; }
-
-#graph-cont {
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-bottom: 10px;
-  padding-bottom: 10px; }
-  #graph-cont h3 {
-    margin-bottom: 5px; }
-  #graph-cont .extrah4top {
-    margin-top: 20px; }
-  #graph-cont .card {
-    border: 0px #e6d9d9 solid !important;
-    border-radius: 15px;
-    background-color: white !important;
-    margin-top: 10px;
-    padding-top: 20px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }

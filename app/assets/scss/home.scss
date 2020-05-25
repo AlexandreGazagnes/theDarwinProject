@@ -244,19 +244,21 @@ section {
 }
 
 
-#state-cont {
+#state-cont,
+#action-cont,
+#graph-cont {
 
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 10px;
     padding-bottom: 10px;
 
-    h2 {
-        margin-top: 5px;
-    }
+    // h2 {
+    //     margin-top: 5px;
+    // }
 
     h3 {
-        margin-bottom: 5px;
+        margin-bottom: 25px;
     }
 
     .card {
@@ -272,6 +274,11 @@ section {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
+        .extra-padding {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
         td {
             font-size: 0.9rem;
         }
@@ -284,65 +291,63 @@ section {
     }
 }
 
+// #action-cont {
 
-#action-cont {
+//     margin-top: 0px;
+//     padding-top: 0px;
+//     margin-bottom: 10px;
+//     padding-bottom: 10px;
 
-    margin-top: 0px;
-    padding-top: 0px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+//     h3 {
+//         margin-bottom: 5px;
+//     }
 
-    h3 {
-        margin-bottom: 5px;
-    }
+//     .card {
+//         border: 0px $jumbo-bg-color solid !important;
+//         border-radius: $bd-radius;
+//         background-color: white !important;
+//         margin-top: 10px;
+//         padding-top: 20px;
+//         margin-bottom: 10px;
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//     }
 
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
-        margin-top: 10px;
-        padding-top: 20px;
-        margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .extra-padding {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-}
+//     .extra-padding {
+//         margin-top: 5px;
+//         margin-bottom: 5px;
+//     }
+// }
 
 
-#graph-cont {
+// #graph-cont {
 
-    margin-top: 0px;
-    padding-top: 0px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+//     margin-top: 0px;
+//     padding-top: 0px;
+//     margin-bottom: 10px;
+//     padding-bottom: 10px;
 
-    h3 {
-        margin-bottom: 5px;
-    }
+//     h3 {
+//         margin-bottom: 5px;
+//     }
 
-    .extrah4top {
-        margin-top: 20px;
-    }
+//     .extrah4top {
+//         margin-top: 20px;
+//     }
 
-    .card {
-        border: 0px $jumbo-bg-color solid !important;
-        border-radius: $bd-radius;
-        background-color: white !important;
-        margin-top: 10px;
-        padding-top: 20px;
-        margin-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-}
-
+//     .card {
+//         border: 0px $jumbo-bg-color solid !important;
+//         border-radius: $bd-radius;
+//         background-color: white !important;
+//         margin-top: 10px;
+//         padding-top: 20px;
+//         margin-bottom: 10px;
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//     }
+// }
 // section {
 
 //     // hide all others
