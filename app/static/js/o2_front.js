@@ -8,6 +8,30 @@ console.debug("front.js")
 //      Toogle various views
 /////////////////////////////////////////////////////////
 
+function updateFooterDim() {
+    console.debug("updateFooterDim")
+    $("#footerWidth").html(width);
+    $("#footerHeight").html(height);
+
+    let media = "xs";
+
+    if (width > 576) {
+        media = "sm";
+    }
+
+    if (width > 768) {
+        media = "md";
+    }
+    if (width > 992) {
+        media = "lg";
+    }
+    if (width > 1200) {
+        media = "xl";
+    }
+
+    $("#footerMedia").html(media);
+}
+
 // info view
 function loadLandingView() {
     console.debug("toogleLandingView");
@@ -20,6 +44,7 @@ function loadLandingView() {
     $("#" + infoId).hide();
     $("#" + infoId).fadeIn(loadingSpeed);
     $("footer").fadeIn(loadingSpeed);
+    updateFooterDim();
 }
 
 // init view
@@ -83,7 +108,8 @@ function updateDims() {
     console.debug("updateDims");
     width = $(document).width();
     height = $(document).height();
-    console.debug(width, + " , " + height)
+    console.debug(width, + " , " + height);
+    updateFooterDim();
 }
 
 // sm or not 

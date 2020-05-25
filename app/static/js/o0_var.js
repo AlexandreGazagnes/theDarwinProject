@@ -9,8 +9,8 @@ console.debug("var.js")
 ////////////////////////////////////////////////////////
 
 // screen dim
-var width;
-var height;
+var width = -1;
+var height = -1;
 var isSmall;
 
 // animation

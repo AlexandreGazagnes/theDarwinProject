@@ -3,23 +3,32 @@
     font-size: 2.3rem;
     margin-bottom: 20px; }
   #state-cont h4,
-  #graph-cont h4 {
+  #graph-cont #action-cont h4 {
     padding-top: 20px; } }
 
 @media (min-width: 576px) and (max-width: 767.98px) {
   h1 {
     font-size: 2.4rem;
-    margin-bottom: 25px; } }
+    margin-bottom: 25px; }
+  .extra-horizontal-padding {
+    padding-right: 0x;
+    padding-left: 0x; } }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
   h1 {
     font-size: 2.5rem;
-    margin-bottom: 30px; } }
+    margin-bottom: 30px; }
+  .extra-horizontal-padding {
+    padding-right: 10x;
+    padding-left: 10x; } }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
   h1 {
     font-size: 2.6rem;
-    margin-bottom: 40px; } }
+    margin-bottom: 40px; }
+  .extra-horizontal-padding {
+    padding-right: 10x;
+    padding-left: 10x; } }
 
 @media (min-width: 1200px) {
   h1 {
@@ -187,7 +196,13 @@ section {
     margin-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 100%; }
+    #state-cont .card .extra-horizontal-padding,
+    #action-cont .card .extra-horizontal-padding,
+    #graph-cont .card .extra-horizontal-padding {
+      padding-right: 50px;
+      padding-left: 50px; }
     #state-cont .card .extra-padding,
     #action-cont .card .extra-padding,
     #graph-cont .card .extra-padding {

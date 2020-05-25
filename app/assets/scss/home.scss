@@ -7,7 +7,7 @@
     }
 
     #state-cont,
-    #graph-cont {
+    #graph-cont #action-cont {
         h4 {
             padding-top: 20px;
         }
@@ -20,6 +20,12 @@
         font-size: 2.4rem;
         margin-bottom: 25px;
     }
+
+    .extra-horizontal-padding {
+        padding-right: 0x;
+        padding-left: 0x;
+    }
+
 }
 
 // Medium devices (tablets, 768px and up)
@@ -28,6 +34,11 @@
         font-size: 2.5rem;
         margin-bottom: 30px;
     }
+
+    .extra-horizontal-padding {
+        padding-right: 10x;
+        padding-left: 10x;
+    }
 }
 
 // Large devices (desktops, 992px and up)
@@ -35,6 +46,11 @@
     h1 {
         font-size: 2.6rem;
         margin-bottom: 40px;
+    }
+
+    .extra-horizontal-padding {
+        padding-right: 10x;
+        padding-left: 10x;
     }
 }
 
@@ -272,7 +288,13 @@ section {
         padding-left: 20px;
         padding-right: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        height: 100%;
+        ;
 
+        .extra-horizontal-padding {
+            padding-right: 50px;
+            padding-left: 50px;
+        }
 
         .extra-padding {
             margin-top: 5px;
