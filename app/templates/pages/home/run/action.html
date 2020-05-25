@@ -1,0 +1,62 @@
+{% macro action(runForm) %}
+
+
+<!-- <div class="row">
+        <div class="col"> -->
+<h3 class="border-bottom text-center"> Action </h3>
+<!-- </div>
+    </div> -->
+<!-- <div class="row"> -->
+<form id="run-form">
+    <!-- <div class="form-row"> -->
+    <!-- year -->
+    <!-- <div class="col"> -->
+    <div class="form-group">
+        {{ runForm.years.label }}
+        {{ runForm.years }}
+        <small>{{ runForm.years.description }}</small>
+        {% if runForm.years.errors %}
+        <ul class=" errors">
+            {% for error in runForm.years.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <!-- </div> -->
+    <!-- speed  -->
+    <!-- <div class="col"> -->
+    <div class="form-group">
+        {{ runForm.speed.label }}
+        {{ runForm.speed }}
+        <small>{{ runForm.speed.description }}</small>
+        {% if runForm.speed.errors %}
+        <ul class="errors">
+            {% for error in runForm.speed.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <!-- </div>
+</div> -->
+
+    <!-- <div class="form-row">-->
+    <div class="extra-padding">
+        {{ runForm.submit }}
+    </div>
+    <div class=" extra-padding">
+        <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
+    </div>
+    <div class="extra-padding">
+        <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
+    </div>
+    <!-- </div> -->
+</form>
+
+<!-- <div class="col-sm-3"></div>
+</div>
+</div> -->
+
+
+{% endmacro %}

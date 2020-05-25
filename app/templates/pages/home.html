@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% from "pages/home/info.html" import info_cont %}
+{% from "pages/home/init.html" import init_cont %}
+{% from "pages/home/run.html" import run_cont %}
+
+<!-- home css -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css')}}">
+
+
+<!-- info section  -->
+<section id="info-cont">
+    {{ info_cont() }}
+</section>
+
+<!-- init section  -->
+<section class="container" id="init-cont">
+    {{ init_cont(initForm) }}
+</section>
+
+<!-- run section  -->
+<section class="container-fluid" id="run-cont">
+    {{ run_cont(runForm) }}
+</section>
+
+<!-- home js -->
+<script src="{{ url_for('static', filename='js/o0_var.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o1_utils.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o2_front.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o3_graph.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o4_back.js')}}"></script>
+<script src="{{ url_for('static', filename='js/o5_main.js')}}"></script>
+
+<!-- google charts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+<!-- chart.js  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css
+">
+
+{% endblock content %}

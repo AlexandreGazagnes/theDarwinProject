@@ -112,19 +112,6 @@ venv.bak/
 *.json
 *.db
 
-data/*.txt
-data/*.csv
-data/*.pk
-data/*.db
-data/*.xlsx
-data/*.xls
-data/*.ods
-data/*/*.txt
-data/*/*.csv
-data/*/*.pk
-data/*/*.db
-data/*/*.xlsx
-data/*/*.xls
 data/*/*.ods
 
 logs/*.log

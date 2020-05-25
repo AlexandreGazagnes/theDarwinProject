@@ -1,6 +1,3 @@
-# import json
-# import time
-
 from flask import (
     Flask,
     escape,
@@ -14,21 +11,9 @@ from flask import (
     jsonify,
 )
 
-# from flask import session, Session
-#
-# from flask_sqlalchemy import SQLAlchemy
-# # from flask.ext.session import Session
-# from flask_bcrypt import Bcrypt
-# from flask_login import LoginManager, UserMixin
-# from flask_mail import Mail
-
 from flask import Blueprint
 
 from app.forms import InitForm, RunForm
-
-# from app import ALGO
-# from src.functs import Functs
-# from src import EvolutionAlgo1D, NathanAlgo
 from src import logger
 
 # Blue prints
@@ -43,4 +28,12 @@ def just_static():
     logger.debug("called")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
-    return render_template("home.html", initForm=initForm, runForm=runForm)
+    return render_template("pages/home.html", initForm=initForm, runForm=runForm)
+
+
+# test files
+@front.route("/test", methods=["GET"])
+def just_test():
+    """just return html and css"""
+
+    return render_template("pages/test.html")

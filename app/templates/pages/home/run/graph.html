@@ -1,0 +1,32 @@
+{% macro graph() %}
+
+
+
+
+<!-- <div class="row">
+        <div class="col"> -->
+<h3 class="border-bottom text-center"> Visualize </h3>
+<!-- </div>
+    </div> -->
+<!-- <div class="row"> -->
+<div class="">
+    {% for k, title, class in [
+            ("pop", "Current population", ""),
+            ("xs", "best 'x' value evolution during years", ""), 
+            ("ys", "best 'y' value evolution during years", "extrah4top"), 
+] %}
+    <!-- ("years", "year of best found solution evolution during years", "extrah4top") -->
+    <!-- <div class="col-sm-3"> -->
+    <div id="canvas-container">
+        <!-- <h4 class="{{ title }}">graph {{ k }}</h4> -->
+        <!-- <div style="width:100%; height:10vh"> -->
+        <div class="d-flex justify-content-center">
+            <canvas id="{{ k }}Chart"></canvas>
+        </div>
+        <!-- </div> -->
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endmacro %}

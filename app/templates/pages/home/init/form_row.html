@@ -1,0 +1,26 @@
+{% from "pages/home/init/form_group.html" import form_group %}
+
+
+{% macro form_row_simple(initForm, feat0)%}
+
+<div class="form-row">
+    <div class="col">
+        {{ form_group(initForm, feat0) }}
+    </div>
+</div>
+
+{% endmacro %}
+
+
+{% macro form_row_double(initForm, feat0, feat1)%}
+
+<div class="form-row">
+    <div class="col">
+        {{ form_group(initForm, feat0) }}
+    </div>
+    <div class="col">
+        {{ form_group(initForm, feat1) }}
+    </div>
+</div>
+
+{% endmacro %}

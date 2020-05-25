@@ -1,28 +1,32 @@
 <h1>evolutionalGo</h1>
-<small>v0.5.0 dev</small>
+<small>v0.6.0 dev</small>
 
 
-<p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, mollitia libero quod et ab corrupti vel eligendi,
-    iure ipsum saepe veritatis 
+<p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a very basic
+    but powerfull concept.
 </p>
+<p>
+    Play to learn, or learn to play? As you want but please, have some fun and usefull time with Darwin !
+</p>
+
+<br>
 <h2>Installation</h2>
-<p>no need to install, just lauch it on your local host</p>
+<p>no need to install, just launch it on your local host</p>
 <br>
 
 <h2>Usage</h2>
 
 <h3>- with docker</h3>
-<p>use docker-compose : <code>$ docker-compose -d up --build</code>
-</p>
+<p><code>$ cd project/ </code> moove to the good directory</p>
+<p> <code>$ docker-compose  up --build </code> use docker-compose</p>
 <p>then go to http://localhost:65000/</p>
 <br>
 
 <h3>- with python</h3>
-<p>moove to the good directory : <code>$ cd project/</code></p>
-<p>change authorisation to utils files : <code>$ chmod u+w utils/*</code></p>
-<p>make the pythonn requreied envorinment : <code>$ ./make_env.sh</code></p>
-<p>just write : <code>$ python3 run.py</code></p>
+<p> <code>$ cd project/ </code> moove to the good directory </p>
+<p><code>$ chmod u+w utils/*</code> change authorisation to utils files </p>
+<p><code>$ ./make_env.sh</code> make the python requreied envorinment : </p>
+<p><code>$ python3 run.py</code> run it</p>
 <p>then go to http://localhost:65000/</p>
 <br>
 
