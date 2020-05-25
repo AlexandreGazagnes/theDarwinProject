@@ -67,7 +67,6 @@ function drawPopChart() {
     // scatterChart.canvas.parentNode.style.width = '333px';
 }
 
-
 // make a chart 
 function drawXsChart() {
     console.debug("drawXsChart")
@@ -198,6 +197,6 @@ function updateCharts() {
     google.charts.setOnLoadCallback(drawPopChart);
     google.charts.setOnLoadCallback(drawXsChart);
     google.charts.setOnLoadCallback(drawYsChart);
-    google.charts.setOnLoadCallback(drawYearsChart);
+    // google.charts.setOnLoadCallback(drawYearsChart);
 
 }

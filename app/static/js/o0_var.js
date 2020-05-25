@@ -59,8 +59,6 @@ var pointShape = "circle";
 
 var graphHeight = 100;
 var graphWidth = 300;
-
-
 var showTemplate = true;
 
 

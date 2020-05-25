@@ -12,13 +12,10 @@ function updateFooterDim() {
     console.debug("updateFooterDim")
     $("#footerWidth").html(width);
     $("#footerHeight").html(height);
-
     let media = "xs";
-
     if (width > 576) {
         media = "sm";
     }
-
     if (width > 768) {
         media = "md";
     }
@@ -28,7 +25,6 @@ function updateFooterDim() {
     if (width > 1200) {
         media = "xl";
     }
-
     $("#footerMedia").html(media);
 }
 
@@ -68,7 +64,6 @@ function fromInitToRunView() {
     // $("#" + infoId)..fadeOut(1500)();
     $("#" + initId).fadeOut(transitionSpeed);
     $("#" + runId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
-
     // $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     // $("#" + actionId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     // $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
@@ -81,7 +76,6 @@ function fromLandingToRunView() {
     $("#" + infoId).fadeOut(transitionSpeed);
     $("#" + initId).hide();
     $("#" + runId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
-
     // $("#" + stateId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     // $("#" + actionId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
     // $("#" + graphID).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
@@ -95,9 +89,7 @@ function fromRunToInitView() {
     $("#" + actionId).fadeOut(transitionSpeed);
     $("#" + graphID).fadeOut(transitionSpeed);
     $("#" + runId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
-
     $("#" + initId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
-
 }
 
 
