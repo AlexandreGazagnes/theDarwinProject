@@ -10,24 +10,26 @@
 
     <!-- state div -->
 
-    <div class="col-sm-4" id="state-cont">
-        <div class="align-self-stretch ">
-            {{ state() }}
-        </div>
+    <div class="col-sm-4 card align-self-strech" id="state-cont">
+        <!-- <div class="align-self-stretch "> -->
+        {{ state() }}
+        <!-- </div> -->
     </div>
+
     <!-- graph div  -->
-
-    <div class="col-sm-4" id="graph-cont">
-        <div class="align-self-stretch ">
-            {{ graph() }}
-        </div>
+    <div class="col-sm-4 card align-self-strech" id="graph-cont">
+        <!-- <div class="align-self-stretch "> -->
+        {{ graph() }}
+        <!-- </div> -->
     </div>
+
     <!-- action  div  -->
-
-    <div class="col-sm-4" id="action-cont">
-        <div class="align-self-stretch ">
-            {{ action(runForm) }}
-        </div>
+    <div class="col-sm-4 card align-self-strech" id="action-cont">
+        <!-- <div class="align-self-stretch "> -->
+        {{ action(runForm) }}
+        <!-- </div> -->
     </div>
+
+
 </div>
 {% endmacro %}

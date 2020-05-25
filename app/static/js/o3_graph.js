@@ -17,14 +17,16 @@ function drawPopChart() {
     let ctx = document.getElementById('popChart').getContext('2d');
     // population data
     let populationDataset = {
+        label: "Current population",
         data: dynamicState.graph.current_population,
-        pointRadius: 3,
+        pointRadius: 2,
         backgroundColor: "#007bff",
     }
     // template data
     let templateDataset = {}
     if (showTemplate) {
         templateDataset = {
+            label: "Function",
             data: staticState.funct_template,
             pointRadius: 0.1,
             backgroundColor: "rgba(220, 53, 69, 0.01)",
@@ -79,7 +81,7 @@ function drawXsChart() {
     // dataset
     let datasets = [
         {
-            // label: 'My First dataset',
+            label: "x' value evolution during years",
             // backgroundColor: "rba(100, 100,100, 0.0)",
             borderColor: "#007bff",
             pointRadius: 0.1,
@@ -108,7 +110,7 @@ function drawYsChart() {
     let labels = xLabels;
     let datasets = [
         {
-            // label: 'My First dataset',
+            label: "y' value evolution during years",
             // backgroundColor: "rba(100, 100,100, 0.0)",
             borderColor: "#007bff",
             data: ysCoords,

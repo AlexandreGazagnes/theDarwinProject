@@ -54,6 +54,17 @@ section {
   margin-bottom: 0px;
   padding-bottom: 15px; }
 
+.card {
+  border: 0px #e6d9d9 solid !important;
+  border-radius: 15px;
+  background-color: white !important;
+  margin-top: 10px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
 #jumbo-cont {
   background-color: #f0f0f0 !important;
   margin-left: 0px;

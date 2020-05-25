@@ -102,7 +102,7 @@ class InitForm(FlaskForm):
     average_child_numb = FloatField(
         "Normal vs Mutant",
         description="% of child normal vs % of child mutant each year",
-        default=0.50,
+        default=0.25,
         render_kw={"class": "form-control", "placeholder": "default : 0.25"},
         validators=[
             DataRequired(message="data required"),
