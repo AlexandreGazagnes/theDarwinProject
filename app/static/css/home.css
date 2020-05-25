@@ -1,3 +1,28 @@
+@media (max-width: 575.98px) {
+  .canvas-container {
+    padding-right: 0px;
+    padding-left: 0px; } }
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .canvas-container {
+    padding-right: 0px;
+    padding-left: 0px; } }
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .canvas-container {
+    padding-right: 0x;
+    padding-left: 0x; } }
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .canvas-container {
+    padding-right: 0x;
+    padding-left: 0x; } }
+
+@media (min-width: 1200px) {
+  .canvas-container {
+    padding-right: 50px;
+    padding-left: 50px; } }
+
 h1 {
   font-weight: bold; }
 
@@ -118,11 +143,16 @@ td {
   #run-cont #action-cont .card,
   #run-cont #graph-cont .card {
     height: 100%; }
-  #run-cont #state-cont .extra-horizontal-padding,
-  #run-cont #action-cont .extra-horizontal-padding,
-  #run-cont #graph-cont .extra-horizontal-padding {
-    padding-right: 50px;
-    padding-left: 50px; }
+  #run-cont #state-cont .canvas-container,
+  #run-cont #action-cont .canvas-container,
+  #run-cont #graph-cont .canvas-container {
+    padding-right: 0px;
+    padding-left: 0px; }
+  #run-cont #state-cont canvas,
+  #run-cont #action-cont canvas,
+  #run-cont #graph-cont canvas {
+    max-width: 400px !important;
+    max-height: 200px !important; }
   #run-cont #state-cont .extra-padding,
   #run-cont #action-cont .extra-padding,
   #run-cont #graph-cont .extra-padding {

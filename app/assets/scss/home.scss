@@ -8,70 +8,50 @@ $txt-grey : rgb(65, 65, 65);
 $bd-radius : 15px;
 $shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2),
 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-// //media query
-// // Extra small devices (portrait phones, less than 576px)
-// @media (max-width: 575.98px) {
-//     h1 {
-//         font-size: 2.3rem;
-//         margin-bottom: 20px;
-//     }
 
-//     #state-cont,
-//     #graph-cont #action-cont {
-//         h4 {
-//             padding-top: 20px;
-//         }
-//     }
-// }
 
-// // Small devices (landscape phones, 576px and up)
-// @media (min-width: 576px) and (max-width: 767.98px) {
-//     h1 {
-//         font-size: 2.4rem;
-//         margin-bottom: 25px;
-//     }
+//media query
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+    .canvas-container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+}
 
-//     .extra-horizontal-padding {
-//         padding-right: 0x;
-//         padding-left: 0x;
-//     }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .canvas-container {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
 
-// }
+}
 
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) and (max-width: 991.98px) {
-//     h1 {
-//         font-size: 2.5rem;
-//         margin-bottom: 30px;
-//     }
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .canvas-container {
+        padding-right: 0x;
+        padding-left: 0x;
+    }
+}
 
-//     .extra-horizontal-padding {
-//         padding-right: 10x;
-//         padding-left: 10x;
-//     }
-// }
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .canvas-container {
+        padding-right: 0x;
+        padding-left: 0x;
+    }
+}
 
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) and (max-width: 1199.98px) {
-//     h1 {
-//         font-size: 2.6rem;
-//         margin-bottom: 40px;
-//     }
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .canvas-container {
+        padding-right: 50px;
+        padding-left: 50px;
+    }
 
-//     .extra-horizontal-padding {
-//         padding-right: 10x;
-//         padding-left: 10x;
-//     }
-// }
-
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//     h1 {
-//         font-size: 2.6rem;
-//         margin-bottom: 40px;
-//     }
-// }
-
+}
 
 
 // GENERALS
@@ -244,9 +224,15 @@ td {
             height: 100%;
         }
 
-        .extra-horizontal-padding {
-            padding-right: 50px;
-            padding-left: 50px;
+        .canvas-container {
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+
+        canvas {
+            max-width: 400px !important;
+            max-height: 200px !important;
         }
 
         .extra-padding {
