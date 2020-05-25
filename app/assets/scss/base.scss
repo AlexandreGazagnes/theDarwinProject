@@ -8,14 +8,14 @@
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
     p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767.98px) {
     p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }
 
@@ -41,13 +41,15 @@
 }
 
 // color
-//#F8F8F8
 $bg-color : #f0f0f0;
-
+$bs-blue : #007bff;
+$bs-green : #17a2b8;
+$bs-red :#dc3545;
 
 
 
 // body
+
 body {
     overflow-x: hidden !important;
     font-family: b612, Verdana, Tahoma, sans-serif;
@@ -72,4 +74,5 @@ footer {
 // p
 p {
     text-align: justify;
+    font-size: 0.8rem;
 }

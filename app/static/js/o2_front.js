@@ -106,8 +106,8 @@ function fromRunToInitView() {
 // dims
 function updateDims() {
     console.debug("updateDims");
-    width = $(document).width();
-    height = $(document).height();
+    width = $("html").width();
+    height = $("html").height();
     console.debug(width, + " , " + height);
     updateFooterDim();
 }
