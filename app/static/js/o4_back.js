@@ -56,7 +56,7 @@ function onBackLoad() {
 // update static State data in html
 function updateStaticState() {
     console.debug("updateStaticState");
-    ["Id", "Name", "Objective", "Interval", "Seed_parents", "Kill_rate", "Average_child_numb"].forEach((elem) => {
+    ["Id", "Name", "Objective", "Interval", "Seed_parents", "Kill_rate", "Average_child_numb",].forEach((elem) => {
         $("#static" + elem).html(staticState[elem.toLowerCase()]);
     });
     let strFunct = $("#funct option:selected").val();
@@ -82,12 +82,16 @@ function getStaticState() {
 // update dynamic State data in html
 function updateDynamicState() {
     console.debug("updateDynamicState");
-    let firstList = ["Year", "Len_current_population", "Best_current_population"];
+    let firstList = ["Year", "Len_current_population", "Best_current_population", "Kill_number", "Saved_people", "New_people_number"];
     firstList.forEach((elem) => {
         $("#dynamic" + elem).html(dynamicState[elem.toLowerCase()]);
     });
     ["First", "Normal", "Random"].forEach((elem) => {
         $("#dynamic" + elem).html(dynamicState["repartition_current_population"][elem.toLowerCase()]);
+    });
+
+    ["Random_child_nb", "Normal_child_nb",].forEach((elem) => {
+        $("#dynamic" + elem).html(dynamicState["new_people_composition"][elem.toLowerCase()]);
     });
 }
 

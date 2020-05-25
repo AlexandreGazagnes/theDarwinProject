@@ -28,6 +28,7 @@ class EvolutionAlgo1D:
         demography=1.0,
         average_child_numb=0.75,
         _round=5,
+        kill_before_reproduce=True,
     ):
 
         logger.debug("called")
@@ -43,6 +44,12 @@ class EvolutionAlgo1D:
         self.year = 0
         self._round = _round
         self.learning_curve = list()
+        self.kill_before_reproduce = kill_before_reproduce
+
+        self.kill_number = 0
+        self.new_people_number = 0
+        self.new_people_composition = {}
+        self.saved_people = -1
 
         # find parents
         parents = [
@@ -186,6 +193,10 @@ class EvolutionAlgo1D:
                 "ys_last": self.graph_ys_last,
                 "years_last": self.graph_years_last,
             },
+            "kill_number": self.kill_number,
+            "new_people_number": self.new_people_number,
+            "saved_people": self.saved_people,
+            "new_people_composition": self.new_people_composition,
         }
         return d
 
@@ -209,7 +220,9 @@ class EvolutionAlgo1D:
         logger.debug("called")
         n_save = len(self.current_population) * (1 - self.kill_rate)
         n_save = int(n_save)
-        self.current_population = self.current_population[: n_save + 1]
+        self.saved_people = n_save
+        self.kill_number = len(self.current_population) - n_save
+        self.current_population = self.current_population[:n_save]
 
     def _procreate(self):
         """ """
@@ -217,11 +230,16 @@ class EvolutionAlgo1D:
         logger.debug("called")
         # numbers
         N_childs = len(self.original_population) - len(self.current_population)
+        self.new_people_number = N_childs
         N_normal_child = int(self.average_child_numb * N_childs)
         N_random_childs = N_childs - N_normal_child
         logger.debug((f"N_childs {N_childs} "))
         logger.debug((f"N_normal_child {N_normal_child} "))
         logger.debug((f"N_random_childs {N_random_childs} "))
+        self.new_people_composition = {
+            "normal_child_nb": N_normal_child,
+            "random_child_nb": N_random_childs,
+        }
 
         # rand childs
         random_childs_x = [
@@ -283,8 +301,13 @@ class EvolutionAlgo1D:
         """ """
 
         logger.debug("called")
-        self._kill_looser()
-        self._procreate()
+
+        if self.kill_before_reproduce:
+            self._kill_looser()
+            self._procreate()
+        else:
+            self._procreate()
+            self._kill_looser()
         best = self._eval()
         self._incr()
         return best

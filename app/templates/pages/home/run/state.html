@@ -55,11 +55,18 @@
     <table>
         <tr>
             {% for key, val in [("Year", "Year"),
-                                            ("Pop Size", "Len_current_population"), 
-                                            ("First", "First"), 
-                                            ("Normal", "Normal"),
-                                            ("Random", "Random"),
-                                            ("Best elements", "Best_current_population") ] %}
+                            ("Pop Size", "Len_current_population"), 
+                            ("First", "First"), 
+                            ("Normal", "Normal"),
+                            ("Random", "Random"),
+                            ("Best elements", "Best_current_population"), 
+                            ("kill_number", "Kill_number"), 
+                            ("saved people", "Saved_people"),
+                            ("new_people_number", "New_people_number"),
+                            ("normal_child_nb", "Normal_child_nb"), 
+                            ("random_child_nb", "Random_child_nb")] %}
+            <!-- ("Child numb", "Average_child_numb"),
+                            ("Child numb", "Average_child_numb") -->
             <td> {{ key }} </td>
             <td id="dynamic{{ val }}"></td>
         </tr>
