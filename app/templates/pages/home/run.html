@@ -7,21 +7,20 @@
 
 
 <div class="row">
+
     <!-- state div -->
     <div class="col-sm-4 align-self-strech" id="state-cont">
-        <div class="card">
-            <!-- <div class="align-self-stretch "> -->
+        <!-- <div class="align-self-stretch "> -->
+        <div class="card" style="height:100%;">
             {{ state() }}
-            <!-- </div> -->
         </div>
+        <!-- </div> -->
     </div>
 
     <!-- graph div  -->
     <div class="col-sm-4 align-self-strech" id="graph-cont">
-
         <!-- <div class="align-self-stretch "> -->
-        <div class="card">
-
+        <div class="card" style="height:100%;">
             {{ graph() }}
         </div>
         <!-- </div> -->
@@ -30,13 +29,11 @@
     <!-- action  div  -->
     <div class="col-sm-4 align-self-strech" id="action-cont">
         <!-- <div class="align-self-stretch "> -->
-        <div class="card">
-
+        <div class="card" style="height:100%;">
             {{ action(runForm) }}
         </div>
         <!-- </div> -->
     </div>
-
 
 </div>
 {% endmacro %}
