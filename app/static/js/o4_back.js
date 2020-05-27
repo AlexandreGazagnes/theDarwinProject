@@ -85,16 +85,43 @@ function getStaticState(forceSync = false) {
 // update dynamic State data in html
 function updateDynamicState() {
     console.debug("updateDynamicState");
+
+    let theList = [];
     let firstList = ["Year", "Len_current_population", "Best_current_population", "Kill_number", "Saved_people", "New_people_number"];
+
+    // make inter list
     firstList.forEach((elem) => {
-        $("#dynamic" + elem).html(dynamicState[elem.toLowerCase()]);
+        let tmp_key = elem;
+        let tmp_old = $("#dynamic" + elem).html();
+        let tmp_new = dynamicState[elem.toLowerCase()];
+        let tmp_eq = (tmp_old === tmp_new);
+        let tmp_list = [tmp_key, tmp_old, tmp_new, tmp_eq];
+        theList.push(tmp_list);
     });
     ["First", "Normal", "Random"].forEach((elem) => {
-        $("#dynamic" + elem).html(dynamicState["repartition_current_population"][elem.toLowerCase()]);
+        let tmp_key = elem;
+        let tmp_old = $("#dynamic" + elem).html();
+        let tmp_new = dynamicState["repartition_current_population"][elem.toLowerCase()];
+        let tmp_eq = (tmp_old === tmp_new);
+        let tmp_list = [tmp_key, tmp_old, tmp_new, tmp_eq];
+        theList.push(tmp_list);
+    });
+    ["Random_child_nb", "Normal_child_nb",].forEach((elem) => {
+        let tmp_key = elem;
+        let tmp_old = $("#dynamic" + elem).html();
+        let tmp_new = dynamicState["new_people_composition"][elem.toLowerCase()];
+        let tmp_eq = (tmp_old === tmp_new);
+        let tmp_list = [tmp_key, tmp_old, tmp_new, tmp_eq];
+        theList.push(tmp_list);
     });
 
-    ["Random_child_nb", "Normal_child_nb",].forEach((elem) => {
-        $("#dynamic" + elem).html(dynamicState["new_people_composition"][elem.toLowerCase()]);
+    // complex update
+    theList.forEach((elem) => {
+        if (!(elem[3])) {
+            $("#dynamic" + elem[0]).css("color", "red").css("font-style", "italic").html(elem[2]).delay(1000).queue(function () {
+                $(this).css("color", "black").css("font-style", "normal").dequeue();
+            });
+        }
     });
 }
 

@@ -27,7 +27,7 @@ class EvolutionAlgo1D:
         kill_rate=0.33,
         demography=1.0,
         average_child_numb=0.75,
-        _round=5,
+        _round=7,
         kill_before_reproduce=True,
     ):
 
@@ -344,7 +344,17 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
 
-        LL = [{"x": i, "y": j} for i, j, k, l in self.current_population]
+        LL = {}
+        for kk in ["normal", "first", "random"]:
+            LL.update(
+                {
+                    kk: [
+                        {"x": i, "y": j}
+                        for i, j, k, l in self.current_population
+                        if (k == kk)
+                    ]
+                }
+            )
         # list(zip(*LL))
         return LL
 
