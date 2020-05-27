@@ -94,7 +94,7 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
         self._sort_current_population()
-        return self.current_population[:5]
+        return self.current_population[:1]
 
     @property
     def current_population_x(self):
