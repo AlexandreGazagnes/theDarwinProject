@@ -4,15 +4,13 @@ precompile js
 navbar
 footer
 
-noonproject buy icons
+noonproject change copyright img
 press long run
-pause
-reload  
+pause 
+reload 
 
 all pasding in rem
 text lorem
 kill before reproduce
 social system
-text red when change
 reshape init 
-play pause reload stop icons

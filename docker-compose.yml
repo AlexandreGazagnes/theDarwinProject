@@ -10,7 +10,7 @@ services:
             # args:
             #     dummy: "dummy"
         # restart always
-        image: web:v0.5.0
+        image: web:v0.6.0
         container_name: web_cont
         volumes:
             - .:/app
