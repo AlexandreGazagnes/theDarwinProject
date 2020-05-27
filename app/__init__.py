@@ -25,7 +25,7 @@ def make_app():
     app.config.from_object("config.DevConfig")
 
     # plugin
-    sess.init_app(app)
+    # sess.init_app(app)
 
     # context manager
     with app.app_context():

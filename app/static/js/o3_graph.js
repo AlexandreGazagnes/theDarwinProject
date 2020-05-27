@@ -16,11 +16,23 @@ function drawPopChart() {
     // context
     let ctx = document.getElementById('popChart').getContext('2d');
     // population data
-    let populationDataset = {
-        label: "Current population",
-        data: dynamicState.graph.current_population,
-        pointRadius: 2,
+    let firstPopulation = {
+        label: "firstPopulation",
+        data: dynamicState.graph.current_population.first,
+        pointRadius: 4,
         backgroundColor: "#007bff",
+    }
+    let normalPopulation = {
+        label: "normalPopulation",
+        data: dynamicState.graph.current_population.normal,
+        pointRadius: 4,
+        backgroundColor: "#17a2b8",
+    }
+    let randomPopulation = {
+        label: "randomPopulation",
+        data: dynamicState.graph.current_population.random,
+        pointRadius: 4,
+        backgroundColor: "#dc3545",
     }
     // template data
     let templateDataset = {}
@@ -52,7 +64,9 @@ function drawPopChart() {
     }
     // datasets
     let myDatasets = [
-        populationDataset,
+        firstPopulation,
+        normalPopulation,
+        randomPopulation,
         templateDataset,
     ]
     // make the chart
