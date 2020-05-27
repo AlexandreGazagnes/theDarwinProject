@@ -11,4 +11,4 @@ if __name__ == "__main__":
 
     compile_scss()
     app = make_app()
-    app.run(host="0.0.0.0", port=65000, debug=True)
+    app.run(host="0.0.0.0", port=65000)

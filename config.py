@@ -22,7 +22,7 @@ class Config:
 
     # Flask-Session
     SESSION_TYPE = environ.get("SESSION_TYPE")
-    SESSION_REDIS = redis.from_url(environ.get("SESSION_REDIS"))
+    # SESSION_REDIS = redis.from_url(environ.get("SESSION_REDIS"))
 
     # app.config["SECRET_KEY"] = secrets.token_hex(16)
     # app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 0

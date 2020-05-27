@@ -1,8 +1,3 @@
-redis
-config.py
-Session
-.env
-wsgi.py
 procfile
 precompile js
 
@@ -14,8 +9,10 @@ press long run
 pause
 reload  
 
-all pading in rem
-reshape css
+all pasding in rem
 text lorem
 kill before reproduce
 social system
+text red when change
+reshape init 
+play pause reload stop icons

@@ -249,6 +249,9 @@ function manageRun(e) {
     // avoid to execute the actual submit of the form.
     e.preventDefault();
 
+    // toogle play puase
+    playOffPauseOn();
+
     // local vars
     let form = $("#run-form");
     let years = form.find("#years").val();
@@ -266,6 +269,12 @@ function manageRun(e) {
             postRun();
         }, index * speed);
     });
+
+    //toogle play
+    setTimeout(function () {
+        playOnPauseOff();
+    }, arrRange.length * speed);
+
 }
 
 // event handler

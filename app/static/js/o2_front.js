@@ -92,6 +92,20 @@ function fromRunToInitView() {
     $("#" + initId).delay(transitionSpeed - 1).fadeIn(transitionSpeed);
 }
 
+function playOnPauseOff() {
+    console.debug("playOnpauseOff");
+
+    $("#run-pause-btn").css("display", "none");
+    $("#run-play-btn").css("display", "inline-block");
+}
+
+function playOffPauseOn() {
+    console.debug("playOnpauseOff");
+
+    $("#run-pause-btn").css("display", "inline-block");
+    $("#run-play-btn").css("display", "none");
+}
+
 
 //      Dims, sm, grid management 
 ////////////////////////////////////////////
