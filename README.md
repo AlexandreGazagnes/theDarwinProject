@@ -39,10 +39,6 @@
 
 <h2>License</h2>
 <p>
-<<<<<<< HEAD
+
     Please consider seriously following your studies untill Master II
 </p>
-=======
-    Please consider seriously following your studies untill Master II, 
-</p>
->>>>>>> feature/rc
