@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<h1>evolutionalGo !!! </h1>
-=======
 <h1>theDarwinProject.io</h1>
->>>>>>> feature/rc
 <small>v0.6.0 dev</small>
 
 
