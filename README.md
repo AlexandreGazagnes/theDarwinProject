@@ -1,5 +1,5 @@
 <h1>evolutionalGo</h1>
-<small>v0.6.0 dev</small>
+<small>v0.6.0 master</small>
 
 
 <p>EvolutionAlgo helps you to define, test and modelize various gentic algorythm to try to catch a very basic
