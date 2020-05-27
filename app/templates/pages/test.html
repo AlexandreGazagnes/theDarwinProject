@@ -7,6 +7,12 @@
 
 
 <section class="container">
+
+    <div class="row">
+        {% set txt = "<span>HELLO</span>" %}
+        <p>{{ txt|safe }} </p>
+    </div>
+
     <div class="row">
         <!-- class="row d-flex " -->
         <div class="col card">
@@ -29,7 +35,8 @@
                     {% for k in [1]%}
                     <small>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam magni exercitationem facere
-                        molestias, omnis dolorem est soluta placeat sit eum enim neque assumenda? Ducimus veritatis ipsa
+                        molestias, omnis dolorem est soluta placeat sit eum enim neque assumenda? Ducimus veritatis
+                        ipsa
                         sapiente? Illo, accusamus sunt!
                     </small>
                     {% endfor %}

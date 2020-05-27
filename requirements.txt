@@ -1,9 +1,9 @@
 numpy
-pandas
+# pandas
 
-matplotlib
-seaborn
-bokeh
+# matplotlib
+# seaborn
+# bokeh
 
 pytest
 black
@@ -14,7 +14,7 @@ flask-wtf
 Flask-Scss
 libsass
 
-selenium
+# selenium
 
 flask-session
 flask-login 

@@ -11,4 +11,4 @@ COPY . /app
 
 # command
 ENTRYPOINT [ "python" ]
-CMD [ "run.py" ]
+CMD [ "wsgi.py" ]

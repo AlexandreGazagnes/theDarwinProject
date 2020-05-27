@@ -43,13 +43,23 @@
 
     <!-- <div class="form-row">-->
     <div class="extra-padding">
-        {{ runForm.submit }}
+        <button class="btn btn-primary form-control" id="submit" name="submit" type="submit">
+            <img height='26px' width='26px' src="{{ url_for('static', filename='img/icons/play2.png') }}"
+                id="run-play-btn" alt='play'>
+            <img height='26px' width='26px' src="{{ url_for('static', filename='img/icons/pause.png') }}"
+                id="run-pause-btn" alt='play'>
+        </button>
     </div>
     <div class=" extra-padding">
-        <button class="btn btn-info form-control" onclick="location.reload()">Reload</button>
+        <button class="btn btn-info form-control" onclick="location.reload()">
+            <img height="26px" width="26px" src="{{ url_for('static', filename='img/icons/replay.png') }}" alt="Reload">
+
+        </button>
     </div>
     <div class="extra-padding">
-        <button class="btn btn-danger form-control" onclick="location.reload()">Reset</button>
+        <button class="btn btn-danger form-control" onclick="location.reload()">
+            <img height="26px" width="26px" src="{{ url_for('static', filename='img/icons/cross.png') }}"
+                alt="Reset"></button>
     </div>
     <!-- </div> -->
 </form>

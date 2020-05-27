@@ -10,10 +10,10 @@ from wtforms import (
     FloatField,
     SubmitField,
 )
+from flask import Markup
 from wtforms.validators import DataRequired, Length, NumberRange
 
 from src.functs import Functs
-
 
 choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.as_dict.items()]
 choicesObjectives = [("min", "min"), ("max", "max")]
@@ -133,6 +133,11 @@ class InitForm(FlaskForm):
     #         raise ValidationError("Down > Up")
 
 
+# txt = ""
+# txt = "<span>HELLO</span>"
+# submit_play = Markup(txt)
+
+
 class RunForm(FlaskForm):
 
     years = IntegerField(
@@ -168,4 +173,6 @@ class RunForm(FlaskForm):
         ],
     )
 
-    submit = SubmitField("Run", render_kw={"class": "btn btn-primary form-control"},)
+    # submit = SubmitField(
+    #     "<span>HELLO</span>", render_kw={"class": "btn btn-primary form-control"},
+    # )
