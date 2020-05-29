@@ -12,6 +12,7 @@ from flask import (
     abort,
     redirect,
     jsonify,
+    session,
 )
 
 from flask import Blueprint
@@ -29,6 +30,13 @@ back = Blueprint("back", __name__)
 def get_algo():
     """ get algo"""
     return ALGO[request.args.get("algoId")]
+
+
+@back.route("/getsessionid", methods=["GET"])
+def get_session_id():
+    """return sess_id """
+
+    return session["sess_id"]
 
 
 # init from model

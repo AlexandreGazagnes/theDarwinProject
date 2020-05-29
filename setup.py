@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name="theDarwinProject",
     version="0.6.1",
-    description="easy web app to play with genetic algorythms",
+    description="easyand fun web app to play with genetic algorythms",
     author="Alexandre Gazagnes",
     url="https://github.com/AlexandreGazagnes/theDarwinProject",
     packages=find_packages(),
@@ -23,6 +23,6 @@ setup(
     ],
     entry_points="""
         [console_scripts]
-        theDarwinProject=uwsgi:main
+        theDarwinProject=wsgi:main
         """,
 )

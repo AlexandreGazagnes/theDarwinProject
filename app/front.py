@@ -1,3 +1,5 @@
+import secrets
+
 from flask import (
     Flask,
     escape,
@@ -9,11 +11,13 @@ from flask import (
     abort,
     redirect,
     jsonify,
+    session,
 )
 
 from flask import Blueprint
 
 from app.forms import InitForm, RunForm
+from app.utils import manage_session
 from src import logger
 
 # Blue prints
@@ -26,6 +30,7 @@ def just_static():
     """just return html and css"""
 
     logger.debug("called")
+    manage_session("/")
     initForm = InitForm(request.form)
     runForm = RunForm(request.form)
     return render_template("pages/home.html", initForm=initForm, runForm=runForm)
@@ -36,4 +41,13 @@ def just_static():
 def just_test():
     """just return html and css"""
 
+    manage_session("/test")
     return render_template("pages/test.html")
+
+
+@front.route("/testsessionid", methods=["GET"])
+def test_session_id():
+
+    manage_session("/testsessionid")
+    logger.info(session)
+    return str([(k, v) for k, v in session.items()])

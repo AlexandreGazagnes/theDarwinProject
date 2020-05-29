@@ -1,22 +1,30 @@
+# DATA
 numpy
 # pandas
 
+# VIZ
 # matplotlib
 # seaborn
 # bokeh
 
+# TEST
 pytest
 black
 
+# FLASK
 flask
 WTForms
+flask-bcrypt
 flask-wtf
 Flask-Scss
-libsass
+flask-session
+flask-login 
 
 # selenium
 
-flask-session
-flask-login 
+# DB
 redis
+
+# MISC
 python-dotenv
+libsass
