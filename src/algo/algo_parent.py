@@ -417,22 +417,3 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
         return self.graph_years[-1]
-
-
-def save(Obj):
-    """save an algo in redis"""
-    pass
-
-
-def load(id):
-    """rebuild and return an Object from json data in redis"""
-
-    return None
-
-
-def run(id, n):
-    """load run and save"""
-
-    obj = load("id")
-    obj.run(id)
-    save(obj)
