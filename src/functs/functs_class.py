@@ -1,3 +1,4 @@
+from src import logger
 from src.functs.functs_dict import _FunctsDict
 
 
