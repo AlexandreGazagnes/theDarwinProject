@@ -1,1 +1,1 @@
-from src.functs.functs_class import Functs
+from src.functs.classes import Functs

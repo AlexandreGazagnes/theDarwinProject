@@ -1,5 +1,6 @@
 import json
 import time
+import secrets
 
 from flask import (
     Flask,
@@ -39,12 +40,39 @@ def get_session_id():
     return session["sess_id"]
 
 
+@back.route("/getsessionalgo_list", methods=["GET"])
+def get_session_algo_list():
+    """return sess_id """
+
+    return session["algo_list"]
+
+@back.route("/getsessionalgo_current", methods=["GET"])
+def get_session_algo_current():
+    """return sess_id """
+
+    return session["current_algo"]
+
+
+@back.route("/change_algo/<str:new_id>", methods=["POST"])
+def change_algo_(new_id):
+    """change sess_id """
+
+    session["current_algo"] = new_id
+
+
 # init from model
 @back.route("/initfrommodel", methods=["POST"])
 def initFromModel():
     """load nathan Model"""
 
     logger.debug("called")
+    _id = secrets.token_hex(8)
+    algo = DummAlgo(_id)
+    session["algo_dict"].update({_id : algo.serialized})
+    session["current_algo"] = _id
+
+
+    session[]
     algo = NathanAlgo()
     global ALGO
     ALGO.update({algo.id: algo})

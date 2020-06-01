@@ -13,8 +13,6 @@ from app.config import ProdConfig, DevConfig
 
 # replace by redis in next feature
 
-ALGO = dict()
-
 sess = Session()
 bcrypt = Bcrypt()
 
