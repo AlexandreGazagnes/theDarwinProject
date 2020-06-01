@@ -85,7 +85,7 @@ def initFromModel():
     obj = algo.DummyAlgo(_id)
     session["algo_dict"].update({_id: obj.serialized})
     session["current_algo"] = _id
-    return _id, 200
+    return obj.static_state, 200
 
 
 # init from user
@@ -162,7 +162,7 @@ def get_static_state():
     """ where is the  doctstring ? """
 
     logger.debug("called")
-    resp = jsonify(algo.static_state)
+    resp = jsonify(algo.static_state())
     # logger.critical(resp)
     resp.status_code = 200
     return resp
@@ -174,7 +174,7 @@ def get_dynamic_state():
     """ where is the  doctstring ? """
 
     logger.debug("called")
-    resp = jsonify(algo.dynamic_state)
+    resp = jsonify(algo.dynamic_state())
     resp.status_code = 200
     return resp
 
