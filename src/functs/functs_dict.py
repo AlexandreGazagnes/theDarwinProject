@@ -85,37 +85,3 @@ _FunctsDict = {
         "interval": [-9.4, 9.4],
     },
 }
-
-
-_all_names = set([v["name"] for _, v in _FunctsDict.items()])
-_all_levels = set([v["level"] for _, v in _FunctsDict.items()])
-_all_dimensions = set([v["dimension"] for _, v in _FunctsDict.items()])
-
-
-class _FunctsClass(dict):
-    """Data class contains functions ordered """
-
-    def __init__(self):
-        super().__init__(_FunctsDict)
-        # super().__init__()
-
-    @property
-    def by_level(self):
-        return {
-            v: [{kk: vv} for kk, vv in self.items() if vv["level"] == v]
-            for v in _all_levels
-        }
-
-    @property
-    def by_dimension(self):
-        return {
-            v: [{kk: vv} for kk, vv in self.items() if vv["dimension"] == v]
-            for v in _all_dimensions
-        }
-
-    @property
-    def by_name(self):
-        return dict(self)
-
-
-Functs = _FunctsClass()

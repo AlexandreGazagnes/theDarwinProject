@@ -11,7 +11,6 @@ class _FunctsClass(dict):
 
     def __init__(self):
         super().__init__(_FunctsDict)
-        # super().__init__()
 
     @property
     def by_level(self):
