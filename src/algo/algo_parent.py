@@ -20,15 +20,15 @@ class EvolutionAlgo1D:
 
     def __init__(
         self,
-        funct=None,
-        objective="min",
-        interval=[-100, 100],
-        seed_parents=20,
-        kill_rate=0.33,
-        demography=1.0,
-        average_child_numb=0.75,
-        _round=7,
-        kill_before_reproduce=True,
+        funct: dict = None,
+        objective: str = "min",
+        interval: list = [-100, 100],
+        seed_parents: int = 20,
+        kill_rate: float = 0.33,
+        demography: float = 1.0,
+        average_child_numb: float = 0.75,
+        _round: int = 7,
+        kill_before_reproduce: int = 1,
     ):
 
         logger.debug("called")
@@ -57,10 +57,10 @@ class EvolutionAlgo1D:
         ]
         self.current_population = [
             (
-                round(x, self._round),
-                round(self.funct["funct"](x), self._round),
-                "first",
-                self.year,
+                round(x, self._round),  # x
+                round(self.funct["funct"](x), self._round),  # y
+                "first",  # class
+                self.year,  # birth year
             )
             for x in parents
         ]
@@ -417,3 +417,22 @@ class EvolutionAlgo1D:
 
         logger.debug("called")
         return self.graph_years[-1]
+
+
+def save(Obj):
+    """save an algo in redis"""
+    pass
+
+
+def load(id):
+    """rebuild and return an Object from json data in redis"""
+
+    return None
+
+
+def run(id, n):
+    """load run and save"""
+
+    obj = load("id")
+    obj.run(id)
+    save(obj)
