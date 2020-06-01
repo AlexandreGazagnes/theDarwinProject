@@ -27,32 +27,32 @@ def _load():
 
     d = session["algo_dict"][session["current_algo"]]
     logger.warning(d)
-    algo = _HandleAlgo(**d)
-    return algo
+    obj = _HandleAlgo(d)
+    return obj
 
 
 def _run_1(id, n):
     """load run and save"""
 
-    algo = _load()
-    algo.run(n)
-    _save(algo)
+    obj = _load()
+    obj.run(n)
+    _save(obj)
 
 
 def _run_10(id, n):
     """load run and save"""
 
-    algo = _load()
-    algo.run(n * 10)
-    _save(algo)
+    obj = _load()
+    obj.run(n * 10)
+    _save(obj)
 
 
 def _run_100(id, n):
     """load run and save"""
 
-    algo = _load()
-    algo.run(n * 100)
-    _save(algo)
+    obj = _load()
+    obj.run(n * 100)
+    _save(obj)
 
 
 class algo:
@@ -67,9 +67,21 @@ class algo:
     ExpertAlgo = _ExpertAlgo
 
 
-def fakeSession():
-    d = {}
-    d["algo_dict"] = {}
-    d["current_algo"] = ""
+# ############################"
+# # test
+# ############################""
 
-    return d
+
+# def fakeSession():
+#     """ """
+#     d = {}
+#     _id = "aze"
+#     d["algo_dict"] = {_id: algo.DummyAlgo(_id)}
+#     d["current_algo"] = _id
+#     return d
+
+# session = fakeSession()
+# ag = session["algo_dict"][session["current_algo"]]
+
+# ag.run(3)
+# algo.save(ag)

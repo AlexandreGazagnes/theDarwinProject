@@ -422,7 +422,7 @@ class _Algo(ABC):
 
     def __repr__(self):
 
-        return f"Algo id : {self._id}\nfunct : {self.funct}\ninterval:  {self.interval}\nyear : {self.year} "
+        return f"Algo id : {self._id}\nfunct : {self.funct}\ninterval:  {self.interval}\nyear : {self.year}\nis_won : {self.is_won}\nbest_elem : {self.best_current_population[0]}"
 
     def __str__(self):
 
