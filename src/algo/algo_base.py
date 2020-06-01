@@ -104,9 +104,6 @@ class _Algo(ABC):
                 (i, j, k, l) for i, j, k, l in self.current_population
             ]
 
-
-
-
     ####################################################
     # PROPERTIES
     ####################################################
@@ -135,13 +132,23 @@ class _Algo(ABC):
         return self.current_population[:1]
 
     @property
-    def is_won(self) : 
-        """ eval if best  elem in wining threshold interval""" 
+    def is_won(self):
+        """ eval if best  elem in wining threshold interval"""
 
         logger.debug("called")
-        target = float(self.funct.["target"])
-        target_interval = [target * (1-self.winning_threshold), target * (1+ self.winning_threshold)]
-        is_won = target_interval[1] > best_current_population > target_interval[0]
+        target = float(self.funct["target"])
+        if target:
+            target_interval = [
+                target - (target * self.winning_threshold),
+                target + (target * self.winning_threshold),
+            ]
+        else:
+            target_interval = [-self.winning_threshold, self.winning_threshold]
+
+        # logger.warning(self.best_current_population[0])
+        is_won = (
+            target_interval[1] > self.best_current_population[0][1] > target_interval[0]
+        )
         return is_won
 
     @property
