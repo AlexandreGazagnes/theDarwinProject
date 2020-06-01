@@ -10,12 +10,14 @@ class DummyAlgo(_Algo):
     def __init__(self, _id):
         """init method """
 
+            _funct = Functs["x2"]
+
         d = {
             "_id": _id,
             "year": 0,
-            "funct": Functs["x2"],
-            "objective": "min",
-            "interval": [-100, 100],
+            "funct": _funct,
+            "objective": _funct["objective"],
+            "interval": _funct["interval"],
             "winning_threshold": 0.005,
             "seed_parents": 10,
             "kill_rate": 0.333,
