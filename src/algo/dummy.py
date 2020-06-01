@@ -1,17 +1,17 @@
 from src import logger
 
-from src.algo.base_algo import _Algo
+from src.algo.base import _Algo
 from src.functs import *
 
 
 class _DummyAlgo(_Algo):
     """just a dummy algo for tests"""
 
-    def __init__(self):
+    def __init__(self, id):
         """init method """
 
         d = {
-            "_id": "fghjkl",
+            "_id": id,
             "year": 0,
             "funct": Functs["x2"],
             "objective": "min",

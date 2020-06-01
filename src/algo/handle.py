@@ -1,15 +1,16 @@
 from src import logger
 
+from src.algo.base import _Algo
 from src.algo.easy import _EasyAlgo
 from src.algo.medium import _MediumAlgo
 from src.algo.expert import _ExpertAlgo
 from src.algo.dummy import _DummyAlgo
 
 
-from flask import session
+# from flask import session
 
 
-class HandleAlgo(_Algo):
+class _HandleAlgo(_Algo):
     def __init__(self, d):
 
         super().__init__(**d)
@@ -24,9 +25,9 @@ def _save(Obj):
 def _load():
     """rebuild and return an Object from json data in redis"""
 
-    _id = session["current_algo"]
-    d = algo_dict[_id]
-    algo = HandleAlgo(**d)
+    d = session["algo_dict"][session["current_algo"]]
+    logger.warning(d)
+    algo = _HandleAlgo(**d)
     return algo
 
 
@@ -64,3 +65,11 @@ class algo:
     EasyAlgo = _EasyAlgo
     MediumAlgo = _MediumAlgo
     ExpertAlgo = _ExpertAlgo
+
+
+def fakeSession():
+    d = {}
+    d["algo_dict"] = {}
+    d["current_algo"] = ""
+
+    return d

@@ -1,6 +1,6 @@
 from src import logger
 
-from src.algo.algo_base import _Algo
+from src.algo.base import _Algo
 from src.functs import *
 
 
@@ -10,7 +10,7 @@ class _EasyAlgo(_Algo):
     def __init__(self, _id):
         """init method """
 
-            _funct = Functs["x2"]
+        _funct = Functs["x2"]
 
         d = {
             "_id": _id,
@@ -19,10 +19,10 @@ class _EasyAlgo(_Algo):
             "objective": _funct["objective"],
             "interval": _funct["interval"],
             "winning_threshold": 0.005,
-            "seed_parents": 10,
+            "seed_parents": 12,
             "kill_rate": 0.333,
             "demography": 1,
-            "average_child_numb": 0.75,
+            "average_child_numb": 0.5,
             "kill_before_reproduce": 0,
             "social_system": "normal",
             "current_population": [],
