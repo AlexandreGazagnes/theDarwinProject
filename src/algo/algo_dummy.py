@@ -20,10 +20,13 @@ class DummyAlgo(_Algo):
             "seed_parents": 10,
             "kill_rate": 0.333,
             "demography": 1,
+            "dimension": "1D",
+            "level": "easy",
             "average_child_numb": 0.75,
             "kill_before_reproduce": 0,
             "social_system": "normal",
             "current_population": [],
+            "learning_curve": [],
             "original_population": [],
             "_round": 7,
         }

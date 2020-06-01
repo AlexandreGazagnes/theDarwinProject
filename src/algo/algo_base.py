@@ -88,10 +88,13 @@ class _Algo(ABC):
                 np.random.rand() + np.random.randint(*interval)
                 for _ in range(seed_parents)
             ]
+
+            # logger.warning(f"type : {type(parents)} --> {parents}")
+
             self.current_population = [
                 (
                     round(x, self._round),  # x
-                    round(self.funct["funct"](x), self._round),  # y
+                    round(self._funct(x), self._round),  # y
                     "first",  # class
                     self.year,  # birth year
                 )
@@ -128,12 +131,12 @@ class _Algo(ABC):
         self._sort_current_population()
         return self.current_population[:1]
 
-    # @property
-    # def current_population_x(self):
-    #     """ """
+    @property
+    def current_population_x(self):
+        """get xs of current pop"""
 
-    #     logger.debug("called")
-    #     return [i[0] for i in self.current_population]
+        logger.debug("called")
+        return [i[0] for i in self.current_population]
 
     # @property
     # def current_population_y(self):
@@ -310,7 +313,7 @@ class _Algo(ABC):
         random_childs = [  # xs, ys of rand childs + random + year
             (
                 round(x, self._round),
-                round(self.funct["funct"](x), self._round),
+                round(self._funct(x), self._round),
                 "random",
                 self.year,
             )
@@ -332,7 +335,7 @@ class _Algo(ABC):
         normal_childs = [
             (
                 round(x, self._round),
-                round(self.funct["funct"](x), self._round),
+                round(self._funct(x), self._round),
                 "normal",
                 self.year,
             )
@@ -379,7 +382,7 @@ class _Algo(ABC):
 
     def __repr__(self):
 
-        return f"Algo id : {self.id}\nfunct : {self.funct}\ninterval:  {self.interval}\n year : {self.year} "
+        return f"Algo id : {self._id}\nfunct : {self.funct}\ninterval:  {self.interval}\nyear : {self.year} "
 
     def __str__(self):
 
