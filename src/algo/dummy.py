@@ -31,6 +31,10 @@ class _DummyAlgo(_Algo):
             "_round": 7,
             "is_won": 0,
             "won_year": -1,
+            "kill_number": -1,
+            "saved_people": -1,
+            "new_people_number": -1,
+            "new_people_composition": {},
         }
 
         logger.warning(str(d))

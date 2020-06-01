@@ -15,7 +15,7 @@ import numpy as np
 class _Algo(ABC):
     """ ABC Algo"""
 
-    TEMPLATE_INTERVAL = 1000
+    TEMPLATE_INTERVAL = 10
     SERIALIZED_KEYS = [
         "_id",
         "year",
@@ -37,6 +37,10 @@ class _Algo(ABC):
         "_round",
         "is_won",
         "won_year",
+        "kill_number",
+        "saved_people",
+        "new_people_number",
+        "new_people_composition",
     ]
 
     def __init__(
@@ -60,6 +64,10 @@ class _Algo(ABC):
         original_population: list,
         is_won: int,
         won_year: int,
+        kill_number: int,
+        saved_people: int,
+        new_people_number: int,
+        new_people_composition: dict,
         _round: int = 7,
     ):
         """init method """
@@ -109,6 +117,11 @@ class _Algo(ABC):
             self.original_population = [
                 (i, j, k, l) for i, j, k, l in self.current_population
             ]
+
+            self.kill_number = -1
+            self.saved_people = -1
+            self.new_people_number = -1
+            self.new_people_composition = {}
 
     ####################################################
     # PROPERTIES
@@ -224,7 +237,7 @@ class _Algo(ABC):
         d = {
             "year": self.year,
             "is_won": self.is_won,
-            "len_current_population": self.len_current_populatdyion,
+            "len_current_population": self.len_current_population,
             "repartition_current_population": self.repartition_current_population,
             "best_current_population": self.best_current_population,
             "graph": {

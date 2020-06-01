@@ -31,33 +31,50 @@ def _load():
     return obj
 
 
-def _run_1(id, n):
+def _dynamic_state():
+    """rebuild and return an Object from json data in redis"""
+
+    return _load().dynamic_state
+
+
+def _static_state():
+    """rebuild and return an Object from json data in redis"""
+
+    return _load().static_state
+
+
+def _run_1(n):
     """load run and save"""
 
     obj = _load()
     obj.run(n)
     _save(obj)
+    return obj.dynamic_state
 
 
-def _run_10(id, n):
+def _run_10(n):
     """load run and save"""
 
     obj = _load()
     obj.run(n * 10)
     _save(obj)
+    return obj.dynamic_state
 
 
-def _run_100(id, n):
+def _run_100(n):
     """load run and save"""
 
     obj = _load()
     obj.run(n * 100)
     _save(obj)
+    return obj.dynamic_state
 
 
 class algo:
     load = _load
     save = _save
+    static_state = _static_state
+    dynamic_state = _dynamic_state
     run_1 = _run_1
     run_10 = _run_10
     run_100 = _run_100
