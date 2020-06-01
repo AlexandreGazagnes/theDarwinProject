@@ -16,6 +16,7 @@ def manage_session(route):
         session["hits"] = [
             (now(), route),
         ]
+        session["algos"] = []
     else:
         session["page_count"] += 1
         session["hits"].append((now(), route))

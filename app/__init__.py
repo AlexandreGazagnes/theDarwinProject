@@ -31,7 +31,7 @@ def create_app(config_class=DevConfig):
 
     # plugin
     sess.init_app(app)
-    bcrypt.init_app(app)
+    # bcrypt.init_app(app)
 
     # context manager
     with app.app_context():
