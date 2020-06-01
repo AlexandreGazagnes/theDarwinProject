@@ -1,4 +1,4 @@
-from src.functs.functsdict import _FunctsDict
+from src.functs.functs_dict import _FunctsDict
 
 
 _all_names = set([v["name"] for _, v in _FunctsDict.items()])
