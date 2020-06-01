@@ -29,7 +29,7 @@ class DummyAlgo(_Algo):
             "learning_curve": [],
             "original_population": [],
             "_round": 7,
-            "is_won": False,
+            "is_won": 0,
             "won_year": -1,
         }
 

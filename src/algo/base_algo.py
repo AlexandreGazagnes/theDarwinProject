@@ -58,7 +58,7 @@ class _Algo(ABC):
         current_population: list,
         learning_curve: list,
         original_population: list,
-        is_won: bool,
+        is_won: int,
         won_year: int,
         _round: int = 7,
     ):
@@ -307,7 +307,7 @@ class _Algo(ABC):
         )
         if is_won:
             self.won_year = self.year
-        self.is_won = is_won
+        self.is_won = int(is_won)
 
     def _eval(self):
         """eval the best elemand update lurning curve """
