@@ -1,3 +1,5 @@
+#! /home/alex/Env/bin/python3
+
 shebang = "#! /home/alex/Env/bin/python3"
 
 from src import logger

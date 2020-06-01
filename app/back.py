@@ -19,18 +19,20 @@ from flask import (
 from flask import Blueprint
 
 from app.forms import InitForm, RunForm
-from app import ALGO
+# from app import ALGO
 from src.functs import Functs
-from src import EvolutionAlgo1D, NathanAlgo
+# from src import EvolutionAlgo1D, NathanAlgo
+
+from src.algo import *
 from src import logger
 
 # Blue prints
 back = Blueprint("back", __name__)
 
 
-def get_algo():
-    """ get algo"""
-    return ALGO[request.args.get("algoId")]
+# def get_algo():
+#     """ get algo"""
+#     return ALGO[request.args.get("algoId")]
 
 
 @back.route("/getsessionid", methods=["GET"])
@@ -58,6 +60,7 @@ def change_algo_(new_id):
     """change sess_id """
 
     session["current_algo"] = new_id
+    return "0K", 200
 
 
 # init from model

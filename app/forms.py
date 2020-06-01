@@ -15,7 +15,7 @@ from wtforms.validators import DataRequired, Length, NumberRange
 
 from src.functs import Functs
 
-choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.as_dict.items()]
+choicesFuncts = [(v["name"], v["name"]) for k, v in Functs.by_name.items()]
 choicesObjectives = [("min", "min"), ("max", "max")]
 choicesBool = [("True", "True"), ("False", "False")]
 choicesSocial = [

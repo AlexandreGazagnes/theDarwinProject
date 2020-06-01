@@ -7,7 +7,7 @@ from src.algo.expert import _ExpertAlgo
 from src.algo.dummy import _DummyAlgo
 
 
-# from flask import session
+from flask import session
 
 
 class _HandleAlgo(_Algo):
