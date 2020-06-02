@@ -1,5 +1,5 @@
 <h1>theDarwinProject.io</h1>
-<small>v0.6.1 master</small>
+<small>v0.7.0 master</small>
 
 
 <p>theDarwinProject.io helps you to define, test and modelize various gentic algorythm to try to catch a very basic

@@ -23,7 +23,7 @@ class Config:
     # Flask-Session
     SESSION_TYPE = environ.get("SESSION_TYPE")
     # print(environ.get("SESSION_REDIS"))
-    SESSION_REDIS = redis.from_url("redis://redis_session:6379")
+    SESSION_REDIS = redis.from_url("redis://redis:6379")
 
 
 class ProdConfig(Config):

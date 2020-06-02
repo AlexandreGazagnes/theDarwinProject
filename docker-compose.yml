@@ -1,26 +1,20 @@
 version: '3.3'
 
 services:
-    redis_session:
+    redis:
         image: redis
         ports: 
             - 6379:6379
-    web_app:
+    flask:
         build:
             context: .
             dockerfile: Dockerfile
-            # args:
-            #     dummy: "dummy"
-        # restart always
-        image: web_app:v0.6.0
-        container_name: web_app
+        restart : always
+        image: theDarwinProjectFlaskImg:v0.7.0
+        container_name: flask
         volumes:
             - .:/app
-        # environment:
-        #     TEST_MODE: 0
-        #     LOG_IN_FILE: 0
-        #     LOG_LEVEL : "INFO"
         ports: 
             - 65000:65000
         depends_on:
-            - redis_session
+            - redis
