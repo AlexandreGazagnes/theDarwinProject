@@ -2,16 +2,16 @@ version: '3.3'
 
 services:
     redis:
-        image: redis
+        image: redis:6-alpine
         ports: 
             - 6379:6379
-    flask:
+    web:
         build:
             context: .
             dockerfile: Dockerfile
         # restart : always
         image: theDarwinProjectFlaskImg:v0.7.0
-        container_name: flask
+        container_name: web
         volumes:
             - .:/app
         ports: 
