@@ -9,7 +9,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        restart : always
+        # restart : always
         image: theDarwinProjectFlaskImg:v0.7.0
         container_name: flask
         volumes:
