@@ -1,5 +1,9 @@
 <h1>theDarwinProject.io</h1>
+<<<<<<< HEAD
 <small>v0.dedzdze dev</small>
+=======
+<small>v0.7.0 master</small>
+>>>>>>> feature/rc
 
 
 <p>theDarwinProject.io helps you to define, test and modelize various gentic algorythm to try to catch a very basic
@@ -39,10 +43,6 @@
 
 <h2>License</h2>
 <p>
-<<<<<<< HEAD
+
     Please consider seriously following your studies untill Master II
 </p>
-=======
-    Please consider seriously following your studies untill Master II, 
-</p>
->>>>>>> feature/rc

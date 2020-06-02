@@ -3,29 +3,33 @@ from flask import Flask
 from flask import render_template, redirect, escape, request, session
 from flask_login import LoginManager
 from flask_session import Session
+from flask_bcrypt import Bcrypt
 
 # from flask_scss import Scss
 
 from params import Params
 from src import *
+from app.config import ProdConfig, DevConfig
 
 # replace by redis in next feature
-ALGO = dict()
+
 sess = Session()
+bcrypt = Bcrypt()
 
 
-def make_app():
+def create_app(config_class=DevConfig):
     """make app """
 
-    logger.info("called")
+    logger.debug("called")
 
     app = Flask(__name__)
 
     # Application Configuration
-    app.config.from_object("config.DevConfig")
+    app.config.from_object(ProdConfig)
 
     # plugin
-    # sess.init_app(app)
+    sess.init_app(app)
+    # bcrypt.init_app(app)
 
     # context manager
     with app.app_context():
