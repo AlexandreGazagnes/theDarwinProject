@@ -29,6 +29,7 @@ class ProdConfig(Config):
     FLASK_ENV = "production"
     DEBUG = False
     TESTING = False
+    SEND_FILE_MAX_AGE_DEFAULT = 0
     # DATABASE_URI = os.environ.get("PROD_DATABASE_URI")
 
 
@@ -36,4 +37,5 @@ class DevConfig(Config):
     FLASK_ENV = "development"
     DEBUG = True
     TESTING = True
+    SEND_FILE_MAX_AGE_DEFAULT = 0
     # DATABASE_URI = os.environ.get("DEV_DATABASE_URI")
