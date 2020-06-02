@@ -25,7 +25,7 @@ def create_app(config_class=DevConfig):
     app = Flask(__name__)
 
     # Application Configuration
-    app.config.from_object(DevConfig)
+    app.config.from_object(ProdConfig)
 
     # plugin
     sess.init_app(app)
