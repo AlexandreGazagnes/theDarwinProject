@@ -34,7 +34,7 @@ services:
             - back
         depends_on:
             - redis
-        command: flask run
+        # command: flask run
         # restart: on-failure
 
     nginx:
@@ -50,7 +50,7 @@ services:
         networks: 
             - front
         depends_on:
-            - web
+            - flask
         # restart: always
 
 networks: 
