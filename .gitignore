@@ -112,6 +112,9 @@ ___*
 # vs code
 .vscode
 
+# infra
+infra/bash/vars.prod.sh
+
 #.env
 .env/prod/*
 !.env/prod/*.md
