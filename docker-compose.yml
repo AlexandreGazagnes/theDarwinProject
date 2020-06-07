@@ -1,31 +1,48 @@
-version: '3.3'
+version: '3.7'
 
 services:
+
     redis:
         image: redis:6-alpine
-        container_name: redis_cont
+        container_name: redis
+        # restart: on-failure
         ports: 
             - 6379:6379
         networks: 
             - net
-    web:
+    flask:
         build:
-            context: .
+            context: ./services/flask
             dockerfile: Dockerfile
-        # restart always
-        image: web:v0.7.0
-        container_name: web_cont
+        command: flask run
+        # restart: on-failure
+        image: flask:v0.8.0
+        container_name: flask
         environment:
             - PYTHONDONTWRITEBYTECODE=1
             - PYTHONUNBUFFERED=1
         volumes:
             - .:/app
-        ports: 
-            - 65000:65000
+        expose: 
+            - 5000
         depends_on:
             - redis
         networks: 
             - net
+    
+    # nginx:
+    #     build: 
+    #         context : ./services/nginx
+    #         dockerfile: Dockerfile
+    #     # restart: on-failure
+    #     ports:
+    #         - 1337:80
+    #     depends_on:
+    #         - flask
+    #     networks: 
+    #         - net
+
+
 
 networks: 
     net:

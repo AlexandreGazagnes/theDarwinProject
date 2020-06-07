@@ -10,5 +10,5 @@ RUN pip install -r requirements.txt
 COPY . /app
 
 # command
-ENTRYPOINT [ "python" ]
-CMD [ "wsgi.py" ]
+# ENTRYPOINT [ "python" ]
+# CMD [ "wsgi.py" ]

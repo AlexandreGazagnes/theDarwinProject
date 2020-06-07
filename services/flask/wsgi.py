@@ -12,7 +12,7 @@ def main():
     compile_scss()
     app = create_app()
     # cli = FlaskGroup(app)
-    app.run(host="0.0.0.0", port=65000)
+    app.run(host="0.0.0.0", port=5000)
     # cli()
 
 
