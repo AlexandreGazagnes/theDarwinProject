@@ -14,7 +14,7 @@ class Config:
     """Set Flask configuration vars from .env file."""
 
     # General Config
-    SECRET_KEY = "fjizejzoi23456fje98765ofji" #environ.get "SECRET_KEY")
+    SECRET_KEY = environ.get("SECRET_KEY")
     FLASK_APP = environ.get("FLASK_APP")
     SESSION_COOKIE_NAME = os.environ.get("SESSION_COOKIE_NAME")
     STATIC_FOLDER = "static"

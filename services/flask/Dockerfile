@@ -13,5 +13,6 @@ COPY . /app
 # ENTRYPOINT [ "python" ]
 # CMD [ "wsgi.py" ]
 
+
 ENTRYPOINT [ "gunicorn" ]
 CMD [ "--bind=0.0.0.0:5000",  "--reload",  "wsgi:app" ]
