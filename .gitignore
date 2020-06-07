@@ -129,3 +129,14 @@ app/static/img/*.png
 ___*
 /*/___*
 /*/*/___*
+
+
+
+
+#.env
+.env/prod/*
+!.env/prod/*.md
+
+# Volumes
+volumes/redis/data/*
+!volumes/redis/data/*.md
