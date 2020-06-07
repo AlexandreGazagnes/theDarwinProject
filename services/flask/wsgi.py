@@ -7,6 +7,9 @@ from app import create_app
 from utils.compile_scss import compile_scss
 
 
+app = create_app()
+
+
 def main():
     logger.info("called")
     compile_scss()
