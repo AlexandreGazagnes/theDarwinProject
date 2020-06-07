@@ -1,0 +1,10 @@
+{
+    "path": "logs/",
+    "filename": "logs",
+    "in_file": 0,
+    "filemode": "w",
+    "level": "WARNING",
+    "datefmt": "%Y-%m-%d %H:%M:%S",
+    "srtfmt": "%(asctime)s | %(levelname)-8s | %(message)s | %(funcName)s | %(lineno)d | %(module)s | %(filename)s",
+    "ext": ".log"
+}
