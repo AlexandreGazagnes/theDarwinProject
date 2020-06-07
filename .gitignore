@@ -51,35 +51,15 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-
 # Flask stuff:
 instance/
 .webassets-cache
 
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
 # PyBuilder
 target/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
 # pyenv
 .python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
 
 # Environments
 .env
@@ -91,13 +71,6 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
 # mkdocs documentation
 /site
 
@@ -105,33 +78,39 @@ venv.bak/
 .mypy_cache/
 
 # perso
-*.pyc
-*.log
-*.out
-*.err
-*.json
-*.db
+# *.pyc
+# *.log
+# *.out
+# *.err
+# *.json
+# *.db
 
-data/*/*.ods
+# data/*/*.ods
 
-logs/*.log
-logs/*.err
-logs/*.out
+# logs/*.log
+# logs/*.err
+# logs/*.out
 
-params/*.json
-params/private/*.json
+# params/*.json
+# params/private/*.json
 
-app/static/img/*.jpg
-app/static/img/*.jpeg
-app/static/img/*.bmp
-app/static/img/*.png
+# app/static/img/*.jpg
+# app/static/img/*.jpeg
+# app/static/img/*.bmp
+# app/static/img/*.png
 
+
+# triunder
 ___*
 /*/___*
 /*/*/___*
+/*/*/*/___*
+/*/*/*/*/___*
+/*/*/*/*/*/___*
+/*/*/*/*/*/*/___*
 
-
-
+# vs code
+.vscode
 
 #.env
 .env/prod/*
