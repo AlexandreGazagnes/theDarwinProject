@@ -1,8 +1,8 @@
 #! /bin/bash
 
-HOSTNAME='www-master'
-SSH_PORT='22'
-USER='myUser' # user
+HOSTNAME='www-test'
+SSH_PORT='24'
+USER='test' # user
 USER_PASSWD="azerty"
 USER_ID_RSA_PUB="adzdjzojozjzoejoozfjojfzejfojozjiojfzjiojiozejiojfioze"
 GIT_EMAIL="my@email.com"
