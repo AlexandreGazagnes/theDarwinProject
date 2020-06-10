@@ -1,0 +1,6 @@
+- name: make a simple ping before all
+    ping:
+
+
+- name: make a ls
+    shell : ls
