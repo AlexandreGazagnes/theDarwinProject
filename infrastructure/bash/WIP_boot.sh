@@ -66,11 +66,9 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt -y install docker-ce docker-ce-cli containerd.io
 echo "return code of 65 is $?"
-sh get-docker.sh && 
 usermod -aG docker $USER
 docker run hello-world
 echo "return code of 71 is $?"
-# rm get-docker.sh
 
 # compose
 sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
@@ -88,32 +86,50 @@ ufw allow $SSH_PORT/tcp
 sudo ufw enable
 
 
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+
+# OK untill HERE
+
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+
+
+
 ###################################
 # manage ssh connections 
 ###################################
 
 # permit root no
+find /etc/ssh/sshd_config -type f -exec sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' {} \;
 # redirect port 
+find /etc/ssh/sshd_config -type f -exec sed -i 's/#Port 22/Port 24/g' {} \;
 # only ssh no login
-# allow only user
+find /etc/ssh/sshd_config -type f -exec sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' {} \;
+
 
 # user
 su $USER
 cd 
 mkdir .ssh
 ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$USER/.ssh/id_rsa
-cat $USER_ID_RSA_PUB > .ssh/authorized_keys
+# touch .ssh/authorized_keys
+echo $USER_ID_RSA_PUB > .ssh/authorized_keys
 
 
 ###################################
 # git config
 ###################################
 
-cd ~/
-git user
-git passwd
-git push ssh 
-git clone   
+cd
+# git user
+# git passwd
+# git push ssh 
+git clone $GIT_REPO
 
 
 ####################################
@@ -123,8 +139,8 @@ git clone
 exit
 # ufw reload
 # ufw enable
-systemctl restart ufw.service
-systemctl restart ssh
+# systemctl restart ufw.service
+# systemctl restart ssh
 reboot
 
 
