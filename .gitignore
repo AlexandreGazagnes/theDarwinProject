@@ -1,39 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
@@ -47,16 +14,9 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Translations
-*.mo
-*.pot
-
 # Flask stuff:
 instance/
 .webassets-cache
-
-# PyBuilder
-target/
 
 # pyenv
 .python-version
@@ -68,22 +28,8 @@ env/
 env/*/
 venv/
 ENV/
-env.bak/
-venv.bak/
 
-# mkdocs documentation
-/site
 
-# mypy
-.mypy_cache/
-
-# perso
-# *.pyc
-# *.log
-# *.out
-# *.err
-# *.json
-# *.db
 
 # data/*/*.ods
 
@@ -102,18 +48,17 @@ venv.bak/
 
 # triunder
 ___*
-/*/___*
-/*/*/___*
-/*/*/*/___*
-/*/*/*/*/___*
-/*/*/*/*/*/___*
-/*/*/*/*/*/*/___*
+*___*
 
 # vs code
 .vscode
 
+# cache 
+*pytest_cache
+*cache
+
 # infra
-infra/bash/vars.prod.sh
+infrastructure/bash/vars.prod.sh
 
 #.env
 .env/prod/*
