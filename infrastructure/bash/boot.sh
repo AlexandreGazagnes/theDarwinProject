@@ -22,7 +22,7 @@ echo "return code of l17 is $?"
 # # custom install --> OK
 # ###################################
 
-apt-get -y install nano htop curl wget ufw sudo zsh screen vim screen inxi apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+apt-get -y install nano htop curl wget ufw sudo zsh screen vim screen inxi zsh apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 echo "return code of l25 is $?"
 # NOT WORKING : # apt-get -y install whoami scp su
 
@@ -49,7 +49,7 @@ echo "return code of l41 is $?"
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $USER_PASSWD)
 
 # make user 
-useradd -m -s /bin/bash -p $pass $USER && usermod -aG sudo $USER
+useradd -m -s /bin/zsh -p $pass $USER && usermod -aG sudo $USER
 echo "return code of l52 is $?"
 # no sudo passwd 
 echo $USER 'ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -76,7 +76,7 @@ chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 ###################################
-# ufw
+# ufw --> OK
 ###################################
 
 ufw default deny incoming
@@ -85,6 +85,37 @@ ufw allow $SSH_PORT/tcp
 # NOT THIS ONE ELSE CONNECTION BROKEN
 sudo ufw enable
 
+###################################
+# manage ssh connections  --> OK
+###################################
+
+# permit root no
+find /etc/ssh/sshd_config -type f -exec sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' {} \;
+# redirect port 
+find /etc/ssh/sshd_config -type f -exec sed -i 's/#Port 22/Port 24/g' {} \;
+# only ssh no login
+find /etc/ssh/sshd_config -type f -exec sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' {} \;
+
+###################################
+# user
+###################################
+
+su $USER
+cd 
+mkdir .ssh
+ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$USER/.ssh/id_rsa
+echo $USER_ID_RSA_PUB > .ssh/authorized_keys
+
+
+###################################
+# git config
+###################################
+
+cd
+# git user
+# git passwd
+# git push ssh 
+git clone $GIT_REPO
 
 ############################################################################
 ############################################################################
@@ -98,38 +129,16 @@ sudo ufw enable
 ############################################################################
 ############################################################################
 
+####################################
+fancy stuff
+####################################
 
+# use zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # change default theme
+find .zshrc -type f -exec sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' {} \;
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-###################################
-# manage ssh connections 
-###################################
-
-# permit root no
-find /etc/ssh/sshd_config -type f -exec sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' {} \;
-# redirect port 
-find /etc/ssh/sshd_config -type f -exec sed -i 's/#Port 22/Port 24/g' {} \;
-# only ssh no login
-find /etc/ssh/sshd_config -type f -exec sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' {} \;
-
-
-# user
-su $USER
-cd 
-mkdir .ssh
-ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$USER/.ssh/id_rsa
-# touch .ssh/authorized_keys
-echo $USER_ID_RSA_PUB > .ssh/authorized_keys
-
-
-###################################
-# git config
-###################################
-
-cd
-# git user
-# git passwd
-# git push ssh 
-git clone $GIT_REPO
 
 
 ####################################
