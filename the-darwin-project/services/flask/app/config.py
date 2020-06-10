@@ -23,13 +23,12 @@ class Config:
     # Flask-Session
     SESSION_TYPE = environ.get("SESSION_TYPE")
     SESSION_REDIS = redis.from_url("redis://redis:6379")
-
+    SEND_FILE_MAX_AGE_DEFAULT = 0
 
 class ProdConfig(Config):
     FLASK_ENV = "production"
     DEBUG = False
     TESTING = False
-    SEND_FILE_MAX_AGE_DEFAULT = 0
     # DATABASE_URI = os.environ.get("PROD_DATABASE_URI")
 
 

@@ -1,0 +1,33 @@
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+- name: Upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
+
+- name: Install a list of packages
+  apt:
+    pkg:
+    - nano 
+    - htop 
+    - curl 
+    - wget 
+    - ufw 
+    - sudo 
+    - zsh 
+    - screen 
+    - vi 
+    - vim 
+    - screen 
+    - inxi
+    - apt-transport-https 
+    - ca-certificates 
+    - curl 
+    - gnupg-agent 
+    - software-properties-common

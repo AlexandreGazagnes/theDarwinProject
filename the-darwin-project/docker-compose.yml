@@ -1,0 +1,61 @@
+version: '3.7'
+
+
+networks: 
+    db_net:
+    front_net:
+
+
+services:
+
+    # cache db
+    redis:
+        image: redis:6-alpine
+        container_name: redis_cont
+        volumes : 
+            - ./volumes/redis/data:/data
+        env_file: 
+            - ./.env/dev/.env.redis.dev
+        networks: 
+            - db_net
+        ports: 
+            - 6379:6379
+        restart: on-failure
+
+    # fullstack web app
+    flask:
+        build:
+            context: ./services/flask
+            dockerfile: Dockerfile
+        image: flask_img:v0.8.0
+        container_name: flask_cont
+        volumes:
+            - ./services/flask:/app
+        env_file:
+            - ./.env/dev/.env.flask.dev
+        networks: 
+            - front_net
+            - db_net
+        # expose: 
+        #     - 5000
+        ports:
+            - 5000:5000
+        depends_on:
+            - redis
+        restart: on-failure
+
+    nginx:
+        build: 
+            context: ./services/nginx
+            dockerfile: Dockerfile
+        image: nginx_img:0.0.0
+        container_name: nginx_cont
+        env_file:
+            - ./.env/dev/.env.nginx.dev
+        ports:
+            - 1337:80
+        networks: 
+            - front_net
+        depends_on:
+            - flask
+        # restart: always

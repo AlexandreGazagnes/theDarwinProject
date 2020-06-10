@@ -1,0 +1,16 @@
+---
+- name: Server Install
+  # hosts: server-group-name
+  hosts : all
+  remote_user: root
+  # remote_user: user
+  # sudo: yes
+
+  # roles:
+  #   - make_ping
+  #   # - update_install
+  #   # - localtime
+
+  tasks:
+    - name: make a ping 
+      ping: 

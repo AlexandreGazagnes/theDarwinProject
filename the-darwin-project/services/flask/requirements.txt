@@ -19,6 +19,7 @@ flask-wtf
 Flask-Scss
 flask-session
 flask-login 
+gunicorn
 
 # selenium
 
@@ -28,3 +29,6 @@ redis
 # MISC
 python-dotenv
 libsass
+
+
+
