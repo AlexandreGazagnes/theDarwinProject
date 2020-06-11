@@ -35,6 +35,5 @@
 
 <h2>License</h2>
 <p>
-
-    Please consider seriously following your studies untill Master II
+Please consider seriously following your studies untill Master II
 </p>
