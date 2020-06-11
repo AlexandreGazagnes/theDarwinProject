@@ -4,60 +4,60 @@
 . ./vars/vars.dev.sh
 
 # roles
-# echo "start #####################################  $(whoami) --> . ./roles/update_upgrade.sh"
+# echo "\n\nstart #####################################  $(whoami) --> . ./roles/update_upgrade.sh"
 # . ./roles/update_upgrade.sh
-# echo "end #####################################  $(whoami) --> . ./roles/update_upgrade.sh"
+# echo "\n\nend   #####################################  $(whoami) --> . ./roles/update_upgrade.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/install.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/install.sh"
 . ./roles/install.sh
-echo "end #####################################  $(whoami) --> . ./roles/install.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/install.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/localtime.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/localtime.sh"
 . ./roles/localtime.sh
-echo "end #####################################  $(whoami) --> . ./roles/localtime.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/localtime.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/hostname.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/hostname.sh"
 . ./roles/hostname.sh
-echo "end #####################################  $(whoami) --> . ./roles/hostname.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/hostname.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/create_user.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/create_user.sh"
 . ./roles/create_user.sh
-echo "end #####################################  $(whoami) --> . ./roles/create_user.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/create_user.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/docker.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/docker.sh"
 . ./roles/docker.sh
-echo "end #####################################  $(whoami) --> . ./roles/docker.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/docker.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/ufw.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/ufw.sh"
 . ./roles/ufw.sh
-echo "end #####################################  $(whoami) --> . ./roles/ufw.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/ufw.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/ssh_config.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/ssh_config.sh"
 . ./roles/ssh_config.sh
-echo "end #####################################  $(whoami) --> . ./roles/ssh_config.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/ssh_config.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/ssh_user.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/ssh_user.sh"
 . ./roles/ssh_user.sh
-echo "end #####################################  $(whoami) --> . ./roles/ssh_user.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/ssh_user.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/git.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/git.sh"
 . ./roles/git.sh
-echo "end #####################################  $(whoami) --> . ./roles/git.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/git.sh"
 
 
-echo "start #####################################  $(whoami) --> . ./roles/exit.sh"
+echo "\n\nstart #####################################  $(whoami) --> . ./roles/exit.sh"
 . ./roles/exit.sh
-echo "end #####################################  $(whoami) --> . ./roles/exit.sh"
+echo "\n\nend   #####################################  $(whoami) --> . ./roles/exit.sh"
 
 
-echo "end #####################################  $(whoami) --> done"
+echo "\n\nend   #####################################  $(whoami) --> done"
 
