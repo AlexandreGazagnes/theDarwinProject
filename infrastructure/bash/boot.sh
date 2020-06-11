@@ -8,7 +8,7 @@
 # use variables
 source vars.dev.sh
 # test a var
-echo $HOSTNAME
+echo $MY_HOSTNAME
 echo "return code of l10 is $?"
 
 
@@ -32,7 +32,7 @@ echo "return code of l25 is $?"
 # Hots and hostname --> OK
 ###################################
 
-echo $HOSTNAME > /etc/hostname && echo $HOSTNAME > /etc/host
+echo $MY_HOSTNAME > /etc/hostname && echo $MY_HOSTNAME > /etc/host
 echo "return code of l34 is $?"
 
 
@@ -49,17 +49,17 @@ echo "return code of l41 is $?"
 ###################################
 
 # make encr pass 
-pass=$(perl -e 'print crypt($ARGV[0], "password")' $USER_PASSWD)
+pass=$(perl -e 'print crypt($ARGV[0], "password")' $MY_USER_PASSWD)
 # make user 
-useradd -m -s /bin/zsh -p $pass $USER && usermod -aG sudo $USER
+useradd -m -s /bin/bash -p $pass $MY_USER && usermod -aG sudo $MY_USER
 echo "return code of l52 is $?"
 # no sudo passwd 
-echo $USER 'ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+echo $MY_USER 'ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 echo "return code of l55 is $?" && tail -n 1 /etc/sudoers 
 
 
 ###################################
-# docker --> OK
+# docker --> OK ERROR
 ###################################
 
 # docker
@@ -69,7 +69,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt -y install docker-ce docker-ce-cli containerd.io
 echo "return code of 65 is $?"
-usermod -aG docker $USER
+usermod -aG docker $MY_USER
 docker run hello-world
 echo "return code of 71 is $?"
 
@@ -81,12 +81,12 @@ echo "return code of 83 is $?"
 
 
 ###################################
-# ufw --> OK
+# ufw --> ERROR INTERACTIVE
 ###################################
 
 ufw default deny incoming
 ufw default allow outgoing
-ufw allow $SSH_PORT/tcp
+ufw allow $MY_SSH_PORT/tcp
 sudo ufw enable
 
 
@@ -106,13 +106,18 @@ find /etc/ssh/sshd_config -type f -exec sed -i 's/#PasswordAuthentication yes/Pa
 # user ssh --> OK
 ###################################
 
-su $USER
+su $MY_USER
 cd 
 mkdir .ssh
 # generate ssh
-ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$USER/.ssh/id_rsa
+ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$MY_USER/.ssh/id_rsa
 # add auth keys
-echo $USER_ID_RSA_PUB > .ssh/authorized_keys
+echo $MY_USER_ID_RSA_PUB > .ssh/authorized_keys
+
+# compose 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
 
 
 ###################################
@@ -124,7 +129,7 @@ cd
 # git passwd
 # git push ssh 
 # clone
-git clone $GIT_REPO
+git clone $MY_GIT_REPO
 
 
 ####################################
@@ -140,12 +145,13 @@ find .zshrc -type f -exec sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster
 
 
 ####################################
-# run 
+# run  --> ERROR INTERACTIVE
 ####################################
 
+exit 
 cd
-ufw allow 1337/tcp
-ufw enable
+sudo ufw allow 1337/tcp
+sudo ufw enable
 # docker-compose -p theDarwinproject -f
 
 ####################################
