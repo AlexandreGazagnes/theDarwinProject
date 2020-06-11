@@ -4,5 +4,5 @@ cd /home/$MY_USER
 # git push ssh 
 # clone
 git clone $MY_GIT_REPO
-chown -R alex:alex $MY_PROJECT_NAME
+chown -R master:master $MY_PROJECT_NAME
 cd
