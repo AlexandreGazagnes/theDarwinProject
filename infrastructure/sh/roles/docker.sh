@@ -1,3 +1,5 @@
+echo "\n\nstart #####################################  $(whoami) in $(pwd) --> . ./roles/docker.sh"
+
 # docker
 # apt -y remove docker docker-engine docker.io
 # echo "return code of 63 is $?"
@@ -15,3 +17,5 @@ curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compo
 chmod +x /usr/local/bin/docker-compose
 # docker-compose --version
 echo "return code of 83 is $?"
+
+echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/docker.sh"

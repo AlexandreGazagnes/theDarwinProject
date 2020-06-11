@@ -1,4 +1,4 @@
-
+echo "\n\nstart #####################################  $(whoami) in $(pwd) --> . ./roles/create_user.sh"
 
 # make encr pass 
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $MY_USER_PASSWD)
@@ -11,3 +11,4 @@ echo "return code of l52 is $?"
 echo $MY_USER 'ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 echo "return code of l55 is $?" && tail -n 1 /etc/sudoers 
 
+echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/create_user.sh"
