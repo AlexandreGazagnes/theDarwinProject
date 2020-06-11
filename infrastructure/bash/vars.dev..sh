@@ -8,4 +8,4 @@ USER_ID_RSA_PUB="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwydc+FiLc+WAjSfUQT0lRnOb
 "
 GIT_EMAIL="my@email.com"
 GIT_PASSWD="passwd"
-GIT_REPO="https://github.com/AlexandreGazagnes/theDarwinProject.git
+GIT_REPO="https://github.com/AlexandreGazagnes/theDarwinProject.git"
