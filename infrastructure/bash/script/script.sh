@@ -52,8 +52,8 @@ echo "return code of l55 is $?" && tail -n 1 /etc/sudoers
 ###################################
 
 # docker
-apt -y remove docker docker-engine docker.io
-echo "return code of 63 is $?"
+# apt -y remove docker docker-engine docker.io
+# echo "return code of 63 is $?"
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 apt -y install docker-ce docker-ce-cli containerd.io
@@ -76,7 +76,7 @@ echo "return code of 83 is $?"
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow $MY_SSH_PORT/tcp
-sudo ufw enable
+yes |sudo ufw enable
 
 
 ###################################
@@ -104,9 +104,9 @@ ssh-keygen -t ecdsa -b 384 -q -N "" -f /home/$MY_USER/.ssh/id_rsa
 echo $MY_USER_ID_RSA_PUB > .ssh/authorized_keys
 
 # compose 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-docker-compose --version
+# sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+# sudo chmod +x /usr/local/bin/docker-compose
+# docker-compose --version
 
 
 ###################################
@@ -126,10 +126,9 @@ git clone $MY_GIT_REPO
 ####################################
 
 # use zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# change default theme
-find .zshrc -type f -exec sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' {} \;
-
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# # change default theme
+# find .zshrc -type f -exec sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' {} \;
 # for better see https://www.freecodecamp.org/news/jazz-up-your-zsh-terminal-in-seven-steps-a-visual-guide-e81a8fd59a38/
 
 
@@ -139,9 +138,10 @@ find .zshrc -type f -exec sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster
 
 exit 
 cd
-sudo ufw allow 1337/tcp
-sudo ufw enable
+ufw allow 1337/tcp
+yes | ufw enable
 # docker-compose -p theDarwinproject -f
+
 
 ####################################
 # reload and reboot
