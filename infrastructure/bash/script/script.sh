@@ -2,17 +2,6 @@
 
 
 ###################################
-# VARS --> OK
-###################################
-
-# use variables
-source vars.dev.sh
-# test a var
-echo $MY_HOSTNAME
-echo "return code of l10 is $?"
-
-
-###################################
 # update upgrade --> OK
 ###################################
 
