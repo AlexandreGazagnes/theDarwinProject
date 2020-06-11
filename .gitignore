@@ -31,19 +31,7 @@ ENV/
 
 
 
-# data/*/*.ods
 
-# logs/*.log
-# logs/*.err
-# logs/*.out
-
-# params/*.json
-# params/private/*.json
-
-# app/static/img/*.jpg
-# app/static/img/*.jpeg
-# app/static/img/*.bmp
-# app/static/img/*.png
 
 
 # triunder
