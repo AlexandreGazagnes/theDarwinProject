@@ -1,3 +1,5 @@
+
+
 # make encr pass 
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $MY_USER_PASSWD)
 
