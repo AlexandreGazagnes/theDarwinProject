@@ -4,9 +4,9 @@
 . ./vars/vars.dev.sh
 
 # roles
-# echo "\n\nstart #####################################  $(whoami) in $(pwd) --> . ./roles/update_upgrade.sh"
-# . ./roles/update_upgrade.sh
-# echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/update_upgrade.sh"
+echo "\n\nstart #####################################  $(whoami) in $(pwd) --> . ./roles/update_upgrade.sh"
+. ./roles/update_upgrade.sh
+echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/update_upgrade.sh"
 
 
 echo "\n\nstart #####################################  $(whoami) in $(pwd) --> . ./roles/install.sh"
