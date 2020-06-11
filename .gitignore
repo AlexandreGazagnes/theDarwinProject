@@ -63,6 +63,8 @@ infrastructure/bash/vars.prod.sh
 #.env
 .env/prod/*
 !.env/prod/*.md
+!.env/dev/*.md
+!.env/dev/*.dev
 
 # Volumes
 volumes/redis/data/*
