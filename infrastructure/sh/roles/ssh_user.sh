@@ -1,5 +1,5 @@
 echo "before su $MY_USER"
-su $MY_USER
+sudo su $MY_USER
 echo "after su $MY_USER"
 
 cd 
