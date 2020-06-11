@@ -1,5 +1,3 @@
-#! /bin/sh
-
 MY_HOSTNAME='theDarwinProject'
 MY_SSH_PORT='24'
 MY_INTERNET_PORT='1337'
