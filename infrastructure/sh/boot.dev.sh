@@ -18,5 +18,6 @@ echo "start ROLES"
 . ./roles/ssh_config.sh
 . ./roles/ssh_user.sh
 . ./roles/git.sh
+. ./roles/as_service.sh
 . ./roles/exit.sh
 echo "end   ROLES"
