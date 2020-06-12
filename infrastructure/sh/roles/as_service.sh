@@ -27,7 +27,7 @@ cp $MY_PROJECT_NAME.service /etc/systemd/system/
 
 chmod 644 /etc/systemd/system/$MY_PROJECT_NAME.service
 
-sudo systemctl start theDarwinProject.service 
-sudo systemctl enable theDarwinProject.service 
+systemctl start theDarwinProject.service 
+systemctl enable theDarwinProject.service 
 
 echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/as_service.sh"
