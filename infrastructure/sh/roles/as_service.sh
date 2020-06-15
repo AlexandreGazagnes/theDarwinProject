@@ -16,8 +16,8 @@ User=$MY_USER
 Restart=always
 ExecStartPre=-/usr/bin/docker exec %n stop
 ExecStartPre=-/usr/bin/docker rm %n
-ExecStart=docker-compose -p MY_PROJECT_NAME -f /home/$MY_USER/$MY_PROJECT_NAME/docker-compose.yml up --build -d
-ExecStop=docker-compose -p MY_PROJECT_NAME -f /home/$MY_USER/$MY_PROJECT_NAME/docker-compose.yml down
+ExecStart=docker-compose -p $MY_PROJECT_NAME -f /home/$MY_USER/$MY_PROJECT_NAME/$MY_PROJECT_NAME/docker-compose.yml up --build -d
+ExecStop=docker-compose -p $MY_PROJECT_NAME -f /home/$MY_USER/$MY_PROJECT_NAME/$MY_PROJECT_NAME/docker-compose.yml down
 
 [Install]
 WantedBy=multi-user.target
@@ -27,7 +27,8 @@ cp $MY_PROJECT_NAME.service /etc/systemd/system/
 
 chmod 644 /etc/systemd/system/$MY_PROJECT_NAME.service
 
-systemctl start theDarwinProject.service 
-systemctl enable theDarwinProject.service 
+systemctl enable theDarwinProject.service
+# systemctl start theDarwinProject.service 
+
 
 echo "\n\nend   #####################################  $(whoami) in $(pwd) --> . ./roles/as_service.sh"
